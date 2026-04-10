@@ -1,5 +1,5 @@
-# Root serves Chinese content (rewrite, not redirect — SEO friendly)
-/ /zh 200
+# Root serves English content (rewrite, not redirect — SEO friendly)
+/ /en 200
 
 # www -> apex
 https://www.sbti.support/* https://sbti.support/:splat 301
