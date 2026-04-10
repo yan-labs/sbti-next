@@ -21,16 +21,16 @@ export function IntroPhase() {
       {/* Hero */}
       <div className="flex min-h-[70vh] flex-col items-center justify-center text-center">
         <div className="w-full max-w-md space-y-8">
-          <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">
+          <h1 className="font-heading text-4xl font-bold tracking-tight sm:text-5xl">
             {t('headline')}
             <br />
-            {t('headlineBr')}
+            <span className="text-primary">{t('headlineBr')}</span>
           </h1>
 
           <Button
             size="lg"
             onClick={startQuiz}
-            className="rounded-full px-10 text-base"
+            className="rounded-full bg-primary px-10 text-base text-primary-foreground shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30"
           >
             {t('start')}
           </Button>
@@ -50,7 +50,7 @@ export function IntroPhase() {
               <Link
                 key={code}
                 href={`/type/${code}`}
-                className="group flex flex-col items-center gap-2 rounded-xl p-3 transition-colors hover:bg-muted/50"
+                className="group flex flex-col items-center gap-2 rounded-xl border border-transparent p-3 transition-all hover:border-primary/20 hover:bg-muted/50 hover:-translate-y-0.5 hover:shadow-sm"
               >
                 {img && (
                   <div className="w-16 overflow-hidden rounded-lg sm:w-20">

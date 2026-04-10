@@ -37,15 +37,15 @@ export function RadarChart({levels, size = 300}: RadarChartProps) {
 
     // Get computed style for theme-aware colors
     const style = getComputedStyle(canvas);
-    const idk = style.colorScheme === 'dark' || document.documentElement.classList.contains('dark');
-    const lineColor = idk ? 'rgba(160,180,165,0.15)' : 'rgba(76,103,82,0.15)';
-    const fillColors = idk
-      ? ['rgba(160,180,165,0.04)', 'rgba(160,180,165,0.06)', 'rgba(160,180,165,0.09)']
-      : ['rgba(76,103,82,0.03)', 'rgba(76,103,82,0.05)', 'rgba(76,103,82,0.08)'];
-    const dataFill = idk ? 'rgba(140,190,150,0.25)' : 'rgba(76,103,82,0.25)';
-    const dataStroke = idk ? 'rgba(140,190,150,0.7)' : 'rgba(76,103,82,0.7)';
-    const dotColor = idk ? '#8cbe96' : '#4c6752';
-    const labelColor = idk ? '#9ab09e' : '#6b7b6e';
+    const isDark = style.colorScheme === 'dark' || document.documentElement.classList.contains('dark');
+    const lineColor = isDark ? 'rgba(160,160,184,0.15)' : 'rgba(26,26,46,0.1)';
+    const fillColors = isDark
+      ? ['rgba(255,77,122,0.04)', 'rgba(255,77,122,0.06)', 'rgba(255,77,122,0.09)']
+      : ['rgba(255,51,102,0.03)', 'rgba(255,51,102,0.05)', 'rgba(255,51,102,0.08)'];
+    const dataFill = isDark ? 'rgba(255,77,122,0.25)' : 'rgba(255,51,102,0.2)';
+    const dataStroke = isDark ? '#FF4D7A' : '#FF3366';
+    const dotColor = isDark ? '#FF4D7A' : '#FF3366';
+    const labelColor = isDark ? '#A0A0B8' : '#6B6B80';
 
     ctx.clearRect(0, 0, size, size);
 

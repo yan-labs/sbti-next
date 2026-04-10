@@ -53,8 +53,8 @@ export function TypeDetailPage({code}: {code: string}) {
             <Image src={imgSrc} alt={name} width={384} height={384} className="w-full" priority />
           </div>
         )}
-        <h1 className="text-5xl font-bold tracking-tight">{code}</h1>
-        <p className="mt-2 text-2xl font-semibold text-foreground/80">{name}</p>
+        <h1 className="font-heading text-5xl font-bold tracking-tight">{code}</h1>
+        <p className="font-heading mt-2 text-2xl font-semibold text-foreground/80">{name}</p>
         <p className="mt-3 italic text-muted-foreground">{intro}</p>
       </div>
 
@@ -93,9 +93,9 @@ export function TypeDetailPage({code}: {code: string}) {
                     <div className="h-1.5 overflow-hidden rounded-full bg-muted">
                       <div
                         className={`h-full rounded-full ${
-                          level === 'H' ? 'bg-emerald-600 dark:bg-emerald-500' :
-                          level === 'M' ? 'bg-emerald-500/70 dark:bg-emerald-400/70' :
-                          'bg-amber-500/80 dark:bg-amber-400/80'
+                          level === 'H' ? 'bg-secondary' :
+                          level === 'M' ? 'bg-accent' :
+                          'bg-primary'
                         }`}
                         style={{width: `${percent}%`}}
                       />

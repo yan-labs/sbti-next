@@ -17,15 +17,15 @@ export function LocaleSwitcher() {
   const pathname = usePathname();
 
   return (
-    <div className="flex items-center gap-1">
+    <div className="flex items-center gap-0.5 rounded-full bg-muted/60 p-1 backdrop-blur">
       {routing.locales.map((l) => (
         <button
           key={l}
           onClick={() => router.replace(pathname, {locale: l})}
-          className={`rounded-md px-2 py-1 text-xs transition-colors ${
+          className={`rounded-full px-3 py-1 text-xs font-medium transition-all ${
             l === locale
-              ? 'bg-primary text-primary-foreground'
-              : 'text-muted-foreground hover:text-foreground'
+              ? 'bg-primary text-primary-foreground shadow-sm'
+              : 'text-muted-foreground hover:text-foreground hover:bg-background/60'
           }`}
         >
           {LOCALE_LABELS[l]}

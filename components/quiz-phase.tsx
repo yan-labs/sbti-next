@@ -40,7 +40,7 @@ export function QuizPhase() {
         {/* Question */}
         <Card className="border-0 bg-card/80 shadow-sm backdrop-blur">
           <CardContent className="space-y-5 pt-6">
-            <h2 className="text-lg font-medium leading-relaxed">
+            <h2 className="font-heading text-xl font-semibold leading-relaxed">
               {questionText}
             </h2>
 
@@ -51,7 +51,7 @@ export function QuizPhase() {
                   onClick={() => answer(question.id, opt.value)}
                   className="group w-full rounded-xl border border-border/50 bg-background/60 px-4 py-3.5 text-left text-sm transition-all hover:border-primary/30 hover:bg-primary/5 active:scale-[0.98]"
                 >
-                  <span className="mr-3 inline-flex h-6 w-6 items-center justify-center rounded-full border border-border/60 text-xs font-medium text-muted-foreground transition-colors group-hover:border-primary/40 group-hover:text-primary">
+                  <span className="mr-3 inline-flex h-6 w-6 items-center justify-center rounded-md bg-muted text-xs font-semibold text-muted-foreground transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
                     {String.fromCharCode(65 + i)}
                   </span>
                   {options[i]}

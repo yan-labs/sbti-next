@@ -1,10 +1,11 @@
-import {Geist_Mono, Inter} from "next/font/google"
+import {Space_Grotesk, DM_Sans, JetBrains_Mono} from "next/font/google"
 import Script from "next/script"
 import "./globals.css"
 import {cn} from "@/lib/utils";
 
-const inter = Inter({subsets: ['latin'], variable: '--font-sans'})
-const fontMono = Geist_Mono({subsets: ["latin"], variable: "--font-mono"})
+const fontDisplay = Space_Grotesk({subsets: ['latin'], variable: '--font-display', weight: ['400', '500', '600', '700']})
+const fontSans = DM_Sans({subsets: ['latin'], variable: '--font-sans'})
+const fontMono = JetBrains_Mono({subsets: ["latin"], variable: "--font-mono"})
 
 export default function RootLayout({
   children,
@@ -12,7 +13,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html suppressHydrationWarning className={cn("antialiased", fontMono.variable, "font-sans", inter.variable)}>
+    <html suppressHydrationWarning className={cn("antialiased", fontDisplay.variable, fontSans.variable, fontMono.variable, "font-sans")}>
       <head>
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-0182BSNWVS"

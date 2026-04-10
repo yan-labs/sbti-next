@@ -10,7 +10,7 @@ export function SBTIApp() {
   const phase = useQuizStore((s) => s.phase);
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-b from-background to-muted/30">
+    <div className="relative min-h-screen bg-gradient-to-b from-background via-background to-muted/40">
       {/* Top bar */}
       <header className="fixed right-0 top-0 z-50 p-4">
         <LocaleSwitcher />

@@ -57,8 +57,8 @@ export function ResultPhase() {
           )}
 
           <div className="space-y-1">
-            <h1 className="text-4xl font-bold tracking-tight">{primary.code}</h1>
-            <p className="text-xl font-semibold text-foreground/80">{pName}</p>
+            <h1 className="font-heading text-4xl font-bold tracking-tight">{primary.code}</h1>
+            <p className="font-heading text-xl font-semibold text-foreground/80">{pName}</p>
           </div>
 
           <div className="flex items-center justify-center gap-2">
@@ -124,9 +124,9 @@ export function ResultPhase() {
                 <div className="h-1.5 overflow-hidden rounded-full bg-muted">
                   <div
                     className={`h-full rounded-full transition-all ${
-                      level === 'H' ? 'bg-emerald-600 dark:bg-emerald-500' :
-                      level === 'M' ? 'bg-emerald-500/70 dark:bg-emerald-400/70' :
-                      'bg-amber-500/80 dark:bg-amber-400/80'
+                      level === 'H' ? 'bg-secondary' :
+                      level === 'M' ? 'bg-accent' :
+                      'bg-primary'
                     }`}
                     style={{width: `${percent}%`}}
                   />
