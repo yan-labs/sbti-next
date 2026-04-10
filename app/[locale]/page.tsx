@@ -17,9 +17,9 @@ export async function generateMetadata({params}: {params: Promise<{locale: strin
     description: t('description'),
     keywords: keywordsMap[locale] || keywordsMap.en,
     alternates: {
-      canonical: `${baseUrl}/${locale}`,
+      canonical: locale === 'zh' ? baseUrl : `${baseUrl}/${locale}`,
       languages: {
-        'zh': `${baseUrl}/zh`,
+        'zh': baseUrl,
         'en': `${baseUrl}/en`,
         'ja': `${baseUrl}/ja`,
         'ko': `${baseUrl}/ko`,
