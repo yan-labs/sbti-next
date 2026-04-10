@@ -60,7 +60,7 @@ export function TypeDetailPage({code}: {code: string}) {
         <p className="mt-3 italic text-muted-foreground">{intro}</p>
 
         <div className="mt-4">
-          <p className="mb-2 text-xs font-medium text-muted-foreground">{ts('shareType')}</p>
+          <p className="mb-2 text-sm font-medium text-muted-foreground">{ts('shareType')}</p>
           <ShareButtons
             url={`/${locale}/type/${code}`}
             title={`${code} — ${name}`}
@@ -104,14 +104,14 @@ export function TypeDetailPage({code}: {code: string}) {
                     <div className="h-1.5 overflow-hidden rounded-full bg-muted">
                       <div
                         className={`h-full rounded-full ${
-                          level === 'H' ? 'bg-secondary' :
-                          level === 'M' ? 'bg-accent' :
-                          'bg-primary'
+                          level === 'H' ? 'bg-primary' :
+                          level === 'M' ? 'bg-primary/60' :
+                          'bg-primary/30'
                         }`}
                         style={{width: `${percent}%`}}
                       />
                     </div>
-                    <p className="text-xs text-muted-foreground">{explanation}</p>
+                    <p className="text-sm leading-relaxed text-muted-foreground">{explanation}</p>
                   </div>
                 );
               })}

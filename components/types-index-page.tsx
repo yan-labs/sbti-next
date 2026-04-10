@@ -44,19 +44,19 @@ export function TypesIndexPage() {
               <Card className="group h-full border-0 shadow-sm transition-all hover:shadow-md hover:-translate-y-0.5">
                 <CardContent className="flex flex-col items-center p-4 text-center">
                   {img && (
-                    <div className="mb-3 w-20 overflow-hidden rounded-lg">
+                    <div className="mb-3 w-24 overflow-hidden rounded-lg">
                       <Image
                         src={img}
                         alt={name}
-                        width={160}
-                        height={160}
+                        width={192}
+                        height={192}
                         className="w-full transition-transform group-hover:scale-105"
                       />
                     </div>
                   )}
-                  <p className="font-heading text-sm font-bold">{code}</p>
-                  <p className="mt-0.5 text-xs text-muted-foreground">{name}</p>
-                  <p className="mt-1 line-clamp-2 text-[10px] text-muted-foreground/70">{intro}</p>
+                  <p className="font-heading text-base font-bold">{code}</p>
+                  <p className="mt-0.5 text-sm text-muted-foreground">{name}</p>
+                  <p className="mt-1 line-clamp-2 text-xs leading-snug text-muted-foreground/70">{intro}</p>
                 </CardContent>
               </Card>
             </Link>

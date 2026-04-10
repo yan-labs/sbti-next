@@ -30,7 +30,7 @@ export function TermsPage() {
           <Card key={id} className="border-0 shadow-sm">
             <CardContent className="pt-6">
               <h2 className="font-heading text-lg font-semibold">{t(`${id}Title`)}</h2>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{t(`${id}Text`)}</p>
+              <p className="mt-2 text-base leading-relaxed text-muted-foreground">{t(`${id}Text`)}</p>
             </CardContent>
           </Card>
         ))}

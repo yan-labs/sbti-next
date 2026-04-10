@@ -9,7 +9,13 @@ import {Link} from '@/i18n/navigation';
 import Image from 'next/image';
 
 const DIM_KEYS = ['S', 'E', 'A', 'Ac', 'So'] as const;
-const DIM_COLORS = ['bg-primary/10 text-primary', 'bg-secondary/10 text-secondary', 'bg-accent/10 text-accent-foreground', 'bg-info/10 text-info', 'bg-primary/10 text-primary'];
+const DIM_STYLES = [
+  {bg: 'bg-primary', fg: 'text-primary-foreground', soft: 'bg-primary/10'},
+  {bg: 'bg-secondary', fg: 'text-secondary-foreground', soft: 'bg-secondary/10'},
+  {bg: 'bg-accent', fg: 'text-accent-foreground', soft: 'bg-accent/10'},
+  {bg: 'bg-secondary', fg: 'text-secondary-foreground', soft: 'bg-secondary/10'},
+  {bg: 'bg-primary', fg: 'text-primary-foreground', soft: 'bg-primary/10'},
+];
 
 export function IntroPhase() {
   const t = useTranslations('intro');
@@ -46,34 +52,36 @@ export function IntroPhase() {
       </div>
 
       {/* Personality Types Grid */}
-      <div className="w-full max-w-4xl pb-16">
-        <h2 className="mb-8 text-center text-lg font-semibold text-muted-foreground">
+      <div className="w-full max-w-5xl pb-16">
+        <h2 className="font-heading mb-10 text-center text-2xl font-bold sm:text-3xl">
           {t('typesTitle')}
         </h2>
-        <div className="grid grid-cols-3 gap-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6">
+        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
           {NORMAL_TYPES.map(({code}) => {
             const name = s(tp, `${code}.name`, code);
+            const intro = s(tp, `${code}.intro`, '');
             const img = TYPE_IMAGES[code];
             return (
               <Link
                 key={code}
                 href={`/type/${code}`}
-                className="group flex flex-col items-center gap-2 rounded-xl border border-transparent p-3 transition-all hover:border-primary/20 hover:bg-muted/50 hover:-translate-y-0.5 hover:shadow-sm"
+                className="group flex flex-col items-center gap-3 rounded-2xl border border-transparent bg-card p-4 shadow-sm transition-all hover:border-primary/20 hover:bg-muted/50 hover:-translate-y-1 hover:shadow-md"
               >
                 {img && (
-                  <div className="w-16 overflow-hidden rounded-lg sm:w-20">
+                  <div className="w-24 overflow-hidden rounded-xl sm:w-28">
                     <Image
                       src={img}
                       alt={name}
-                      width={160}
-                      height={160}
+                      width={224}
+                      height={224}
                       className="w-full transition-transform group-hover:scale-105"
                     />
                   </div>
                 )}
                 <div className="text-center">
-                  <p className="text-xs font-bold text-foreground/80">{code}</p>
-                  <p className="text-[10px] text-muted-foreground">{name}</p>
+                  <p className="font-heading text-base font-bold">{code}</p>
+                  <p className="text-sm text-muted-foreground">{name}</p>
+                  <p className="mt-1 line-clamp-2 text-xs leading-snug text-muted-foreground/70">{intro}</p>
                 </div>
               </Link>
             );
@@ -83,45 +91,59 @@ export function IntroPhase() {
 
       {/* What is SBTI */}
       <section className="w-full max-w-2xl py-12">
-        <h2 className="font-heading text-center text-2xl font-bold">{th('whatIsSbtiTitle')}</h2>
-        <p className="mt-4 text-center text-base leading-relaxed text-foreground/85">{th('whatIsSbtiP1')}</p>
-        <p className="mt-3 text-center text-base leading-relaxed text-foreground/85">{th('whatIsSbtiP2')}</p>
+        <div className="rounded-2xl bg-primary/5 p-6 sm:p-8">
+          <h2 className="font-heading text-2xl font-bold tracking-tight">
+            {th('whatIsSbtiTitle')}
+          </h2>
+          <div className="mt-4 space-y-3 text-base leading-relaxed text-foreground/80">
+            <p>{th('whatIsSbtiP1')}</p>
+            <p>{th('whatIsSbtiP2')}</p>
+          </div>
+        </div>
       </section>
 
       {/* How It Works */}
-      <section className="w-full max-w-3xl py-8">
-        <h2 className="font-heading mb-6 text-center text-2xl font-bold">{th('howItWorksTitle')}</h2>
-        <div className="grid gap-4 sm:grid-cols-3">
-          {(['step1', 'step2', 'step3'] as const).map((step, i) => (
-            <Card key={step} className="border-0 shadow-sm">
-              <CardContent className="pt-6 text-center">
-                <div className="mx-auto mb-3 flex h-10 w-10 items-center justify-center rounded-full bg-primary text-lg font-bold text-primary-foreground">
-                  {i + 1}
+      <section className="w-full max-w-2xl py-8">
+        <h2 className="font-heading mb-8 text-center text-2xl font-bold tracking-tight">
+          {th('howItWorksTitle')}
+        </h2>
+        <div className="space-y-4">
+          {(['step1', 'step2', 'step3'] as const).map((step, i) => {
+            const accent = ['text-primary', 'text-secondary', 'text-accent'][i];
+            return (
+              <div key={step} className="flex items-start gap-4">
+                <span className={`font-heading shrink-0 text-3xl font-bold leading-tight ${accent}`}>
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+                <div>
+                  <h3 className="font-heading text-lg font-semibold">{th(`${step}Title`)}</h3>
+                  <p className="mt-1 text-base leading-relaxed text-muted-foreground">{th(`${step}Desc`)}</p>
                 </div>
-                <h3 className="font-heading text-lg font-semibold">{th(`${step}Title`)}</h3>
-                <p className="mt-2 text-sm text-muted-foreground">{th(`${step}Desc`)}</p>
-              </CardContent>
-            </Card>
-          ))}
+              </div>
+            );
+          })}
         </div>
       </section>
 
       {/* 5 Dimension Models */}
       <section className="w-full max-w-2xl py-8">
-        <h2 className="font-heading mb-6 text-center text-2xl font-bold">{th('dimensionsTitle')}</h2>
-        <div className="grid gap-3 sm:grid-cols-2">
+        <h2 className="font-heading mb-8 text-center text-2xl font-bold tracking-tight">
+          {th('dimensionsTitle')}
+        </h2>
+        <div className="space-y-2">
           {DIM_KEYS.map((key, i) => (
-            <Card key={key} className="border-0 shadow-sm">
-              <CardContent className="flex items-start gap-3 pt-5">
-                <div className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-lg font-mono text-sm font-bold ${DIM_COLORS[i]}`}>
-                  {key}
-                </div>
-                <div>
-                  <h3 className="font-heading text-base font-semibold">{ta(`dim${key}`)}</h3>
-                  <p className="mt-0.5 text-xs text-muted-foreground">{ta(`dim${key}Desc`)}</p>
-                </div>
-              </CardContent>
-            </Card>
+            <div
+              key={key}
+              className={`flex items-center gap-4 rounded-xl p-4 ${DIM_STYLES[i].soft}`}
+            >
+              <span className={`font-mono text-xl font-bold ${DIM_STYLES[i].bg} ${DIM_STYLES[i].fg} flex h-10 w-10 shrink-0 items-center justify-center rounded-lg`}>
+                {key}
+              </span>
+              <div>
+                <h3 className="font-heading text-base font-semibold">{ta(`dim${key}`)}</h3>
+                <p className="mt-0.5 text-sm leading-relaxed text-muted-foreground">{ta(`dim${key}Desc`)}</p>
+              </div>
+            </div>
           ))}
         </div>
       </section>
@@ -132,8 +154,8 @@ export function IntroPhase() {
         <div className="space-y-4">
           {([1, 2, 3, 4, 5] as const).map(i => (
             <div key={i} className="rounded-lg bg-muted/40 p-4">
-              <h3 className="text-sm font-semibold">{tf(`q${i}`)}</h3>
-              <p className="mt-1 text-sm text-muted-foreground">{tf(`a${i}`)}</p>
+              <h3 className="text-base font-semibold">{tf(`q${i}`)}</h3>
+              <p className="mt-1.5 text-base leading-relaxed text-muted-foreground">{tf(`a${i}`)}</p>
             </div>
           ))}
         </div>

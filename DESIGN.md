@@ -30,41 +30,41 @@
 
 ## Color
 - **Approach:** Expressive — 色彩是核心设计工具，服务于截图分享
-- **Primary:** `#FF3366` (热粉红) — CTA、强调、品牌标识。社交媒体上极其醒目
-- **Secondary:** `#00D4AA` (薄荷绿) — 成功状态、积极维度、和 primary 形成强对比
-- **Accent:** `#FFD93D` (金黄) — 高亮、趣味元素、中等维度标记
+- **Primary:** `#10B981` (翡翠绿) — CTA、强调、品牌标识。与纸艺图片色调统一，社交媒体清新醒目
+- **Secondary:** `#F59E0B` (琥珀金) — 辅助强调、badge。暖色互补，突出重点
+- **Accent:** `#8B5CF6` (电紫) — 高亮、趣味元素、增加层次
 - **Info:** `#3B82F6` (电光蓝) — 链接、信息提示、数据可视化
 
 ### Light Mode
-- Background: `#FFFAF5` (暖白)
+- Background: `#F5FAF7` (薄荷白)
 - Surface: `#FFFFFF`
-- Muted: `#FFF0E6` (蜜桃)
-- Elevated: `#FFF5ED`
-- Foreground: `#1A1A2E` (深海蓝)
-- Foreground Muted: `#6B6B80`
-- Foreground Subtle: `#9B9BAE`
-- Border: `#E8E0D8`
-- Border Strong: `#D0C8C0`
-- Primary Soft: `#FFE0EA`
-- Secondary Soft: `#D0FFF3`
-- Accent Soft: `#FFF8D6`
+- Muted: `#F0F7F4` (浅翡翠)
+- Elevated: `#E6FFF5`
+- Foreground: `#1A2E24` (深林绿)
+- Foreground Muted: `#5F6B66`
+- Foreground Subtle: `#8A9690`
+- Border: `#D8E8E0`
+- Border Strong: `#C0D8CC`
+- Primary Soft: `#D1FAE5`
+- Secondary Soft: `#FEF3C7`
+- Accent Soft: `#EDE9FE`
 
 ### Dark Mode
-- Background: `#0D0D1A` (深海夜)
-- Surface: `#1A1A2E`
-- Muted: `#16162B`
-- Elevated: `#222240`
-- Foreground: `#F0EDE8`
-- Foreground Muted: `#A0A0B8`
-- Foreground Subtle: `#6B6B80`
-- Border: `#2A2A44`
+- Background: `#0A1A14` (深林夜)
+- Surface: `#132A20`
+- Muted: `#0F2620`
+- Elevated: `#1A3A2E`
+- Foreground: `#E8F0EC`
+- Foreground Muted: `#94A3A0`
+- Foreground Subtle: `#5F6B66`
+- Border: `#1C3A30`
 - Border Strong: `#3A3A55`
-- Primary: `#FF4D7A` (提亮)
-- Secondary: `#00EBBA` (提亮)
-- Accent: `#FFE066` (提亮)
-- Primary Soft: `#3D1528`
-- Secondary Soft: `#0A2B22`
-- Accent Soft: `#2E2800`
+- Primary: `#34D399` (提亮)
+- Secondary: `#FBBF24` (提亮)
+- Accent: `#A78BFA` (提亮)
+- Primary Soft: `#064E3B`
+- Secondary Soft: `#451A03`
+- Accent Soft: `#1E1535`
 
 ### Semantic Colors
 - Success: `#10B981` / dark: `#34D399`
@@ -105,5 +105,8 @@
 |------|----------|-----------|
 | 2026-04-10 | 从全灰度切换到 expressive 色彩方案 | 原设计和"荒诞×潮流×社交"品牌定位严重脱节 |
 | 2026-04-10 | 选择 Space Grotesk 替代 Inter 作为 display 字体 | Inter 太常见、太中性，Space Grotesk 有辨识度且几何感强 |
-| 2026-04-10 | 选择 #FF3366 热粉红作为 primary | 社交媒体截图中极其醒目，性别中性，年轻用户接受度高 |
-| 2026-04-10 | 暖色调中性色而非纯灰 | 暖底色(#FFFAF5)让页面更有人情味，和冰冷的心理学测试拉开距离 |
+| 2026-04-10 | 选择 #10B981 翡翠绿作为 primary | 与纸艺图片色调统一，清新潮流，社交媒体辨识度高 |
+| 2026-04-10 | 绿色系背景(#F5FAF7)替代暖白 | 背景与品牌色协调，整体视觉统一感 |
+| 2026-04-10 | Secondary 用琥珀金(#F59E0B) | 暖色互补，在绿色基调上提供视觉焦点 |
+| 2026-04-10 | Accent 用电紫(#8B5CF6) | 增加趣味层次，打破绿金双色的单调感 |
+| 2026-04-10 | 维度进度条统一使用 primary 色系(100%/60%/30%) | 消除三色混战，强化品牌色视觉一致性 |

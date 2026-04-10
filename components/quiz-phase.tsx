@@ -49,7 +49,7 @@ export function QuizPhase() {
                 <button
                   key={i}
                   onClick={() => answer(question.id, opt.value)}
-                  className="group w-full rounded-xl border border-border/50 bg-background/60 px-4 py-3.5 text-left text-sm transition-all hover:border-primary/30 hover:bg-primary/5 active:scale-[0.98]"
+                  className="group w-full rounded-xl border border-border/50 bg-background/60 px-4 py-3.5 text-left text-base transition-all hover:border-primary/30 hover:bg-primary/5 active:scale-[0.98]"
                 >
                   <span className="mr-3 inline-flex h-6 w-6 items-center justify-center rounded-md bg-muted text-xs font-semibold text-muted-foreground transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
                     {String.fromCharCode(65 + i)}

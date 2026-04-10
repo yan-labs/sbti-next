@@ -11,7 +11,7 @@ const DIMENSION_MODELS = [
   {key: 'S', color: 'bg-primary/10 text-primary'},
   {key: 'E', color: 'bg-secondary/10 text-secondary'},
   {key: 'A', color: 'bg-accent/10 text-accent-foreground'},
-  {key: 'Ac', color: 'bg-info/10 text-info'},
+  {key: 'Ac', color: 'bg-secondary/10 text-secondary'},
   {key: 'So', color: 'bg-primary/10 text-primary'},
 ] as const;
 
@@ -54,7 +54,7 @@ export function AboutPage() {
                   {i + 1}
                 </div>
                 <h3 className="font-heading text-lg font-semibold">{t(`${step}Title`)}</h3>
-                <p className="mt-2 text-sm text-muted-foreground">{t(`${step}Desc`)}</p>
+                <p className="mt-2 text-base leading-relaxed text-muted-foreground">{t(`${step}Desc`)}</p>
               </CardContent>
             </Card>
           ))}
@@ -76,7 +76,7 @@ export function AboutPage() {
                 </div>
                 <div>
                   <h3 className="font-heading text-lg font-semibold">{t(`dim${key}`)}</h3>
-                  <p className="mt-1 text-sm text-muted-foreground">{t(`dim${key}Desc`)}</p>
+                  <p className="mt-1 text-base leading-relaxed text-muted-foreground">{t(`dim${key}Desc`)}</p>
                 </div>
               </CardContent>
             </Card>

@@ -75,7 +75,7 @@ export function ResultPhase() {
           <p className="italic text-muted-foreground">{pIntro}</p>
 
           <div className="pt-2">
-            <p className="mb-2 text-xs font-medium text-muted-foreground">{ts('shareResult')}</p>
+            <p className="mb-2 text-sm font-medium text-muted-foreground">{ts('shareResult')}</p>
             <ShareButtons
               url={`/type/${primary.code}`}
               title={`${primary.code} — ${pName}`}
@@ -91,7 +91,7 @@ export function ResultPhase() {
           <h3 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">
             {t('analysis')}
           </h3>
-          <p className="text-sm leading-relaxed text-foreground/85">{pDesc}</p>
+          <p className="text-base leading-relaxed text-foreground/85">{pDesc}</p>
 
           {secondary && (() => {
             const sName = s(tp, `${secondary.code}.name`, secondary.cn);
@@ -135,14 +135,14 @@ export function ResultPhase() {
                 <div className="h-1.5 overflow-hidden rounded-full bg-muted">
                   <div
                     className={`h-full rounded-full transition-all ${
-                      level === 'H' ? 'bg-secondary' :
-                      level === 'M' ? 'bg-accent' :
-                      'bg-primary'
+                      level === 'H' ? 'bg-primary' :
+                      level === 'M' ? 'bg-primary/60' :
+                      'bg-primary/30'
                     }`}
                     style={{width: `${percent}%`}}
                   />
                 </div>
-                <p className="text-xs text-muted-foreground">{explanation}</p>
+                <p className="text-sm leading-relaxed text-muted-foreground">{explanation}</p>
               </div>
             );
           })}

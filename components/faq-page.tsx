@@ -21,7 +21,7 @@ function FAQItem({question, answer}: {question: string; answer: string}) {
         <ChevronDown className={`h-4 w-4 shrink-0 text-muted-foreground transition-transform ${open ? 'rotate-180' : ''}`} />
       </button>
       {open && (
-        <p className="pb-4 text-sm leading-relaxed text-muted-foreground">{answer}</p>
+        <p className="pb-4 text-base leading-relaxed text-muted-foreground">{answer}</p>
       )}
     </div>
   );
