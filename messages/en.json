@@ -3,6 +3,10 @@
     "title": "SBTI Personality Test | Free Funny Personality Quiz — 27 Types",
     "description": "MBTI is outdated. SBTI is here! Answer 30 fun questions to discover your true personality type. The Controller, The Grumbler, The Dead One... 27 hilarious types await. 100% free, no sign-up."
   },
+  "breadcrumb": {
+    "home": "Home",
+    "types": "Personality Types"
+  },
   "intro": {
     "headline": "MBTI is outdated.",
     "headlineBr": "SBTI is here.",

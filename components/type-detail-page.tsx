@@ -9,7 +9,9 @@ import {Badge} from '@/components/ui/badge';
 import {Button} from '@/components/ui/button';
 import {Separator} from '@/components/ui/separator';
 import {Link} from '@/i18n/navigation';
+import {useLocale} from 'next-intl';
 import Image from 'next/image';
+import {ChevronRight} from 'lucide-react';
 
 export function TypeDetailPage({code}: {code: string}) {
   const t = useTranslations('result');
@@ -17,6 +19,8 @@ export function TypeDetailPage({code}: {code: string}) {
   const td = useTranslations('dimensions');
   const tde = useTranslations('dimExplanations');
   const ti = useTranslations('intro');
+  const tb = useTranslations('breadcrumb');
+  const locale = useLocale();
 
   const s = (fn: (k: string) => string, key: string, fallback: string) => {
     try { return fn(key); } catch { return fallback; }
@@ -31,8 +35,17 @@ export function TypeDetailPage({code}: {code: string}) {
   const typeEntry = NORMAL_TYPES.find(t => t.code === code);
   const pattern = typeEntry ? parsePattern(typeEntry.pattern) : null;
 
+  const baseUrl = 'https://sbti.support';
+
   return (
     <div className="mx-auto max-w-2xl px-4 py-12">
+      {/* Breadcrumb */}
+      <nav aria-label="Breadcrumb" className="mb-6 flex items-center gap-1 text-sm text-muted-foreground">
+        <Link href="/" className="hover:text-foreground transition-colors">{tb('home')}</Link>
+        <ChevronRight className="h-3.5 w-3.5" />
+        <span className="text-foreground font-medium">{code}（{name}）</span>
+      </nav>
+
       {/* Hero */}
       <div className="mb-8 text-center">
         {imgSrc && (
@@ -132,16 +145,38 @@ export function TypeDetailPage({code}: {code: string}) {
             '@type': 'Article',
             headline: `${code} — ${name}`,
             description: intro,
-            image: imgSrc ? `https://sbti.support${imgSrc}` : undefined,
+            image: imgSrc ? `${baseUrl}${imgSrc}` : undefined,
             author: {
               '@type': 'Organization',
               name: 'SBTI',
-              url: 'https://sbti.support',
+              url: baseUrl,
             },
             publisher: {
               '@type': 'Organization',
               name: 'SBTI',
             },
+          }),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              {
+                '@type': 'ListItem',
+                position: 1,
+                name: tb('home'),
+                item: `${baseUrl}/${locale}`,
+              },
+              {
+                '@type': 'ListItem',
+                position: 2,
+                name: `${code}（${name}）`,
+              },
+            ],
           }),
         }}
       />

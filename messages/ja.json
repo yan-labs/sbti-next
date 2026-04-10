@@ -3,6 +3,10 @@
     "title": "SBTI 性格テスト | 無料で面白い性格診断 — 27タイプ",
     "description": "MBTIはもう古い、SBTIの時代！30問の面白い質問であなたの本当の性格タイプを発見。支配者、憤世者、死者、酒鬼…27種類の爆笑タイプ。完全無料・登録不要。"
   },
+  "breadcrumb": {
+    "home": "ホーム",
+    "types": "性格タイプ"
+  },
   "intro": {
     "headline": "MBTIはもう古い。",
     "headlineBr": "SBTIの時代です。",

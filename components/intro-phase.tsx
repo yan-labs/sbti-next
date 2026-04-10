@@ -34,8 +34,6 @@ export function IntroPhase() {
           >
             {t('start')}
           </Button>
-
-          <p className="text-sm text-muted-foreground">{t('note')}</p>
         </div>
       </div>
 
