@@ -2,6 +2,7 @@ import {setRequestLocale} from 'next-intl/server';
 import {getTranslations} from 'next-intl/server';
 import {routing} from '@/i18n/routing';
 import {NORMAL_TYPES, TYPE_IMAGES} from '@/lib/data/personalities';
+import {buildAlternates} from '@/lib/metadata';
 import {TypeDetailPage} from '@/components/type-detail-page';
 
 const ALL_CODES = [...NORMAL_TYPES.map(t => t.code), 'HHHH', 'DRUNK'];
@@ -39,19 +40,14 @@ export async function generateMetadata({params}: {params: Promise<{locale: strin
   return {
     title: `${code}（${name}）— SBTI | sbti.support`,
     description: `${intro} ${cta}`,
-    alternates: {
-      canonical: `${baseUrl}/${locale}/type/${code}`,
-      languages: Object.fromEntries(
-        ['zh','en','ja','ko'].map(l => [l, `${baseUrl}/${l}/type/${code}`])
-      ),
-    },
+    alternates: buildAlternates(locale, `/type/${code}`),
     openGraph: {
       title: `${code} — ${name}`,
       description: intro,
       url: `${baseUrl}/${locale}/type/${code}`,
       siteName: 'SBTI',
       type: 'article',
-      images: [{url: `${baseUrl}/types/${code.replace(/[^a-zA-Z0-9-]/g, '_')}.png`}],
+      images: TYPE_IMAGES[code] ? [{url: `${baseUrl}${TYPE_IMAGES[code]}`}] : [],
     },
     robots: {index: true, follow: true},
   };

@@ -12,9 +12,11 @@ import {Link} from '@/i18n/navigation';
 import {useLocale} from 'next-intl';
 import Image from 'next/image';
 import {ChevronRight} from 'lucide-react';
+import {ShareButtons} from '@/components/share-buttons';
 
 export function TypeDetailPage({code}: {code: string}) {
   const t = useTranslations('result');
+  const ts = useTranslations('share');
   const tp = useTranslations('personalities');
   const td = useTranslations('dimensions');
   const tde = useTranslations('dimExplanations');
@@ -56,6 +58,15 @@ export function TypeDetailPage({code}: {code: string}) {
         <h1 className="font-heading text-5xl font-bold tracking-tight">{code}</h1>
         <p className="font-heading mt-2 text-2xl font-semibold text-foreground/80">{name}</p>
         <p className="mt-3 italic text-muted-foreground">{intro}</p>
+
+        <div className="mt-4">
+          <p className="mb-2 text-xs font-medium text-muted-foreground">{ts('shareType')}</p>
+          <ShareButtons
+            url={`/${locale}/type/${code}`}
+            title={`${code} — ${name}`}
+            description={intro}
+          />
+        </div>
       </div>
 
       <Separator className="my-8" />
@@ -146,6 +157,9 @@ export function TypeDetailPage({code}: {code: string}) {
             headline: `${code} — ${name}`,
             description: intro,
             image: imgSrc ? `${baseUrl}${imgSrc}` : undefined,
+            datePublished: '2026-04-01',
+            dateModified: '2026-04-10',
+            mainEntityOfPage: `${baseUrl}/${locale}/type/${code}`,
             author: {
               '@type': 'Organization',
               name: 'SBTI',

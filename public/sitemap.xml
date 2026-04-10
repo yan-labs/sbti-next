@@ -897,4 +897,205 @@
     <xhtml:link rel="alternate" hreflang="ko" href="https://sbti.support/ko/type/DRUNK"/>
     <priority>0.8</priority>
   </url>
+  <!-- Content Pages -->
+  <url>
+    <loc>https://sbti.support/zh/about</loc>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://sbti.support/zh/about"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sbti.support/en/about"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://sbti.support/ja/about"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://sbti.support/ko/about"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sbti.support/about"/>
+    <lastmod>2026-04-10</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sbti.support/en/about</loc>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://sbti.support/zh/about"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sbti.support/en/about"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://sbti.support/ja/about"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://sbti.support/ko/about"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sbti.support/about"/>
+    <lastmod>2026-04-10</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sbti.support/ja/about</loc>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://sbti.support/zh/about"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sbti.support/en/about"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://sbti.support/ja/about"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://sbti.support/ko/about"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sbti.support/about"/>
+    <lastmod>2026-04-10</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sbti.support/ko/about</loc>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://sbti.support/zh/about"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sbti.support/en/about"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://sbti.support/ja/about"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://sbti.support/ko/about"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sbti.support/about"/>
+    <lastmod>2026-04-10</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sbti.support/zh/types</loc>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://sbti.support/zh/types"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sbti.support/en/types"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://sbti.support/ja/types"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://sbti.support/ko/types"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sbti.support/types"/>
+    <lastmod>2026-04-10</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sbti.support/en/types</loc>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://sbti.support/zh/types"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sbti.support/en/types"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://sbti.support/ja/types"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://sbti.support/ko/types"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sbti.support/types"/>
+    <lastmod>2026-04-10</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sbti.support/ja/types</loc>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://sbti.support/zh/types"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sbti.support/en/types"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://sbti.support/ja/types"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://sbti.support/ko/types"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sbti.support/types"/>
+    <lastmod>2026-04-10</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sbti.support/ko/types</loc>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://sbti.support/zh/types"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sbti.support/en/types"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://sbti.support/ja/types"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://sbti.support/ko/types"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sbti.support/types"/>
+    <lastmod>2026-04-10</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sbti.support/zh/faq</loc>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://sbti.support/zh/faq"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sbti.support/en/faq"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://sbti.support/ja/faq"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://sbti.support/ko/faq"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sbti.support/faq"/>
+    <lastmod>2026-04-10</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://sbti.support/en/faq</loc>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://sbti.support/zh/faq"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sbti.support/en/faq"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://sbti.support/ja/faq"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://sbti.support/ko/faq"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sbti.support/faq"/>
+    <lastmod>2026-04-10</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://sbti.support/ja/faq</loc>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://sbti.support/zh/faq"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sbti.support/en/faq"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://sbti.support/ja/faq"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://sbti.support/ko/faq"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sbti.support/faq"/>
+    <lastmod>2026-04-10</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://sbti.support/ko/faq</loc>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://sbti.support/zh/faq"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sbti.support/en/faq"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://sbti.support/ja/faq"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://sbti.support/ko/faq"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sbti.support/faq"/>
+    <lastmod>2026-04-10</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://sbti.support/zh/privacy-policy</loc>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://sbti.support/zh/privacy-policy"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sbti.support/en/privacy-policy"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://sbti.support/ja/privacy-policy"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://sbti.support/ko/privacy-policy"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sbti.support/privacy-policy"/>
+    <lastmod>2026-04-10</lastmod>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://sbti.support/en/privacy-policy</loc>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://sbti.support/zh/privacy-policy"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sbti.support/en/privacy-policy"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://sbti.support/ja/privacy-policy"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://sbti.support/ko/privacy-policy"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sbti.support/privacy-policy"/>
+    <lastmod>2026-04-10</lastmod>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://sbti.support/ja/privacy-policy</loc>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://sbti.support/zh/privacy-policy"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sbti.support/en/privacy-policy"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://sbti.support/ja/privacy-policy"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://sbti.support/ko/privacy-policy"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sbti.support/privacy-policy"/>
+    <lastmod>2026-04-10</lastmod>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://sbti.support/ko/privacy-policy</loc>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://sbti.support/zh/privacy-policy"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sbti.support/en/privacy-policy"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://sbti.support/ja/privacy-policy"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://sbti.support/ko/privacy-policy"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sbti.support/privacy-policy"/>
+    <lastmod>2026-04-10</lastmod>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://sbti.support/zh/terms</loc>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://sbti.support/zh/terms"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sbti.support/en/terms"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://sbti.support/ja/terms"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://sbti.support/ko/terms"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sbti.support/terms"/>
+    <lastmod>2026-04-10</lastmod>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://sbti.support/en/terms</loc>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://sbti.support/zh/terms"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sbti.support/en/terms"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://sbti.support/ja/terms"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://sbti.support/ko/terms"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sbti.support/terms"/>
+    <lastmod>2026-04-10</lastmod>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://sbti.support/ja/terms</loc>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://sbti.support/zh/terms"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sbti.support/en/terms"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://sbti.support/ja/terms"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://sbti.support/ko/terms"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sbti.support/terms"/>
+    <lastmod>2026-04-10</lastmod>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://sbti.support/ko/terms</loc>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://sbti.support/zh/terms"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sbti.support/en/terms"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://sbti.support/ja/terms"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://sbti.support/ko/terms"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sbti.support/terms"/>
+    <lastmod>2026-04-10</lastmod>
+    <priority>0.3</priority>
+  </url>
 </urlset>

@@ -7,12 +7,14 @@ import {Card, CardContent} from '@/components/ui/card';
 import {Badge} from '@/components/ui/badge';
 import {Separator} from '@/components/ui/separator';
 import {RadarChart} from '@/components/radar-chart';
+import {ShareButtons} from '@/components/share-buttons';
 import {TYPE_IMAGES} from '@/lib/data/personalities';
 import {DIMENSION_ORDER} from '@/lib/types';
 import Image from 'next/image';
 
 export function ResultPhase() {
   const t = useTranslations('result');
+  const ts = useTranslations('share');
   const td = useTranslations('dimensions');
   const tp = useTranslations('personalities');
   const tde = useTranslations('dimExplanations');
@@ -71,6 +73,15 @@ export function ResultPhase() {
           </div>
 
           <p className="italic text-muted-foreground">{pIntro}</p>
+
+          <div className="pt-2">
+            <p className="mb-2 text-xs font-medium text-muted-foreground">{ts('shareResult')}</p>
+            <ShareButtons
+              url={`/type/${primary.code}`}
+              title={`${primary.code} — ${pName}`}
+              description={pIntro}
+            />
+          </div>
         </CardContent>
       </Card>
 

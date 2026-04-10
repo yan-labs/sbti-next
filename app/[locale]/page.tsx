@@ -1,11 +1,11 @@
 import {setRequestLocale} from 'next-intl/server';
 import {getTranslations} from 'next-intl/server';
 import {SBTIApp} from '@/components/sbti-app';
+import {buildAlternates, BASE_URL} from '@/lib/metadata';
 
 export async function generateMetadata({params}: {params: Promise<{locale: string}>}) {
   const {locale} = await params;
   const t = await getTranslations({locale, namespace: 'meta'});
-  const baseUrl = 'https://sbti.support';
   const keywordsMap: Record<string, string[]> = {
     zh: ['SBTI', 'SBTI测试', 'SBTI人格测试', '性格测试', '免费人格测试', 'MBTI替代', '搞笑性格测试', '27种人格'],
     en: ['SBTI', 'SBTI test', 'SBTI personality test', 'personality quiz', 'free personality test', 'MBTI alternative', 'funny personality test', '27 types'],
@@ -16,21 +16,14 @@ export async function generateMetadata({params}: {params: Promise<{locale: strin
     title: t('title'),
     description: t('description'),
     keywords: keywordsMap[locale] || keywordsMap.en,
-    alternates: {
-      canonical: locale === 'en' ? baseUrl : `${baseUrl}/${locale}`,
-      languages: {
-        'zh': `${baseUrl}/zh`,
-        'en': baseUrl,
-        'ja': `${baseUrl}/ja`,
-        'ko': `${baseUrl}/ko`,
-      },
-    },
+    alternates: buildAlternates(locale),
     openGraph: {
       title: t('title'),
       description: t('description'),
-      url: `${baseUrl}/${locale}`,
+      url: `${BASE_URL}/${locale}`,
       siteName: 'SBTI',
       type: 'website',
+      images: [{url: `${BASE_URL}/og-default.png`, width: 1200, height: 630}],
     },
     robots: {
       index: true,
