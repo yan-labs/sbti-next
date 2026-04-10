@@ -318,7 +318,7 @@
   "personalities": {
     "CTRL": {
       "cn": "拿捏者",
-      "name": "The Controller",
+      "name": "The Puppeteer",
       "intro": "Got you wrapped around my finger, didn't I?",
       "desc": "Congratulations, you've tested into the rarest personality type in all of China. You are the natural rebel against the universe's law of entropy! 99.99% of so-called \"successful people\" worldwide are just cheap knockoffs of you. The CTRL personality is a walking, talking, self-propelled task manager in human form. What ordinary people call \"rules\" are just factory default settings to you; what mortals call \"plans\" are merely idle doodles you scribble on a napkin. What does having a CTRL friend mean? It means your life's GPS system just got a serious upgrade. Because CTRL is the master of getting people in line. CTRL will hit Ctrl+S on your life one second before your train goes off the rails, then drag you back on track with a logic so airtight you can't refuse. They're the last backup drive of your chaotic existence, the only reboot button still glowing in the dying light of the universe."
     },
@@ -330,7 +330,7 @@
     },
     "Dior-s": {
       "cn": "屌丝",
-      "name": "The Underdog Sage",
+      "name": "The Loser",
       "intro": "Just wait for my glow-up arc.",
       "desc": "Congratulations! You're not actually a loser -- you're the long-lost spiritual heir of Diogenes, the OG cynic philosopher, because Dior-s actually stands for Diogenes' Original Realist - sage. The Dior-s personality is the ultimate middle finger to modern consumerism and hustle-culture brainwashing. They're not \"unmotivated\" -- they've already seen through the fact that all that \"grinding\" leads to is a fancier prison cell. Dior-s carries serious wisdom. While everyone else chases trends and gets slapped around by the waves of the times, Dior-s is already sunbathing in their philosophical barrel, having achieved the supreme state of barrel-human unity. Their creed isn't empty talk -- it's a set of laws verified by billions of trials of physics and biology: First, lying down is more comfortable than standing. Second, when it's mealtime, you eat."
     },
@@ -342,7 +342,7 @@
     },
     "THAN-K": {
       "cn": "感恩者",
-      "name": "The Grateful One",
+      "name": "The Gratitude Maniac",
       "intro": "I thank the heavens! I thank the earth!",
       "desc": "Congratulations, you've tested into the rarest personality type in all of China. And you should thank ME for it! Be grateful that you've been blessed with life's nourishment at this very moment! If you get stuck in traffic on the way to work? You should say: I'm grateful for this traffic jam -- it gave me more time to enjoy this lovely song and admire every anxiety-twisted face outside the window, making me cherish my inner peace even more. Yes, THAN-K has a personality as warm as jade and a heart as vast as the ocean. In their eyes, there are no truly bad people, only \"friends who haven't yet been reached by the light of gratitude.\" Having a THAN-K friend is like having an inexhaustible positive-energy broadcast tower by your side. They could literally help you spot a Van Gogh-style Starry Night in the mold growing in the corner of your bathroom."
     },
@@ -378,19 +378,19 @@
     },
     "FAKE": {
       "cn": "伪人",
-      "name": "The Shapeshifter",
-      "intro": "There are no more real humans left.",
+      "name": "The Faker",
+      "intro": "Humanity is extinct. Only fakers remain.",
       "desc": "SCP Foundation Emergency Report: Item Number SCP-CN-xxxx \"The Shapeshifter.\" In social settings, the Shapeshifter is an absolute chameleon -- they switch personality masks faster than you switch keyboard languages. One second they're in ride-or-die bestie mode, the next a boss walks in and they instantly toggle to dependable-model-employee mode; even the sheen and curl of their expression subtly recalibrates. You think you've made a friend who truly gets you? Wake up. You just got lucky enough to encounter a high-performance, expertly disguised android, that's all. Late at night, the Shapeshifter peels off their masks one by one, only to discover that underneath... it's empty. Those masks were the self all along."
     },
     "OJBK": {
       "cn": "无所谓人",
-      "name": "The Whatever Person",
-      "intro": "When I say whatever, I mean whatever.",
+      "name": "The IDGAF",
+      "intro": "I said I don't care, and I meant it.",
       "desc": "Let's confront the raw energy of this name: OJBK. This is no longer a personality type -- it's a governing philosophy. When mere mortals face the century's greatest dilemma of \"rice or noodles for lunch,\" their brains burn through calories in agonized deliberation. But the OJBK personality, with the detached calm of an emperor reviewing court petitions, will casually drop two words: Either's fine. This isn't indecisiveness -- this is telling you: your mortal choices mean nothing to me, peasant. Why no arguments? Because debating the future of the universe with an amoeba is pointless. Why no strong opinions? Because an emperor doesn't care whether the dust at their feet drifts left or right."
     },
     "MALO": {
       "cn": "吗喽",
-      "name": "The Monkey Brain",
+      "name": "The Monke",
       "intro": "Life's a dungeon, and I'm just a little monkey.",
       "desc": "Friend, you're not \"young at heart\" -- you straight up never evolved. Your soul is still stuck in that glorious era of swinging from branches and losing your mind over bananas. When humanity's ancestors decided to climb down from the trees, learn to walk upright, and put on suits and ties, the Monkey Brain's ancestors were sitting on the neighboring branch watching them, scratching their butt, and letting out a dismissive \"tsk.\" They saw through it all: so-called \"civilization\" is just the most boring, least fun pay-to-play game ever made. Rules are meant to be bent, ceilings are meant to be hung from upside-down, conference rooms are meant for backflips. MALO is basically a wild idea that fell out of a massive plot hole and forgot to close the door behind it."
     },
@@ -408,13 +408,13 @@
     },
     "THIN-K": {
       "cn": "思考者",
-      "name": "The Thinker",
+      "name": "The Overthinker",
       "intro": "Deep thinking for 100 seconds...",
       "desc": "Research has revealed that the THIN-K personality's brain is fundamentally wired differently from the average human. As the name suggests, your brain is perpetually in thinking mode. You're a master at interrogating information -- scrutinizing arguments, evidence, logical reasoning, potential biases, and even demanding a \"three-generation ideological background check on the author.\" In this age of information overload, you never blindly follow. You weigh pros and cons in relationships and fiercely guard your personal space. When others see you sitting alone and assume you're spacing out? Fools. That's not spacing out -- that's your brain running a full sort, archive, and purge cycle on every piece of information received today."
     },
     "SHIT": {
       "cn": "愤世者",
-      "name": "The Cynic",
+      "name": "The Bullshitter",
       "intro": "This world is a steaming pile.",
       "desc": "Congratulations, the SHIT personality is the one and only known rare personality type in the universe. The word \"shit\" here isn't complaining -- it's a sacred ritual. SHIT's behavioral pattern is one epic, earth-shattering paradox. Mouth: This project is absolute garbage. Hands: Quietly opens Excel, starts building formulas and Gantt charts. Mouth: These coworkers are all useless. Hands: After a colleague screws up, stays up all night cleaning the mess until it's spotless. Mouth: This world is total crap, just end it already. Hands: Wakes up at 7 AM the next morning, squeezes onto a crappy subway, goes to a crappy job. Don't worry -- that's not the apocalypse alarm. That's the charge horn signaling they're about to save the world."
     },
@@ -426,9 +426,9 @@
     },
     "POOR": {
       "cn": "贫困者",
-      "name": "The Laser Focus",
-      "intro": "I'm broke, but I'm specialized.",
-      "desc": "Congratulations, you've tested into [POOR - The Laser Focus]. This \"poverty\" isn't your bank balance's death sentence -- it's more like a Marie Kondo purge of desire followed by aggressive resource reallocation. While others spray their energy around like handing out QR codes on a street corner, you compress yours into a laser beam -- wherever you point it, things start smoking. POOR's world is simple: everything unimportant gets noise-cancelled, everything important gets absolutely hammered. Socializing, clout-chasing, showing off everywhere? Sorry, no bandwidth. You're not resource-poor -- you've poured every last drop into a single mine shaft. It looks like poverty from the outside, but it's actually a gold mine. Once you decide something's worth drilling into, the outside world becomes background static."
+      "name": "The Broke Specialist",
+      "intro": "I'm broke, but I go hard.",
+      "desc": "Congratulations, you've tested into [POOR - The Broke Specialist]. This \"poverty\" isn't your bank balance's death sentence -- it's more like a Marie Kondo purge of desire followed by aggressive resource reallocation. While others spray their energy around like handing out QR codes on a street corner, you compress yours into a laser beam -- wherever you point it, things start smoking. POOR's world is simple: everything unimportant gets noise-cancelled, everything important gets absolutely hammered. Socializing, clout-chasing, showing off everywhere? Sorry, no bandwidth. You're not resource-poor -- you've poured every last drop into a single mine shaft. It looks like poverty from the outside, but it's actually a gold mine. Once you decide something's worth drilling into, the outside world becomes background static."
     },
     "MONK": {
       "cn": "僧人",
@@ -438,33 +438,33 @@
     },
     "IMSB": {
       "cn": "傻者",
-      "name": "The Self-Doubter",
-      "intro": "Seriously? Am I really a fool?",
+      "name": "The Dumbass",
+      "intro": "Wait... am I actually a dumbass?",
       "desc": "Congratulations! You don't even fall within human classification! You've tested into the once-in-a-million-years [IMSB] personality. Inside the IMSB brain live two immortal warriors locked in eternal combat: one called \"Let's GOOOO!\" and the other called \"I'm such an IDIOT!\" When IMSB encounters someone they're attracted to, Warrior #1 says: Go! Ask for their number! Ask them to dinner! Say it loud! Then Warrior #2 chimes in: Why would they ever be into YOU? Going over there is just asking for humiliation! Final result: stares at the person's back until they disappear, then pulls out phone and googles \"how to overcome social anxiety.\" IMSB isn't actually dumb -- it's just that your internal monologue is probably longer than the entire Marvel Cinematic Universe combined."
     },
     "SOLO": {
       "cn": "孤儿",
-      "name": "The Lone Wolf",
-      "intro": "I'm crying... how am I the orphan type?",
-      "desc": "Congratulations, you've tested into the rarest [SOLO - Lone Wolf] personality in all of China. Don't cry just yet -- a king's coronation ceremony is usually a solo affair. The Lone Wolf's self-worth tends to run low, so they sometimes push people away preemptively. They've built a Great Wall around their soul called \"Don't Touch Me.\" Every brick is a scar from the past. The Lone Wolf is like a hedgehog that's hidden all its soft spots and pointed every spine at the world. Those thorns aren't an attack -- they're a thousand unspoken sentences of \"don't come closer, I'm afraid you'll get hurt too\" and \"please, I'm begging you, don't leave.\""
+      "name": "The Orphan",
+      "intro": "I'm literally crying... why am I the orphan??",
+      "desc": "Congratulations, you've tested into the rarest [SOLO - Orphan] personality in all of China. Don't cry just yet -- a king's coronation ceremony is usually a solo affair. The Orphan's self-worth tends to run low, so they sometimes push people away preemptively. They've built a Great Wall around their soul called \"Don't Touch Me.\" Every brick is a scar from the past. The Orphan is like a hedgehog that's hidden all its soft spots and pointed every spine at the world. Those thorns aren't an attack -- they're a thousand unspoken sentences of \"don't come closer, I'm afraid you'll get hurt too\" and \"please, I'm begging you, don't leave.\""
     },
     "FUCK": {
       "cn": "草者",
-      "name": "The Wild Card",
+      "name": "The Savage",
       "intro": "F*CK! What kind of personality is this?",
-      "desc": "Congratulations! You don't even fall within human classification! You've tested into the once-in-a-million-years [FUCK] personality. In the city of human civilization, there has appeared an indestructible, herbicide-proof, superpowered human-shaped weed -- that is the Wild Card personality. Its scientific name is simply FUCK. In FUCK's worldview, social conventions are utterly meaningless, and FUCK's emotional switch is a physical toggle with exactly two positions: FUCK YEAH and FUCK OFF. FUCK doesn't just chase the rush of the moment -- they're chasing a raw, untamed life force crashing around inside them. When everyone else has been domesticated into tame house pets, FUCK is the last wolf howl echoing across the wilderness."
+      "desc": "Congratulations! You don't even fall within human classification! You've tested into the once-in-a-million-years [FUCK] personality. In the city of human civilization, there has appeared an indestructible, herbicide-proof, superpowered human-shaped weed -- that is the Savage personality. Its scientific name is simply FUCK. In FUCK's worldview, social conventions are utterly meaningless, and FUCK's emotional switch is a physical toggle with exactly two positions: FUCK YEAH and FUCK OFF. FUCK doesn't just chase the rush of the moment -- they're chasing a raw, untamed life force crashing around inside them. When everyone else has been domesticated into tame house pets, FUCK is the last wolf howl echoing across the wilderness."
     },
     "DEAD": {
       "cn": "死者",
-      "name": "The Flatline",
+      "name": "The Dead Inside",
       "intro": "Am I... even still alive?",
       "desc": "Congratulations, you've tested into the rarest personality type in all of China. It's just that \"The Dead\" is a rather unfortunate name, so you can also call it: Don't Expect Any Drives. The Flatline has already seen through all that meaningless philosophical navel-gazing, which is why they seem to have \"lost interest\" in everything. The way they look at the world is like a top-tier gamer who's beaten every main quest, side quest, and hidden mission, deleted and restarted 999 times, and finally realized: this game was never fun to begin with. The Flatline is the ultimate sage who has transcended desire and ambition. Their very existence is the most silent yet most thorough protest against this noisy world."
     },
     "IMFW": {
       "cn": "废物",
-      "name": "The Hot Mess",
-      "intro": "Am I really... a total waste?",
-      "desc": "Congratulations, what you've tested into isn't an ordinary personality -- you are an extremely rare species, comprising only 0.0001% of the world's population: [The Hot Mess]. Hot Messes tend to have fragile self-esteem, lack a sense of security, and sometimes lack a strong sense of self, which is why they can precisely detect the strongest WiFi signal in any room -- meaning the person they trust most in their heart. Stepping into a Hot Mess's life is like entering a premium orchid greenhouse: you need to precisely control the temperature, humidity, and administer daily \"I love you\" verbal photosynthesis sessions. Give a Hot Mess a piece of candy, and they'll return a look of pure, sparkling, unconditional trust. You're not actually a waste -- you're just too unguarded, too quick to care for real."
+      "name": "The Useless",
+      "intro": "Am I really... completely useless?",
+      "desc": "Congratulations, what you've tested into isn't an ordinary personality -- you are an extremely rare species, comprising only 0.0001% of the world's population: [The Useless]. The Useless tend to have fragile self-esteem, lack a sense of security, and sometimes lack a strong sense of self, which is why they can precisely detect the strongest WiFi signal in any room -- meaning the person they trust most in their heart. Stepping into their life is like entering a premium orchid greenhouse: you need to precisely control the temperature, humidity, and administer daily \"I love you\" verbal photosynthesis sessions. Give them a piece of candy, and they'll return a look of pure, sparkling, unconditional trust. You're not actually useless -- you're just too unguarded, too quick to care for real."
     },
     "HHHH": {
       "cn": "傻乐者",
@@ -474,7 +474,7 @@
     },
     "DRUNK": {
       "cn": "酒鬼",
-      "name": "The Drunkard",
+      "name": "The Drunk",
       "intro": "Liquor burns the throat. No choice but to get wasted.",
       "desc": "Why do you walk like the floor is moving? Why are your emotions permanently set to turbo? Why is everything you see in double vision? Because what flows through your veins isn't blood -- it's premium baijiu! It's top-shelf liquor! It's bargain booze! It's every bottle ever made! Oh, glorious alcohol, every drop burning, every drop boiling. Have you already gotten into the habit of pouring hard liquor into a thermos and chugging it like water? What magnificent booze! It makes you the life of every dinner table and then makes you hug the toilet confessing your life sins afterward. It makes you believe you're the poet of the night, the inextinguishable flame at the center of the universe -- until 10 AM the next morning, when your head feels like a cracked walnut, food residue crusted at the corner of your mouth, your soul cowering in a corner. You finally understand: that loudmouth who was pontificating and slamming tables last night has officially become a drunkard."
     }
