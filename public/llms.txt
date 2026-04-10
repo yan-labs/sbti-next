@@ -1,0 +1,47 @@
+# SBTI Personality Test
+
+> SBTI (Silly Big Type Indicator) is a satirical personality test that went viral in April 2026. It assigns users one of 27 humorous personality types through 30 fun questions across 15 dimensions.
+
+## About
+
+SBTI is a free, entertaining alternative to MBTI. Unlike serious personality assessments, SBTI uses humor, internet culture, and absurd scenarios to reveal personality traits. The test is available in Chinese, English, Japanese, and Korean.
+
+- Website: https://sbti.support
+- Test: https://sbti.support/en (English), https://sbti.support/zh (Chinese)
+- Free, no registration required
+- 30 questions, ~2 minutes to complete
+- 27 personality types + 2 hidden Easter eggs
+
+## 27 Personality Types
+
+CTRL (The Controller), ATM-er (The Giver), Dior-s (The Underdog), BOSS (The Leader), THAN-K (The Grateful), OH-NO (The Worrier), GOGO (The Doer), SEXY (The Charmer), LOVE-R (The Romantic), MUM (The Nurturer), FAKE (The Shapeshifter), OJBK (The Whatever), MALO (The Monkey), JOKE-R (The Clown), WOC! (The Reactor), THIN-K (The Thinker), SHIT (The Grumbler), ZZZZ (The Sleeper), POOR (The Focused), MONK (The Hermit), IMSB (The Overthinker), SOLO (The Loner), FUCK (The Rebel), DEAD (The Detached), IMFW (The Fragile)
+
+Special types: HHHH (The Silly Laugher — fallback), DRUNK (The Drunkard — hidden)
+
+## 15 Scoring Dimensions (5 Models × 3 Each)
+
+- Self Model: S1 Self-Esteem, S2 Self-Clarity, S3 Core Values
+- Emotion Model: E1 Attachment Security, E2 Emotional Investment, E3 Boundaries
+- Attitude Model: A1 Worldview, A2 Rules & Flexibility, A3 Life Purpose
+- Action Model: Ac1 Motivation, Ac2 Decision Style, Ac3 Execution
+- Social Model: So1 Social Initiative, So2 Interpersonal Boundaries, So3 Expression
+
+## Type Detail Pages
+
+Each personality type has a dedicated page with full description, dimension pattern, and related types:
+- https://sbti.support/en/type/CTRL
+- https://sbti.support/en/type/BOSS
+- https://sbti.support/en/type/SHIT
+- (and 24 more at /en/type/{CODE})
+
+## Multilingual
+
+Available in 4 languages:
+- Chinese: https://sbti.support/zh
+- English: https://sbti.support/en
+- Japanese: https://sbti.support/ja
+- Korean: https://sbti.support/ko
+
+## Sitemap
+
+https://sbti.support/sitemap.xml
