@@ -2,7 +2,7 @@ import {setRequestLocale} from 'next-intl/server';
 import {getTranslations} from 'next-intl/server';
 import {routing} from '@/i18n/routing';
 import {NORMAL_TYPES, TYPE_IMAGES} from '@/lib/data/personalities';
-import {buildAlternates, buildTwitter, DEFAULT_OG_IMAGE} from '@/lib/metadata';
+import {BASE_URL, buildAlternates, buildTwitter, getLocaleUrl, getTypeSeo, DEFAULT_OG_IMAGE} from '@/lib/metadata';
 import {TypeDetailPage} from '@/components/type-detail-page';
 
 const ALL_CODES = [...NORMAL_TYPES.map(t => t.code), 'HHHH', 'DRUNK'];
@@ -16,8 +16,6 @@ export function generateStaticParams() {
 export async function generateMetadata({params}: {params: Promise<{locale: string; code: string}>}) {
   const {locale, code} = await params;
   const t = await getTranslations({locale, namespace: 'personalities'});
-  const tm = await getTranslations({locale, namespace: 'meta'});
-  const baseUrl = 'https://sbti.support';
 
   let name: string, intro: string;
   try {
@@ -27,32 +25,25 @@ export async function generateMetadata({params}: {params: Promise<{locale: strin
     name = code;
     intro = '';
   }
-
-  // Locale-specific title suffix and CTA
-  const ctaMap: Record<string, string> = {
-    zh: '免费测试你的SBTI人格类型',
-    en: 'Take the free SBTI test',
-    ja: '無料SBTIテストを受けよう',
-    ko: '무료 SBTI 테스트 받기',
-  };
-  const cta = ctaMap[locale] || ctaMap.en;
+  const seo = getTypeSeo(locale, code, name, intro);
 
   return {
-    title: `${code}（${name}）— SBTI | sbti.support`,
-    description: `${intro} ${cta}`,
+    title: seo.title,
+    description: seo.description,
+    keywords: seo.keywords,
     alternates: buildAlternates(locale, `/type/${code}`),
     openGraph: {
-      title: `${code} — ${name}`,
-      description: intro,
-      url: `${baseUrl}/${locale}/type/${code}`,
+      title: seo.title,
+      description: seo.description,
+      url: getLocaleUrl(locale, `/type/${code}`),
       siteName: 'SBTI',
       type: 'article',
-      images: TYPE_IMAGES[code] ? [{url: `${baseUrl}${TYPE_IMAGES[code]}`, width: 1024, height: 1024}] : [DEFAULT_OG_IMAGE],
+      images: TYPE_IMAGES[code] ? [{url: `${BASE_URL}${TYPE_IMAGES[code]}`, width: 1024, height: 1024}] : [DEFAULT_OG_IMAGE],
     },
     twitter: buildTwitter(
-      `${code} — ${name}`,
-      intro,
-      TYPE_IMAGES[code] ? {url: `${baseUrl}${TYPE_IMAGES[code]}`, width: 1024, height: 1024} : undefined,
+      seo.title,
+      seo.description,
+      TYPE_IMAGES[code] ? {url: `${BASE_URL}${TYPE_IMAGES[code]}`, width: 1024, height: 1024} : undefined,
     ),
     robots: {index: true, follow: true},
   };

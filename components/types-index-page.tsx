@@ -7,13 +7,14 @@ import {Card, CardContent} from '@/components/ui/card';
 import {Separator} from '@/components/ui/separator';
 import {ChevronRight} from 'lucide-react';
 import Image from 'next/image';
+import {getLocaleUrl, getPageSeo} from '@/lib/metadata';
 
 export function TypesIndexPage() {
   const t = useTranslations('typesIndex');
   const tp = useTranslations('personalities');
   const tb = useTranslations('breadcrumb');
   const locale = useLocale();
-  const baseUrl = 'https://sbti.support';
+  const seo = getPageSeo(locale, 'types');
 
   const s = (fn: (k: string) => string, key: string, fallback: string) => {
     try { return fn(key); } catch { return fallback; }
@@ -71,13 +72,14 @@ export function TypesIndexPage() {
           __html: JSON.stringify({
             '@context': 'https://schema.org',
             '@type': 'ItemList',
-            name: t('pageTitle'),
+            name: seo.title,
+            description: seo.description,
             numberOfItems: NORMAL_TYPES.length,
             itemListElement: NORMAL_TYPES.map(({code}, i) => ({
               '@type': 'ListItem',
               position: i + 1,
               name: code,
-              url: `${baseUrl}/${locale}/type/${code}`,
+              url: getLocaleUrl(locale, `/type/${code}`),
             })),
           }),
         }}
@@ -89,7 +91,7 @@ export function TypesIndexPage() {
             '@context': 'https://schema.org',
             '@type': 'BreadcrumbList',
             itemListElement: [
-              {'@type': 'ListItem', position: 1, name: tb('home'), item: `${baseUrl}/${locale}`},
+              {'@type': 'ListItem', position: 1, name: tb('home'), item: getLocaleUrl(locale)},
               {'@type': 'ListItem', position: 2, name: t('pageTitle')},
             ],
           }),

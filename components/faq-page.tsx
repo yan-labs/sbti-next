@@ -6,6 +6,7 @@ import {Link} from '@/i18n/navigation';
 import {Button} from '@/components/ui/button';
 import {Separator} from '@/components/ui/separator';
 import {ChevronRight, ChevronDown} from 'lucide-react';
+import {getLocaleUrl, getPageSeo} from '@/lib/metadata';
 
 const FAQ_IDS = ['q1', 'q2', 'q3', 'q4', 'q5', 'q6', 'q7', 'q8', 'q9', 'q10'] as const;
 
@@ -32,7 +33,8 @@ export function FAQPage() {
   const tb = useTranslations('breadcrumb');
   const ti = useTranslations('intro');
   const locale = useLocale();
-  const baseUrl = 'https://sbti.support';
+  const seo = getPageSeo(locale, 'faq');
+  const pageUrl = getLocaleUrl(locale, '/faq');
 
   const faqItems = FAQ_IDS.map(id => ({
     question: t(id),
@@ -72,6 +74,9 @@ export function FAQPage() {
           __html: JSON.stringify({
             '@context': 'https://schema.org',
             '@type': 'FAQPage',
+            name: seo.title,
+            description: seo.description,
+            url: pageUrl,
             mainEntity: faqItems.map(item => ({
               '@type': 'Question',
               name: item.question,
@@ -90,7 +95,7 @@ export function FAQPage() {
             '@context': 'https://schema.org',
             '@type': 'BreadcrumbList',
             itemListElement: [
-              {'@type': 'ListItem', position: 1, name: tb('home'), item: `${baseUrl}/${locale}`},
+              {'@type': 'ListItem', position: 1, name: tb('home'), item: getLocaleUrl(locale)},
               {'@type': 'ListItem', position: 2, name: t('pageTitle')},
             ],
           }),

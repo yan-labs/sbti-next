@@ -13,6 +13,7 @@ import {useLocale} from 'next-intl';
 import Image from 'next/image';
 import {ChevronRight} from 'lucide-react';
 import {ShareButtons} from '@/components/share-buttons';
+import {BASE_URL, getLocaleUrl, getTypeSeo} from '@/lib/metadata';
 
 export function TypeDetailPage({code}: {code: string}) {
   const t = useTranslations('result');
@@ -37,7 +38,8 @@ export function TypeDetailPage({code}: {code: string}) {
   const typeEntry = NORMAL_TYPES.find(t => t.code === code);
   const pattern = typeEntry ? parsePattern(typeEntry.pattern) : null;
 
-  const baseUrl = 'https://sbti.support';
+  const pageUrl = getLocaleUrl(locale, `/type/${code}`);
+  const seo = getTypeSeo(locale, code, name, intro);
 
   return (
     <div className="mx-auto max-w-2xl px-4 py-12">
@@ -154,16 +156,18 @@ export function TypeDetailPage({code}: {code: string}) {
           __html: JSON.stringify({
             '@context': 'https://schema.org',
             '@type': 'Article',
-            headline: `${code} — ${name}`,
-            description: intro,
-            image: imgSrc ? `${baseUrl}${imgSrc}` : undefined,
+            headline: seo.title,
+            description: seo.description,
+            image: imgSrc ? `${BASE_URL}${imgSrc}` : undefined,
             datePublished: '2026-04-01',
             dateModified: '2026-04-10',
-            mainEntityOfPage: `${baseUrl}/${locale}/type/${code}`,
+            mainEntityOfPage: pageUrl,
+            keywords: seo.keywords.join(', '),
+            articleSection: locale === 'zh' ? '人格类型' : locale === 'ja' ? '性格タイプ' : locale === 'ko' ? '성격 유형' : 'Personality Types',
             author: {
               '@type': 'Organization',
               name: 'SBTI',
-              url: baseUrl,
+              url: BASE_URL,
             },
             publisher: {
               '@type': 'Organization',
@@ -183,7 +187,7 @@ export function TypeDetailPage({code}: {code: string}) {
                 '@type': 'ListItem',
                 position: 1,
                 name: tb('home'),
-                item: `${baseUrl}/${locale}`,
+                item: getLocaleUrl(locale),
               },
               {
                 '@type': 'ListItem',

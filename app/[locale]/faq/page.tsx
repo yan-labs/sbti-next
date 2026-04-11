@@ -1,24 +1,24 @@
 import {setRequestLocale} from 'next-intl/server';
-import {getTranslations} from 'next-intl/server';
-import {buildAlternates, buildTwitter, BASE_URL, DEFAULT_OG_IMAGE} from '@/lib/metadata';
+import {buildAlternates, buildTwitter, getLocaleUrl, getPageSeo, DEFAULT_OG_IMAGE} from '@/lib/metadata';
 import {FAQPage} from '@/components/faq-page';
 
 export async function generateMetadata({params}: {params: Promise<{locale: string}>}) {
   const {locale} = await params;
-  const t = await getTranslations({locale, namespace: 'faq'});
+  const seo = getPageSeo(locale, 'faq');
   return {
-    title: t('metaTitle'),
-    description: t('metaDescription'),
+    title: seo.title,
+    description: seo.description,
+    keywords: seo.keywords,
     alternates: buildAlternates(locale, '/faq'),
     openGraph: {
-      title: t('metaTitle'),
-      description: t('metaDescription'),
-      url: `${BASE_URL}/${locale}/faq`,
+      title: seo.title,
+      description: seo.description,
+      url: getLocaleUrl(locale, '/faq'),
       siteName: 'SBTI',
       type: 'website',
       images: [DEFAULT_OG_IMAGE],
     },
-    twitter: buildTwitter(t('metaTitle'), t('metaDescription')),
+    twitter: buildTwitter(seo.title, seo.description),
     robots: {index: true, follow: true},
   };
 }

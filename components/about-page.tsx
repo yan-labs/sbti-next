@@ -6,6 +6,7 @@ import {Card, CardContent} from '@/components/ui/card';
 import {Button} from '@/components/ui/button';
 import {Separator} from '@/components/ui/separator';
 import {ChevronRight} from 'lucide-react';
+import {getLocaleUrl, getPageSeo} from '@/lib/metadata';
 
 const DIMENSION_MODELS = [
   {key: 'S', color: 'bg-primary/10 text-primary'},
@@ -20,7 +21,8 @@ export function AboutPage() {
   const tb = useTranslations('breadcrumb');
   const ti = useTranslations('intro');
   const locale = useLocale();
-  const baseUrl = 'https://sbti.support';
+  const seo = getPageSeo(locale, 'about');
+  const pageUrl = getLocaleUrl(locale, '/about');
 
   return (
     <div className="mx-auto max-w-2xl px-4 py-12">
@@ -99,10 +101,14 @@ export function AboutPage() {
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             '@context': 'https://schema.org',
-            '@type': 'Organization',
-            name: 'SBTI',
-            url: baseUrl,
-            description: t('metaDescription'),
+            '@type': 'AboutPage',
+            name: seo.title,
+            url: pageUrl,
+            description: seo.description,
+            about: {
+              '@type': 'Thing',
+              name: 'SBTI',
+            },
           }),
         }}
       />
@@ -113,7 +119,7 @@ export function AboutPage() {
             '@context': 'https://schema.org',
             '@type': 'BreadcrumbList',
             itemListElement: [
-              {'@type': 'ListItem', position: 1, name: tb('home'), item: `${baseUrl}/${locale}`},
+              {'@type': 'ListItem', position: 1, name: tb('home'), item: getLocaleUrl(locale)},
               {'@type': 'ListItem', position: 2, name: t('pageTitle')},
             ],
           }),

@@ -7,6 +7,7 @@ import {Card, CardContent} from '@/components/ui/card';
 import {NORMAL_TYPES, TYPE_IMAGES} from '@/lib/data/personalities';
 import {Link} from '@/i18n/navigation';
 import Image from 'next/image';
+import {getLocaleUrl, getPageSeo} from '@/lib/metadata';
 
 const DIM_KEYS = ['S', 'E', 'A', 'Ac', 'So'] as const;
 const DIM_STYLES = [
@@ -25,6 +26,8 @@ export function IntroPhase() {
   const tf = useTranslations('faq');
   const startQuiz = useQuizStore((s) => s.startQuiz);
   const locale = useLocale();
+  const seo = getPageSeo(locale, 'home');
+  const pageUrl = getLocaleUrl(locale);
 
   const s = (fn: (k: string) => string, key: string, fallback: string) => {
     try { return fn(key); } catch { return fallback; }
@@ -179,14 +182,15 @@ export function IntroPhase() {
           __html: JSON.stringify({
             '@context': 'https://schema.org',
             '@type': 'Quiz',
-            name: 'SBTI Personality Test',
-            description: 'MBTI is outdated. SBTI is here.',
-            url: 'https://sbti.support',
+            name: seo.title,
+            description: seo.description,
+            url: pageUrl,
             numberOfQuestions: 30,
             inLanguage: locale,
+            isAccessibleForFree: true,
             about: {
               '@type': 'Thing',
-              name: 'Personality Assessment',
+              name: locale === 'zh' ? '人格测试' : locale === 'ja' ? '性格テスト' : locale === 'ko' ? '성격 테스트' : 'Personality Test',
             },
           }),
         }}
@@ -198,7 +202,8 @@ export function IntroPhase() {
             '@context': 'https://schema.org',
             '@type': 'WebSite',
             name: 'SBTI',
-            url: 'https://sbti.support',
+            description: seo.description,
+            url: pageUrl,
             inLanguage: ['zh', 'en', 'ja', 'ko'],
           }),
         }}
