@@ -699,6 +699,8 @@
     "pageTitle": "博客",
     "pageSubtitle": "关于 SBTI 人格测试的深度解析和杂谈",
     "readTime": "{minutes} 分钟阅读",
+    "sectionTitle": "深度阅读",
+    "viewAll": "查看全部",
     "backToList": "返回博客列表",
     "inlineCta": "好奇自己会测出什么？31 道题，不用注册。",
     "inlineCtaButton": "去测一下",

@@ -11,6 +11,7 @@ import {ShareButtons} from '@/components/share-buttons';
 import {TYPE_IMAGES} from '@/lib/data/personalities';
 import {DIMENSION_ORDER} from '@/lib/types';
 import Image from 'next/image';
+import {BlogCards} from '@/components/blog-cards';
 
 export function ResultPhase() {
   const t = useTranslations('result');
@@ -173,6 +174,13 @@ export function ResultPhase() {
         </CardContent>
       </Card>
 
+
+      {/* Blog Cards */}
+      <Card className="border-0 shadow-sm">
+        <CardContent className="pt-6">
+          <BlogCards compact />
+        </CardContent>
+      </Card>
 
       {/* Actions */}
       <div className="flex justify-center gap-3 pb-8">

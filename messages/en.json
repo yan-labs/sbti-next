@@ -699,6 +699,8 @@
     "pageTitle": "Blog",
     "pageSubtitle": "Deep dives and musings about the SBTI personality test",
     "readTime": "{minutes} min read",
+    "sectionTitle": "Read More",
+    "viewAll": "View all",
     "backToList": "Back to blog",
     "inlineCta": "Curious what you'd get? 31 questions, no sign-up.",
     "inlineCtaButton": "Take the test",

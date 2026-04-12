@@ -8,6 +8,7 @@ import {NORMAL_TYPES, TYPE_IMAGES} from '@/lib/data/personalities';
 import {Link} from '@/i18n/navigation';
 import Image from 'next/image';
 import {getLocaleUrl, getPageSeo} from '@/lib/metadata';
+import {BlogCards} from '@/components/blog-cards';
 
 const DIM_KEYS = ['S', 'E', 'A', 'Ac', 'So'] as const;
 const DIM_STYLES = [
@@ -163,6 +164,9 @@ export function IntroPhase() {
           ))}
         </div>
       </section>
+
+      {/* Blog Cards */}
+      <BlogCards />
 
       {/* Second CTA */}
       <div className="py-8">
