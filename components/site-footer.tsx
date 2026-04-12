@@ -10,6 +10,7 @@ export function SiteFooter() {
     {href: '/' as const, label: t('home')},
     {href: '/about' as const, label: t('about')},
     {href: '/types' as const, label: t('types')},
+    {href: '/blog' as const, label: t('blog')},
     {href: '/faq' as const, label: t('faq')},
     {href: '/privacy-policy' as const, label: t('privacy')},
     {href: '/terms' as const, label: t('terms')},

@@ -128,3 +128,36 @@
     font-size: 16px;
     }
 }
+
+/* Blog article prose styles */
+.prose-custom h2 {
+  @apply font-heading text-2xl font-bold tracking-tight mt-10 mb-4;
+}
+.prose-custom p {
+  @apply text-base leading-relaxed text-foreground/85 mb-4;
+}
+.prose-custom ul {
+  @apply my-4 space-y-2 pl-5 list-disc;
+}
+.prose-custom li {
+  @apply text-base leading-relaxed text-foreground/85;
+}
+.prose-custom strong {
+  @apply font-semibold text-foreground;
+}
+.prose-custom table {
+  @apply w-full text-sm border-collapse;
+}
+.prose-custom thead tr {
+  @apply border-b;
+}
+.prose-custom tbody tr {
+  @apply border-b last:border-0;
+}
+.prose-custom th,
+.prose-custom td {
+  @apply p-3 text-left;
+}
+.prose-custom th {
+  @apply font-semibold;
+}

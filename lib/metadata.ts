@@ -8,7 +8,7 @@ export const TWITTER_HANDLE = '@yan_ai_labs';
 export const DEFAULT_OG_IMAGE = {url: `${BASE_URL}/og-default.png`, width: 1200, height: 630};
 
 type Locale = (typeof LOCALES)[number];
-type StaticSeoPage = 'home' | 'about' | 'faq' | 'types';
+type StaticSeoPage = 'home' | 'about' | 'faq' | 'types' | 'blog';
 
 const PAGE_KEYWORDS: Record<StaticSeoPage, Record<Locale, string[]>> = {
   home: {
@@ -71,6 +71,12 @@ const PAGE_KEYWORDS: Record<StaticSeoPage, Record<Locale, string[]>> = {
     en: ['SBTI types', 'all 27 SBTI personality types', 'SBTI type list', 'SBTI results', 'personality type directory'],
     ja: ['SBTI タイプ一覧', 'SBTI 27タイプ', '性格タイプ一覧', 'SBTI 結果'],
     ko: ['SBTI 유형', 'SBTI 27가지 유형', '성격 유형 목록', 'SBTI 결과'],
+  },
+  blog: {
+    zh: ['SBTI博客', 'SBTI文章', 'SBTI测试攻略', '人格测试科普', 'SBTI深度解析'],
+    en: ['SBTI blog', 'SBTI articles', 'personality test guides', 'SBTI deep dives'],
+    ja: ['SBTI ブログ', 'SBTI 記事', '性格テスト 解説', 'SBTI 深掘り'],
+    ko: ['SBTI 블로그', 'SBTI 기사', '성격 테스트 가이드', 'SBTI 심층 분석'],
   },
 };
 
@@ -164,6 +170,28 @@ const PAGE_SEO_COPY: Record<
       title: 'SBTI 27가지 유형 | 전체 성격 결과와 타입 목록',
       description:
         'SBTI의 27가지 성격 유형을 한눈에 확인하세요. 타입 이름과 캐릭터, 결과 페이지를 비교하고 각 유형의 상세 해석으로 이동할 수 있습니다.',
+    },
+  },
+  blog: {
+    zh: {
+      title: 'SBTI 博客 | 人格测试深度解析与攻略',
+      description:
+        '阅读 SBTI 博客：SBTI 和 MBTI 的区别、27 种人格类型图鉴、五大维度解析，帮你更好地理解这个爆火的搞笑人格测试。',
+    },
+    en: {
+      title: 'SBTI Blog | Personality Test Deep Dives & Guides',
+      description:
+        'Read the SBTI blog: how SBTI compares to MBTI, a guide to all 27 personality types, and the five dimensions behind the viral satirical personality test.',
+    },
+    ja: {
+      title: 'SBTI ブログ | 性格テストの詳細解説とガイド',
+      description:
+        'SBTIブログ：SBTIとMBTIの違い、27タイプ図鑑、5次元モデル解説など、話題の性格テストを深掘りします。',
+    },
+    ko: {
+      title: 'SBTI 블로그 | 성격 테스트 심층 분석과 가이드',
+      description:
+        'SBTI 블로그: SBTI와 MBTI 비교, 27가지 유형 도감, 5차원 모델 해설 등 화제의 성격 테스트를 깊이 알아봅니다.',
     },
   },
 };
@@ -264,4 +292,80 @@ export function getTypeSeo(locale: string, code: string, name: string, intro: st
     description: descriptionMap[currentLocale],
     keywords: dedupeKeywords([...localeKeywords, code, name, ...dynamicKeywords]),
   };
+}
+
+const BLOG_SEO: Record<string, Record<Locale, {title: string; description: string; keywords: string[]}>> = {
+  'sbti-vs-mbti': {
+    zh: {
+      title: 'SBTI 和 MBTI 到底有什么区别？| SBTI 博客',
+      description: 'SBTI 和 MBTI 从维度模型、类型数量到测试目的都不一样。这篇文章拆开讲讲两者的核心差异，以及为什么 SBTI 能在社交媒体上病毒式传播。',
+      keywords: ['SBTI vs MBTI', 'SBTI MBTI 区别', 'SBTI MBTI 对比', 'SBTI和MBTI有什么区别', 'MBTI恶搞版'],
+    },
+    en: {
+      title: 'SBTI vs MBTI: What Are the Differences? | SBTI Blog',
+      description: 'SBTI and MBTI differ in dimensions, type count, and purpose. This post breaks down the core differences and why SBTI went viral on social media.',
+      keywords: ['SBTI vs MBTI', 'SBTI MBTI differences', 'SBTI MBTI comparison', 'MBTI parody', 'SBTI explained'],
+    },
+    ja: {
+      title: 'SBTIとMBTIの違いとは？ | SBTI ブログ',
+      description: 'SBTIとMBTIは次元モデル、タイプ数、テストの目的が異なります。この記事で両者の違いとSBTIがバズった理由を解説します。',
+      keywords: ['SBTI MBTI 違い', 'SBTI MBTI 比較', 'MBTI パロディ', 'SBTI 解説'],
+    },
+    ko: {
+      title: 'SBTI와 MBTI의 차이점은? | SBTI 블로그',
+      description: 'SBTI와 MBTI는 차원 모델, 유형 수, 테스트 목적이 다릅니다. 이 글에서 핵심 차이점과 SBTI가 바이럴된 이유를 설명합니다.',
+      keywords: ['SBTI MBTI 차이', 'SBTI MBTI 비교', 'MBTI 패러디', 'SBTI 설명'],
+    },
+  },
+  '27-personality-types': {
+    zh: {
+      title: 'SBTI 27 种人格类型完全图鉴 | SBTI 博客',
+      description: '从拿捏者 CTRL 到死者 DEAD，一篇看完 SBTI 全部 27 种人格类型的名字、代号和性格特征，找到你的测试结果。',
+      keywords: ['SBTI 27种人格', 'SBTI 人格类型', 'SBTI 全部类型', 'SBTI 图鉴', 'SBTI 类型大全', '吗喽', '死者', '拿捏者'],
+    },
+    en: {
+      title: 'All 27 SBTI Personality Types Explained | SBTI Blog',
+      description: 'From CTRL the Controller to DEAD the Deadpan — a complete guide to all 27 SBTI personality types with names, codes, and key traits.',
+      keywords: ['SBTI 27 types', 'SBTI personality types', 'all SBTI types', 'SBTI type guide', 'SBTI type list'],
+    },
+    ja: {
+      title: 'SBTI 全27タイプ完全図鑑 | SBTI ブログ',
+      description: 'CTRLからDEADまで、SBTIの全27タイプの名前、コード、性格特徴を一覧で紹介します。',
+      keywords: ['SBTI 27タイプ', 'SBTI タイプ一覧', 'SBTI 全タイプ', 'SBTI 図鑑'],
+    },
+    ko: {
+      title: 'SBTI 27가지 유형 완전 도감 | SBTI 블로그',
+      description: 'CTRL부터 DEAD까지, SBTI의 27가지 유형 이름, 코드, 성격 특징을 한눈에 정리했습니다.',
+      keywords: ['SBTI 27 유형', 'SBTI 유형 목록', 'SBTI 전체 유형', 'SBTI 도감'],
+    },
+  },
+  'five-dimensions': {
+    zh: {
+      title: 'SBTI 五大维度模型：测试背后的逻辑 | SBTI 博客',
+      description: '自我、情感、态度、行动、社交——SBTI 用 5 个切面 15 个维度给你画像。这篇文章拆解每个维度的含义和高低分代表什么。',
+      keywords: ['SBTI 维度', 'SBTI 五大维度', 'SBTI 测试原理', 'SBTI 五大模型', 'SBTI 15维度', 'SBTI 算法'],
+    },
+    en: {
+      title: 'The 5 Dimensions Behind SBTI | SBTI Blog',
+      description: 'Self, Emotion, Attitude, Action, Social — SBTI profiles you across 5 facets and 15 dimensions. This post explains what each dimension means and what high vs low scores look like.',
+      keywords: ['SBTI dimensions', 'SBTI five dimensions', 'SBTI how it works', 'SBTI model', 'SBTI 15 dimensions'],
+    },
+    ja: {
+      title: 'SBTI 5次元モデル：テストの仕組み | SBTI ブログ',
+      description: '自己、感情、態度、行動、社交——SBTIは5つの切面と15の次元であなたをプロファイリングします。各次元の意味と高低スコアを解説。',
+      keywords: ['SBTI 次元', 'SBTI 5次元', 'SBTI 仕組み', 'SBTI モデル', 'SBTI 15次元'],
+    },
+    ko: {
+      title: 'SBTI 5차원 모델: 테스트의 원리 | SBTI 블로그',
+      description: '자아, 감정, 태도, 행동, 사회성 — SBTI는 5개 면과 15개 차원으로 프로파일링합니다. 각 차원의 의미와 점수 해석을 설명합니다.',
+      keywords: ['SBTI 차원', 'SBTI 5차원', 'SBTI 원리', 'SBTI 모델', 'SBTI 15차원'],
+    },
+  },
+};
+
+export function getBlogSeo(locale: string, slug: string) {
+  const currentLocale = getLocale(locale);
+  const blogData = BLOG_SEO[slug];
+  if (!blogData) return null;
+  return blogData[currentLocale];
 }

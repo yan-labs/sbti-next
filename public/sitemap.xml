@@ -1098,4 +1098,168 @@
     <lastmod>2026-04-10</lastmod>
     <priority>0.3</priority>
   </url>
+  <!-- Blog list -->
+  <url>
+    <loc>https://sbti.support/zh/blog</loc>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://sbti.support/zh/blog"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sbti.support/blog"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://sbti.support/ja/blog"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://sbti.support/ko/blog"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sbti.support/blog"/>
+    <lastmod>2026-04-12</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://sbti.support/blog</loc>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://sbti.support/zh/blog"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sbti.support/blog"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://sbti.support/ja/blog"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://sbti.support/ko/blog"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sbti.support/blog"/>
+    <lastmod>2026-04-12</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://sbti.support/ja/blog</loc>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://sbti.support/zh/blog"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sbti.support/blog"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://sbti.support/ja/blog"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://sbti.support/ko/blog"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sbti.support/blog"/>
+    <lastmod>2026-04-12</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://sbti.support/ko/blog</loc>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://sbti.support/zh/blog"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sbti.support/blog"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://sbti.support/ja/blog"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://sbti.support/ko/blog"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sbti.support/blog"/>
+    <lastmod>2026-04-12</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <!-- Blog: SBTI vs MBTI -->
+  <url>
+    <loc>https://sbti.support/zh/blog/sbti-vs-mbti</loc>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://sbti.support/zh/blog/sbti-vs-mbti"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sbti.support/blog/sbti-vs-mbti"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://sbti.support/ja/blog/sbti-vs-mbti"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://sbti.support/ko/blog/sbti-vs-mbti"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sbti.support/blog/sbti-vs-mbti"/>
+    <lastmod>2026-04-12</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sbti.support/blog/sbti-vs-mbti</loc>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://sbti.support/zh/blog/sbti-vs-mbti"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sbti.support/blog/sbti-vs-mbti"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://sbti.support/ja/blog/sbti-vs-mbti"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://sbti.support/ko/blog/sbti-vs-mbti"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sbti.support/blog/sbti-vs-mbti"/>
+    <lastmod>2026-04-12</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sbti.support/ja/blog/sbti-vs-mbti</loc>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://sbti.support/zh/blog/sbti-vs-mbti"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sbti.support/blog/sbti-vs-mbti"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://sbti.support/ja/blog/sbti-vs-mbti"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://sbti.support/ko/blog/sbti-vs-mbti"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sbti.support/blog/sbti-vs-mbti"/>
+    <lastmod>2026-04-12</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sbti.support/ko/blog/sbti-vs-mbti</loc>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://sbti.support/zh/blog/sbti-vs-mbti"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sbti.support/blog/sbti-vs-mbti"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://sbti.support/ja/blog/sbti-vs-mbti"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://sbti.support/ko/blog/sbti-vs-mbti"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sbti.support/blog/sbti-vs-mbti"/>
+    <lastmod>2026-04-12</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <!-- Blog: 27 Personality Types -->
+  <url>
+    <loc>https://sbti.support/zh/blog/27-personality-types</loc>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://sbti.support/zh/blog/27-personality-types"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sbti.support/blog/27-personality-types"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://sbti.support/ja/blog/27-personality-types"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://sbti.support/ko/blog/27-personality-types"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sbti.support/blog/27-personality-types"/>
+    <lastmod>2026-04-12</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sbti.support/blog/27-personality-types</loc>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://sbti.support/zh/blog/27-personality-types"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sbti.support/blog/27-personality-types"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://sbti.support/ja/blog/27-personality-types"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://sbti.support/ko/blog/27-personality-types"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sbti.support/blog/27-personality-types"/>
+    <lastmod>2026-04-12</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sbti.support/ja/blog/27-personality-types</loc>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://sbti.support/zh/blog/27-personality-types"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sbti.support/blog/27-personality-types"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://sbti.support/ja/blog/27-personality-types"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://sbti.support/ko/blog/27-personality-types"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sbti.support/blog/27-personality-types"/>
+    <lastmod>2026-04-12</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sbti.support/ko/blog/27-personality-types</loc>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://sbti.support/zh/blog/27-personality-types"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sbti.support/blog/27-personality-types"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://sbti.support/ja/blog/27-personality-types"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://sbti.support/ko/blog/27-personality-types"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sbti.support/blog/27-personality-types"/>
+    <lastmod>2026-04-12</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <!-- Blog: Five Dimensions -->
+  <url>
+    <loc>https://sbti.support/zh/blog/five-dimensions</loc>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://sbti.support/zh/blog/five-dimensions"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sbti.support/blog/five-dimensions"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://sbti.support/ja/blog/five-dimensions"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://sbti.support/ko/blog/five-dimensions"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sbti.support/blog/five-dimensions"/>
+    <lastmod>2026-04-12</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sbti.support/blog/five-dimensions</loc>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://sbti.support/zh/blog/five-dimensions"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sbti.support/blog/five-dimensions"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://sbti.support/ja/blog/five-dimensions"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://sbti.support/ko/blog/five-dimensions"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sbti.support/blog/five-dimensions"/>
+    <lastmod>2026-04-12</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sbti.support/ja/blog/five-dimensions</loc>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://sbti.support/zh/blog/five-dimensions"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sbti.support/blog/five-dimensions"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://sbti.support/ja/blog/five-dimensions"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://sbti.support/ko/blog/five-dimensions"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sbti.support/blog/five-dimensions"/>
+    <lastmod>2026-04-12</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sbti.support/ko/blog/five-dimensions</loc>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://sbti.support/zh/blog/five-dimensions"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sbti.support/blog/five-dimensions"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://sbti.support/ja/blog/five-dimensions"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://sbti.support/ko/blog/five-dimensions"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sbti.support/blog/five-dimensions"/>
+    <lastmod>2026-04-12</lastmod>
+    <priority>0.8</priority>
+  </url>
 </urlset>
