@@ -1,5 +1,8 @@
 import {setRequestLocale} from 'next-intl/server';
 import {buildAlternates, buildTwitter, getLocaleUrl, getPageSeo, getOgLocale, getAlternateOgLocales, DEFAULT_OG_IMAGE} from '@/lib/metadata';
+import {buildCollectionPageSchema} from '@/lib/json-ld';
+import {JsonLd} from '@/components/json-ld';
+import {NORMAL_TYPES} from '@/lib/data/personalities';
 import {TypesIndexPage} from '@/components/types-index-page';
 
 export async function generateMetadata({params}: {params: Promise<{locale: string}>}) {
@@ -25,8 +28,18 @@ export async function generateMetadata({params}: {params: Promise<{locale: strin
   };
 }
 
+// All 27 type codes: 25 normal + HHHH + DRUNK
+const ALL_TYPE_CODES = [...NORMAL_TYPES.map(t => t.code), 'HHHH', 'DRUNK'];
+
 export default async function Types({params}: {params: Promise<{locale: string}>}) {
   const {locale} = await params;
   setRequestLocale(locale);
-  return <TypesIndexPage />;
+  const seo = getPageSeo(locale, 'types');
+  const url = getLocaleUrl(locale, '/types');
+  return (
+    <>
+      <JsonLd data={buildCollectionPageSchema(locale, seo.title, seo.description, url, ALL_TYPE_CODES)} />
+      <TypesIndexPage />
+    </>
+  );
 }

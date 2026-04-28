@@ -3,6 +3,8 @@ import {getTranslations} from 'next-intl/server';
 import {routing} from '@/i18n/routing';
 import {NORMAL_TYPES, TYPE_IMAGES} from '@/lib/data/personalities';
 import {BASE_URL, buildAlternates, buildTwitter, getLocaleUrl, getTypeSeo, getOgLocale, getAlternateOgLocales, DEFAULT_OG_IMAGE} from '@/lib/metadata';
+import {buildDefinedTermSchema, buildBreadcrumbSchema} from '@/lib/json-ld';
+import {JsonLd} from '@/components/json-ld';
 import {TypeDetailPage} from '@/components/type-detail-page';
 
 const ALL_CODES = [...NORMAL_TYPES.map(t => t.code), 'HHHH', 'DRUNK'];
@@ -54,5 +56,31 @@ export async function generateMetadata({params}: {params: Promise<{locale: strin
 export default async function TypePage({params}: {params: Promise<{locale: string; code: string}>}) {
   const {locale, code} = await params;
   setRequestLocale(locale);
-  return <TypeDetailPage code={code} />;
+
+  const t = await getTranslations({locale, namespace: 'personalities'});
+  let name: string, intro: string;
+  try {
+    name = t(`${code}.name`);
+    intro = t(`${code}.intro`);
+  } catch {
+    name = code;
+    intro = '';
+  }
+
+  const typeUrl = getLocaleUrl(locale, `/type/${code}`);
+  const imageUrl = TYPE_IMAGES[code] ? `${BASE_URL}${TYPE_IMAGES[code]}` : undefined;
+
+  const tBreadcrumb = await getTranslations({locale, namespace: 'breadcrumb'});
+
+  return (
+    <>
+      <JsonLd data={buildDefinedTermSchema(locale, code, name, intro, typeUrl, imageUrl)} />
+      <JsonLd data={buildBreadcrumbSchema(locale, [
+        {name: tBreadcrumb('home'), path: ''},
+        {name: tBreadcrumb('types'), path: '/types'},
+        {name: code, path: `/type/${code}`},
+      ])} />
+      <TypeDetailPage code={code} />
+    </>
+  );
 }
