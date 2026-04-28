@@ -1,5 +1,5 @@
 import {setRequestLocale} from 'next-intl/server';
-import {buildAlternates, buildTwitter, getLocaleUrl, getBlogSeo, DEFAULT_OG_IMAGE} from '@/lib/metadata';
+import {buildAlternates, buildTwitter, getLocaleUrl, getBlogSeo, getOgLocale, getAlternateOgLocales, DEFAULT_OG_IMAGE} from '@/lib/metadata';
 import {BLOG_POSTS} from '@/lib/data/blog';
 import {BlogPostPage} from '@/components/blog-post-page';
 import {notFound} from 'next/navigation';
@@ -24,6 +24,8 @@ export async function generateMetadata({params}: {params: Promise<{locale: strin
       siteName: 'SBTI',
       type: 'article',
       images: [DEFAULT_OG_IMAGE],
+      locale: getOgLocale(locale),
+      alternateLocale: getAlternateOgLocales(locale),
     },
     twitter: buildTwitter(seo.title, seo.description),
     robots: {index: true, follow: true},

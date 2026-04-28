@@ -1,6 +1,6 @@
 import {setRequestLocale} from 'next-intl/server';
 import {getTranslations} from 'next-intl/server';
-import {buildAlternates, buildTwitter, BASE_URL, DEFAULT_OG_IMAGE} from '@/lib/metadata';
+import {buildAlternates, buildTwitter, BASE_URL, getOgLocale, getAlternateOgLocales, DEFAULT_OG_IMAGE} from '@/lib/metadata';
 import {TermsPage} from '@/components/terms-page';
 
 export async function generateMetadata({params}: {params: Promise<{locale: string}>}) {
@@ -17,6 +17,8 @@ export async function generateMetadata({params}: {params: Promise<{locale: strin
       siteName: 'SBTI',
       type: 'website',
       images: [DEFAULT_OG_IMAGE],
+      locale: getOgLocale(locale),
+      alternateLocale: getAlternateOgLocales(locale),
     },
     twitter: buildTwitter(t('metaTitle'), t('metaDescription')),
     robots: {index: true, follow: true},

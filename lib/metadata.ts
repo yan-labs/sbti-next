@@ -253,6 +253,22 @@ export function getLocaleUrl(locale: string, path: string = '') {
   return currentLocale === 'en' ? `${BASE_URL}${path}` : `${BASE_URL}/${currentLocale}${path}`;
 }
 
+const OG_LOCALE_MAP: Record<Locale, string> = {
+  zh: 'zh_CN',
+  en: 'en_US',
+  ja: 'ja_JP',
+  ko: 'ko_KR',
+};
+
+export function getOgLocale(locale: string) {
+  return OG_LOCALE_MAP[getLocale(locale)];
+}
+
+export function getAlternateOgLocales(locale: string) {
+  const current = getLocale(locale);
+  return LOCALES.filter(l => l !== current).map(l => OG_LOCALE_MAP[l]);
+}
+
 export function getTypeSeo(locale: string, code: string, name: string, intro: string) {
   const currentLocale = getLocale(locale);
 
