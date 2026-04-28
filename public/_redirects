@@ -4,7 +4,16 @@ https://www.sbti.support/* https://sbti.support/:splat 301
 # Root serves English content (rewrite, not redirect — SEO friendly)
 / /en 200
 
-# Unprefixed paths fall through to the English build.
-# Static files (/en/*, /zh/*, /ja/*, /ko/*, /types/*.png, etc.) are served first;
-# this catch-all only fires for paths without a built file, e.g. /blog -> /en/blog.
-/* /en/:splat 200
+# Unprefixed English paths rewrite to /en/* so /blog, /faq, /compat etc. work.
+# We explicitly list each route (no /* wildcard) because Cloudflare Pages does
+# not reliably honor static-file priority over wildcard rewrites — a wildcard
+# would intercept locale-prefixed paths like /ko, /zh/about as well.
+/about /en/about 200
+/blog /en/blog 200
+/blog/* /en/blog/:splat 200
+/compat /en/compat 200
+/faq /en/faq 200
+/privacy-policy /en/privacy-policy 200
+/terms /en/terms 200
+/type/* /en/type/:splat 200
+/types /en/types 200
