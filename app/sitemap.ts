@@ -58,6 +58,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
   entries.push(entry('/privacy-policy', 0.3, '2026-04-10'));
   entries.push(entry('/terms', 0.3, '2026-04-10'));
 
+  // Compatibility page
+  entries.push(entry('/compat', 0.6, '2026-04-28'));
+
   // Blog list
   entries.push(entry('/blog', 0.7));
 

@@ -363,6 +363,46 @@ const BLOG_SEO: Record<string, Record<Locale, {title: string; description: strin
   },
 };
 
+export function getCompatSeo(locale: string, codeA?: string, codeB?: string) {
+  const currentLocale = getLocale(locale);
+
+  const baseTitle: Record<Locale, string> = {
+    zh: 'SBTI 相性测试 | 两个人格碰在一起会怎样？',
+    en: 'SBTI Compatibility Check | How Do Your Types Match Up?',
+    ja: 'SBTI 相性チェック | 2つのタイプの相性は？',
+    ko: 'SBTI 궁합 테스트 | 두 유형의 궁합은?',
+  };
+
+  const baseDesc: Record<Locale, string> = {
+    zh: '选择两个 SBTI 人格类型，免费测试他们的相性指数。天作之合还是互相伤害？',
+    en: 'Pick two SBTI personality types and find out your compatibility score. Perfect match or mutual destruction — the algorithm decides.',
+    ja: '2つのSBTIタイプを選んで相性スコアを無料チェック。運命の出会いか共倒れコンビか、アルゴリズムが判定します。',
+    ko: '두 SBTI 유형을 선택하고 무료로 궁합 점수를 확인하세요. 천생연분인지 서로 상처주는 사이인지, 알고리즘이 판정합니다.',
+  };
+
+  const keywords: Record<Locale, string[]> = {
+    zh: ['SBTI相性', 'SBTI궁합', 'SBTI配对', '人格相性测试', 'MBTI相性替代'],
+    en: ['SBTI compatibility', 'SBTI type match', 'personality compatibility', 'MBTI compatibility alternative'],
+    ja: ['SBTI 相性', 'SBTI タイプ相性', '性格相性テスト', 'MBTI 相性 代替'],
+    ko: ['SBTI 궁합', 'SBTI 유형 궁합', '성격 궁합 테스트', 'MBTI 궁합 대체', 'SBTI 호환성'],
+  };
+
+  let title = baseTitle[currentLocale];
+  let description = baseDesc[currentLocale];
+
+  if (codeA && codeB) {
+    const pairTitleMap: Record<Locale, string> = {
+      zh: `${codeA} × ${codeB} 相性测试 | SBTI 궁합`,
+      en: `${codeA} × ${codeB} Compatibility | SBTI Check`,
+      ja: `${codeA} × ${codeB} 相性チェック | SBTI`,
+      ko: `${codeA} × ${codeB} 궁합 | SBTI 테스트`,
+    };
+    title = pairTitleMap[currentLocale];
+  }
+
+  return {title, description, keywords: dedupeKeywords(keywords[currentLocale])};
+}
+
 export function getBlogSeo(locale: string, slug: string) {
   const currentLocale = getLocale(locale);
   const blogData = BLOG_SEO[slug];

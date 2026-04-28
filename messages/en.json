@@ -809,5 +809,41 @@
         "disclaimer_p1": "SBTI has zero scientific validity. The same person could get a different result three times in one day. That's not a bug — it's a feature. This is a thing you take so you can post the result, not a career planning tool. If it's fun, it's working."
       }
     }
+  },
+  "compat": {
+    "title": "SBTI Compatibility Check",
+    "description": "Two SBTI types walk into a bar... how does it end?",
+    "pickA": "Type A",
+    "pickB": "Type B",
+    "pickPlaceholder": "Pick a type",
+    "scoreLabel": "Compatibility",
+    "retakeCta": "Take the test yourself →",
+    "compatCta": "Check compatibility with your type →",
+    "archetype": {
+      "fated": {
+        "label": "A Match Made in Heaven",
+        "desc": "The universe clearly has a shipping agenda here. These two are so compatible it's almost suspicious — like fate swiped right before they even met."
+      },
+      "sync": {
+        "label": "In Perfect Sync",
+        "desc": "Finishing each other's sentences, sharing the same chaotic energy. Not soulmates, but dangerously close — one group chat away from a cult."
+      },
+      "spicy": {
+        "label": "Love-Hate Dynamic",
+        "desc": "Explosively good and explosively bad, sometimes in the same afternoon. Like chilli chocolate — you can't stop, but you're not sure you should start."
+      },
+      "plastic": {
+        "label": "Plastic Friendship",
+        "desc": "The kind of friends who smile warmly and immediately forget each other's birthdays. Civility is their love language. It works, mostly."
+      },
+      "awkward": {
+        "label": "Awkward Energy",
+        "desc": "Every conversation has at least two silences that last three years. Not enemies — just two humans who accidentally ended up in the same timeline."
+      },
+      "disaster": {
+        "label": "Mutual Destruction",
+        "desc": "Together, these two could not plan a picnic without starting a geopolitical incident. Individually fine. Together: a controlled demolition that forgot the 'controlled' part."
+      }
+    }
   }
 }
