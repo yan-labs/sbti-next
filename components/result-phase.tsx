@@ -13,6 +13,8 @@ import {DIMENSION_ORDER} from '@/lib/types';
 import Image from 'next/image';
 import {BlogCards} from '@/components/blog-cards';
 import {Link} from '@/i18n/navigation';
+import {SaveImageButton} from '@/components/save-result-image';
+import {useLocale} from 'next-intl';
 
 export function ResultPhase() {
   const t = useTranslations('result');
@@ -21,6 +23,7 @@ export function ResultPhase() {
   const td = useTranslations('dimensions');
   const tp = useTranslations('personalities');
   const tde = useTranslations('dimExplanations');
+  const locale = useLocale();
   const {result, userLevels, restart} = useQuizStore();
 
   if (!result || !userLevels) return null;
@@ -84,6 +87,14 @@ export function ResultPhase() {
               title={`${primary.code} — ${pName}`}
               description={pIntro}
             />
+            <div className="mt-2 flex justify-center">
+              <SaveImageButton
+                code={primary.code}
+                name={pName}
+                description={pIntro}
+                locale={locale}
+              />
+            </div>
           </div>
 
           <div className="pt-1">

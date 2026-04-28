@@ -577,7 +577,9 @@
     "copyLink": "링크 복사",
     "linkCopied": "복사되었습니다!",
     "shareVia": "공유",
-    "tweetText": "SBTI 성격 테스트에서 {code}({name})이 나왔어! 너는 어떤 유형?"
+    "tweetText": "SBTI 성격 테스트에서 {code}({name})이 나왔어! 너는 어떤 유형?",
+    "saveImage": "이미지 저장",
+    "saving": "저장 중..."
   },
   "about": {
     "metaTitle": "SBTI 소개 — 풍자 행동 유형 지표란?",

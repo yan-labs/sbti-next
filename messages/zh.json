@@ -577,7 +577,9 @@
     "copyLink": "复制链接",
     "linkCopied": "链接已复制！",
     "shareVia": "分享",
-    "tweetText": "我在 SBTI 人格测试中测出了 {code}（{name}）！你是什么类型？"
+    "tweetText": "我在 SBTI 人格测试中测出了 {code}（{name}）！你是什么类型？",
+    "saveImage": "保存图片",
+    "saving": "保存中..."
   },
   "about": {
     "metaTitle": "关于 SBTI — 什么是讽刺行为类型指标？",

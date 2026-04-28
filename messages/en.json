@@ -577,7 +577,9 @@
     "copyLink": "Copy Link",
     "linkCopied": "Link copied!",
     "shareVia": "Share",
-    "tweetText": "I got {code} ({name}) on the SBTI personality test! What's your type?"
+    "tweetText": "I got {code} ({name}) on the SBTI personality test! What's your type?",
+    "saveImage": "Save Image",
+    "saving": "Saving..."
   },
   "about": {
     "metaTitle": "About SBTI — What Is the Satirical Behavior Type Indicator?",

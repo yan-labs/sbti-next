@@ -577,7 +577,9 @@
     "copyLink": "リンクをコピー",
     "linkCopied": "コピーしました！",
     "shareVia": "シェア",
-    "tweetText": "SBTI性格テストで{code}（{name}）が出た！あなたは何タイプ？"
+    "tweetText": "SBTI性格テストで{code}（{name}）が出た！あなたは何タイプ？",
+    "saveImage": "画像を保存",
+    "saving": "保存中..."
   },
   "about": {
     "metaTitle": "SBTIについて — 風刺行動タイプ指標とは？",
