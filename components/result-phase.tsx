@@ -12,10 +12,12 @@ import {TYPE_IMAGES} from '@/lib/data/personalities';
 import {DIMENSION_ORDER} from '@/lib/types';
 import Image from 'next/image';
 import {BlogCards} from '@/components/blog-cards';
+import {Link} from '@/i18n/navigation';
 
 export function ResultPhase() {
   const t = useTranslations('result');
   const ts = useTranslations('share');
+  const tc = useTranslations('compat');
   const td = useTranslations('dimensions');
   const tp = useTranslations('personalities');
   const tde = useTranslations('dimExplanations');
@@ -82,6 +84,15 @@ export function ResultPhase() {
               title={`${primary.code} — ${pName}`}
               description={pIntro}
             />
+          </div>
+
+          <div className="pt-1">
+            <Link
+              href={{pathname: '/compat', query: {a: primary.code}}}
+              className="inline-flex items-center gap-1 rounded-full bg-secondary/15 px-4 py-2 text-sm font-medium text-secondary-foreground transition-colors hover:bg-secondary/25"
+            >
+              💞 {tc('compatCta')}
+            </Link>
           </div>
         </CardContent>
       </Card>
