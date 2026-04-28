@@ -1,5 +1,10 @@
+# www -> apex
+https://www.sbti.support/* https://sbti.support/:splat 301
+
 # Root serves English content (rewrite, not redirect — SEO friendly)
 / /en 200
 
-# www -> apex
-https://www.sbti.support/* https://sbti.support/:splat 301
+# Unprefixed paths fall through to the English build.
+# Static files (/en/*, /zh/*, /ja/*, /ko/*, /types/*.png, etc.) are served first;
+# this catch-all only fires for paths without a built file, e.g. /blog -> /en/blog.
+/* /en/:splat 200
