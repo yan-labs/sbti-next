@@ -2,7 +2,7 @@ import {setRequestLocale} from 'next-intl/server';
 import {getTranslations} from 'next-intl/server';
 import {routing} from '@/i18n/routing';
 import {NORMAL_TYPES, TYPE_IMAGES} from '@/lib/data/personalities';
-import {BASE_URL, buildAlternates, buildTwitter, getLocaleUrl, getTypeSeo, DEFAULT_OG_IMAGE} from '@/lib/metadata';
+import {BASE_URL, buildAlternates, buildTwitter, getLocaleUrl, getTypeSeo, getOgLocale, getAlternateOgLocales, DEFAULT_OG_IMAGE} from '@/lib/metadata';
 import {TypeDetailPage} from '@/components/type-detail-page';
 
 const ALL_CODES = [...NORMAL_TYPES.map(t => t.code), 'HHHH', 'DRUNK'];
@@ -39,6 +39,8 @@ export async function generateMetadata({params}: {params: Promise<{locale: strin
       siteName: 'SBTI',
       type: 'article',
       images: TYPE_IMAGES[code] ? [{url: `${BASE_URL}${TYPE_IMAGES[code]}`, width: 1024, height: 1024}] : [DEFAULT_OG_IMAGE],
+      locale: getOgLocale(locale),
+      alternateLocale: getAlternateOgLocales(locale),
     },
     twitter: buildTwitter(
       seo.title,
