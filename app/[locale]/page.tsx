@@ -1,6 +1,8 @@
 import {setRequestLocale} from 'next-intl/server';
 import {SBTIApp} from '@/components/sbti-app';
 import {buildAlternates, buildTwitter, getPageSeo, getLocaleUrl, getOgLocale, getAlternateOgLocales, DEFAULT_OG_IMAGE} from '@/lib/metadata';
+import {buildWebSiteSchema, buildOrganizationSchema, buildQuizSchema} from '@/lib/json-ld';
+import {JsonLd} from '@/components/json-ld';
 
 export async function generateMetadata({params}: {params: Promise<{locale: string}>}) {
   const {locale} = await params;
@@ -32,5 +34,12 @@ export default async function Home({params}: {params: Promise<{locale: string}>}
   const {locale} = await params;
   setRequestLocale(locale);
 
-  return <SBTIApp />;
+  return (
+    <>
+      <JsonLd data={buildWebSiteSchema(locale)} />
+      <JsonLd data={buildOrganizationSchema()} />
+      <JsonLd data={buildQuizSchema(locale)} />
+      <SBTIApp />
+    </>
+  );
 }

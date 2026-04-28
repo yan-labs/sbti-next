@@ -1,6 +1,8 @@
 import {setRequestLocale} from 'next-intl/server';
 import {routing} from '@/i18n/routing';
 import {buildAlternates, buildTwitter, getLocaleUrl, getCompatSeo, DEFAULT_OG_IMAGE} from '@/lib/metadata';
+import {buildWebPageSchema} from '@/lib/json-ld';
+import {JsonLd} from '@/components/json-ld';
 import {CompatPage} from '@/components/compat-page';
 import {Suspense} from 'react';
 
@@ -34,9 +36,16 @@ export async function generateMetadata({params}: {params: Promise<{locale: strin
 export default async function CompatRoute({params}: {params: Promise<{locale: string}>}) {
   const {locale} = await params;
   setRequestLocale(locale);
+  const seo = getCompatSeo(locale);
+  const url = getLocaleUrl(locale, '/compat');
   return (
-    <Suspense>
-      <CompatPage />
-    </Suspense>
+    <>
+      <JsonLd data={buildWebPageSchema(locale, seo.title, seo.description, url, {
+        about: {'@id': `https://sbti.support/#quiz`},
+      })} />
+      <Suspense>
+        <CompatPage />
+      </Suspense>
+    </>
   );
 }
