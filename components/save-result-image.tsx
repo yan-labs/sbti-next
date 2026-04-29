@@ -8,7 +8,6 @@ interface SaveImageButtonProps {
   code: string;
   name: string;
   description: string;
-  locale: string;
 }
 
 // Brand colors (hex, for canvas use)
@@ -215,7 +214,7 @@ async function generateImage(code: string, name: string, description: string): P
   });
 }
 
-export function SaveImageButton({code, name, description, locale: _locale}: SaveImageButtonProps) {
+export function SaveImageButton({code, name, description}: SaveImageButtonProps) {
   const t = useTranslations('share');
   const [saving, setSaving] = useState(false);
 
@@ -241,9 +240,9 @@ export function SaveImageButton({code, name, description, locale: _locale}: Save
 
   return (
     <Button
-      variant="outline"
+      variant="default"
       size="sm"
-      className="rounded-full gap-1.5"
+      className="h-10 gap-1.5 rounded-full bg-primary px-5 text-sm font-bold text-primary-foreground shadow-lg shadow-primary/20 hover:bg-primary/90"
       onClick={handleSave}
       disabled={saving}
       aria-label={saving ? t('saving') : t('saveImage')}
@@ -251,7 +250,7 @@ export function SaveImageButton({code, name, description, locale: _locale}: Save
       {saving ? (
         <svg
           viewBox="0 0 24 24"
-          className="h-3.5 w-3.5 animate-spin"
+          className="h-4 w-4 animate-spin text-primary-foreground"
           fill="none"
           stroke="currentColor"
           strokeWidth="2"
@@ -263,7 +262,7 @@ export function SaveImageButton({code, name, description, locale: _locale}: Save
       ) : (
         <svg
           viewBox="0 0 24 24"
-          className="h-3.5 w-3.5"
+          className="h-4 w-4 text-primary-foreground"
           fill="none"
           stroke="currentColor"
           strokeWidth="2"
@@ -275,7 +274,7 @@ export function SaveImageButton({code, name, description, locale: _locale}: Save
           <line x1="12" y1="15" x2="12" y2="3" />
         </svg>
       )}
-      <span className="hidden sm:inline">{saving ? t('saving') : t('saveImage')}</span>
+      <span>{saving ? t('saving') : t('saveImage')}</span>
     </Button>
   );
 }

@@ -5,7 +5,6 @@ import {useQuizStore} from '@/lib/store';
 import {Button} from '@/components/ui/button';
 import {Card, CardContent} from '@/components/ui/card';
 import {Badge} from '@/components/ui/badge';
-import {Separator} from '@/components/ui/separator';
 import {RadarChart} from '@/components/radar-chart';
 import {ShareButtons} from '@/components/share-buttons';
 import {TYPE_IMAGES} from '@/lib/data/personalities';
@@ -14,7 +13,6 @@ import Image from 'next/image';
 import {BlogCards} from '@/components/blog-cards';
 import {Link} from '@/i18n/navigation';
 import {SaveImageButton} from '@/components/save-result-image';
-import {useLocale} from 'next-intl';
 
 export function ResultPhase() {
   const t = useTranslations('result');
@@ -23,7 +21,6 @@ export function ResultPhase() {
   const td = useTranslations('dimensions');
   const tp = useTranslations('personalities');
   const tde = useTranslations('dimExplanations');
-  const locale = useLocale();
   const {result, userLevels, restart} = useQuizStore();
 
   if (!result || !userLevels) return null;
@@ -82,17 +79,16 @@ export function ResultPhase() {
 
           <div className="pt-2">
             <p className="mb-2 text-sm font-medium text-muted-foreground">{ts('shareResult')}</p>
-            <ShareButtons
-              url={`/type/${primary.code}`}
-              title={`${primary.code} — ${pName}`}
-              description={pIntro}
-            />
-            <div className="mt-2 flex justify-center">
+            <div className="mx-auto flex max-w-[34rem] flex-wrap items-center justify-center gap-2">
               <SaveImageButton
                 code={primary.code}
                 name={pName}
                 description={pIntro}
-                locale={locale}
+              />
+              <ShareButtons
+                url={`/type/${primary.code}`}
+                title={`${primary.code} — ${pName}`}
+                description={pIntro}
               />
             </div>
           </div>
@@ -100,7 +96,7 @@ export function ResultPhase() {
           <div className="pt-1">
             <Link
               href={{pathname: '/compat', query: {a: primary.code}}}
-              className="inline-flex items-center gap-1 rounded-full bg-secondary/15 px-4 py-2 text-sm font-medium text-secondary-foreground transition-colors hover:bg-secondary/25"
+              className="inline-flex items-center gap-1 rounded-full bg-secondary px-4 py-2 text-sm font-semibold text-secondary-foreground shadow-sm shadow-secondary/20 transition-colors hover:bg-secondary/90"
             >
               💞 {tc('compatCta')}
             </Link>

@@ -70,38 +70,40 @@ export function ShareButtons({url, title, description}: {url: string; title: str
 
   const canShare = typeof navigator !== 'undefined' && typeof navigator.share === 'function';
 
+  const actionClassName = 'h-9 rounded-full gap-1.5 px-4 text-sm font-semibold';
+
   return (
-    <div className="flex flex-wrap items-center justify-center gap-2">
-      <Button variant="outline" size="sm" className="rounded-full gap-1.5" onClick={shareTwitter}>
-        <XIcon className="h-3.5 w-3.5" />
-        <span className="hidden sm:inline">{t('twitter')}</span>
-      </Button>
-      <Button variant="outline" size="sm" className="rounded-full gap-1.5" onClick={shareFacebook}>
-        <svg viewBox="0 0 24 24" className="h-3.5 w-3.5" fill="currentColor">
-          <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
-        </svg>
-        <span className="hidden sm:inline">{t('facebook')}</span>
-      </Button>
-      <Button variant="outline" size="sm" className="rounded-full gap-1.5" onClick={shareLine}>
-        <LineIcon className="h-3.5 w-3.5" />
-        <span className="hidden sm:inline">{t('line')}</span>
-      </Button>
-      <Button variant="outline" size="sm" className="rounded-full gap-1.5" onClick={copyLink}>
-        <svg viewBox="0 0 24 24" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
-          <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
-        </svg>
-        {copied ? t('linkCopied') : t('copyLink')}
-      </Button>
+    <div className="contents">
       {canShare && (
-        <Button variant="outline" size="sm" className="rounded-full gap-1.5" onClick={shareNative}>
-          <svg viewBox="0 0 24 24" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <Button variant="outline" size="sm" className={`${actionClassName} sm:hidden`} onClick={shareNative}>
+          <svg viewBox="0 0 24 24" className="h-3.5 w-3.5 text-primary" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <circle cx="18" cy="5" r="3" /><circle cx="6" cy="12" r="3" /><circle cx="18" cy="19" r="3" />
             <line x1="8.59" y1="13.51" x2="15.42" y2="17.49" /><line x1="15.41" y1="6.51" x2="8.59" y2="10.49" />
           </svg>
           {t('shareVia')}
         </Button>
       )}
+      <Button variant="outline" size="sm" className={actionClassName} onClick={copyLink}>
+        <svg viewBox="0 0 24 24" className="h-3.5 w-3.5 text-primary" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+          <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+        </svg>
+        {copied ? t('linkCopied') : t('copyLink')}
+      </Button>
+      <Button variant="outline" size="sm" className={actionClassName} onClick={shareLine}>
+        <LineIcon className="h-3.5 w-3.5 text-[#06C755]" />
+        <span className="hidden sm:inline">{t('line')}</span>
+      </Button>
+      <Button variant="outline" size="sm" className={actionClassName} onClick={shareTwitter}>
+        <XIcon className="h-3.5 w-3.5 text-[#0F1419] dark:text-white" />
+        <span className="hidden sm:inline">{t('twitter')}</span>
+      </Button>
+      <Button variant="outline" size="sm" className={actionClassName} onClick={shareFacebook}>
+        <svg viewBox="0 0 24 24" className="h-3.5 w-3.5 text-[#1877F2]" fill="currentColor">
+          <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+        </svg>
+        <span className="hidden sm:inline">{t('facebook')}</span>
+      </Button>
     </div>
   );
 }
