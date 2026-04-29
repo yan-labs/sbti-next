@@ -8,29 +8,77 @@ import Image from 'next/image';
 import {Link} from '@/i18n/navigation';
 import {Button} from '@/components/ui/button';
 import {ShareButtons} from '@/components/share-buttons';
+import {SaveCompatImageButton} from '@/components/save-result-image';
 import {NORMAL_TYPES, TYPE_IMAGES} from '@/lib/data/personalities';
 import {getCompatibility} from '@/lib/data/compat';
+import {DIMENSION_ORDER, DimCode, Level} from '@/lib/types';
 
 const ALL_TYPES = [...NORMAL_TYPES.map(t => t.code), 'HHHH', 'DRUNK'];
+const TYPE_PATTERNS = Object.fromEntries(NORMAL_TYPES.map(({code, pattern}) => [code, pattern]));
+const COMPARE_DIMS: DimCode[] = ['S1', 'E1', 'E2', 'A1', 'Ac2', 'So1'];
 
-// Archetype gradient configs for the score card
-const ARCHETYPE_GRADIENTS: Record<string, string> = {
-  fated: 'from-pink-500/20 via-rose-400/10 to-purple-500/20',
-  sync: 'from-emerald-500/20 via-teal-400/10 to-cyan-500/20',
-  spicy: 'from-orange-500/20 via-red-400/10 to-pink-500/20',
-  plastic: 'from-sky-500/20 via-blue-400/10 to-indigo-500/20',
-  awkward: 'from-yellow-500/20 via-amber-400/10 to-orange-500/20',
-  disaster: 'from-slate-500/20 via-gray-400/10 to-zinc-500/20',
+const ARCHETYPE_STYLES: Record<string, {surface: string; soft: string; badge: string; progress: string; ring: string; shadow: string}> = {
+  fated: {
+    surface: 'bg-accent/10',
+    soft: 'bg-accent/10',
+    badge: 'border-accent/30 bg-accent/10 text-foreground',
+    progress: 'bg-accent',
+    ring: 'ring-accent/25',
+    shadow: 'shadow-[0_18px_52px_rgba(139,92,246,0.10)]',
+  },
+  sync: {
+    surface: 'bg-primary/10',
+    soft: 'bg-primary/10',
+    badge: 'border-primary/30 bg-primary/10 text-foreground',
+    progress: 'bg-primary',
+    ring: 'ring-primary/25',
+    shadow: 'shadow-[0_18px_52px_rgba(16,185,129,0.10)]',
+  },
+  spicy: {
+    surface: 'bg-secondary/10',
+    soft: 'bg-secondary/10',
+    badge: 'border-secondary/35 bg-secondary/10 text-foreground',
+    progress: 'bg-secondary',
+    ring: 'ring-secondary/25',
+    shadow: 'shadow-[0_18px_52px_rgba(245,158,11,0.12)]',
+  },
+  plastic: {
+    surface: 'bg-chart-4/10',
+    soft: 'bg-chart-4/10',
+    badge: 'border-chart-4/30 bg-chart-4/10 text-foreground',
+    progress: 'bg-chart-4',
+    ring: 'ring-chart-4/25',
+    shadow: 'shadow-[0_18px_52px_rgba(59,130,246,0.10)]',
+  },
+  awkward: {
+    surface: 'bg-secondary/10',
+    soft: 'bg-secondary/10',
+    badge: 'border-secondary/35 bg-secondary/10 text-foreground',
+    progress: 'bg-secondary',
+    ring: 'ring-secondary/25',
+    shadow: 'shadow-[0_18px_52px_rgba(245,158,11,0.12)]',
+  },
+  disaster: {
+    surface: 'bg-destructive/10',
+    soft: 'bg-destructive/10',
+    badge: 'border-destructive/30 bg-destructive/10 text-foreground',
+    progress: 'bg-destructive',
+    ring: 'ring-destructive/25',
+    shadow: 'shadow-[0_18px_52px_rgba(239,68,68,0.10)]',
+  },
 };
 
-const ARCHETYPE_BADGE_COLORS: Record<string, string> = {
-  fated: 'bg-pink-500/15 text-pink-700 dark:text-pink-300 border-pink-300/30',
-  sync: 'bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border-emerald-300/30',
-  spicy: 'bg-orange-500/15 text-orange-700 dark:text-orange-300 border-orange-300/30',
-  plastic: 'bg-sky-500/15 text-sky-700 dark:text-sky-300 border-sky-300/30',
-  awkward: 'bg-yellow-500/15 text-yellow-700 dark:text-yellow-300 border-yellow-300/30',
-  disaster: 'bg-slate-500/15 text-slate-700 dark:text-slate-300 border-slate-300/30',
-};
+function getTypeLevels(code: string): Record<DimCode, Level> | null {
+  const pattern = TYPE_PATTERNS[code];
+  if (!pattern) return null;
+  const levels = pattern.replaceAll('-', '').split('') as Level[];
+  if (levels.length !== DIMENSION_ORDER.length) return null;
+  return Object.fromEntries(DIMENSION_ORDER.map((dim, i) => [dim, levels[i]])) as Record<DimCode, Level>;
+}
+
+function levelValue(level: Level) {
+  return level === 'L' ? 1 : level === 'M' ? 2 : 3;
+}
 
 function AnimatedScore({target}: {target: number}) {
   const [display, setDisplay] = useState(0);
@@ -128,6 +176,8 @@ function TypeSelector({
 function CompatPageInner({initialA, initialB}: {initialA?: string; initialB?: string}) {
   const t = useTranslations('compat');
   const tp = useTranslations('personalities');
+  const td = useTranslations('dimensions');
+  const tr = useTranslations('result');
   const router = useRouter();
   const pathname = usePathname();
   const locale = useLocale();
@@ -153,11 +203,31 @@ function CompatPageInner({initialA, initialB}: {initialA?: string; initialB?: st
 
   const bothSelected = typeA && typeB;
   const compat = bothSelected ? getCompatibility(typeA, typeB) : null;
-  const gradient = compat ? ARCHETYPE_GRADIENTS[compat.archetypeKey] : '';
-  const badgeColor = compat ? ARCHETYPE_BADGE_COLORS[compat.archetypeKey] : '';
+  const style = compat ? ARCHETYPE_STYLES[compat.archetypeKey] : null;
 
   const nameA = s(tp, `${typeA}.name`, typeA);
   const nameB = s(tp, `${typeB}.name`, typeB);
+  const levelsA = getTypeLevels(typeA);
+  const levelsB = getTypeLevels(typeB);
+  const compareDimensions = levelsA && levelsB
+    ? COMPARE_DIMS.map((dim) => {
+        const leftLevel = levelsA[dim];
+        const rightLevel = levelsB[dim];
+        return {
+          code: dim,
+          label: td(dim),
+          leftLevel,
+          rightLevel,
+          leftLevelLabel: tr(`level${leftLevel}`),
+          rightLevelLabel: tr(`level${rightLevel}`),
+        };
+      })
+    : [];
+  const compareTitle =
+    locale === 'zh' ? '六维对照' :
+    locale === 'ja' ? '6次元比較' :
+    locale === 'ko' ? '6차원 비교' :
+    '6D Compare';
   const shareTitle = bothSelected && compat
     ? `${typeA} × ${typeB} ${t('title')} — ${compat.score}%`
     : t('title');
@@ -169,11 +239,13 @@ function CompatPageInner({initialA, initialB}: {initialA?: string; initialB?: st
     : '/compat';
 
   return (
-    <div className="mx-auto max-w-2xl px-4 py-10">
+    <div className="mx-auto max-w-4xl px-4 py-8 md:py-10">
       {/* Page header */}
       <div className="mb-8 text-center">
-        <h1 className="font-heading text-4xl font-bold tracking-tight">{t('title')}</h1>
-        <p className="mt-2 text-muted-foreground">{t('description')}</p>
+        <h1 className="font-heading text-4xl font-black tracking-tight md:text-5xl">{t('title')}</h1>
+        <p className="mx-auto mt-3 max-w-2xl text-base font-medium leading-relaxed text-foreground/65">
+          {t('description')}
+        </p>
       </div>
 
       {/* Selector row */}
@@ -221,39 +293,37 @@ function CompatPageInner({initialA, initialB}: {initialA?: string; initialB?: st
 
       {/* Result card */}
       {bothSelected && compat && (
-        <div
-          className={`relative overflow-hidden rounded-2xl border border-border bg-gradient-to-br ${gradient} p-6 shadow-lg`}
-        >
-          {/* Decorative blob */}
-          <div className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-primary/5 blur-3xl" />
-          <div className="pointer-events-none absolute -bottom-16 -left-16 h-48 w-48 rounded-full bg-accent/5 blur-3xl" />
+        <div className={`relative overflow-hidden rounded-2xl p-5 md:p-8 ${style?.surface} ${style?.shadow}`}>
+          <div className={`pointer-events-none absolute right-6 top-6 h-28 w-28 rounded-full ${style?.soft} blur-2xl`} />
 
           {/* Type pair */}
-          <div className="relative mb-6 flex items-center justify-between gap-4">
+          <div className="relative mb-6 grid grid-cols-[1fr_auto_1fr] items-center gap-3 md:gap-6">
             {/* Type A card */}
             <div className="flex flex-1 flex-col items-center gap-2 text-center">
               {TYPE_IMAGES[typeA] && (
-                <div className="overflow-hidden rounded-xl shadow-md ring-2 ring-border">
+                <div className={`overflow-hidden rounded-xl shadow-sm ring-4 ${style?.ring}`}>
                   <Image
                     src={TYPE_IMAGES[typeA]}
                     alt={typeA}
                     width={96}
                     height={96}
-                    className="h-24 w-24 object-cover"
+                    className="h-20 w-20 object-cover sm:h-24 sm:w-24 md:h-28 md:w-28"
                   />
                 </div>
               )}
               <div>
-                <p className="font-heading text-lg font-bold">{typeA}</p>
-                <p className="text-xs text-muted-foreground">{nameA}</p>
+                <p className="font-heading text-lg font-black md:text-xl">{typeA}</p>
+                <p className="line-clamp-2 text-xs font-medium text-muted-foreground md:text-sm">{nameA}</p>
               </div>
             </div>
 
             {/* Score center */}
-            <div className="flex flex-col items-center gap-1">
-              <div className="text-4xl">{compat.emoji}</div>
+            <div className="flex min-w-[4.5rem] flex-col items-center gap-1 md:min-w-28">
+              <div className={`flex h-12 w-12 items-center justify-center rounded-full ${style?.soft} text-2xl md:h-16 md:w-16 md:text-3xl`}>
+                {compat.emoji}
+              </div>
               <div className="flex flex-col items-center">
-                <div className="font-heading text-5xl font-black tabular-nums leading-none text-foreground">
+                <div className="font-heading text-4xl font-black tabular-nums leading-none text-foreground md:text-6xl">
                   <AnimatedScore target={compat.score} />
                 </div>
                 <span className="text-xs font-medium text-muted-foreground">%</span>
@@ -266,57 +336,114 @@ function CompatPageInner({initialA, initialB}: {initialA?: string; initialB?: st
             {/* Type B card */}
             <div className="flex flex-1 flex-col items-center gap-2 text-center">
               {TYPE_IMAGES[typeB] && (
-                <div className="overflow-hidden rounded-xl shadow-md ring-2 ring-border">
+                <div className={`overflow-hidden rounded-xl shadow-sm ring-4 ${style?.ring}`}>
                   <Image
                     src={TYPE_IMAGES[typeB]}
                     alt={typeB}
                     width={96}
                     height={96}
-                    className="h-24 w-24 object-cover"
+                    className="h-20 w-20 object-cover sm:h-24 sm:w-24 md:h-28 md:w-28"
                   />
                 </div>
               )}
               <div>
-                <p className="font-heading text-lg font-bold">{typeB}</p>
-                <p className="text-xs text-muted-foreground">{nameB}</p>
+                <p className="font-heading text-lg font-black md:text-xl">{typeB}</p>
+                <p className="line-clamp-2 text-xs font-medium text-muted-foreground md:text-sm">{nameB}</p>
               </div>
             </div>
           </div>
 
           {/* Score progress bar */}
-          <div className="relative mb-6 h-2 overflow-hidden rounded-full bg-muted/60">
+          <div className="relative mb-6 h-2 overflow-hidden rounded-full bg-muted">
             <div
-              className="h-full rounded-full bg-primary transition-all duration-700 ease-out"
+              className={`h-full rounded-full transition-all duration-700 ease-out ${style?.progress}`}
               style={{width: `${compat.score}%`}}
             />
           </div>
 
           {/* Archetype badge + description */}
           <div className="space-y-3 text-center">
-            <span className={`inline-flex items-center gap-1.5 rounded-full border px-4 py-1.5 text-sm font-semibold ${badgeColor}`}>
+            <span className={`inline-flex items-center gap-1.5 rounded-full border px-4 py-1.5 text-sm font-bold ${style?.badge}`}>
               {compat.emoji}{' '}
               {t(`archetype.${compat.archetypeKey}.label`)}
             </span>
-            <p className="mx-auto max-w-sm text-sm leading-relaxed text-foreground/80">
+            <p className="mx-auto max-w-xl text-sm font-medium leading-relaxed text-foreground/75 md:text-base">
               {t(`archetype.${compat.archetypeKey}.desc`)}
             </p>
           </div>
+
+          {compareDimensions.length > 0 && (
+            <div className="relative mt-7 rounded-xl bg-background/55 p-4 md:p-5">
+              <div className="mb-4 flex items-center justify-between gap-3">
+                <span className="min-w-0 truncate font-heading text-sm font-bold text-foreground">{typeA}</span>
+                <span className="shrink-0 rounded-full bg-card/70 px-3 py-1 text-xs font-bold text-muted-foreground">
+                  {compareTitle}
+                </span>
+                <span className="min-w-0 truncate text-right font-heading text-sm font-bold text-foreground">{typeB}</span>
+              </div>
+              <div className="space-y-3">
+                {compareDimensions.map((dim) => {
+                  const left = dim.leftLevel;
+                  const right = dim.rightLevel;
+                  const leftWidth = `${(levelValue(left) / 3) * 100}%`;
+                  const rightWidth = `${(levelValue(right) / 3) * 100}%`;
+                  return (
+                    <div key={dim.code} className="grid grid-cols-[2.5rem_1fr_5.5rem_1fr_2.5rem] items-center gap-2">
+                      <span className="text-right font-mono text-xs font-bold text-muted-foreground">
+                        {dim.leftLevelLabel}
+                      </span>
+                      <div className="flex h-2 justify-end overflow-hidden rounded-full bg-card/80">
+                        <div className="h-full rounded-full bg-primary" style={{width: leftWidth}} />
+                      </div>
+                      <div className="text-center">
+                        <p className="font-mono text-[11px] font-bold text-muted-foreground">{dim.code}</p>
+                        <p className="truncate text-[11px] font-medium text-foreground">{dim.label}</p>
+                      </div>
+                      <div className="h-2 overflow-hidden rounded-full bg-card/80">
+                        <div className={`h-full rounded-full ${style?.progress}`} style={{width: rightWidth}} />
+                      </div>
+                      <span className="font-mono text-xs font-bold text-muted-foreground">
+                        {dim.rightLevelLabel}
+                      </span>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          )}
         </div>
       )}
 
       {/* Actions */}
-      <div className="mt-8 flex flex-col items-center gap-3">
+      <div className="mt-8 flex flex-col items-center gap-4">
         <Link href="/test">
-          <Button size="lg" className="rounded-full px-8">
+          <Button size="lg" className="rounded-full px-8 font-bold">
             {t('retakeCta')}
           </Button>
         </Link>
         {bothSelected && (
-          <ShareButtons
-            url={sharePath}
-            title={shareTitle}
-            description={shareDescription}
-          />
+          <div className="flex max-w-2xl flex-wrap items-center justify-center gap-2">
+            {compat && compareDimensions.length > 0 && (
+              <SaveCompatImageButton
+                codeA={typeA}
+                nameA={nameA}
+                codeB={typeB}
+                nameB={nameB}
+                score={compat.score}
+                scoreLabel={t('scoreLabel')}
+                archetypeKey={compat.archetypeKey}
+                archetypeLabel={t(`archetype.${compat.archetypeKey}.label`)}
+                archetypeDescription={t(`archetype.${compat.archetypeKey}.desc`)}
+                dimensionsTitle={compareTitle}
+                dimensions={compareDimensions}
+              />
+            )}
+            <ShareButtons
+              url={sharePath}
+              title={shareTitle}
+              description={shareDescription}
+            />
+          </div>
         )}
       </div>
     </div>
