@@ -9,6 +9,7 @@ import {Link} from '@/i18n/navigation';
 import {Button} from '@/components/ui/button';
 import {ShareButtons} from '@/components/share-buttons';
 import {SaveCompatImageButton} from '@/components/save-result-image';
+import {BlogCards} from '@/components/blog-cards';
 import {NORMAL_TYPES, TYPE_IMAGES} from '@/lib/data/personalities';
 import {getCompatibility} from '@/lib/data/compat';
 import {DIMENSION_ORDER, DimCode, Level} from '@/lib/types';
@@ -445,6 +446,10 @@ function CompatPageInner({initialA, initialB}: {initialA?: string; initialB?: st
             />
           </div>
         )}
+      </div>
+
+      <div className="mt-10">
+        <BlogCards compact />
       </div>
     </div>
   );

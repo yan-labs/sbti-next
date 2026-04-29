@@ -52,6 +52,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     entries.push(entry(`/type/${encodeURIComponent(code)}`, 0.8, '2026-04-10'));
   }
 
+  // Shareable result pages. Personal result state lives in a short query
+  // parameter, while these clean URLs are the canonical indexable targets.
+  for (const code of TYPE_CODES) {
+    entries.push(entry(`/result/${encodeURIComponent(code)}`, 0.75, '2026-04-29'));
+  }
+
   // Static pages
   entries.push(entry('/about', 0.5, '2026-04-10'));
   entries.push(entry('/types', 0.7, '2026-04-10'));

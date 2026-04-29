@@ -13,6 +13,7 @@ import Image from 'next/image';
 import {BlogCards} from '@/components/blog-cards';
 import {Link} from '@/i18n/navigation';
 import {SaveImageButton} from '@/components/save-result-image';
+import {encodeResultState} from '@/lib/result-share';
 
 export function ResultPhase() {
   const t = useTranslations('result');
@@ -40,6 +41,7 @@ export function ResultPhase() {
   const pName = s(tp, `${primary.code}.name`, primary.cn);
   const pIntro = s(tp, `${primary.code}.intro`, primary.intro);
   const pDesc = s(tp, `${primary.code}.desc`, primary.desc);
+  const resultShareUrl = `/result/${encodeURIComponent(primary.code)}?r=${encodeResultState(userLevels, mode)}`;
 
   return (
     <div className="mx-auto max-w-4xl space-y-6 px-4 py-8 md:py-10">
@@ -109,7 +111,7 @@ export function ResultPhase() {
                     })}
                   />
                   <ShareButtons
-                    url={`/type/${primary.code}`}
+                    url={resultShareUrl}
                     title={`${primary.code} — ${pName}`}
                     description={pIntro}
                   />

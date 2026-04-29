@@ -310,6 +310,47 @@ export function getTypeSeo(locale: string, code: string, name: string, intro: st
   };
 }
 
+export function getResultSeo(locale: string, code: string, name: string, intro: string) {
+  const currentLocale = getLocale(locale);
+
+  const titleMap: Record<Locale, string> = {
+    zh: `${code}（${name}）SBTI 测试结果 | 可分享人格报告`,
+    en: `${code} (${name}) SBTI Result | Shareable Personality Report`,
+    ja: `${code}（${name}）SBTI診断結果 | 共有できる性格レポート`,
+    ko: `${code} (${name}) SBTI 결과 | 공유 가능한 성격 리포트`,
+  };
+
+  const descriptionMap: Record<Locale, string> = {
+    zh: normalizeDescription(
+      `查看并分享 SBTI 测试结果 ${code}（${name}）：${intro} 页面支持 15 维人格报告、结果链接分享和免费重新测试。`,
+    ),
+    en: normalizeDescription(
+      `View and share the SBTI result ${code} (${name}). ${intro} Includes a 15-dimension personality report, shareable result link, and free retest.`,
+    ),
+    ja: normalizeDescription(
+      `${code}（${name}）のSBTI診断結果を確認・共有。${intro} 15次元レポート、共有リンク、無料再診断に対応しています。`,
+    ),
+    ko: normalizeDescription(
+      `${code} (${name}) SBTI 결과를 확인하고 공유하세요. ${intro} 15차원 성격 리포트, 공유 링크, 무료 재테스트를 제공합니다.`,
+    ),
+  };
+
+  const localeKeywords = TYPE_KEYWORD_BASE[currentLocale];
+  const resultKeywords = currentLocale === 'zh'
+    ? ['SBTI测试结果', 'SBTI结果分享', '人格测试结果', `${code}测试结果`, `${name}人格结果`]
+    : currentLocale === 'ja'
+      ? ['SBTI 診断結果', 'SBTI 結果 共有', '性格診断 結果', `${code} 結果`, `${name} SBTI`]
+      : currentLocale === 'ko'
+        ? ['SBTI 결과', 'SBTI 결과 공유', '성격 테스트 결과', `${code} 결과`, `${name} SBTI`]
+        : ['SBTI result', 'share SBTI result', 'personality test result', `${code} result`, `${name} SBTI result`];
+
+  return {
+    title: titleMap[currentLocale],
+    description: descriptionMap[currentLocale],
+    keywords: dedupeKeywords([...localeKeywords, code, name, ...resultKeywords]),
+  };
+}
+
 const BLOG_SEO: Record<string, Record<Locale, {title: string; description: string; keywords: string[]}>> = {
   'sbti-vs-mbti': {
     zh: {
