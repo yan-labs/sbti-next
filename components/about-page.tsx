@@ -88,7 +88,7 @@ export function AboutPage() {
 
       {/* CTA */}
       <div className="mt-12 text-center">
-        <Link href="/">
+        <Link href="/test">
           <Button size="lg" className="rounded-full px-10">
             {ti('start')}
           </Button>

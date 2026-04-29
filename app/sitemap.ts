@@ -45,6 +45,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // Homepage
   entries.push(entry('', 1.0, '2026-04-10'));
+  entries.push(entry('/test', 0.9, '2026-04-29'));
 
   // Type pages
   for (const code of TYPE_CODES) {
@@ -60,6 +61,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // Compatibility page
   entries.push(entry('/compat', 0.6, '2026-04-28'));
+  for (const codeA of TYPE_CODES) {
+    for (const codeB of TYPE_CODES) {
+      if (codeA !== codeB) {
+        entries.push(entry(`/compat/${encodeURIComponent(codeA)}/${encodeURIComponent(codeB)}`, 0.45, '2026-04-29'));
+      }
+    }
+  }
 
   // Blog list
   entries.push(entry('/blog', 0.7));

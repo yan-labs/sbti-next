@@ -848,5 +848,10 @@
         "desc": "Together, these two could not plan a picnic without starting a geopolitical incident. Individually fine. Together: a controlled demolition that forgot the 'controlled' part."
       }
     }
+  },
+  "history": {
+    "title": "Previous Results",
+    "viewAgain": "View Again",
+    "clearAll": "Clear All"
   }
 }

@@ -16,7 +16,7 @@ function InlineCta() {
   return (
     <div className="not-prose my-8 rounded-xl border border-primary/20 bg-primary/5 p-5 text-center">
       <p className="text-sm font-medium text-foreground/80">{t('inlineCta')}</p>
-      <Link href="/">
+      <Link href="/test">
         <Button size="sm" className="mt-3 rounded-full px-6">{t('inlineCtaButton')}</Button>
       </Link>
     </div>
@@ -29,7 +29,7 @@ function BottomCta() {
     <div className="not-prose mt-10 rounded-2xl bg-primary/5 border border-primary/20 p-8 text-center">
       <h3 className="font-heading text-xl font-bold">{t('bottomCtaTitle')}</h3>
       <p className="mt-2 text-sm text-muted-foreground">{t('bottomCtaDesc')}</p>
-      <Link href="/">
+      <Link href="/test">
         <Button size="lg" className="mt-4 rounded-full px-10">{t('bottomCtaButton')}</Button>
       </Link>
     </div>

@@ -2,6 +2,7 @@ import {create} from 'zustand';
 import {Question, DimCode, Level, TestResult} from './types';
 import {mainQuestions, specialQuestions} from './data/questions';
 import {calcDimensionScores, scoresToLevels, determineResult} from './engine';
+import {saveResult, HistoryEntry} from './history';
 
 function shuffle<T>(arr: T[]): T[] {
   const a = [...arr];
@@ -33,6 +34,7 @@ interface QuizState {
   startQuiz: () => void;
   answer: (questionId: string, value: number) => void;
   restart: () => void;
+  loadFromHistory: (entry: HistoryEntry) => void;
 }
 
 export const useQuizStore = create<QuizState>((set, get) => ({
@@ -75,6 +77,7 @@ export const useQuizStore = create<QuizState>((set, get) => ({
       const scores = calcDimensionScores(newAnswers, [...mainQuestions, ...specialQuestions]);
       const levels = scoresToLevels(scores);
       const result = determineResult(levels, newDrunk);
+      saveResult(result, levels, newDrunk);
       set({answers: newAnswers, queue: newQueue, isDrunk: newDrunk, result, userLevels: levels, phase: 'result'});
     } else {
       set({answers: newAnswers, queue: newQueue, isDrunk: newDrunk, current: nextIdx});
@@ -83,5 +86,14 @@ export const useQuizStore = create<QuizState>((set, get) => ({
 
   restart: () => {
     get().startQuiz();
+  },
+
+  loadFromHistory: (entry) => {
+    set({
+      result: entry.result,
+      userLevels: entry.userLevels,
+      isDrunk: entry.isDrunk,
+      phase: 'result',
+    });
   },
 }));

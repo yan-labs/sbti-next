@@ -34,7 +34,6 @@ const CARD_THEMES = [
 export function BlogListPage() {
   const t = useTranslations('blog');
   const tb = useTranslations('breadcrumb');
-  const ti = useTranslations('intro');
   const locale = useLocale();
   const seo = getPageSeo(locale, 'blog');
 
@@ -129,7 +128,7 @@ export function BlogListPage() {
       <div className="mt-12 rounded-2xl bg-primary/5 border border-primary/20 p-8 text-center">
         <h3 className="font-heading text-xl font-bold">{t('bottomCtaTitle')}</h3>
         <p className="mt-2 text-sm text-muted-foreground">{t('bottomCtaDesc')}</p>
-        <Link href="/">
+        <Link href="/test">
           <Button size="lg" className="mt-4 rounded-full px-10">{t('bottomCtaButton')}</Button>
         </Link>
       </div>

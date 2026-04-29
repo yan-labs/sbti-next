@@ -142,7 +142,7 @@ export function TypeDetailPage({code}: {code: string}) {
 
       {/* CTA */}
       <div className="mt-8 text-center">
-        <Link href="/">
+        <Link href="/test">
           <Button size="lg" className="rounded-full px-10">
             {ti('start')}
           </Button>

@@ -7,6 +7,7 @@ import {useEffect, useRef, useState, Suspense} from 'react';
 import Image from 'next/image';
 import {Link} from '@/i18n/navigation';
 import {Button} from '@/components/ui/button';
+import {ShareButtons} from '@/components/share-buttons';
 import {NORMAL_TYPES, TYPE_IMAGES} from '@/lib/data/personalities';
 import {getCompatibility} from '@/lib/data/compat';
 
@@ -37,7 +38,6 @@ function AnimatedScore({target}: {target: number}) {
   const startRef = useRef<number | null>(null);
 
   useEffect(() => {
-    setDisplay(0);
     startRef.current = null;
 
     const duration = 900;
@@ -125,7 +125,7 @@ function TypeSelector({
   );
 }
 
-function CompatPageInner() {
+function CompatPageInner({initialA, initialB}: {initialA?: string; initialB?: string}) {
   const t = useTranslations('compat');
   const tp = useTranslations('personalities');
   const router = useRouter();
@@ -133,18 +133,21 @@ function CompatPageInner() {
   const locale = useLocale();
   const searchParams = useSearchParams();
 
-  const [typeA, setTypeA] = useState(searchParams.get('a') ?? '');
-  const [typeB, setTypeB] = useState(searchParams.get('b') ?? '');
+  const [typeA, setTypeA] = useState(initialA ?? searchParams.get('a') ?? '');
+  const [typeB, setTypeB] = useState(initialB ?? searchParams.get('b') ?? '');
 
   const s = (fn: (k: string) => string, key: string, fallback: string) => {
     try { return fn(key); } catch { return fallback; }
   };
 
-  // Sync URL when both selected
+  // Use path segments for shareable/indexable pair pages. Query URLs stay as
+  // entry points, then canonicalize to /compat/A/B once both types are known.
   useEffect(() => {
     if (typeA && typeB) {
-      const url = `${pathname}?a=${encodeURIComponent(typeA)}&b=${encodeURIComponent(typeB)}`;
-      router.replace(url, {scroll: false});
+      const url = `/compat/${encodeURIComponent(typeA)}/${encodeURIComponent(typeB)}`;
+      if (pathname !== url) {
+        router.replace(url, {scroll: false});
+      }
     }
   }, [typeA, typeB, router, pathname]);
 
@@ -155,6 +158,15 @@ function CompatPageInner() {
 
   const nameA = s(tp, `${typeA}.name`, typeA);
   const nameB = s(tp, `${typeB}.name`, typeB);
+  const shareTitle = bothSelected && compat
+    ? `${typeA} × ${typeB} ${t('title')} — ${compat.score}%`
+    : t('title');
+  const shareDescription = bothSelected && compat
+    ? `${nameA} × ${nameB}: ${t(`archetype.${compat.archetypeKey}.label`)}. ${t(`archetype.${compat.archetypeKey}.desc`)}`
+    : t('description');
+  const sharePath = bothSelected
+    ? `/compat/${encodeURIComponent(typeA)}/${encodeURIComponent(typeB)}`
+    : '/compat';
 
   return (
     <div className="mx-auto max-w-2xl px-4 py-10">
@@ -294,41 +306,27 @@ function CompatPageInner() {
 
       {/* Actions */}
       <div className="mt-8 flex flex-col items-center gap-3">
-        <Link href="/">
+        <Link href="/test">
           <Button size="lg" className="rounded-full px-8">
             {t('retakeCta')}
           </Button>
         </Link>
         {bothSelected && (
-          <button
-            type="button"
-            onClick={() => {
-              if (typeof navigator !== 'undefined' && navigator.share) {
-                navigator.share({
-                  title: `${typeA} × ${typeB} SBTI 궁합`,
-                  url: window.location.href,
-                }).catch(() => {});
-              } else if (typeof navigator !== 'undefined') {
-                navigator.clipboard.writeText(window.location.href).catch(() => {});
-              }
-            }}
-            className="text-sm text-muted-foreground underline-offset-2 hover:underline transition-colors"
-          >
-            {locale === 'ko' ? '결과 공유하기' :
-             locale === 'zh' ? '分享结果' :
-             locale === 'ja' ? '結果をシェア' :
-             'Share this result'}
-          </button>
+          <ShareButtons
+            url={sharePath}
+            title={shareTitle}
+            description={shareDescription}
+          />
         )}
       </div>
     </div>
   );
 }
 
-export function CompatPage() {
+export function CompatPage({initialA, initialB}: {initialA?: string; initialB?: string}) {
   return (
     <Suspense>
-      <CompatPageInner />
+      <CompatPageInner initialA={initialA} initialB={initialB} />
     </Suspense>
   );
 }

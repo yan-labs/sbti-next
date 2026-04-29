@@ -1,14 +1,13 @@
 'use client';
 
 import {useTranslations, useLocale} from 'next-intl';
-import {useQuizStore} from '@/lib/store';
 import {Button} from '@/components/ui/button';
-import {Card, CardContent} from '@/components/ui/card';
 import {NORMAL_TYPES, TYPE_IMAGES} from '@/lib/data/personalities';
 import {Link} from '@/i18n/navigation';
 import Image from 'next/image';
 import {getLocaleUrl, getPageSeo} from '@/lib/metadata';
 import {BlogCards} from '@/components/blog-cards';
+import {HistoryPanel} from '@/components/history-panel';
 
 const DIM_KEYS = ['S', 'E', 'A', 'Ac', 'So'] as const;
 const DIM_STYLES = [
@@ -25,7 +24,6 @@ export function IntroPhase() {
   const th = useTranslations('homepage');
   const ta = useTranslations('about');
   const tf = useTranslations('faq');
-  const startQuiz = useQuizStore((s) => s.startQuiz);
   const locale = useLocale();
   const seo = getPageSeo(locale, 'home');
   const pageUrl = getLocaleUrl(locale);
@@ -45,15 +43,19 @@ export function IntroPhase() {
             <span className="text-primary">{t('headlineBr')}</span>
           </h1>
 
-          <Button
-            size="lg"
-            onClick={startQuiz}
-            className="rounded-full bg-primary px-10 text-base text-primary-foreground shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30"
-          >
-            {t('start')}
-          </Button>
+          <Link href="/test">
+            <Button
+              size="lg"
+              className="rounded-full bg-primary px-10 text-base text-primary-foreground shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30"
+            >
+              {t('start')}
+            </Button>
+          </Link>
         </div>
       </div>
+
+      {/* History */}
+      <HistoryPanel />
 
       {/* Personality Types Grid */}
       <div className="w-full max-w-5xl pb-16">
@@ -170,13 +172,14 @@ export function IntroPhase() {
 
       {/* Second CTA */}
       <div className="py-8">
-        <Button
-          size="lg"
-          onClick={startQuiz}
-          className="rounded-full bg-primary px-10 text-base text-primary-foreground shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30"
-        >
-          {t('start')}
-        </Button>
+        <Link href="/test">
+          <Button
+            size="lg"
+            className="rounded-full bg-primary px-10 text-base text-primary-foreground shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30"
+          >
+            {t('start')}
+          </Button>
+        </Link>
       </div>
 
       {/* Schema.org */}

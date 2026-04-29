@@ -89,7 +89,7 @@ export function buildQuizSchema(locale: string) {
     '@id': `${BASE_URL}/#quiz`,
     name: QUIZ_NAME[locale] ?? QUIZ_NAME.en,
     description: QUIZ_DESCRIPTION[locale] ?? QUIZ_DESCRIPTION.en,
-    url: getLocaleUrl(locale),
+    url: getLocaleUrl(locale, '/test'),
     numberOfQuestions: 30,
     educationalLevel: 'casual',
     inLanguage: inLanguage(locale),

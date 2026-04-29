@@ -1,7 +1,7 @@
 'use client';
 
 import {useState} from 'react';
-import {useTranslations} from 'next-intl';
+import {useLocale, useTranslations} from 'next-intl';
 import {Button} from '@/components/ui/button';
 
 function XIcon({className}: {className?: string}) {
@@ -22,9 +22,15 @@ function LineIcon({className}: {className?: string}) {
 
 export function ShareButtons({url, title, description}: {url: string; title: string; description: string}) {
   const t = useTranslations('share');
+  const locale = useLocale();
   const [copied, setCopied] = useState(false);
 
-  const shareUrl = url.startsWith('http') ? url : `https://sbti.support${url}`;
+  const localizedUrl = (() => {
+    if (url.startsWith('http')) return url;
+    if (/^\/(zh|ja|ko)(\/|$)/.test(url)) return url;
+    return locale === 'en' ? url : `/${locale}${url}`;
+  })();
+  const shareUrl = localizedUrl.startsWith('http') ? localizedUrl : `https://sbti.support${localizedUrl}`;
 
   const shareTwitter = () => {
     const text = `${title}\n${description}`;

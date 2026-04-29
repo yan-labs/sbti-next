@@ -379,7 +379,12 @@ const BLOG_SEO: Record<string, Record<Locale, {title: string; description: strin
   },
 };
 
-export function getCompatSeo(locale: string, codeA?: string, codeB?: string) {
+export function getCompatSeo(
+  locale: string,
+  codeA?: string,
+  codeB?: string,
+  details?: {nameA?: string; nameB?: string; score?: number; archetypeLabel?: string},
+) {
   const currentLocale = getLocale(locale);
 
   const baseTitle: Record<Locale, string> = {
@@ -397,9 +402,9 @@ export function getCompatSeo(locale: string, codeA?: string, codeB?: string) {
   };
 
   const keywords: Record<Locale, string[]> = {
-    zh: ['SBTI相性', 'SBTI궁합', 'SBTI配对', '人格相性测试', 'MBTI相性替代'],
+    zh: ['SBTI相性', 'SBTI配对', '人格相性测试', 'MBTI相性替代'],
     en: ['SBTI compatibility', 'SBTI type match', 'personality compatibility', 'MBTI compatibility alternative'],
-    ja: ['SBTI 相性', 'SBTI タイプ相性', '性格相性テスト', 'MBTI 相性 代替'],
+    ja: ['SBTI 相性', 'SBTI 診断 相性', 'SBTI タイプ 相性', 'SBTI 相性チェック', '性格相性テスト', 'MBTI 相性'],
     ko: ['SBTI 궁합', 'SBTI 유형 궁합', '성격 궁합 테스트', 'MBTI 궁합 대체', 'SBTI 호환성'],
   };
 
@@ -407,16 +412,55 @@ export function getCompatSeo(locale: string, codeA?: string, codeB?: string) {
   let description = baseDesc[currentLocale];
 
   if (codeA && codeB) {
+    const nameA = details?.nameA;
+    const nameB = details?.nameB;
+    const score = details?.score;
+    const archetypeLabel = details?.archetypeLabel;
+    const pairLabel = nameA && nameB ? `${codeA}（${nameA}）× ${codeB}（${nameB}）` : `${codeA} × ${codeB}`;
     const pairTitleMap: Record<Locale, string> = {
-      zh: `${codeA} × ${codeB} 相性测试 | SBTI 궁합`,
+      zh: `${codeA} × ${codeB} 相性测试 | SBTI 配对`,
       en: `${codeA} × ${codeB} Compatibility | SBTI Check`,
       ja: `${codeA} × ${codeB} 相性チェック | SBTI`,
       ko: `${codeA} × ${codeB} 궁합 | SBTI 테스트`,
     };
     title = pairTitleMap[currentLocale];
+
+    const scoreText = typeof score === 'number' ? `${score}%` : '';
+    const archetypeText = archetypeLabel ? `「${archetypeLabel}」` : '';
+    const pairDescMap: Record<Locale, string> = {
+      zh: normalizeDescription(
+        `查看 ${pairLabel} 的 SBTI 相性指数${scoreText ? `：${scoreText}` : ''}${archetypeText ? `，组合判定为${archetypeText}` : ''}。适合搜索 SBTI 相性、人格配对和朋友关系测试。`,
+      ),
+      en: normalizeDescription(
+        `Check the SBTI compatibility for ${pairLabel}${scoreText ? `: ${scoreText}` : ''}${archetypeText ? `, ${archetypeText}` : ''}. Compare two personality types and share the match result.`,
+      ),
+      ja: normalizeDescription(
+        `${pairLabel} のSBTI相性${scoreText ? `は${scoreText}` : ''}${archetypeText ? `、判定は${archetypeText}` : ''}。SBTI診断のタイプ相性、性格相性、友達との組み合わせを無料でチェックできます。`,
+      ),
+      ko: normalizeDescription(
+        `${pairLabel}의 SBTI 궁합${scoreText ? `은 ${scoreText}` : ''}${archetypeText ? `, 판정은 ${archetypeText}` : ''}. 두 유형의 성격 궁합을 확인하고 공유하세요.`,
+      ),
+    };
+    description = pairDescMap[currentLocale];
   }
 
-  return {title, description, keywords: dedupeKeywords(keywords[currentLocale])};
+  const pairKeywords = codeA && codeB
+    ? currentLocale === 'ja'
+      ? [
+          `${codeA} ${codeB} 相性`,
+          `${codeA} ${codeB} SBTI`,
+          `${codeA} 相性`,
+          `${codeB} 相性`,
+          `${details?.nameA ?? codeA} ${details?.nameB ?? codeB} 相性`,
+        ]
+      : currentLocale === 'zh'
+        ? [`${codeA} ${codeB} 相性`, `${codeA} ${codeB} SBTI`, `${codeA}配${codeB}`, `${codeA}相性`, `${codeB}相性`]
+        : currentLocale === 'ko'
+          ? [`${codeA} ${codeB} 궁합`, `${codeA} ${codeB} SBTI`, `${codeA} 궁합`, `${codeB} 궁합`]
+          : [`${codeA} ${codeB} compatibility`, `${codeA} ${codeB} SBTI`, `${codeA} match`, `${codeB} match`]
+    : [];
+
+  return {title, description, keywords: dedupeKeywords([...keywords[currentLocale], ...pairKeywords])};
 }
 
 export function getBlogSeo(locale: string, slug: string) {
