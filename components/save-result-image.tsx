@@ -51,6 +51,7 @@ const FOREGROUND = '#1A2E24';
 const FOREGROUND_MUTED = '#5F6B66';
 const CHART_4 = '#3B82F6';
 const DESTRUCTIVE = '#EF4444';
+const EXPORT_SCALE = 2;
 
 const COMPAT_TONES: Record<CompatArchetype, {surface: string; accent: string; soft: string}> = {
   fated: {surface: '#EDE9FE', accent: ACCENT, soft: '#F5F3FF'},
@@ -191,9 +192,10 @@ async function generateImage({
   const H = 1440;
 
   const canvas = document.createElement('canvas');
-  canvas.width = W;
-  canvas.height = H;
+  canvas.width = W * EXPORT_SCALE;
+  canvas.height = H * EXPORT_SCALE;
   const ctx = canvas.getContext('2d')!;
+  ctx.scale(EXPORT_SCALE, EXPORT_SCALE);
 
   ctx.fillStyle = SURFACE;
   ctx.fillRect(0, 0, W, H);
@@ -335,9 +337,10 @@ async function generateCompatImage({
   const tone = COMPAT_TONES[archetypeKey];
 
   const canvas = document.createElement('canvas');
-  canvas.width = W;
-  canvas.height = H;
+  canvas.width = W * EXPORT_SCALE;
+  canvas.height = H * EXPORT_SCALE;
   const ctx = canvas.getContext('2d')!;
+  ctx.scale(EXPORT_SCALE, EXPORT_SCALE);
 
   ctx.fillStyle = SURFACE;
   ctx.fillRect(0, 0, W, H);
