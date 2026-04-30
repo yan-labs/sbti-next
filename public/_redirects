@@ -12,8 +12,11 @@ https://www.sbti.support/* https://sbti.support/:splat 301
 /blog /en/blog 200
 /blog/* /en/blog/:splat 200
 /compat /en/compat 200
+/compat/* /en/compat/:splat 200
 /faq /en/faq 200
 /privacy-policy /en/privacy-policy 200
+/result/* /en/result/:splat 200
 /terms /en/terms 200
+/test /en/test 200
 /type/* /en/type/:splat 200
 /types /en/types 200
