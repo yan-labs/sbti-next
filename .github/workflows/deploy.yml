@@ -31,4 +31,7 @@ jobs:
 
       - run: pnpm build
 
+      - name: Trim static export payloads
+        run: find out -type f -name '*.txt' ! -name 'robots.txt' ! -name 'llms.txt' ! -name 'llms-full.txt' -delete
+
       - run: npx wrangler@latest pages deploy out --project-name=sbti-support
