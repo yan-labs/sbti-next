@@ -1,8 +1,7 @@
 'use client';
 
-import {Suspense} from 'react';
+import {useEffect, useState} from 'react';
 import Image from 'next/image';
-import {useSearchParams} from 'next/navigation';
 import {useLocale, useTranslations} from 'next-intl';
 import {Badge} from '@/components/ui/badge';
 import {Button} from '@/components/ui/button';
@@ -33,8 +32,11 @@ function ResultSharePageInner({code}: {code: string}) {
   const td = useTranslations('dimensions');
   const tde = useTranslations('dimExplanations');
   const locale = useLocale();
-  const searchParams = useSearchParams();
-  const resultStateParam = searchParams.get('r');
+  const [resultStateParam, setResultStateParam] = useState<string | null>(null);
+
+  useEffect(() => {
+    setResultStateParam(new URLSearchParams(window.location.search).get('r'));
+  }, []);
 
   const s = (fn: (k: string) => string, key: string, fallback: string) => {
     try { return fn(key); } catch { return fallback; }
@@ -189,9 +191,5 @@ function ResultSharePageInner({code}: {code: string}) {
 }
 
 export function ResultSharePage({code}: {code: string}) {
-  return (
-    <Suspense>
-      <ResultSharePageInner code={code} />
-    </Suspense>
-  );
+  return <ResultSharePageInner code={code} />;
 }

@@ -50,6 +50,7 @@ export default async function TestPage({params}: {params: Promise<{locale: strin
       <JsonLd data={buildWebSiteSchema(locale)} />
       <JsonLd data={buildOrganizationSchema()} />
       <JsonLd data={buildQuizSchema(locale)} />
+      <h1 className="sr-only">{getPageSeo(locale, 'home').title}</h1>
       <SBTIApp autoStart />
     </>
   );

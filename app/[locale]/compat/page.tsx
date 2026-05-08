@@ -4,7 +4,6 @@ import {buildAlternates, buildTwitter, getLocaleUrl, getCompatSeo, DEFAULT_OG_IM
 import {buildWebPageSchema} from '@/lib/json-ld';
 import {JsonLd} from '@/components/json-ld';
 import {CompatPage} from '@/components/compat-page';
-import {Suspense} from 'react';
 
 export function generateStaticParams() {
   return routing.locales.map(locale => ({locale}));
@@ -45,9 +44,7 @@ export default async function CompatRoute({params}: {params: Promise<{locale: st
       <JsonLd data={buildWebPageSchema(locale, seo.title, seo.description, url, {
         about: {'@id': `https://sbti.support/#quiz`},
       })} />
-      <Suspense>
-        <CompatPage />
-      </Suspense>
+      <CompatPage />
     </>
   );
 }

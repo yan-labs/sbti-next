@@ -2,8 +2,7 @@
 
 import {useTranslations, useLocale} from 'next-intl';
 import {useRouter, usePathname} from '@/i18n/navigation';
-import {useSearchParams} from 'next/navigation';
-import {useEffect, useRef, useState, Suspense} from 'react';
+import {useEffect, useRef, useState} from 'react';
 import Image from 'next/image';
 import {Link} from '@/i18n/navigation';
 import {Button} from '@/components/ui/button';
@@ -82,12 +81,13 @@ function levelValue(level: Level) {
 }
 
 function AnimatedScore({target}: {target: number}) {
-  const [display, setDisplay] = useState(0);
+  const [display, setDisplay] = useState(target);
   const rafRef = useRef<number>(null);
   const startRef = useRef<number | null>(null);
 
   useEffect(() => {
     startRef.current = null;
+    setDisplay(0);
 
     const duration = 900;
     function tick(now: number) {
@@ -182,14 +182,22 @@ function CompatPageInner({initialA, initialB}: {initialA?: string; initialB?: st
   const router = useRouter();
   const pathname = usePathname();
   const locale = useLocale();
-  const searchParams = useSearchParams();
 
-  const [typeA, setTypeA] = useState(initialA ?? searchParams.get('a') ?? '');
-  const [typeB, setTypeB] = useState(initialB ?? searchParams.get('b') ?? '');
+  const [typeA, setTypeA] = useState(initialA ?? '');
+  const [typeB, setTypeB] = useState(initialB ?? '');
 
   const s = (fn: (k: string) => string, key: string, fallback: string) => {
     try { return fn(key); } catch { return fallback; }
   };
+
+  useEffect(() => {
+    if (initialA || initialB) return;
+    const params = new URLSearchParams(window.location.search);
+    const queryA = params.get('a') ?? '';
+    const queryB = params.get('b') ?? '';
+    if (queryA) setTypeA(queryA);
+    if (queryB) setTypeB(queryB);
+  }, [initialA, initialB]);
 
   // Use path segments for shareable/indexable pair pages. Query URLs stay as
   // entry points, then canonicalize to /compat/A/B once both types are known.
@@ -206,8 +214,8 @@ function CompatPageInner({initialA, initialB}: {initialA?: string; initialB?: st
   const compat = bothSelected ? getCompatibility(typeA, typeB) : null;
   const style = compat ? ARCHETYPE_STYLES[compat.archetypeKey] : null;
 
-  const nameA = s(tp, `${typeA}.name`, typeA);
-  const nameB = s(tp, `${typeB}.name`, typeB);
+  const nameA = typeA ? s(tp, `${typeA}.name`, typeA) : '';
+  const nameB = typeB ? s(tp, `${typeB}.name`, typeB) : '';
   const levelsA = getTypeLevels(typeA);
   const levelsB = getTypeLevels(typeB);
   const compareDimensions = levelsA && levelsB
@@ -229,6 +237,36 @@ function CompatPageInner({initialA, initialB}: {initialA?: string; initialB?: st
     locale === 'ja' ? '6次元比較' :
     locale === 'ko' ? '6차원 비교' :
     '6D Compare';
+  const analysisTitle =
+    locale === 'zh' ? `${typeA} 和 ${typeB} 的相处说明` :
+    locale === 'ja' ? `${typeA} と ${typeB} の相性メモ` :
+    locale === 'ko' ? `${typeA}와 ${typeB}의 궁합 메모` :
+    `${typeA} and ${typeB} compatibility notes`;
+  const dimensionSummary = compareDimensions
+    .slice(0, 3)
+    .map(dim => `${dim.label}: ${typeA} ${dim.leftLevelLabel}, ${typeB} ${dim.rightLevelLabel}`)
+    .join(locale === 'en' ? '; ' : '；');
+  const analysisCopy = compat ? (
+    locale === 'zh' ? [
+      `${nameA}（${typeA}）和 ${nameB}（${typeB}）的 SBTI 相性指数是 ${compat.score}%。这个组合被归到「${t(`archetype.${compat.archetypeKey}.label`)}」，重点不在于谁更强，而在于两个人处理安全感、行动节奏和表达方式时会不会互相加戏。`,
+      t(`archetype.${compat.archetypeKey}.desc`),
+      dimensionSummary ? `从关键维度看，${dimensionSummary}。这些差异会影响他们怎么做决定、怎么回应情绪，以及冲突出现时谁先开口。` : '',
+    ] :
+    locale === 'ja' ? [
+      `${nameA}（${typeA}）と ${nameB}（${typeB}）のSBTI相性スコアは${compat.score}%です。この組み合わせは「${t(`archetype.${compat.archetypeKey}.label`)}」タイプ。大事なのは優劣ではなく、安心感、行動のテンポ、言葉の出し方がどう噛み合うかです。`,
+      t(`archetype.${compat.archetypeKey}.desc`),
+      dimensionSummary ? `主な違いを見ると、${dimensionSummary}。この差は、決断の速さ、感情への反応、すれ違った時の歩み寄り方に出やすくなります。` : '',
+    ] :
+    locale === 'ko' ? [
+      `${nameA}(${typeA})와 ${nameB}(${typeB})의 SBTI 궁합 지수는 ${compat.score}%입니다. 이 조합은 '${t(`archetype.${compat.archetypeKey}.label`)}' 유형으로, 누가 더 낫다기보다 안정감, 실행 속도, 표현 방식이 어떻게 맞물리는지가 핵심입니다.`,
+      t(`archetype.${compat.archetypeKey}.desc`),
+      dimensionSummary ? `주요 차원을 보면 ${dimensionSummary}. 이 차이는 의사결정, 감정 반응, 갈등이 생겼을 때 먼저 다가가는 방식에 영향을 줍니다.` : '',
+    ] : [
+      `${nameA} (${typeA}) and ${nameB} (${typeB}) land at a ${compat.score}% SBTI compatibility score. This pairing is classified as "${t(`archetype.${compat.archetypeKey}.label`)}", which is less about who wins and more about how their safety needs, pace, and communication style collide or cooperate.`,
+      t(`archetype.${compat.archetypeKey}.desc`),
+      dimensionSummary ? `Across the key dimensions, ${dimensionSummary}. Those differences shape how they make decisions, respond to emotion, and recover when the interaction gets weird.` : '',
+    ]
+  ) : [];
   const shareTitle = bothSelected && compat
     ? `${typeA} × ${typeB} ${t('title')} — ${compat.score}%`
     : t('title');
@@ -415,6 +453,17 @@ function CompatPageInner({initialA, initialB}: {initialA?: string; initialB?: st
         </div>
       )}
 
+      {bothSelected && compat && (
+        <section className="mt-6 rounded-2xl border border-border bg-card/70 p-5 shadow-sm md:p-6">
+          <h2 className="font-heading text-xl font-bold tracking-tight">{analysisTitle}</h2>
+          <div className="mt-3 space-y-3 text-sm leading-relaxed text-foreground/75 md:text-base">
+            {analysisCopy.filter(Boolean).map((paragraph, index) => (
+              <p key={index}>{paragraph}</p>
+            ))}
+          </div>
+        </section>
+      )}
+
       {/* Actions */}
       <div className="mt-8 flex flex-col items-center gap-4">
         <Link href="/test">
@@ -456,9 +505,5 @@ function CompatPageInner({initialA, initialB}: {initialA?: string; initialB?: st
 }
 
 export function CompatPage({initialA, initialB}: {initialA?: string; initialB?: string}) {
-  return (
-    <Suspense>
-      <CompatPageInner initialA={initialA} initialB={initialB} />
-    </Suspense>
-  );
+  return <CompatPageInner initialA={initialA} initialB={initialB} />;
 }

@@ -1,5 +1,8 @@
-# www -> apex
-https://www.sbti.support/* https://sbti.support/:splat 301
+# www -> apex must be configured as a Cloudflare Bulk Redirect.
+# Cloudflare Pages _redirects does not support domain-level redirects.
+
+# Legacy type PNG URLs now point at the compressed WebP assets.
+/types/:image.png /types/:image.webp 301
 
 # Root serves English content (rewrite, not redirect — SEO friendly)
 / /en 200

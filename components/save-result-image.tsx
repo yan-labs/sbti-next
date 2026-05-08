@@ -4,6 +4,7 @@ import {useState} from 'react';
 import {useTranslations} from 'next-intl';
 import {Button} from '@/components/ui/button';
 import {type CompatArchetype} from '@/lib/data/compat';
+import {TYPE_IMAGES} from '@/lib/data/personalities';
 import {type DimCode, type Level} from '@/lib/types';
 
 interface SaveImageButtonProps {
@@ -52,6 +53,10 @@ const FOREGROUND_MUTED = '#5F6B66';
 const CHART_4 = '#3B82F6';
 const DESTRUCTIVE = '#EF4444';
 const EXPORT_SCALE = 2;
+
+function getTypeImageSrc(code: string) {
+  return TYPE_IMAGES[code] ?? `/types/${code}.webp`;
+}
 
 const COMPAT_TONES: Record<CompatArchetype, {surface: string; accent: string; soft: string}> = {
   fated: {surface: '#EDE9FE', accent: ACCENT, soft: '#F5F3FF'},
@@ -218,7 +223,7 @@ async function generateImage({
     const el = new Image();
     el.onload = () => resolve(el);
     el.onerror = reject;
-    el.src = `/types/${code}.png`;
+    el.src = getTypeImageSrc(code);
   });
 
   const imgSize = 420;
@@ -362,13 +367,13 @@ async function generateCompatImage({
       const el = new Image();
       el.onload = () => resolve(el);
       el.onerror = reject;
-      el.src = `/types/${codeA}.png`;
+      el.src = getTypeImageSrc(codeA);
     }),
     new Promise<HTMLImageElement>((resolve, reject) => {
       const el = new Image();
       el.onload = () => resolve(el);
       el.onerror = reject;
-      el.src = `/types/${codeB}.png`;
+      el.src = getTypeImageSrc(codeB);
     }),
   ]);
 

@@ -4,9 +4,11 @@ import {useTranslations} from 'next-intl';
 import {Mail} from 'lucide-react';
 import {Link} from '@/i18n/navigation';
 
+const EMAIL_USER = 'kanchaishaoxia';
+const EMAIL_DOMAIN = 'gmail.com';
+
 const CONTACT_LINKS = [
-  {href: 'https://x.com/yan_ai_labs/', labelKey: 'x', kind: 'x'},
-  {href: 'mailto:kanchaishaoxia@gmail.com', labelKey: 'email', kind: 'email'},
+  {href: 'https://x.com/yan_ai_labs/', labelKey: 'x'},
 ] as const;
 
 export function SiteFooter() {
@@ -37,22 +39,28 @@ export function SiteFooter() {
           ))}
         </nav>
         <div className="mt-5 flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
-          {CONTACT_LINKS.map(({href, labelKey, kind}) => (
+          {CONTACT_LINKS.map(({href, labelKey}) => (
             <a
               key={href}
               href={href}
-              target={kind === 'x' ? '_blank' : undefined}
-              rel={kind === 'x' ? 'noreferrer' : undefined}
+              target="_blank"
+              rel="noreferrer"
               className="inline-flex items-center gap-1.5 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
             >
-              {kind === 'x' ? (
-                <span className="text-xs font-bold" aria-hidden="true">X</span>
-              ) : (
-                <Mail className="size-3.5" aria-hidden="true" />
-              )}
+              <span className="text-xs font-bold" aria-hidden="true">X</span>
               <span>{t(labelKey)}</span>
             </a>
           ))}
+          <button
+            type="button"
+            className="inline-flex items-center gap-1.5 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+            onClick={() => {
+              window.location.href = `mailto:${EMAIL_USER}@${EMAIL_DOMAIN}`;
+            }}
+          >
+            <Mail className="size-3.5" aria-hidden="true" />
+            <span>{t('email')}</span>
+          </button>
         </div>
         <div className="mt-6 text-center">
           <p className="text-sm font-medium text-foreground/70">{t('copyright')}</p>
