@@ -44,7 +44,7 @@ export function SiteFooter() {
               key={href}
               href={href}
               target="_blank"
-              rel="noreferrer"
+              rel="nofollow noreferrer"
               className="inline-flex items-center gap-1.5 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
             >
               <span className="text-xs font-bold" aria-hidden="true">X</span>
