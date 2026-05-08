@@ -1,11 +1,10 @@
 'use client';
 
-import {useTranslations, useLocale} from 'next-intl';
+import {useTranslations} from 'next-intl';
 import {Button} from '@/components/ui/button';
 import {NORMAL_TYPES, TYPE_IMAGES} from '@/lib/data/personalities';
 import {Link} from '@/i18n/navigation';
 import Image from 'next/image';
-import {getLocaleUrl, getPageSeo} from '@/lib/metadata';
 import {BlogCards} from '@/components/blog-cards';
 import {HistoryPanel} from '@/components/history-panel';
 
@@ -24,9 +23,6 @@ export function IntroPhase() {
   const th = useTranslations('homepage');
   const ta = useTranslations('about');
   const tf = useTranslations('faq');
-  const locale = useLocale();
-  const seo = getPageSeo(locale, 'home');
-  const pageUrl = getLocaleUrl(locale);
 
   const s = (fn: (k: string) => string, key: string, fallback: string) => {
     try { return fn(key); } catch { return fallback; }
@@ -182,39 +178,6 @@ export function IntroPhase() {
         </Link>
       </div>
 
-      {/* Schema.org */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'Quiz',
-            name: seo.title,
-            description: seo.description,
-            url: pageUrl,
-            numberOfQuestions: 30,
-            inLanguage: locale,
-            isAccessibleForFree: true,
-            about: {
-              '@type': 'Thing',
-              name: locale === 'zh' ? '人格测试' : locale === 'ja' ? '性格テスト' : locale === 'ko' ? '성격 테스트' : 'Personality Test',
-            },
-          }),
-        }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'WebSite',
-            name: 'SBTI',
-            description: seo.description,
-            url: pageUrl,
-            inLanguage: ['zh', 'en', 'ja', 'ko'],
-          }),
-        }}
-      />
     </div>
   );
 }

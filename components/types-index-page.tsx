@@ -1,20 +1,17 @@
 'use client';
 
-import {useTranslations, useLocale} from 'next-intl';
+import {useTranslations} from 'next-intl';
 import {Link} from '@/i18n/navigation';
 import {NORMAL_TYPES, TYPE_IMAGES} from '@/lib/data/personalities';
 import {Card, CardContent} from '@/components/ui/card';
 import {Separator} from '@/components/ui/separator';
 import {ChevronRight} from 'lucide-react';
 import Image from 'next/image';
-import {getLocaleUrl, getPageSeo} from '@/lib/metadata';
 
 export function TypesIndexPage() {
   const t = useTranslations('typesIndex');
   const tp = useTranslations('personalities');
   const tb = useTranslations('breadcrumb');
-  const locale = useLocale();
-  const seo = getPageSeo(locale, 'types');
 
   const s = (fn: (k: string) => string, key: string, fallback: string) => {
     try { return fn(key); } catch { return fallback; }
@@ -65,38 +62,6 @@ export function TypesIndexPage() {
         })}
       </div>
 
-      {/* ItemList Schema */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'ItemList',
-            name: seo.title,
-            description: seo.description,
-            numberOfItems: NORMAL_TYPES.length,
-            itemListElement: NORMAL_TYPES.map(({code}, i) => ({
-              '@type': 'ListItem',
-              position: i + 1,
-              name: code,
-              url: getLocaleUrl(locale, `/type/${code}`),
-            })),
-          }),
-        }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'BreadcrumbList',
-            itemListElement: [
-              {'@type': 'ListItem', position: 1, name: tb('home'), item: getLocaleUrl(locale)},
-              {'@type': 'ListItem', position: 2, name: t('pageTitle')},
-            ],
-          }),
-        }}
-      />
     </div>
   );
 }

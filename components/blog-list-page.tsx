@@ -1,11 +1,10 @@
 'use client';
 
-import {useTranslations, useLocale} from 'next-intl';
+import {useTranslations} from 'next-intl';
 import {Link} from '@/i18n/navigation';
 import {Button} from '@/components/ui/button';
 import {ChevronRight, Clock, ArrowRight} from 'lucide-react';
 import {BLOG_POSTS} from '@/lib/data/blog';
-import {getLocaleUrl, getPageSeo} from '@/lib/metadata';
 
 const CARD_THEMES = [
   {
@@ -34,8 +33,6 @@ const CARD_THEMES = [
 export function BlogListPage() {
   const t = useTranslations('blog');
   const tb = useTranslations('breadcrumb');
-  const locale = useLocale();
-  const seo = getPageSeo(locale, 'blog');
 
   const featured = BLOG_POSTS[0];
   const rest = BLOG_POSTS.slice(1);
@@ -133,37 +130,6 @@ export function BlogListPage() {
         </Link>
       </div>
 
-      {/* Schema.org */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'Blog',
-            name: seo.title,
-            url: getLocaleUrl(locale, '/blog'),
-            description: seo.description,
-            publisher: {
-              '@type': 'Organization',
-              name: 'SBTI',
-              url: getLocaleUrl(locale),
-            },
-          }),
-        }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'BreadcrumbList',
-            itemListElement: [
-              {'@type': 'ListItem', position: 1, name: tb('home'), item: getLocaleUrl(locale)},
-              {'@type': 'ListItem', position: 2, name: t('pageTitle')},
-            ],
-          }),
-        }}
-      />
     </div>
   );
 }

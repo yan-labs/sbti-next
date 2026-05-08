@@ -1,6 +1,7 @@
 import {setRequestLocale} from 'next-intl/server';
+import {getTranslations} from 'next-intl/server';
 import {buildAlternates, buildTwitter, getLocaleUrl, getPageSeo, getOgLocale, getAlternateOgLocales, DEFAULT_OG_IMAGE} from '@/lib/metadata';
-import {buildCollectionPageSchema} from '@/lib/json-ld';
+import {buildBreadcrumbSchema, buildCollectionPageSchema} from '@/lib/json-ld';
 import {JsonLd} from '@/components/json-ld';
 import {NORMAL_TYPES} from '@/lib/data/personalities';
 import {TypesIndexPage} from '@/components/types-index-page';
@@ -36,9 +37,14 @@ export default async function Types({params}: {params: Promise<{locale: string}>
   setRequestLocale(locale);
   const seo = getPageSeo(locale, 'types');
   const url = getLocaleUrl(locale, '/types');
+  const tBreadcrumb = await getTranslations({locale, namespace: 'breadcrumb'});
   return (
     <>
       <JsonLd data={buildCollectionPageSchema(locale, seo.title, seo.description, url, ALL_TYPE_CODES)} />
+      <JsonLd data={buildBreadcrumbSchema(locale, [
+        {name: tBreadcrumb('home'), path: ''},
+        {name: tBreadcrumb('types'), path: '/types'},
+      ])} />
       <TypesIndexPage />
     </>
   );

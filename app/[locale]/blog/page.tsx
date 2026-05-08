@@ -1,8 +1,8 @@
 import {setRequestLocale} from 'next-intl/server';
+import {getTranslations} from 'next-intl/server';
 import {buildAlternates, buildTwitter, getLocaleUrl, getPageSeo, getOgLocale, getAlternateOgLocales, DEFAULT_OG_IMAGE} from '@/lib/metadata';
-import {buildWebPageSchema} from '@/lib/json-ld';
+import {buildBreadcrumbSchema, buildWebPageSchema} from '@/lib/json-ld';
 import {JsonLd} from '@/components/json-ld';
-import {BLOG_POSTS} from '@/lib/data/blog';
 import {BlogListPage} from '@/components/blog-list-page';
 
 export async function generateMetadata({params}: {params: Promise<{locale: string}>}) {
@@ -33,15 +33,14 @@ export default async function Blog({params}: {params: Promise<{locale: string}>}
   setRequestLocale(locale);
   const seo = getPageSeo(locale, 'blog');
   const url = getLocaleUrl(locale, '/blog');
+  const tBreadcrumb = await getTranslations({locale, namespace: 'breadcrumb'});
   return (
     <>
-      <JsonLd data={buildWebPageSchema(locale, seo.title, seo.description, url, {
-        hasPart: BLOG_POSTS.map(post => ({
-          '@type': 'Article',
-          url: getLocaleUrl(locale, `/blog/${post.slug}`),
-          name: post.slug,
-        })),
-      })} />
+      <JsonLd data={buildWebPageSchema(locale, seo.title, seo.description, url)} />
+      <JsonLd data={buildBreadcrumbSchema(locale, [
+        {name: tBreadcrumb('home'), path: ''},
+        {name: tBreadcrumb('blog'), path: '/blog'},
+      ])} />
       <BlogListPage />
     </>
   );

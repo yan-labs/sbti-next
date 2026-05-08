@@ -1,12 +1,11 @@
 'use client';
 
-import {useTranslations, useLocale} from 'next-intl';
+import {useTranslations} from 'next-intl';
 import {Link} from '@/i18n/navigation';
 import {Button} from '@/components/ui/button';
 import {Separator} from '@/components/ui/separator';
 import {ChevronRight, Clock, ArrowLeft} from 'lucide-react';
 import {getBlogPost} from '@/lib/data/blog';
-import {getLocaleUrl, getBlogSeo} from '@/lib/metadata';
 import {NORMAL_TYPES, TYPE_IMAGES} from '@/lib/data/personalities';
 import {Card, CardContent} from '@/components/ui/card';
 import Image from 'next/image';
@@ -197,12 +196,10 @@ const ARTICLE_COMPONENTS: Record<string, React.ComponentType> = {
 export function BlogPostPage({slug}: {slug: string}) {
   const t = useTranslations('blog');
   const tb = useTranslations('breadcrumb');
-  const locale = useLocale();
   const post = getBlogPost(slug);
-  const seo = getBlogSeo(locale, slug);
   const ArticleComponent = ARTICLE_COMPONENTS[slug];
 
-  if (!post || !seo || !ArticleComponent) return null;
+  if (!post || !ArticleComponent) return null;
 
   return (
     <div className="mx-auto max-w-2xl px-4 py-12">
@@ -242,68 +239,6 @@ export function BlogPostPage({slug}: {slug: string}) {
         </Link>
       </div>
 
-      {/* Schema.org Article */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'Article',
-            headline: seo.title,
-            description: seo.description,
-            url: getLocaleUrl(locale, `/blog/${slug}`),
-            datePublished: post.date,
-            dateModified: post.date,
-            author: {
-              '@type': 'Organization',
-              name: 'SBTI',
-              url: getLocaleUrl(locale),
-            },
-            publisher: {
-              '@type': 'Organization',
-              name: 'SBTI',
-              url: getLocaleUrl(locale),
-            },
-            keywords: seo.keywords,
-          }),
-        }}
-      />
-      {/* FAQPage schema for GEO */}
-      {slug === 'sbti-vs-mbti' && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              '@context': 'https://schema.org',
-              '@type': 'FAQPage',
-              mainEntity: [
-                {
-                  '@type': 'Question',
-                  name: seo.keywords[0],
-                  acceptedAnswer: {
-                    '@type': 'Answer',
-                    text: seo.description,
-                  },
-                },
-              ],
-            }),
-          }}
-        />
-      )}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'BreadcrumbList',
-            itemListElement: [
-              {'@type': 'ListItem', position: 1, name: tb('home'), item: getLocaleUrl(locale)},
-              {'@type': 'ListItem', position: 2, name: t('pageTitle'), item: getLocaleUrl(locale, '/blog')},
-              {'@type': 'ListItem', position: 3, name: t(`posts.${slug}.title`)},
-            ],
-          }),
-        }}
-      />
     </div>
   );
 }

@@ -31,9 +31,10 @@ function entry(
   path: string,
   priority: number,
   lastModified: string = '2026-04-12',
+  locale: string = 'en',
 ): MetadataRoute.Sitemap[number] {
   return {
-    url: localeUrl('en', path),
+    url: localeUrl(locale, path),
     lastModified,
     priority,
     alternates: makeAlternates(path),
@@ -43,44 +44,50 @@ function entry(
 export default function sitemap(): MetadataRoute.Sitemap {
   const entries: MetadataRoute.Sitemap = [];
 
+  function addLocalized(path: string, priority: number, lastModified?: string) {
+    for (const locale of routing.locales) {
+      entries.push(entry(path, priority, lastModified, locale));
+    }
+  }
+
   // Homepage
-  entries.push(entry('', 1.0, '2026-04-10'));
-  entries.push(entry('/test', 0.9, '2026-04-29'));
+  addLocalized('', 1.0, '2026-04-10');
+  addLocalized('/test', 0.9, '2026-04-29');
 
   // Type pages
   for (const code of TYPE_CODES) {
-    entries.push(entry(`/type/${encodeURIComponent(code)}`, 0.8, '2026-04-10'));
+    addLocalized(`/type/${encodeURIComponent(code)}`, 0.8, '2026-04-10');
   }
 
   // Shareable result pages. Personal result state lives in a short query
   // parameter, while these clean URLs are the canonical indexable targets.
   for (const code of TYPE_CODES) {
-    entries.push(entry(`/result/${encodeURIComponent(code)}`, 0.75, '2026-04-29'));
+    addLocalized(`/result/${encodeURIComponent(code)}`, 0.75, '2026-04-29');
   }
 
   // Static pages
-  entries.push(entry('/about', 0.5, '2026-04-10'));
-  entries.push(entry('/types', 0.7, '2026-04-10'));
-  entries.push(entry('/faq', 0.5, '2026-04-10'));
-  entries.push(entry('/privacy-policy', 0.3, '2026-04-10'));
-  entries.push(entry('/terms', 0.3, '2026-04-10'));
+  addLocalized('/about', 0.5, '2026-04-10');
+  addLocalized('/types', 0.7, '2026-04-10');
+  addLocalized('/faq', 0.5, '2026-04-10');
+  addLocalized('/privacy-policy', 0.3, '2026-04-10');
+  addLocalized('/terms', 0.3, '2026-04-10');
 
   // Compatibility page
-  entries.push(entry('/compat', 0.6, '2026-04-28'));
+  addLocalized('/compat', 0.6, '2026-04-28');
   for (const codeA of TYPE_CODES) {
     for (const codeB of TYPE_CODES) {
       if (codeA !== codeB) {
-        entries.push(entry(`/compat/${encodeURIComponent(codeA)}/${encodeURIComponent(codeB)}`, 0.45, '2026-04-29'));
+        addLocalized(`/compat/${encodeURIComponent(codeA)}/${encodeURIComponent(codeB)}`, 0.45, '2026-04-29');
       }
     }
   }
 
   // Blog list
-  entries.push(entry('/blog', 0.7));
+  addLocalized('/blog', 0.7);
 
   // Blog articles
   for (const post of BLOG_POSTS) {
-    entries.push(entry(`/blog/${post.slug}`, 0.8, post.date));
+    addLocalized(`/blog/${post.slug}`, 0.8, post.date);
   }
 
   return entries;

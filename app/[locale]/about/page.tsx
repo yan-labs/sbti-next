@@ -1,6 +1,7 @@
 import {setRequestLocale} from 'next-intl/server';
+import {getTranslations} from 'next-intl/server';
 import {buildAlternates, buildTwitter, getLocaleUrl, getPageSeo, getOgLocale, getAlternateOgLocales, DEFAULT_OG_IMAGE} from '@/lib/metadata';
-import {buildArticleSchema} from '@/lib/json-ld';
+import {buildBreadcrumbSchema, buildWebPageSchema} from '@/lib/json-ld';
 import {JsonLd} from '@/components/json-ld';
 import {AboutPage} from '@/components/about-page';
 
@@ -32,15 +33,14 @@ export default async function About({params}: {params: Promise<{locale: string}>
   setRequestLocale(locale);
   const seo = getPageSeo(locale, 'about');
   const url = getLocaleUrl(locale, '/about');
+  const tBreadcrumb = await getTranslations({locale, namespace: 'breadcrumb'});
   return (
     <>
-      <JsonLd data={buildArticleSchema(locale, {
-        headline: seo.title,
-        description: seo.description,
-        datePublished: '2026-04-12',
-        dateModified: '2026-04-12',
-        url,
-      })} />
+      <JsonLd data={buildWebPageSchema(locale, seo.title, seo.description, url)} />
+      <JsonLd data={buildBreadcrumbSchema(locale, [
+        {name: tBreadcrumb('home'), path: ''},
+        {name: seo.title, path: '/about'},
+      ])} />
       <AboutPage />
     </>
   );

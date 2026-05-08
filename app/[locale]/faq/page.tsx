@@ -1,6 +1,6 @@
 import {setRequestLocale, getTranslations} from 'next-intl/server';
 import {buildAlternates, buildTwitter, getLocaleUrl, getPageSeo, getOgLocale, getAlternateOgLocales, DEFAULT_OG_IMAGE} from '@/lib/metadata';
-import {buildFAQPageSchema} from '@/lib/json-ld';
+import {buildBreadcrumbSchema, buildFAQPageSchema} from '@/lib/json-ld';
 import {JsonLd} from '@/components/json-ld';
 import {FAQPage} from '@/components/faq-page';
 
@@ -39,10 +39,15 @@ export default async function FAQ({params}: {params: Promise<{locale: string}>})
     question: t(`q${i + 1}`),
     answer: t(`a${i + 1}`),
   }));
+  const tBreadcrumb = await getTranslations({locale, namespace: 'breadcrumb'});
 
   return (
     <>
       <JsonLd data={buildFAQPageSchema(qaPairs)} />
+      <JsonLd data={buildBreadcrumbSchema(locale, [
+        {name: tBreadcrumb('home'), path: ''},
+        {name: t('pageTitle'), path: '/faq'},
+      ])} />
       <FAQPage />
     </>
   );

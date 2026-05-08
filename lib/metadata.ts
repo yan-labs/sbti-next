@@ -219,6 +219,45 @@ function normalizeDescription(description: string) {
   return description.replace(/\s+/g, ' ').trim();
 }
 
+const TITLE_SUFFIX: Record<Locale, string> = {
+  zh: 'SBTI 人格测试',
+  en: 'SBTI Personality Test',
+  ja: 'SBTI 性格テスト',
+  ko: 'SBTI 성격 테스트',
+};
+
+const DESCRIPTION_SUFFIX: Record<Locale, string> = {
+  zh: '页面包含 SBTI 人格测试背景、类型说明、结果分享入口和相关导航，帮助你理解这个讽刺人格测试网站。',
+  en: 'It includes SBTI context, personality-test navigation, shareable result links, and clear page details for readers and search engines.',
+  ja: 'SBTIの性格テスト背景、タイプ説明、結果共有リンク、関連ナビゲーションを含み、ページ内容を理解しやすくしています。',
+  ko: 'SBTI 성격 테스트 배경, 유형 설명, 결과 공유 링크, 관련 탐색 정보를 포함해 페이지 내용을 이해하기 쉽게 합니다.',
+};
+
+export function fitSeoTitle(locale: string, title: string) {
+  const currentLocale = getLocale(locale);
+  const normalized = normalizeDescription(title);
+  const withSuffix = normalized.length < 15
+    ? `${normalized} | ${TITLE_SUFFIX[currentLocale]}`
+    : normalized;
+
+  return withSuffix.length > 70
+    ? `${withSuffix.slice(0, 69).trim()}…`
+    : withSuffix;
+}
+
+export function fitSeoDescription(locale: string, description: string) {
+  const currentLocale = getLocale(locale);
+  const normalized = normalizeDescription(description);
+  let withSuffix = normalized;
+  while (withSuffix.length < 110) {
+    withSuffix = normalizeDescription(`${withSuffix} ${DESCRIPTION_SUFFIX[currentLocale]}`);
+  }
+
+  return withSuffix.length > 145
+    ? `${withSuffix.slice(0, 144).trim()}…`
+    : withSuffix;
+}
+
 export function buildTwitter(title: string, description: string, image?: {url: string; width?: number; height?: number}) {
   return {
     card: 'summary_large_image' as const,
@@ -242,8 +281,10 @@ export function buildAlternates(locale: string, path: string = '') {
 
 export function getPageSeo(locale: string, page: StaticSeoPage) {
   const currentLocale = getLocale(locale);
+  const copy = PAGE_SEO_COPY[page][currentLocale];
   return {
-    ...PAGE_SEO_COPY[page][currentLocale],
+    title: fitSeoTitle(currentLocale, copy.title),
+    description: fitSeoDescription(currentLocale, copy.description),
     keywords: PAGE_KEYWORDS[page][currentLocale],
   };
 }
@@ -274,23 +315,23 @@ export function getTypeSeo(locale: string, code: string, name: string, intro: st
 
   const titleMap: Record<Locale, string> = {
     zh: `${code}（${name}）人格解析 | SBTI 测试结果`,
-    en: `${code} (${name}) Personality Type | SBTI Result, Traits & Meaning`,
+    en: `${code} (${name}) | SBTI Personality Type`,
     ja: `${code}（${name}）性格タイプ | SBTI診断結果`,
     ko: `${code} (${name}) 성격 유형 | SBTI 결과 해석`,
   };
 
   const descriptionMap: Record<Locale, string> = {
     zh: normalizeDescription(
-      `查看 SBTI 测试结果 ${code}（${name}）：${intro} 了解这个人格的特点、15 维评分、最接近类型，并重新测试你的 SBTI 人格。`,
+      `查看 SBTI ${code}（${name}）人格解析：包含性格特点、15 维评分、最接近类型和可分享结果链接，适合重新测试或与朋友比较。`,
     ),
     en: normalizeDescription(
-      `See the SBTI result for ${code} (${name}). ${intro} Read the traits, 15-dimension profile, closest matches, and retake the free SBTI personality test.`,
+      `Explore the SBTI ${code} (${name}) personality type, including traits, 15-dimension scores, closest matches, shareable links, and a free retest.`,
     ),
     ja: normalizeDescription(
-      `${code}（${name}）のSBTI診断結果を確認。${intro} この性格タイプの特徴、15次元スコア、近いタイプ、無料テストへの再挑戦をまとめています。`,
+      `${code}（${name}）のSBTIタイプ解説。特徴、15次元スコア、近いタイプ、共有リンク、無料再診断への入口をまとめています。`,
     ),
     ko: normalizeDescription(
-      `${code} (${name}) SBTI 결과를 확인하세요. ${intro} 이 성격 유형의 특징, 15차원 점수, 가까운 유형, 무료 테스트 다시 하기를 한 페이지에서 볼 수 있습니다.`,
+      `${code} (${name}) SBTI 유형 해석입니다. 특징, 15차원 점수, 가까운 유형, 공유 링크, 무료 재테스트 정보를 함께 제공합니다.`,
     ),
   };
 
@@ -304,8 +345,8 @@ export function getTypeSeo(locale: string, code: string, name: string, intro: st
         : [`${code} SBTI`, `${name} personality type`, `${name} SBTI`, `${code} result`];
 
   return {
-    title: titleMap[currentLocale],
-    description: descriptionMap[currentLocale],
+    title: fitSeoTitle(currentLocale, titleMap[currentLocale]),
+    description: fitSeoDescription(currentLocale, descriptionMap[currentLocale]),
     keywords: dedupeKeywords([...localeKeywords, code, name, ...dynamicKeywords]),
   };
 }
@@ -315,23 +356,23 @@ export function getResultSeo(locale: string, code: string, name: string, intro: 
 
   const titleMap: Record<Locale, string> = {
     zh: `${code}（${name}）SBTI 测试结果 | 可分享人格报告`,
-    en: `${code} (${name}) SBTI Result | Shareable Personality Report`,
+    en: `${code} (${name}) | SBTI Result`,
     ja: `${code}（${name}）SBTI診断結果 | 共有できる性格レポート`,
     ko: `${code} (${name}) SBTI 결과 | 공유 가능한 성격 리포트`,
   };
 
   const descriptionMap: Record<Locale, string> = {
     zh: normalizeDescription(
-      `查看并分享 SBTI 测试结果 ${code}（${name}）：${intro} 页面支持 15 维人格报告、结果链接分享和免费重新测试。`,
+      `查看并分享 SBTI 测试结果 ${code}（${name}）：页面包含 15 维人格报告、结果链接、类型图片和免费重新测试入口。`,
     ),
     en: normalizeDescription(
-      `View and share the SBTI result ${code} (${name}). ${intro} Includes a 15-dimension personality report, shareable result link, and free retest.`,
+      `View and share the SBTI result ${code} (${name}), with a 15-dimension personality report, type image, shareable link, and free retest option.`,
     ),
     ja: normalizeDescription(
-      `${code}（${name}）のSBTI診断結果を確認・共有。${intro} 15次元レポート、共有リンク、無料再診断に対応しています。`,
+      `${code}（${name}）のSBTI診断結果を確認・共有。15次元レポート、タイプ画像、共有リンク、無料再診断への入口があります。`,
     ),
     ko: normalizeDescription(
-      `${code} (${name}) SBTI 결과를 확인하고 공유하세요. ${intro} 15차원 성격 리포트, 공유 링크, 무료 재테스트를 제공합니다.`,
+      `${code} (${name}) SBTI 결과를 확인하고 공유하세요. 15차원 성격 리포트, 유형 이미지, 공유 링크, 무료 재테스트를 제공합니다.`,
     ),
   };
 
@@ -345,8 +386,8 @@ export function getResultSeo(locale: string, code: string, name: string, intro: 
         : ['SBTI result', 'share SBTI result', 'personality test result', `${code} result`, `${name} SBTI result`];
 
   return {
-    title: titleMap[currentLocale],
-    description: descriptionMap[currentLocale],
+    title: fitSeoTitle(currentLocale, titleMap[currentLocale]),
+    description: fitSeoDescription(currentLocale, descriptionMap[currentLocale]),
     keywords: dedupeKeywords([...localeKeywords, code, name, ...resultKeywords]),
   };
 }
@@ -470,16 +511,16 @@ export function getCompatSeo(
     const archetypeText = archetypeLabel ? `「${archetypeLabel}」` : '';
     const pairDescMap: Record<Locale, string> = {
       zh: normalizeDescription(
-        `查看 ${pairLabel} 的 SBTI 相性指数${scoreText ? `：${scoreText}` : ''}${archetypeText ? `，组合判定为${archetypeText}` : ''}。适合搜索 SBTI 相性、人格配对和朋友关系测试。`,
+        `查看 ${pairLabel} 的 SBTI 相性指数${scoreText ? `：${scoreText}` : ''}${archetypeText ? `，组合判定为${archetypeText}` : ''}。页面包含两种人格的相处分析、维度对比、分享链接和免费测试入口。`,
       ),
       en: normalizeDescription(
-        `Check the SBTI compatibility for ${pairLabel}${scoreText ? `: ${scoreText}` : ''}${archetypeText ? `, ${archetypeText}` : ''}. Compare two personality types and share the match result.`,
+        `Check SBTI compatibility for ${pairLabel}${scoreText ? `: ${scoreText}` : ''}${archetypeText ? `, ${archetypeText}` : ''}. Compare two types, review the match notes, and share the result.`,
       ),
       ja: normalizeDescription(
-        `${pairLabel} のSBTI相性${scoreText ? `は${scoreText}` : ''}${archetypeText ? `、判定は${archetypeText}` : ''}。SBTI診断のタイプ相性、性格相性、友達との組み合わせを無料でチェックできます。`,
+        `${pairLabel} のSBTI相性${scoreText ? `は${scoreText}` : ''}${archetypeText ? `、判定は${archetypeText}` : ''}。相性メモ、タイプ比較、共有リンク、無料診断への入口をまとめています。`,
       ),
       ko: normalizeDescription(
-        `${pairLabel}의 SBTI 궁합${scoreText ? `은 ${scoreText}` : ''}${archetypeText ? `, 판정은 ${archetypeText}` : ''}. 두 유형의 성격 궁합을 확인하고 공유하세요.`,
+        `${pairLabel}의 SBTI 궁합${scoreText ? `은 ${scoreText}` : ''}${archetypeText ? `, 판정은 ${archetypeText}` : ''}. 궁합 메모, 유형 비교, 공유 링크, 무료 테스트 입구를 제공합니다.`,
       ),
     };
     description = pairDescMap[currentLocale];
@@ -501,12 +542,20 @@ export function getCompatSeo(
           : [`${codeA} ${codeB} compatibility`, `${codeA} ${codeB} SBTI`, `${codeA} match`, `${codeB} match`]
     : [];
 
-  return {title, description, keywords: dedupeKeywords([...keywords[currentLocale], ...pairKeywords])};
+  return {
+    title: fitSeoTitle(currentLocale, title),
+    description: fitSeoDescription(currentLocale, description),
+    keywords: dedupeKeywords([...keywords[currentLocale], ...pairKeywords]),
+  };
 }
 
 export function getBlogSeo(locale: string, slug: string) {
   const currentLocale = getLocale(locale);
   const blogData = BLOG_SEO[slug];
   if (!blogData) return null;
-  return blogData[currentLocale];
+  return {
+    title: fitSeoTitle(currentLocale, blogData[currentLocale].title),
+    description: fitSeoDescription(currentLocale, blogData[currentLocale].description),
+    keywords: blogData[currentLocale].keywords,
+  };
 }

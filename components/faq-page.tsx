@@ -1,12 +1,11 @@
 'use client';
 
 import {useState} from 'react';
-import {useTranslations, useLocale} from 'next-intl';
+import {useTranslations} from 'next-intl';
 import {Link} from '@/i18n/navigation';
 import {Button} from '@/components/ui/button';
 import {Separator} from '@/components/ui/separator';
 import {ChevronRight, ChevronDown} from 'lucide-react';
-import {getLocaleUrl, getPageSeo} from '@/lib/metadata';
 
 const FAQ_IDS = ['q1', 'q2', 'q3', 'q4', 'q5', 'q6', 'q7', 'q8', 'q9', 'q10'] as const;
 
@@ -32,9 +31,6 @@ export function FAQPage() {
   const t = useTranslations('faq');
   const tb = useTranslations('breadcrumb');
   const ti = useTranslations('intro');
-  const locale = useLocale();
-  const seo = getPageSeo(locale, 'faq');
-  const pageUrl = getLocaleUrl(locale, '/faq');
 
   const faqItems = FAQ_IDS.map(id => ({
     question: t(id),
@@ -67,40 +63,6 @@ export function FAQPage() {
         </Link>
       </div>
 
-      {/* FAQPage Schema */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'FAQPage',
-            name: seo.title,
-            description: seo.description,
-            url: pageUrl,
-            mainEntity: faqItems.map(item => ({
-              '@type': 'Question',
-              name: item.question,
-              acceptedAnswer: {
-                '@type': 'Answer',
-                text: item.answer,
-              },
-            })),
-          }),
-        }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'BreadcrumbList',
-            itemListElement: [
-              {'@type': 'ListItem', position: 1, name: tb('home'), item: getLocaleUrl(locale)},
-              {'@type': 'ListItem', position: 2, name: t('pageTitle')},
-            ],
-          }),
-        }}
-      />
     </div>
   );
 }
