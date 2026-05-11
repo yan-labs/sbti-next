@@ -121,7 +121,7 @@
 | S-C-K | `mute-strategist` | 全屏静音运营家 | 独狼 + 风控 + 钝感，把 LoL 当单机棋类 |
 | S-C-B | `solo-victim` | 单排苦主受难者 | 独狼 + 风控 + 易燃，"对面五个都是 GM" |
 | S-A-K | `lane-tyrant` | 对线压迫艺术家 | 独狼 + 激进 + 钝感，5 分钟塔下击杀获得快乐 |
-| S-A-B | `aram-poet` | 嚎哭深渊段子王 | 独狼 + 激进 + 易燃，桥上五人同时上头 |
+| S-A-B | `aram-comedian` | 嚎哭深渊段子王 | 独狼 + 激进 + 易燃，桥上五人同时上头 |
 
 #### CS2（主导轴：Tempo / Intel / Nerve）
 
@@ -133,7 +133,7 @@
 | L-F-A | `clutch-saint` | 残局 1v3 圣徒 | 慢热 + 手感 + 激进，进语音前要先停三秒 |
 | R-D-C | `default-igl` | 默认开局 IGL | 速通 + 数据 + 风控，每局开场都有 "set play" |
 | R-D-A | `flash-entry` | 闪光弹进点先锋 | 速通 + 数据 + 激进，第一秒交完所有道具 |
-| R-F-C | `aimer-cleric` | 信念架枪师 | 速通 + 手感 + 风控，"我能架到他出来为止" |
+| R-F-C | `arch-cleric` | 信念架枪师 | 速通 + 手感 + 风控，"我能架到他出来为止" |
 | R-F-A | `awp-cowboy` | 中门尊严狙击手 | 速通 + 手感 + 激进，每把 AWP 都觉得是历史名场面 |
 
 #### VALORANT（主导轴：Bond / Intel / Flair）
@@ -144,7 +144,7 @@
 | T-D-H | `caffeinated-igl` | 咖啡因 IGL | 团 + 数据 + 表演，五秒给三套方案 |
 | T-F-U | `sentinel-guardian` | 后场监护人 | 团 + 手感 + 实用，"你前压我兜底" |
 | T-F-H | `clutch-narrator` | 残局解说员 | 团 + 手感 + 表演，1v4 还要说三句台词 |
-| S-D-U | `methodical-jett` | 数据派决斗 | 独 + 数据 + 实用，进点前算所有 timer |
+| S-D-U | `data-duelist` | 数据派决斗 | 独 + 数据 + 实用，进点前算所有 timer |
 | S-D-H | `instalock-spectator` | 秒锁旁观者 | 独 + 数据 + 表演，秒锁 Jett 然后远程指挥 |
 | S-F-U | `sheriff-economist` | 警长经济学家 | 独 + 手感 + 实用，eco 回合靠 Sheriff 上分 |
 | S-F-H | `sheriff-mystic` | 警长一发玄学家 | 独 + 手感 + 表演，"我感觉他在那" |
@@ -160,7 +160,7 @@
 | A-D-L | `kit-merchant` | 高价值套件商人 | 激进 + 数据 + 慢热，专挑高价值打劫 |
 | A-D-R | `boss-contractor` | 高价值交火承包商 | 激进 + 数据 + 速通，地图首响必到 |
 | A-F-L | `loadout-romantic` | 装备浪漫主义者 | 激进 + 手感 + 慢热，"装备就是穿来打仗的" |
-| A-F-R | `road-movie-driver` | 装甲车公路片导演 | 激进 + 手感 + 速通，撤离时一定要开车 |
+| A-F-R | `armored-showoff` | 装甲车公路片导演 | 激进 + 手感 + 速通，撤离时一定要开车 |
 
 #### Honor of Kings（主导轴：Bond / Mental / Flair）
 

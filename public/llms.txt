@@ -1,44 +1,47 @@
-# SBTI Personality Test
+# SBTI Test Hub
 
-> SBTI (Silly Big Type Indicator) is a satirical personality test that went viral in April 2026. It assigns users one of 27 humorous personality types through 30 fun questions across 15 dimensions.
+> SBTI is a free multilingual quiz hub for satirical personality quizzes and game player-type quizzes. The original SBTI test (27 personality types, 30 questions, 15 scoring dimensions) is the flagship. Eight game quizzes use a 6-axis player psychology model (Tempo, Nerve, Bond, Intel, Flair, Mental) to produce 8 archetypes per game and a shareable 6-letter player identity code.
 
 ## About
 
-SBTI is a free, entertaining alternative to MBTI. Unlike serious personality assessments, SBTI uses humor, internet culture, and absurd scenarios to reveal personality traits. The test is available in Chinese, English, Japanese, and Korean.
-
 - Website: https://sbti.support
-- Test: https://sbti.support/en (English), https://sbti.support/zh (Chinese)
+- Main test hub: https://sbti.support
+- SBTI personality test: https://sbti.support/test
 - Free, no registration required
-- 30 questions, ~2 minutes to complete
-- 27 personality types + 2 hidden Easter eggs
+- Available in Chinese (zh), English (en), Japanese (ja), and Korean (ko)
+- English is also served at the root path (https://sbti.support) as the canonical default
 
-## 27 Personality Types
+## Key Concepts
 
-CTRL (The Controller), ATM-er (The Giver), Dior-s (The Underdog), BOSS (The Leader), THAN-K (The Grateful), OH-NO (The Worrier), GOGO (The Doer), SEXY (The Charmer), LOVE-R (The Romantic), MUM (The Nurturer), FAKE (The Shapeshifter), OJBK (The Whatever), MALO (The Monkey), JOKE-R (The Clown), WOC! (The Reactor), THIN-K (The Thinker), SHIT (The Grumbler), ZZZZ (The Sleeper), POOR (The Focused), MONK (The Hermit), IMSB (The Overthinker), SOLO (The Loner), FUCK (The Rebel), DEAD (The Detached), IMFW (The Fragile)
+- **SBTI**: Satirical Behavior Type Indicator — a parody of MBTI with 27 humorous personality types across 15 dimensions
+- **Game Quizzes**: 8 game-specific player-type quizzes (30 questions each), built on a 6-axis model that produces 8 archetypes per game and a 6-letter player code (e.g., RASFHB)
+- **6 Axes**: Tempo (slow vs. fast), Nerve (cautious vs. aggressive), Bond (solo vs. team), Intel (data vs. feel), Flair (efficient vs. entertainment), Mental (stoic vs. hot-headed)
+- **Player Identity Code**: A 6-letter string encoding a player's position on each axis (e.g., LACDFK), shareable and comparable across players
 
-Special types: HHHH (The Silly Laugher — fallback), DRUNK (The Drunkard — hidden)
+## Game Quizzes (30 questions · 8 archetypes each)
 
-## 15 Scoring Dimensions (5 Models × 3 Each)
+- League of Legends Player Quiz: https://sbti.support/games/league-of-legends
+- Counter-Strike 2 Player Quiz: https://sbti.support/games/counter-strike-2
+- VALORANT Player Quiz: https://sbti.support/games/valorant
+- Delta Force Player Quiz: https://sbti.support/games/delta-force
+- Honor of Kings Player Quiz: https://sbti.support/games/honor-of-kings
+- Overwatch 2 Player Quiz: https://sbti.support/games/overwatch-2
+- PUBG Battlegrounds Player Quiz: https://sbti.support/games/pubg-battlegrounds
+- Apex Legends Player Quiz: https://sbti.support/games/apex-legends
 
-- Self Model: S1 Self-Esteem, S2 Self-Clarity, S3 Core Values
-- Emotion Model: E1 Attachment Security, E2 Emotional Investment, E3 Boundaries
-- Attitude Model: A1 Worldview, A2 Rules & Flexibility, A3 Life Purpose
-- Action Model: Ac1 Motivation, Ac2 Decision Style, Ac3 Execution
-- Social Model: So1 Social Initiative, So2 Interpersonal Boundaries, So3 Expression
+## SBTI Personality Test
 
-## Type Detail Pages
+30 questions · 27 personality types · 15 scoring dimensions
 
-Each personality type has a dedicated page with full description, dimension pattern, and related types:
-- https://sbti.support/en/type/CTRL
-- https://sbti.support/en/type/BOSS
-- https://sbti.support/en/type/SHIT
-- (and 24 more at /en/type/{CODE})
+- Test: https://sbti.support/test
+- All types: https://sbti.support/types
+- Types include: CTRL (The Controller), ATM-er (The Giver), Dior-s (The Underdog), BOSS (The Leader), THAN-K (The Grateful), OH-NO (The Worrier), GOGO (The Doer), SEXY (The Charmer), LOVE-R (The Romantic), MUM (The Nurturer), FAKE (The Shapeshifter), OJBK (The Whatever), MALO (The Monkey), JOKE-R (The Clown), WOC! (The Reactor), THIN-K (The Thinker), SHIT (The Grumbler), ZZZZ (The Sleeper), POOR (The Focused), MONK (The Hermit), IMSB (The Overthinker), SOLO (The Loner), FUCK (The Rebel), DEAD (The Detached), IMFW (The Fragile)
+- Special types: HHHH (The Silly Laugher, fallback), DRUNK (The Drunkard, hidden)
 
-## Multilingual
+## Multilingual Routes
 
-Available in 4 languages:
 - Chinese: https://sbti.support/zh
-- English: https://sbti.support/en
+- English: https://sbti.support/en (also at root: https://sbti.support)
 - Japanese: https://sbti.support/ja
 - Korean: https://sbti.support/ko
 
