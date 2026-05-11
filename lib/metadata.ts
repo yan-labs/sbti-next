@@ -312,6 +312,7 @@ export function getAlternateOgLocales(locale: string) {
 
 export function getTypeSeo(locale: string, code: string, name: string, intro: string) {
   const currentLocale = getLocale(locale);
+  const introText = normalizeDescription(intro);
 
   const titleMap: Record<Locale, string> = {
     zh: `${code}（${name}）人格解析 | SBTI 测试结果`,
@@ -322,16 +323,16 @@ export function getTypeSeo(locale: string, code: string, name: string, intro: st
 
   const descriptionMap: Record<Locale, string> = {
     zh: normalizeDescription(
-      `查看 SBTI ${code}（${name}）人格解析：包含性格特点、15 维评分、最接近类型和可分享结果链接，适合重新测试或与朋友比较。`,
+      `查看 SBTI ${code}（${name}）人格解析：${introText} 包含性格特点、15 维评分、最接近类型和可分享结果链接。`,
     ),
     en: normalizeDescription(
-      `Explore the SBTI ${code} (${name}) personality type, including traits, 15-dimension scores, closest matches, shareable links, and a free retest.`,
+      `Explore the SBTI ${code} (${name}) personality type. ${introText} Includes traits, 15-dimension scores, closest matches, and a free retest.`,
     ),
     ja: normalizeDescription(
-      `${code}（${name}）のSBTIタイプ解説。特徴、15次元スコア、近いタイプ、共有リンク、無料再診断への入口をまとめています。`,
+      `${code}（${name}）のSBTIタイプ解説。${introText} 特徴、15次元スコア、近いタイプ、無料再診断への入口をまとめています。`,
     ),
     ko: normalizeDescription(
-      `${code} (${name}) SBTI 유형 해석입니다. 특징, 15차원 점수, 가까운 유형, 공유 링크, 무료 재테스트 정보를 함께 제공합니다.`,
+      `${code} (${name}) SBTI 유형 해석입니다. ${introText} 특징, 15차원 점수, 가까운 유형, 무료 재테스트 정보를 제공합니다.`,
     ),
   };
 
@@ -353,6 +354,7 @@ export function getTypeSeo(locale: string, code: string, name: string, intro: st
 
 export function getResultSeo(locale: string, code: string, name: string, intro: string) {
   const currentLocale = getLocale(locale);
+  const introText = normalizeDescription(intro);
 
   const titleMap: Record<Locale, string> = {
     zh: `${code}（${name}）SBTI 测试结果 | 可分享人格报告`,
@@ -363,16 +365,16 @@ export function getResultSeo(locale: string, code: string, name: string, intro: 
 
   const descriptionMap: Record<Locale, string> = {
     zh: normalizeDescription(
-      `查看并分享 SBTI 测试结果 ${code}（${name}）：页面包含 15 维人格报告、结果链接、类型图片和免费重新测试入口。`,
+      `查看并分享 SBTI 测试结果 ${code}（${name}）：${introText} 页面包含 15 维人格报告、类型图片和免费重新测试入口。`,
     ),
     en: normalizeDescription(
-      `View and share the SBTI result ${code} (${name}), with a 15-dimension personality report, type image, shareable link, and free retest option.`,
+      `View and share the SBTI result ${code} (${name}). ${introText} Includes a 15-dimension report, type image, shareable link, and free retest.`,
     ),
     ja: normalizeDescription(
-      `${code}（${name}）のSBTI診断結果を確認・共有。15次元レポート、タイプ画像、共有リンク、無料再診断への入口があります。`,
+      `${code}（${name}）のSBTI診断結果を確認・共有。${introText} 15次元レポート、タイプ画像、共有リンク、無料再診断があります。`,
     ),
     ko: normalizeDescription(
-      `${code} (${name}) SBTI 결과를 확인하고 공유하세요. 15차원 성격 리포트, 유형 이미지, 공유 링크, 무료 재테스트를 제공합니다.`,
+      `${code} (${name}) SBTI 결과를 확인하고 공유하세요. ${introText} 15차원 리포트, 유형 이미지, 공유 링크, 무료 재테스트를 제공합니다.`,
     ),
   };
 

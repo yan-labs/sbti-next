@@ -81,13 +81,12 @@ function levelValue(level: Level) {
 }
 
 function AnimatedScore({target}: {target: number}) {
-  const [display, setDisplay] = useState(target);
+  const [display, setDisplay] = useState(0);
   const rafRef = useRef<number>(null);
   const startRef = useRef<number | null>(null);
 
   useEffect(() => {
     startRef.current = null;
-    setDisplay(0);
 
     const duration = 900;
     function tick(now: number) {
@@ -195,8 +194,11 @@ function CompatPageInner({initialA, initialB}: {initialA?: string; initialB?: st
     const params = new URLSearchParams(window.location.search);
     const queryA = params.get('a') ?? '';
     const queryB = params.get('b') ?? '';
-    if (queryA) setTypeA(queryA);
-    if (queryB) setTypeB(queryB);
+    const frame = requestAnimationFrame(() => {
+      if (queryA) setTypeA(queryA);
+      if (queryB) setTypeB(queryB);
+    });
+    return () => cancelAnimationFrame(frame);
   }, [initialA, initialB]);
 
   // Use path segments for shareable/indexable pair pages. Query URLs stay as

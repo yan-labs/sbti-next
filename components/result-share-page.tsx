@@ -35,7 +35,10 @@ function ResultSharePageInner({code}: {code: string}) {
   const [resultStateParam, setResultStateParam] = useState<string | null>(null);
 
   useEffect(() => {
-    setResultStateParam(new URLSearchParams(window.location.search).get('r'));
+    const frame = requestAnimationFrame(() => {
+      setResultStateParam(new URLSearchParams(window.location.search).get('r'));
+    });
+    return () => cancelAnimationFrame(frame);
   }, []);
 
   const s = (fn: (k: string) => string, key: string, fallback: string) => {
