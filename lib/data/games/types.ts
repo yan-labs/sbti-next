@@ -1,5 +1,5 @@
-export type { SiteLocale, LocalizedText } from '../game-quizzes';
-import type { LocalizedText } from '../game-quizzes';
+export type { SiteLocale, LocalizedText, GameQuizAsset } from '../game-quizzes';
+import type { LocalizedText, GameQuizAsset } from '../game-quizzes';
 
 // ── Axis identifiers ──────────────────────────────────────────────────────────
 
@@ -41,12 +41,6 @@ export interface QuestionV2 {
 }
 
 // ── Archetype ─────────────────────────────────────────────────────────────────
-
-export interface GameQuizAsset {
-  src: string;
-  alt: LocalizedText;
-  prompt: string;
-}
 
 export interface ArchetypeV2 {
   slug: string;

@@ -192,6 +192,12 @@ export const AXES: readonly AxisDefinition[] = [
   },
 ] as const;
 
+/**
+ * Canonical axis order — derived from AXES; determines letter position in
+ * the 6-letter polarity code (Tempo first → Mental last).
+ */
+export const AXIS_ORDER: readonly Axis[] = AXES.map((a) => a.axis);
+
 // ── Helpers ───────────────────────────────────────────────────────────────────
 
 export function axisByLetter(letter: string): AxisDefinition | undefined {
@@ -201,5 +207,5 @@ export function axisByLetter(letter: string): AxisDefinition | undefined {
 }
 
 export function polarityFromScore(normalizedScore: number): Polarity {
-  return normalizedScore >= 50 ? 'high' : 'low';
+  return normalizedScore > 50 ? 'high' : 'low';
 }

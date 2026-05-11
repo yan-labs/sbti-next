@@ -5,7 +5,7 @@ import {
   derivePolarityCode,
   mapToArchetype,
 } from '../scoring';
-import { AXES } from '../dimensions';
+import { AXES, AXIS_ORDER } from '../dimensions';
 import { ALL_GAMES_V2 } from '../index';
 import type { QuestionV2, PolarityCode, Axis, Polarity } from '../types';
 
@@ -29,20 +29,11 @@ function anchorQ(axis: Axis, id: string): QuestionV2 {
   };
 }
 
-const AXES_ORDER: readonly Axis[] = [
-  'Tempo',
-  'Nerve',
-  'Bond',
-  'Intel',
-  'Flair',
-  'Mental',
-] as const;
-
 /**
  * One anchor question per axis (6 questions total).
  * Option index 0 = low vote, option index 1 = high vote.
  */
-const SYNTHETIC_QUESTIONS: QuestionV2[] = AXES_ORDER.map((axis, i) =>
+const SYNTHETIC_QUESTIONS: QuestionV2[] = AXIS_ORDER.map((axis, i) =>
   anchorQ(axis, `q${i}`),
 );
 
@@ -61,10 +52,9 @@ const ALL_HIGH_ANSWERS = SYNTHETIC_QUESTIONS.map((q) => ({
 // ── Helper: build a 6-letter polarity code from axis→polarity map ────────────
 
 function buildCode(pattern: Record<Axis, Polarity>): PolarityCode {
-  const letters = AXES_ORDER.map((axis) => {
-    const def = AXES.find((a) => a.axis === axis)!;
-    return pattern[axis] === 'high' ? def.highLetter : def.lowLetter;
-  });
+  const letters = AXES.map((def) =>
+    pattern[def.axis] === 'high' ? def.highLetter : def.lowLetter,
+  );
   return letters.join('') as PolarityCode;
 }
 
@@ -104,21 +94,21 @@ function allPolarityCodes(): PolarityCode[] {
 describe('computeScores', () => {
   it('all low-pole answers → all axes score negative', () => {
     const raw = computeScores(ALL_LOW_ANSWERS, SYNTHETIC_QUESTIONS);
-    for (const axis of AXES_ORDER) {
+    for (const axis of AXIS_ORDER) {
       expect(raw[axis]).toBeLessThan(0);
     }
   });
 
   it('all high-pole answers → all axes score positive', () => {
     const raw = computeScores(ALL_HIGH_ANSWERS, SYNTHETIC_QUESTIONS);
-    for (const axis of AXES_ORDER) {
+    for (const axis of AXIS_ORDER) {
       expect(raw[axis]).toBeGreaterThan(0);
     }
   });
 
   it('empty answers → all axes score 0', () => {
     const raw = computeScores([], SYNTHETIC_QUESTIONS);
-    for (const axis of AXES_ORDER) {
+    for (const axis of AXIS_ORDER) {
       expect(raw[axis]).toBe(0);
     }
   });
@@ -128,7 +118,7 @@ describe('normalize', () => {
   it('all low-pole answers → normalized = 0 for every axis', () => {
     const raw = computeScores(ALL_LOW_ANSWERS, SYNTHETIC_QUESTIONS);
     const n = normalize(raw, SYNTHETIC_QUESTIONS);
-    for (const axis of AXES_ORDER) {
+    for (const axis of AXIS_ORDER) {
       expect(n[axis]).toBe(0);
     }
   });
@@ -136,7 +126,7 @@ describe('normalize', () => {
   it('all high-pole answers → normalized = 100 for every axis', () => {
     const raw = computeScores(ALL_HIGH_ANSWERS, SYNTHETIC_QUESTIONS);
     const n = normalize(raw, SYNTHETIC_QUESTIONS);
-    for (const axis of AXES_ORDER) {
+    for (const axis of AXIS_ORDER) {
       expect(n[axis]).toBe(100);
     }
   });
@@ -144,7 +134,7 @@ describe('normalize', () => {
   it('empty answers → normalized = 50 for every axis', () => {
     const raw = computeScores([], SYNTHETIC_QUESTIONS);
     const n = normalize(raw, SYNTHETIC_QUESTIONS);
-    for (const axis of AXES_ORDER) {
+    for (const axis of AXIS_ORDER) {
       expect(n[axis]).toBe(50);
     }
   });
@@ -166,7 +156,6 @@ describe('derivePolarityCode', () => {
   });
 
   it('empty answers → normalized = 50 → tie → code equals LCSDUK (low-pole on tie)', () => {
-    // Tie-break rule: exactly 50 resolves to the low-pole letter (> 50 required for high).
     const raw = computeScores([], SYNTHETIC_QUESTIONS);
     const n = normalize(raw, SYNTHETIC_QUESTIONS);
     expect(Object.values(n).every((v) => v === 50)).toBe(true);

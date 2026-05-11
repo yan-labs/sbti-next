@@ -1,15 +1,5 @@
-import { AXES, polarityFromScore } from './dimensions';
+import { AXES, AXIS_ORDER } from './dimensions';
 import type { Axis, PolarityCode, QuestionV2, ArchetypeV2, GameQuizV2 } from './types';
-
-// All six axes in canonical order — determines letter position in polarity code
-const AXIS_ORDER: readonly Axis[] = [
-  'Tempo',
-  'Nerve',
-  'Bond',
-  'Intel',
-  'Flair',
-  'Mental',
-] as const;
 
 /**
  * Sum signed votes per axis across all answered questions.
@@ -39,22 +29,26 @@ export function computeScores(
  *
  * Denominator per axis = the maximum absolute score achievable on that axis,
  * computed as the sum over questions of the max |vote| any single option
- * contributes to that axis. This keeps the mapping symmetric around 50
- * regardless of how many questions vote on a given axis.
+ * contributes to that axis. The mapping is symmetric around 50.
  *
- * When the denominator is 0 (no question touches that axis), the score
+ * Relies on `AxisVote.delta: -1 | 1` — the "max per option" denominator
+ * overcounts if delta magnitudes ever vary across options on the same axis
+ * within one question. Widen `delta` only after revisiting this contract.
+ *
+ * When the denominator is 0 (no question touches the axis), the score
  * stays at 50 (neutral).
  */
 export function normalize(
   rawScores: Record<Axis, number>,
   questions: readonly QuestionV2[],
 ): Record<Axis, number> {
-  // Max achievable positive votes per axis (= max |raw score|)
   const maxAbsVotes = Object.fromEntries(AXIS_ORDER.map((a) => [a, 0])) as Record<Axis, number>;
+  const perAxisMax: Record<Axis, number> = {
+    Tempo: 0, Nerve: 0, Bond: 0, Intel: 0, Flair: 0, Mental: 0,
+  };
 
   for (const question of questions) {
-    // Find the highest absolute contribution any single option makes per axis
-    const perAxisMax = Object.fromEntries(AXIS_ORDER.map((a) => [a, 0])) as Record<Axis, number>;
+    for (const axis of AXIS_ORDER) perAxisMax[axis] = 0;
     for (const option of question.options) {
       for (const vote of option.scoring) {
         perAxisMax[vote.axis] = Math.max(perAxisMax[vote.axis], Math.abs(vote.delta));
@@ -65,7 +59,6 @@ export function normalize(
     }
   }
 
-  // Map rawScore in [-max, +max] → [0, 100]; 0 → 50
   const normalized = Object.fromEntries(AXIS_ORDER.map((a) => [a, 50])) as Record<Axis, number>;
   for (const axis of AXIS_ORDER) {
     const max = maxAbsVotes[axis];
@@ -81,14 +74,12 @@ export function normalize(
 
 /**
  * Derive the 6-letter polarity code from normalised 0–100 axis scores.
- * Letter is the high-pole letter when score >= 50, else the low-pole letter.
- * On exact tie (50) the low-pole letter is used.
- * Axis order: Tempo Nerve Bond Intel Flair Mental.
+ * Score > 50 → high-pole letter; score ≤ 50 → low-pole letter (exact tie
+ * resolves to low-pole). Axis order: Tempo Nerve Bond Intel Flair Mental.
  */
 export function derivePolarityCode(normalized: Record<Axis, number>): PolarityCode {
-  const letters = AXIS_ORDER.map((axis) => {
-    const def = AXES.find((a) => a.axis === axis)!;
-    // score >= 50 → high pole; score < 50 (or exactly 50 ties to low)
+  const letters = AXIS_ORDER.map((axis, i) => {
+    const def = AXES[i]!;
     return normalized[axis] > 50 ? def.highLetter : def.lowLetter;
   });
   return letters.join('') as PolarityCode;
@@ -106,7 +97,7 @@ export function mapToArchetype(code: PolarityCode, game: GameQuizV2): ArchetypeV
   const codePolarities = Object.fromEntries(
     AXIS_ORDER.map((axis, i) => {
       const letter = codeLetters[i];
-      const def = AXES.find((a) => a.axis === axis)!;
+      const def = AXES[i]!;
       return [axis, letter === def.highLetter ? 'high' : 'low'];
     }),
   ) as Record<Axis, 'low' | 'high'>;
@@ -122,6 +113,3 @@ export function mapToArchetype(code: PolarityCode, game: GameQuizV2): ArchetypeV
 
   return match ?? game.archetypes[0]!;
 }
-
-// Re-export for convenience
-export { polarityFromScore };
