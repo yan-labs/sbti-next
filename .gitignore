@@ -40,3 +40,9 @@ backlink-pilot/
 
 # claude code agent worktrees
 .claude/worktrees/
+
+# local agent / scratch (machine-local config + outdated planning notes)
+.claude/
+task_plan.md
+docs/codex-image-gen-blockers.md
+docs/design-proposal/
