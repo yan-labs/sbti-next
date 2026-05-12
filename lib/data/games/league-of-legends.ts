@@ -525,7 +525,7 @@ const game: GameQuizV2 = {
     },
   ],
   questions: [
-    // ── BATCH 1: Anchor questions Q1–Q6 ─────────────────────────────────────────
+    // ── Anchor questions Q1–Q12 ──────────────────────────────────────────────────
     // Q1 — Bond anchor (peak-end: funny opener)
     {
       id: 'lol-q1',
@@ -820,6 +820,298 @@ const game: GameQuizV2 = {
         },
       ],
     },
+    // Q7 — Tempo anchor
+    {
+      id: 'lol-q7',
+      kind: 'anchor',
+      text: {
+        zh: '前 5 分钟对线还没分出胜负，你……',
+        en: 'Five minutes in, lane is even. You feel…',
+        ja: '5分経過してもレーン戦は互角。あなたは……',
+        ko: '5분 지났는데 라인전이 팽팽하다. 당신은……',
+      },
+      options: [
+        {
+          label: {
+            zh: '有点急，想早点打出优势，已经在想怎么开团了',
+            en: 'A bit restless. You\'re already thinking about when to force a fight',
+            ja: '少しイライラ。早くアドバンテージを作りたくてチームファイトを考え始める',
+            ko: '좀 조급하다. 언제 싸움 붙일지 벌써 생각 중',
+          },
+          scoring: [{ axis: 'Tempo', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '很好，补刀节奏稳，后面慢慢积累优势',
+            en: 'Good. CS rhythm is solid; you\'ll build the lead gradually',
+            ja: '良い感じ。CSリズムも安定してるし、じっくりアドバンテージを積む',
+            ko: '좋다. CS 리듬 안정적이고, 천천히 격차 벌리면 됨',
+          },
+          scoring: [{ axis: 'Tempo', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '不急，等对面犯错，时机到了自然会抓到',
+            en: 'No rush. Wait for the enemy to make a mistake and punish it',
+            ja: '急がない。相手がミスするのを待って、そこをつく',
+            ko: '급하지 않다. 상대가 실수할 때까지 기다렸다가 잡기',
+          },
+          scoring: [{ axis: 'Tempo', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '已经在找机会三换一了，快节奏才是我的风格',
+            en: 'Already looking for a 3-for-1 trade. Fast-paced is your style',
+            ja: 'すでに3対1の交換を狙ってる。スピード重視が自分のスタイル',
+            ko: '이미 3대1 교환 기회 찾는 중. 빠른 템포가 내 스타일',
+          },
+          scoring: [{ axis: 'Tempo', delta: 1 }],
+        },
+      ],
+    },
+    // Q8 — Tempo anchor
+    {
+      id: 'lol-q8',
+      kind: 'anchor',
+      text: {
+        zh: '关于推速的问题，你认为……',
+        en: 'Your philosophy on splitting and pushing is…',
+        ja: 'スプリットプッシュに関してあなたが思うのは……',
+        ko: '스플릿 푸시에 대한 당신의 생각은……',
+      },
+      options: [
+        {
+          label: {
+            zh: '越快越好，打破节奏才能赢，死守运营只是在等死',
+            en: 'Faster the better. Passive play is just dying slowly',
+            ja: 'とにかく早いほどいい。守りに入るのはゆっくり死ぬだけ',
+            ko: '빠를수록 좋다. 수동적으로 하는 건 천천히 죽는 것',
+          },
+          scoring: [{ axis: 'Tempo', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '节奏要稳，不能因为急着推线而失去阵型',
+            en: 'Rhythm matters. Don\'t sacrifice positioning for a fast push',
+            ja: 'リズムが大事。早く押し込もうとして陣形を崩してはいけない',
+            ko: '리듬이 중요하다. 빨리 푸시하려고 진형을 망가뜨리면 안 됨',
+          },
+          scoring: [{ axis: 'Tempo', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '要看资源差，领先了才考虑快速结束',
+            en: 'Depends on the gold lead. Only rush when you\'re ahead',
+            ja: 'ゴールド差次第。リードしてるときだけ早期決着を狙う',
+            ko: '골드 차이 보고 판단. 앞설 때만 빠른 결착 노림',
+          },
+          scoring: [{ axis: 'Tempo', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '一路猛冲，对面来了也能打，抢先手才是王道',
+            en: 'Push hard, fight if they come, first mover advantage is everything',
+            ja: 'どんどん押す。来たら戦う。先手必勝',
+            ko: '계속 밀어붙이기. 오면 싸우고. 선제 공격이 정답',
+          },
+          scoring: [{ axis: 'Tempo', delta: 1 }],
+        },
+      ],
+    },
+    // Q9 — Intel anchor
+    {
+      id: 'lol-q9',
+      kind: 'anchor',
+      text: {
+        zh: '选英雄的时候，你靠……',
+        en: 'When picking a champion, you choose based on…',
+        ja: 'チャンピオンを選ぶとき、何を頼りにする？',
+        ko: '챔피언 고를 때 기준은……',
+      },
+      options: [
+        {
+          label: {
+            zh: '当前版本的胜率数据，哪个强选哪个',
+            en: 'Current patch win rates. Pick the strongest option',
+            ja: '現環境の勝率データ。一番強いのを選ぶ',
+            ko: '현 패치 승률 데이터. 가장 강한 거 선택',
+          },
+          scoring: [{ axis: 'Intel', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '今天手感好，感觉哪个顺就选哪个',
+            en: 'Feel. If a champion feels good today, you pick it',
+            ja: '感覚。今日調子が良さそうなチャンピオンを選ぶ',
+            ko: '감. 오늘 손에 맞는 챔피언 선택',
+          },
+          scoring: [{ axis: 'Intel', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '跑分主力英雄，确保每局都在最优解',
+            en: 'Main champion with tracked performance data. Optimal every game',
+            ja: 'ランク用メイン。毎試合最適解を保証する',
+            ko: '성적 추적 중인 메인 챔피언. 매판 최적해 보장',
+          },
+          scoring: [{ axis: 'Intel', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '看到对面阵容就有感觉，直接跟着直觉走',
+            en: 'Look at their comp and it just clicks. Go with the gut',
+            ja: '相手の構成を見た瞬間ピンとくる。直感で行く',
+            ko: '상대 조합 보니까 딱 느낌 왔다. 직관으로 감',
+          },
+          scoring: [{ axis: 'Intel', delta: 1 }],
+        },
+      ],
+    },
+    // Q10 — Intel anchor
+    {
+      id: 'lol-q10',
+      kind: 'anchor',
+      text: {
+        zh: '游戏打完，你会……',
+        en: 'After a game ends, you typically…',
+        ja: '試合が終わった後、あなたは……',
+        ko: '게임 끝나고 보통……',
+      },
+      options: [
+        {
+          label: {
+            zh: '打开 op.gg 看数据，分析自己哪里差了',
+            en: 'Open op.gg and analyze your stats for mistakes',
+            ja: 'op.ggを開いて自分の数字を分析してミスを探す',
+            ko: 'op.gg 열고 실수 찾으려고 내 스탯 분석',
+          },
+          scoring: [{ axis: 'Intel', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '感觉不好的地方记在脑子里，不用看数据也知道',
+            en: 'File away what felt off in your head. No stats needed',
+            ja: '違和感を頭に記録する。数字を見なくてもわかる',
+            ko: '뭔가 이상했던 부분 머릿속에 기록. 통계 필요 없음',
+          },
+          scoring: [{ axis: 'Intel', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '看一下 KDA 和补刀数，然后决定下一局选什么',
+            en: 'Check KDA and CS numbers, then decide the next pick',
+            ja: 'KDAとCS数を確認して、次のピックを決める',
+            ko: 'KDA랑 CS 확인하고 다음 픽 결정',
+          },
+          scoring: [{ axis: 'Intel', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '直接点下一局，状态好不好自己心里有数',
+            en: 'Queue again immediately. You know how you feel without stats',
+            ja: '即次のキューに入る。自分の状態は数字なしでわかる',
+            ko: '바로 다음 큐 들어감. 스탯 없어도 내 상태 스스로 앎',
+          },
+          scoring: [{ axis: 'Intel', delta: 1 }],
+        },
+      ],
+    },
+    // Q11 — Flair anchor
+    {
+      id: 'lol-q11',
+      kind: 'anchor',
+      text: {
+        zh: '团战打完，你最在意的是……',
+        en: 'After a teamfight, what you care about most is…',
+        ja: 'チームファイトが終わって、一番気になるのは……',
+        ko: '팀파이트 끝나고 제일 신경 쓰이는 건……',
+      },
+      options: [
+        {
+          label: {
+            zh: '我们的伤害分布和资源回报，赢得值不值',
+            en: 'Damage output and resource returns. Was the trade worth it',
+            ja: 'ダメージ分布とリソースの見返り。この交換は得だったか',
+            ko: '딜 분포랑 자원 회수율. 이 교환이 이득이었나',
+          },
+          scoring: [{ axis: 'Flair', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '那个五杀截图有没有截到，发出去好不好看',
+            en: 'Whether you screenshotted that pentakill and if it looks good',
+            ja: 'ペンタキルのスクリーンショットが撮れたか、映えるかどうか',
+            ko: '펜타킬 스크린샷 찍었나, 잘 나왔나',
+          },
+          scoring: [{ axis: 'Flair', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '最短路线推线收益最大化，团战只是手段',
+            en: 'The most efficient follow-up. Teamfights are just a means to an end',
+            ja: '最短の後続行動で利益を最大化する。チームファイトは手段に過ぎない',
+            ko: '가장 효율적인 후속 행동으로 이득 극대화. 팀파이트는 수단일 뿐',
+          },
+          scoring: [{ axis: 'Flair', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '刚才那个大招起手是不是够帅，哪怕输了也想再看一次',
+            en: 'Whether that engage looked sick enough to replay, win or lose',
+            ja: 'さっきの開幕がかっこよかったかどうか。負けても見直したい',
+            ko: '그 오프닝 각이 충분히 멋있었나. 져도 다시 보고 싶음',
+          },
+          scoring: [{ axis: 'Flair', delta: 1 }],
+        },
+      ],
+    },
+    // Q12 — Flair anchor
+    {
+      id: 'lol-q12',
+      kind: 'anchor',
+      text: {
+        zh: '赢了一局之后，你会……',
+        en: 'After winning a game, you…',
+        ja: '試合に勝った後、あなたは……',
+        ko: '한 판 이기고 나서……',
+      },
+      options: [
+        {
+          label: {
+            zh: '看看数据板，记录一下今局哪里做得好，安静离开',
+            en: 'Glance at the post-game screen, note what worked, close it',
+            ja: 'ゲーム終了画面を確認して良かった点をメモして閉じる',
+            ko: '결과 화면 보고 잘 된 부분 기록하고 닫기',
+          },
+          scoring: [{ axis: 'Flair', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '把精彩操作截图发给朋友，等他们的反应',
+            en: 'Screenshot the highlights and send to group chat for reactions',
+            ja: 'ハイライトのスクリーンショットをグループチャットに送って反応を待つ',
+            ko: '하이라이트 스크린샷 찍어서 단톡에 보내고 반응 기다리기',
+          },
+          scoring: [{ axis: 'Flair', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '在语音里说一句"这局运营不错"，然后继续排位',
+            en: 'Say "good macro" in voice chat and queue again',
+            ja: 'ボイスチャットで「マクロ良かった」と言ってキューに入る',
+            ko: '보이스챗에서 "매크로 좋았어" 한마디하고 바로 큐',
+          },
+          scoring: [{ axis: 'Flair', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '在聊天框里骚一下对面，发个 GG，等对面回应',
+            en: 'Type something in all-chat to see how the enemy reacts',
+            ja: 'オールチャットで何か打って相手の反応を見る',
+            ko: '올채팅에 뭔가 쳐서 상대 반응 구경',
+          },
+          scoring: [{ axis: 'Flair', delta: 1 }],
+        },
+      ],
+    },
 
-
-export default game;
