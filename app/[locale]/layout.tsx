@@ -17,7 +17,7 @@ import {notFound} from 'next/navigation';
 import '../globals.css';
 import {routing} from '@/i18n/routing';
 import {SiteFooter} from '@/components/site-footer';
-import {LocaleSwitcher} from '@/components/locale-switcher';
+import {SiteHeader} from '@/components/site-header';
 import {cn} from '@/lib/utils';
 
 const fontDisplay = Space_Grotesk({subsets: ['latin'], variable: '--font-display', weight: ['400', '500', '600', '700'], display: 'swap'});
@@ -96,9 +96,7 @@ gtag('config', 'G-0182BSNWVS');`}
       </head>
       <body>
         <NextIntlClientProvider messages={messages}>
-          <header className="fixed right-0 top-0 z-50 p-4">
-            <LocaleSwitcher />
-          </header>
+          <SiteHeader locale={locale} />
           {children}
           <SiteFooter />
         </NextIntlClientProvider>
