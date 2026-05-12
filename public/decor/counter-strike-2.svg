@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
+  <!-- Tactical grid / crosshair motif -->
+  <!-- Background grid -->
+  <line x1="0" y1="20" x2="200" y2="20" stroke="currentColor" stroke-width="0.5" opacity="0.15"/>
+  <line x1="0" y1="40" x2="200" y2="40" stroke="currentColor" stroke-width="0.5" opacity="0.15"/>
+  <line x1="0" y1="60" x2="200" y2="60" stroke="currentColor" stroke-width="0.5" opacity="0.15"/>
+  <line x1="0" y1="80" x2="200" y2="80" stroke="currentColor" stroke-width="0.5" opacity="0.15"/>
+  <line x1="0" y1="100" x2="200" y2="100" stroke="currentColor" stroke-width="0.5" opacity="0.15"/>
+  <line x1="0" y1="120" x2="200" y2="120" stroke="currentColor" stroke-width="0.5" opacity="0.15"/>
+  <line x1="0" y1="140" x2="200" y2="140" stroke="currentColor" stroke-width="0.5" opacity="0.15"/>
+  <line x1="0" y1="160" x2="200" y2="160" stroke="currentColor" stroke-width="0.5" opacity="0.15"/>
+  <line x1="0" y1="180" x2="200" y2="180" stroke="currentColor" stroke-width="0.5" opacity="0.15"/>
+  <line x1="20" y1="0" x2="20" y2="200" stroke="currentColor" stroke-width="0.5" opacity="0.15"/>
+  <line x1="40" y1="0" x2="40" y2="200" stroke="currentColor" stroke-width="0.5" opacity="0.15"/>
+  <line x1="60" y1="0" x2="60" y2="200" stroke="currentColor" stroke-width="0.5" opacity="0.15"/>
+  <line x1="80" y1="0" x2="80" y2="200" stroke="currentColor" stroke-width="0.5" opacity="0.15"/>
+  <line x1="100" y1="0" x2="100" y2="200" stroke="currentColor" stroke-width="0.5" opacity="0.15"/>
+  <line x1="120" y1="0" x2="120" y2="200" stroke="currentColor" stroke-width="0.5" opacity="0.15"/>
+  <line x1="140" y1="0" x2="140" y2="200" stroke="currentColor" stroke-width="0.5" opacity="0.15"/>
+  <line x1="160" y1="0" x2="160" y2="200" stroke="currentColor" stroke-width="0.5" opacity="0.15"/>
+  <line x1="180" y1="0" x2="180" y2="200" stroke="currentColor" stroke-width="0.5" opacity="0.15"/>
+  <!-- Crosshair -->
+  <line x1="100" y1="60" x2="100" y2="84" stroke="currentColor" stroke-width="2" opacity="0.9"/>
+  <line x1="100" y1="116" x2="100" y2="140" stroke="currentColor" stroke-width="2" opacity="0.9"/>
+  <line x1="60" y1="100" x2="84" y2="100" stroke="currentColor" stroke-width="2" opacity="0.9"/>
+  <line x1="116" y1="100" x2="140" y2="100" stroke="currentColor" stroke-width="2" opacity="0.9"/>
+  <!-- Center dot -->
+  <circle cx="100" cy="100" r="2.5" fill="currentColor" opacity="0.9"/>
+  <!-- Crosshair outer square -->
+  <rect x="60" y="60" width="80" height="80" stroke="currentColor" stroke-width="1" fill="none" opacity="0.4"/>
+  <!-- Corner brackets -->
+  <path d="M10,10 L10,30 M10,10 L30,10" stroke="currentColor" stroke-width="1.5" opacity="0.6"/>
+  <path d="M190,10 L190,30 M190,10 L170,10" stroke="currentColor" stroke-width="1.5" opacity="0.6"/>
+  <path d="M10,190 L10,170 M10,190 L30,190" stroke="currentColor" stroke-width="1.5" opacity="0.6"/>
+  <path d="M190,190 L190,170 M190,190 L170,190" stroke="currentColor" stroke-width="1.5" opacity="0.6"/>
+</svg>
