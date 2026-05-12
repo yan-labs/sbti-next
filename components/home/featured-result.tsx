@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import {Link} from '@/i18n/navigation';
 import {getGameV2, getArchetype} from '@/lib/data/games';
+import {PaperGrain} from '@/components/ui/paper-grain';
 
 type Locale = 'zh' | 'en' | 'ja' | 'ko';
 
@@ -52,7 +53,11 @@ export function FeaturedResult({locale}: FeaturedResultProps) {
     const arch = getArchetype(game, archetypeSlug);
     if (!arch) return null;
     return {game, arch, pct};
-  }).filter(Boolean) as {game: NonNullable<ReturnType<typeof getGameV2>>; arch: NonNullable<ReturnType<typeof getArchetype>>; pct: string}[];
+  }).filter(Boolean) as {
+    game: NonNullable<ReturnType<typeof getGameV2>>;
+    arch: NonNullable<ReturnType<typeof getArchetype>>;
+    pct: string;
+  }[];
 
   return (
     <section id="featured-result" className="bg-muted/40 py-16 md:py-20">
@@ -78,20 +83,25 @@ export function FeaturedResult({locale}: FeaturedResultProps) {
                 key={arch.slug}
                 data-game={game.slug}
                 href={`/games/${game.slug}/result/${arch.slug}`}
-                className="group flex shrink-0 w-72 snap-center flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition-shadow hover:shadow-md md:w-auto"
+                className="group relative flex shrink-0 w-72 snap-center flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md md:w-auto"
               >
-                {/* Cover image — full bleed */}
+                <PaperGrain opacity={0.04} />
+
+                {/* Cover image — full bleed with scale on hover */}
                 <div className="relative h-40 w-full overflow-hidden">
                   <Image
                     src={`/game-quizzes/${game.slug}/cover.png`}
                     alt={gameTitle}
                     fill
-                    className="object-cover transition-transform duration-300 group-hover:scale-105"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
                     loading="lazy"
                     unoptimized
                   />
                   {/* Dark gradient + game label */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" aria-hidden />
+                  <div
+                    className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"
+                    aria-hidden
+                  />
                   <div className="absolute bottom-2 left-3 flex items-center gap-2">
                     <Image
                       src={`/game-logos/${game.slug}.png`}
@@ -106,14 +116,24 @@ export function FeaturedResult({locale}: FeaturedResultProps) {
                 </div>
 
                 {/* Body */}
-                <div className="flex flex-1 flex-col gap-2 p-4">
-                  <p
-                    className="font-heading text-lg font-bold leading-tight text-foreground"
-                    style={{color: 'var(--game-primary, inherit)'}}
-                  >
-                    {archName}
+                <div className="relative flex flex-1 flex-col gap-2 p-4">
+                  {/* Archetype name with game-color underline on hover */}
+                  <div className="relative inline-block">
+                    <p
+                      className="font-heading text-lg font-bold leading-tight text-foreground"
+                      style={{color: 'var(--game-primary, inherit)'}}
+                    >
+                      {archName}
+                    </p>
+                    <div
+                      className="absolute -bottom-0.5 left-0 h-0.5 w-0 rounded-full transition-all duration-300 group-hover:w-full"
+                      style={{background: 'var(--game-primary, var(--primary))'}}
+                      aria-hidden
+                    />
+                  </div>
+                  <p className="text-sm leading-relaxed text-muted-foreground line-clamp-2">
+                    {oneLiner}
                   </p>
-                  <p className="text-sm leading-relaxed text-muted-foreground line-clamp-2">{oneLiner}</p>
                   <div className="mt-auto flex items-center gap-2 pt-2">
                     <span className="font-mono text-xs font-semibold text-primary">{pct}%</span>
                     <span className="text-xs text-muted-foreground">{t.pct}</span>

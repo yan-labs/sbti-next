@@ -378,6 +378,58 @@ export function buildArchetypeDefinedTermSchema(
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
+// ItemList (archetype gallery on game hub)
+// ─────────────────────────────────────────────────────────────────────────────
+
+export function buildItemListSchema(
+  locale: string,
+  name: string,
+  description: string,
+  items: { url: string; name: string; description: string }[],
+) {
+  return {
+    '@context': SCHEMA_ORG,
+    '@type': 'ItemList',
+    name,
+    description,
+    inLanguage: inLanguage(locale),
+    numberOfItems: items.length,
+    itemListElement: items.map((item, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: item.name,
+      description: item.description,
+      url: item.url,
+    })),
+  };
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// HowTo (quiz process on game hub)
+// ─────────────────────────────────────────────────────────────────────────────
+
+export function buildHowToSchema(
+  locale: string,
+  name: string,
+  description: string,
+  steps: { name: string; text: string }[],
+) {
+  return {
+    '@context': SCHEMA_ORG,
+    '@type': 'HowTo',
+    name,
+    description,
+    inLanguage: inLanguage(locale),
+    step: steps.map((s, i) => ({
+      '@type': 'HowToStep',
+      position: i + 1,
+      name: s.name,
+      text: s.text,
+    })),
+  };
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
 // WebPage (blog list, compat)
 // ─────────────────────────────────────────────────────────────────────────────
 
