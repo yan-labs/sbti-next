@@ -6,15 +6,8 @@ import {Button} from '@/components/ui/button';
 import {type CompatArchetype} from '@/lib/data/compat';
 import {TYPE_IMAGES} from '@/lib/data/personalities';
 import {type DimCode, type Level} from '@/lib/types';
-
-// Six-axis types — mirrors lib/data/games/types.ts when that module is present
-type Axis = 'Tempo' | 'Nerve' | 'Bond' | 'Intel' | 'Flair' | 'Mental';
-// Branded string: prevents plain `string` from being passed as a polarity code
-declare const _polarityCodeBrand: unique symbol;
-type PolarityCode = string & { readonly [_polarityCodeBrand]: true };
-
-// Canonical axis order (Tempo → Mental) determines letter position in the code
-const AXIS_ORDER: readonly Axis[] = ['Tempo', 'Nerve', 'Bond', 'Intel', 'Flair', 'Mental'];
+import {AXIS_ORDER} from '@/lib/data/games/dimensions';
+import type {Axis, PolarityCode} from '@/lib/data/games/types';
 
 interface SaveImageButtonProps {
   code: string;
