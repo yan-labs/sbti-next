@@ -1114,7 +1114,7 @@ const game: GameQuizV2 = {
         },
       ],
     },
-    // ── Compound questions Q13–Q30 ────────────────────────────────────────────────
+    // ── Compound questions Q13–Q30 ───────────────────────────────────────────────
     // Q13 — Bond + Nerve
     {
       id: 'lol-q13',
@@ -1409,7 +1409,302 @@ const game: GameQuizV2 = {
         },
       ],
     },
+    // Q19 — Nerve + Mental
+    {
+      id: 'lol-q19',
+      kind: 'compound',
+      text: {
+        zh: '你的英雄被对面 pick 克制了，你……',
+        en: 'The enemy picked a hard counter to your champion. You…',
+        ja: '相手があなたのチャンピオンにカウンターを選んできた。あなたは……',
+        ko: '상대가 네 챔피언 카운터를 픽했다. 당신은……',
+      },
+      options: [
+        {
+          label: {
+            zh: '不在乎，被克制也是对线功底的考验，冲就完了',
+            en: 'Doesn\'t faze you. Beating a counter is a skill test; all in',
+            ja: '気にしない。カウターを相手にしても対線力を試すだけ。突っ込む',
+            ko: '상관없다. 카운터 이기는 게 기술의 증명. 그냥 간다',
+          },
+          scoring: [{ axis: 'Nerve', delta: 1 }, { axis: 'Mental', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '看到克制就想改选，立刻找有没有换人的机会',
+            en: 'Immediately look for a swap opportunity. Why fight a losing matchup',
+            ja: '即スワップチャンスを探す。不利マッチをやる理由がない',
+            ko: '바로 스왑 기회 찾기. 불리한 매치업 할 이유가 없음',
+          },
+          scoring: [{ axis: 'Nerve', delta: -1 }, { axis: 'Mental', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '调整打法，更保守地对线，等到野区换道来帮',
+            en: 'Play conservatively in lane and wait for a jungler swap',
+            ja: 'より慎重なレーニングに切り替え、ジャングルのスワップを待つ',
+            ko: '더 보수적으로 라인전하면서 정글 스왑 기다리기',
+          },
+          scoring: [{ axis: 'Nerve', delta: -1 }, { axis: 'Mental', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '已经开始红温了，被克制这件事本身就让人恼火',
+            en: 'Already tilting. Getting countered in champ select is infuriating',
+            ja: 'すでにガチギレ。チャンプセレクトでカウターを取られるのが腹立つ',
+            ko: '이미 멘붕 옴. 챔선에서 카운터 당하는 것 자체가 화남',
+          },
+          scoring: [{ axis: 'Nerve', delta: 1 }, { axis: 'Mental', delta: 1 }],
+        },
+      ],
+    },
+    // Q20 — Nerve + Mental
+    {
+      id: 'lol-q20',
+      kind: 'compound',
+      text: {
+        zh: '你准备冲一波高风险的塔下击杀，结果没成，死了，你……',
+        en: 'You go for a risky tower dive, it fails, you die. You…',
+        ja: 'リスクの高いタワーダイブを試みたが失敗して死んだ。あなたは……',
+        ko: '리스크 높은 타워 다이브 시도했다가 실패해서 죽었다. 당신은……',
+      },
+      options: [
+        {
+          label: {
+            zh: '复活后反思了三秒，接着又找机会塔下强杀',
+            en: 'Three seconds of reflection, then you\'re looking for another dive',
+            ja: '3秒だけ反省して、次のダイブチャンスを探し始める',
+            ko: '3초 반성하고 바로 다음 다이브 기회 탐색',
+          },
+          scoring: [{ axis: 'Nerve', delta: 1 }, { axis: 'Mental', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '开始在聊天框里骂自己为什么要那样做',
+            en: 'Type in chat questioning your own decision-making',
+            ja: 'チャットで自分の判断を責め始める',
+            ko: '채팅에서 왜 그랬나 자책하기 시작',
+          },
+          scoring: [{ axis: 'Nerve', delta: 1 }, { axis: 'Mental', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '心里记下：下次要更谨慎，停止激进操作一段时间',
+            en: 'Note it mentally: be more careful next time, dial back the aggression',
+            ja: '心に留める：次はもっと慎重に。しばらく積極的なプレイを控える',
+            ko: '머릿속에 기록: 다음엔 더 신중하게. 공격적 플레이 잠시 자제',
+          },
+          scoring: [{ axis: 'Nerve', delta: -1 }, { axis: 'Mental', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '心情崩了，觉得自己今天状态不行，已经在想改变策略',
+            en: 'Mood tanks. Today\'s not your day and you\'re already rethinking everything',
+            ja: '気分が落ちる。今日は調子悪いと感じて、戦略を見直し始める',
+            ko: '기분 바닥. 오늘 컨디션 아니라고 느끼며 전략 전면 재검토',
+          },
+          scoring: [{ axis: 'Nerve', delta: -1 }, { axis: 'Mental', delta: 1 }],
+        },
+      ],
+    },
+    // Q21 — Nerve + Mental
+    {
+      id: 'lol-q21',
+      kind: 'compound',
+      text: {
+        zh: '你主动找机会打架，结果发现自己走进了对方的包围圈，你……',
+        en: 'You look for a fight and walk into the enemy\'s trap. You…',
+        ja: '自分から戦いを求めたら、罠にはまってしまった。あなたは……',
+        ko: '싸움 찾으러 갔다가 상대 포위망에 걸렸다. 당신은……',
+      },
+      options: [
+        {
+          label: {
+            zh: '闪现逃跑，保命要紧，自己进包围圈就是走位失误',
+            en: 'Flash out and escape. Your fault for walking in; staying would be worse',
+            ja: 'フラッシュで逃げる。自分のミス。残るともっと悪くなる',
+            ko: '플래시 써서 탈출. 내 실수로 들어간 거니까 더 나빠지기 전에',
+          },
+          scoring: [{ axis: 'Nerve', delta: -1 }, { axis: 'Mental', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '硬刚到底，在包围圈里打出一个惊天逆转',
+            en: 'Fight through it. A surrounded 1v4 comeback is peak gaming',
+            ja: '最後まで戦う。包囲された状態からの1v4逆転が最高のゲーム体験',
+            ko: '끝까지 싸우기. 포위당한 상태에서 1v4 역전이 최고의 순간',
+          },
+          scoring: [{ axis: 'Nerve', delta: 1 }, { axis: 'Mental', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '活了就发个"牛逼"，死了就在聊天框骂自己"菜"',
+            en: 'If you survive: "nice outplay." If you die: "diff player"',
+            ja: '生き残ったら「うまい」。死んだら「雑魚すぎ」とチャットする',
+            ko: '살면 "아웃플레이". 죽으면 채팅에 "차이나는 실력" 씀',
+          },
+          scoring: [{ axis: 'Nerve', delta: 1 }, { axis: 'Mental', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '走位硬抗一波，最后时刻找机会逃脱，心跳还没平稳',
+            en: 'Weave through long enough to find an escape, heart still pounding',
+            ja: '動き続けて最後に逃げる隙を見つける。心臓がまだドキドキしてる',
+            ko: '버티면서 탈출 틈 찾기. 심장이 아직 두근거리는 중',
+          },
+          scoring: [{ axis: 'Nerve', delta: -1 }, { axis: 'Mental', delta: -1 }],
+        },
+      ],
+    },
+    // Q22 — Tempo + Bond
+    {
+      id: 'lol-q22',
+      kind: 'compound',
+      text: {
+        zh: '你觉得什么时候应该结束游戏？',
+        en: 'When do you think it\'s time to end the game?',
+        ja: 'いつゲームを終わらせるべきだと思う？',
+        ko: '게임을 언제 끝내야 한다고 생각해?',
+      },
+      options: [
+        {
+          label: {
+            zh: '一拿到大龙 buff 就全队聚起来推，越快越好',
+            en: 'The moment Baron buff drops: group up and push immediately',
+            ja: 'バロンバフが出たらすぐに全員集まってプッシュ。速ければ速いほどいい',
+            ko: '바론 버프 생기자마자 전원 집합해서 즉시 push. 빠를수록 좋음',
+          },
+          scoring: [{ axis: 'Tempo', delta: 1 }, { axis: 'Bond', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '先拉通装备效率，等最后一件装备出了再说',
+            en: 'Wait until the key item finishes. Efficiency first',
+            ja: 'キーアイテムが完成してから動く。効率を優先する',
+            ko: '핵심 아이템 완성 후 행동. 효율 우선',
+          },
+          scoring: [{ axis: 'Tempo', delta: -1 }, { axis: 'Bond', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '队友齐了就推，人不到不动',
+            en: 'Only push when everyone\'s grouped. Partial pushes lose',
+            ja: '全員集まったらプッシュ。不完全な状態では動かない',
+            ko: '전원 모이면 push. 일부만 있으면 안 움직임',
+          },
+          scoring: [{ axis: 'Tempo', delta: -1 }, { axis: 'Bond', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '抓到对面单独行动的人就直接推，管他队友在不在',
+            en: 'If you catch someone alone, start pushing. Don\'t wait for stragglers',
+            ja: '相手が孤立したらすぐにプッシュ。仲間を待たない',
+            ko: '상대 혼자 잡히면 바로 push. 팀원 기다리지 않음',
+          },
+          scoring: [{ axis: 'Tempo', delta: 1 }, { axis: 'Bond', delta: -1 }],
+        },
+      ],
+    },
+    // Q23 — Tempo + Bond
+    {
+      id: 'lol-q23',
+      kind: 'compound',
+      text: {
+        zh: '你喜欢的游戏风格是……',
+        en: 'Your preferred game style is…',
+        ja: '好きなゲームスタイルは……',
+        ko: '선호하는 게임 스타일은……',
+      },
+      options: [
+        {
+          label: {
+            zh: '快速推进，不给对面发育时间，速推结束',
+            en: 'Fast push. Deny them scaling time and close it out',
+            ja: '速攻プッシュ。育てる時間を与えずに終わらせる',
+            ko: '빠른 push. 상대 성장 시간 뺏고 마무리',
+          },
+          scoring: [{ axis: 'Tempo', delta: 1 }, { axis: 'Bond', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '耐心积累资源，到后期碾压对面，稳稳吃局',
+            en: 'Patient farming, then dominate late with superior resources',
+            ja: '丁寧なファーミングで後半にリソース差で圧倒する',
+            ko: '차분히 자원 쌓고 후반에 차이로 압도',
+          },
+          scoring: [{ axis: 'Tempo', delta: -1 }, { axis: 'Bond', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '和队友一起快速推进，5人聚起来统一前线',
+            en: 'Fast with the whole team. Five people pushing as one',
+            ja: 'チーム全員で速攻。5人が一丸となってプッシュ',
+            ko: '팀 전체가 빠르게. 5명이 하나로 push',
+          },
+          scoring: [{ axis: 'Tempo', delta: 1 }, { axis: 'Bond', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '和队友缓慢蚕食对面，控制每个点位不急于结束',
+            en: 'Slow grind with the team, control every objective before ending',
+            ja: 'チームとゆっくり侵食し、すべての目標を確保してから終わらせる',
+            ko: '팀이랑 천천히 잠식하며 목표 하나씩 확보 후 마무리',
+          },
+          scoring: [{ axis: 'Tempo', delta: -1 }, { axis: 'Bond', delta: 1 }],
+        },
+      ],
+    },
+    // Q24 — Tempo + Intel
+    {
+      id: 'lol-q24',
+      kind: 'compound',
+      text: {
+        zh: '你会怎么选择自己的主力英雄？',
+        en: 'How do you decide which champion to main?',
+        ja: 'メインチャンピオンをどうやって選ぶ？',
+        ko: '메인 챔피언은 어떻게 결정해?',
+      },
+      options: [
+        {
+          label: {
+            zh: '选速战速决型英雄，能在对线期直接结束的那种',
+            en: 'Pick an early-game bully who can end lanes and snowball fast',
+            ja: '早期決着型を選ぶ。レーン戦を制してスノーボールできるやつ',
+            ko: '초반 결착형 챔피언. 라인전 끝내고 빠르게 스노우볼 굴리는 타입',
+          },
+          scoring: [{ axis: 'Tempo', delta: 1 }, { axis: 'Intel', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '跑分数据高的强势版本英雄，每个版本换一个',
+            en: 'Highest win-rate pick of the patch. Switch every time the meta shifts',
+            ja: 'パッチごとに最高勝率のチャンピオンを選ぶ。環境が変わればすぐ変更',
+            ko: '패치별 최고 승률 픽. 메타 바뀌면 바로 갈아탐',
+          },
+          scoring: [{ axis: 'Tempo', delta: 1 }, { axis: 'Intel', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '感觉喜欢的就练，跟版本强弱没什么关系',
+            en: 'Play whatever you enjoy. Patch strength is irrelevant',
+            ja: '気に入ったものを練習する。環境の強さは関係ない',
+            ko: '마음에 드는 거 연습. 패치 강함은 관련 없음',
+          },
+          scoring: [{ axis: 'Tempo', delta: -1 }, { axis: 'Intel', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '主练一个打法灵活的后期英雄，积累长期经验',
+            en: 'Commit to a flexible late-game carry. Build long-term experience',
+            ja: '汎用性の高い後半型を一体練習して長期的な経験を積む',
+            ko: '범용성 높은 후반 캐리 한 개 전문 연습으로 장기 경험 축적',
+          },
+          scoring: [{ axis: 'Tempo', delta: -1 }, { axis: 'Intel', delta: -1 }],
+        },
+      ],
+    },
   ],
 };
 
 export default game;
+
