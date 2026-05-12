@@ -2004,6 +2004,7 @@ const game: GameQuizV2 = {
         },
       ],
     },
+  ],
 };
 
 export default game;
