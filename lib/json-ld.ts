@@ -46,9 +46,9 @@ export function buildWebSiteSchema(locale: string) {
     '@type': 'WebSite',
     '@id': `${BASE_URL}/#website`,
     url: siteUrl,
-    name: 'SBTI — Satirical Behavior Type Indicator',
+    name: 'SBTI Test Hub',
     description:
-      'Free satirical personality test — MBTI parody with 27 types. Answer 30 questions and get your SBTI result in minutes.',
+      'Free multilingual quiz hub for satirical personality tests and gamer type quizzes, including SBTI, League of Legends, Counter-Strike 2, VALORANT, Delta Force, Honor of Kings, Overwatch, PUBG, and Apex.',
     inLanguage: inLanguage(locale),
     publisher: {
       '@id': `${BASE_URL}/#org`,
@@ -113,6 +113,47 @@ export function buildQuizSchema(locale: string) {
         name: '27 personality types',
       },
     ],
+  };
+}
+
+export function buildGameQuizSchema(
+  locale: string,
+  input: {
+    id: string;
+    name: string;
+    description: string;
+    url: string;
+    numberOfQuestions: number;
+    about: string[];
+    imageUrl?: string;
+  },
+) {
+  return {
+    '@context': SCHEMA_ORG,
+    '@type': 'Quiz',
+    '@id': `${input.url}#quiz`,
+    name: input.name,
+    description: input.description,
+    url: input.url,
+    image: input.imageUrl
+      ? {
+          '@type': 'ImageObject',
+          url: input.imageUrl,
+        }
+      : undefined,
+    numberOfQuestions: input.numberOfQuestions,
+    educationalLevel: 'casual',
+    inLanguage: inLanguage(locale),
+    isPartOf: {
+      '@id': `${BASE_URL}/#website`,
+    },
+    provider: {
+      '@id': `${BASE_URL}/#org`,
+    },
+    about: input.about.map((name) => ({
+      '@type': 'Thing',
+      name,
+    })),
   };
 }
 

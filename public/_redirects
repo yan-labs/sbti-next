@@ -17,6 +17,7 @@
 /compat /en/compat 200
 /compat/* /en/compat/:splat 200
 /faq /en/faq 200
+/games/* /en/games/:splat 200
 /privacy-policy /en/privacy-policy 200
 /result/* /en/result/:splat 200
 /terms /en/terms 200

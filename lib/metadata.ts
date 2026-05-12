@@ -8,10 +8,51 @@ export const TWITTER_HANDLE = '@yan_ai_labs';
 export const DEFAULT_OG_IMAGE = {url: `${BASE_URL}/og-default.png`, width: 1200, height: 630};
 
 type Locale = (typeof LOCALES)[number];
-type StaticSeoPage = 'home' | 'about' | 'faq' | 'types' | 'blog';
+type StaticSeoPage = 'home' | 'test' | 'about' | 'faq' | 'types' | 'blog';
 
 const PAGE_KEYWORDS: Record<StaticSeoPage, Record<Locale, string[]>> = {
   home: {
+    zh: [
+      '人格测试',
+      '免费人格测试',
+      '搞笑人格测试',
+      '游戏人格测试',
+      '玩家类型测试',
+      'SBTI测试',
+      '英雄联盟人格测试',
+      '王者荣耀人格测试',
+      '三角洲行动人格测试',
+    ],
+    en: [
+      'personality test',
+      'free personality test',
+      'game personality quiz',
+      'gamer personality test',
+      'player type quiz',
+      'SBTI personality test',
+      'League of Legends personality quiz',
+      'VALORANT personality quiz',
+      'CS2 personality quiz',
+    ],
+    ja: [
+      '性格診断',
+      '無料性格テスト',
+      'ゲーム 性格診断',
+      'プレイヤータイプ診断',
+      'SBTI 性格テスト',
+      'LoL 性格診断',
+    ],
+    ko: [
+      '성격 테스트',
+      '무료 성격 테스트',
+      '게임 성격 테스트',
+      '플레이어 유형 테스트',
+      'SBTI 성격 테스트',
+      '롤 성격 테스트',
+      '발로란트 성격 테스트',
+    ],
+  },
+  test: {
     zh: [
       'SBTI测试',
       'SBTI人格测试',
@@ -85,6 +126,28 @@ const PAGE_SEO_COPY: Record<
   Record<Locale, {title: string; description: string}>
 > = {
   home: {
+    zh: {
+      title: '免费人格测试与游戏玩家类型测试 | SBTI 测试站',
+      description:
+        'SBTI 测试站收录免费人格测试和热门游戏玩家类型测试。先测 SBTI，再体验英雄联盟、三角洲行动、王者荣耀、CS2、无畏契约、守望先锋、PUBG 和 Apex 等游戏测试，适合截图分享和多语言访问，并会持续扩展新的游戏独立测试入口。',
+    },
+    en: {
+      title: 'Free Personality Tests & Gamer Type Quizzes | SBTI',
+      description:
+        'SBTI is a free quiz hub for satirical personality tests and gamer type quizzes across LoL, CS2, VALORANT, Delta Force, Honor of Kings, and more.',
+    },
+    ja: {
+      title: '無料性格テストとゲーム診断 | SBTI',
+      description:
+        'SBTIは無料の性格テストハブです。SBTI診断に加え、LoL、Delta Force、Honor of Kings、CS2、VALORANT、Overwatch、PUBG、Apexなどのゲーム診断を多言語で楽しめます。',
+    },
+    ko: {
+      title: '무료 성격 테스트와 게임 유저 유형 테스트 | SBTI',
+      description:
+        'SBTI는 무료 성격 테스트 허브입니다. SBTI와 함께 롤, 델타포스, 왕자영요, CS2, 발로란트, 오버워치, PUBG, Apex 등 게임 유저 유형 테스트를 다국어로 제공하며, 새 게임별 독립 테스트 입구를 계속 확장합니다.',
+    },
+  },
+  test: {
     zh: {
       title: 'SBTI测试 | 免费在线人格测试，测你的搞笑人格类型',
       description:

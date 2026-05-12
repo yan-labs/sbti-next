@@ -1,6 +1,7 @@
 import type {MetadataRoute} from 'next';
 import {routing} from '@/i18n/routing';
 import {BLOG_POSTS} from '@/lib/data/blog';
+import {GAME_SLUGS} from '@/lib/data/game-quizzes';
 
 export const dynamic = 'force-static';
 
@@ -53,6 +54,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Homepage
   addLocalized('', 1.0, '2026-04-10');
   addLocalized('/test', 0.9, '2026-04-29');
+
+  // Game personality tests
+  for (const slug of GAME_SLUGS) {
+    addLocalized(`/games/${slug}`, 0.82, '2026-05-11');
+  }
 
   // Type pages
   for (const code of TYPE_CODES) {

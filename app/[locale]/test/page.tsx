@@ -14,7 +14,7 @@ import {JsonLd} from '@/components/json-ld';
 
 export async function generateMetadata({params}: {params: Promise<{locale: string}>}) {
   const {locale} = await params;
-  const seo = getPageSeo(locale, 'home');
+  const seo = getPageSeo(locale, 'test');
   const title = seo.title;
   const description = seo.description;
 
@@ -50,7 +50,7 @@ export default async function TestPage({params}: {params: Promise<{locale: strin
       <JsonLd data={buildWebSiteSchema(locale)} />
       <JsonLd data={buildOrganizationSchema()} />
       <JsonLd data={buildQuizSchema(locale)} />
-      <h1 className="sr-only">{getPageSeo(locale, 'home').title}</h1>
+      <h1 className="sr-only">{getPageSeo(locale, 'test').title}</h1>
       <SBTIApp autoStart />
     </>
   );
