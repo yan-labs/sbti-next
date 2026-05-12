@@ -1,123 +1,144 @@
 'use client';
 
-import {useMemo, useState} from 'react';
+import {useState} from 'react';
 import Image from 'next/image';
-import {ArrowRight, RotateCcw, Share2, Sparkles} from 'lucide-react';
+import {ArrowRight, Sparkles} from 'lucide-react';
 import {Badge} from '@/components/ui/badge';
 import {Button} from '@/components/ui/button';
 import {Card, CardContent} from '@/components/ui/card';
 import {Progress} from '@/components/ui/progress';
-import {ShareButtons} from '@/components/share-buttons';
+import {GameV2Result} from '@/components/result-phase';
 import {Link} from '@/i18n/navigation';
-import {type GameQuiz, localize, type SiteLocale} from '@/lib/data/game-quizzes';
+import {computeScores, normalize, derivePolarityCode, mapToArchetype} from '@/lib/data/games/scoring';
+import type {GameQuizV2, SiteLocale, Axis} from '@/lib/data/games/types';
 
-const UI_COPY: Record<
-  SiteLocale,
-  {
-    question: string;
-    progress: (current: number, total: number) => string;
-    resultKicker: string;
-    traits: string;
-    restart: string;
-    share: string;
-  }
-> = {
+const UI_COPY: Record<SiteLocale, {
+  start: string;
+  questionLabel: (n: number, total: number) => string;
+  progress: (current: number, total: number) => string;
+  deck: string;
+}> = {
   zh: {
-    question: '第',
-    progress: (current, total) => `${current} / ${total}`,
-    resultKicker: '你的玩家身份',
-    traits: '明显症状',
-    restart: '重新测试',
-    share: '分享结果',
+    start: '开始测试',
+    questionLabel: (n, total) => `第 ${n} / ${total} 题`,
+    progress: (n, total) => `${n} / ${total}`,
+    deck: '测一测',
   },
   en: {
-    question: 'Q',
-    progress: (current, total) => `${current} / ${total}`,
-    resultKicker: 'Your Player Identity',
-    traits: 'Symptoms',
-    restart: 'Retake',
-    share: 'Share Result',
+    start: 'Start Quiz',
+    questionLabel: (n, total) => `Q ${n} / ${total}`,
+    progress: (n, total) => `${n} / ${total}`,
+    deck: 'Take the quiz',
   },
   ja: {
-    question: '第',
-    progress: (current, total) => `${current} / ${total}`,
-    resultKicker: 'あなたのプレイヤータイプ',
-    traits: 'よく出る症状',
-    restart: 'もう一度',
-    share: '結果を共有',
+    start: '診断スタート',
+    questionLabel: (n, total) => `第 ${n} / ${total} 問`,
+    progress: (n, total) => `${n} / ${total}`,
+    deck: 'テストを受ける',
   },
   ko: {
-    question: 'Q',
-    progress: (current, total) => `${current} / ${total}`,
-    resultKicker: '당신의 플레이어 유형',
-    traits: '주요 증상',
-    restart: '다시 테스트',
-    share: '결과 공유',
+    start: '테스트 시작',
+    questionLabel: (n, total) => `${n} / ${total} 문항`,
+    progress: (n, total) => `${n} / ${total}`,
+    deck: '테스트하기',
   },
 };
 
-function emptyScores(game: GameQuiz) {
-  return Object.fromEntries(game.results.map((result) => [result.id, 0]));
+type Phase = 'intro' | 'quiz' | 'result';
+
+interface Answer {
+  questionId: string;
+  optionIndex: number;
 }
 
-function pickWinningResult(game: GameQuiz, scores: Record<string, number>) {
-  return [...game.results].sort((a, b) => {
-    const scoreDiff = (scores[b.id] ?? 0) - (scores[a.id] ?? 0);
-    if (scoreDiff !== 0) return scoreDiff;
-    return game.results.findIndex((result) => result.id === a.id) - game.results.findIndex((result) => result.id === b.id);
-  })[0];
+interface ResultState {
+  scores: Record<Axis, number>;
+  archetypeSlug: string;
 }
 
-export function GameQuizApp({game, locale}: {game: GameQuiz; locale: string}) {
-  const safeLocale = (locale === 'zh' || locale === 'ja' || locale === 'ko' || locale === 'en' ? locale : 'en') as SiteLocale;
-  const copy = UI_COPY[safeLocale];
+export function GameQuizApp({game, locale}: {game: GameQuizV2; locale: SiteLocale}) {
+  const copy = UI_COPY[locale];
+  const [phase, setPhase] = useState<Phase>('intro');
   const [current, setCurrent] = useState(0);
-  const [scores, setScores] = useState<Record<string, number>>(() => emptyScores(game));
-  const [resultId, setResultId] = useState<string | null>(null);
-  const currentQuestion = game.questions[current];
-  const result = useMemo(
-    () => resultId ? game.results.find((item) => item.id === resultId) ?? null : null,
-    [game.results, resultId],
-  );
-  const progress = result ? 100 : ((current + 1) / game.questions.length) * 100;
-  const gameTitle = localize(game.title, safeLocale);
+  const [answers, setAnswers] = useState<Answer[]>([]);
+  const [resultState, setResultState] = useState<ResultState | null>(null);
 
-  const answer = (targetResultId: string) => {
-    const nextScores = {...scores, [targetResultId]: (scores[targetResultId] ?? 0) + 1};
-    if (current + 1 >= game.questions.length) {
-      setScores(nextScores);
-      setResultId(pickWinningResult(game, nextScores).id);
-      return;
+  const questions = game.questions;
+  const currentQuestion = questions[current];
+  const progress = phase === 'result' ? 100 : ((current + 1) / questions.length) * 100;
+
+  const handleAnswer = (optionIndex: number) => {
+    const newAnswers = [...answers, {questionId: currentQuestion!.id, optionIndex}];
+    if (current + 1 >= questions.length) {
+      const raw = computeScores(newAnswers, questions);
+      const normalized = normalize(raw, questions);
+      const code = derivePolarityCode(normalized);
+      const archetype = mapToArchetype(code, game);
+      setAnswers(newAnswers);
+      setResultState({scores: normalized, archetypeSlug: archetype.slug});
+      setPhase('result');
+    } else {
+      setAnswers(newAnswers);
+      setCurrent((n) => n + 1);
     }
-    setScores(nextScores);
-    setCurrent((value) => value + 1);
   };
 
-  const restart = () => {
+  const handleRetake = () => {
     setCurrent(0);
-    setScores(emptyScores(game));
-    setResultId(null);
+    setAnswers([]);
+    setResultState(null);
+    setPhase('intro');
   };
+
+  if (phase === 'result' && resultState) {
+    const archetype = game.archetypes.find((a) => a.slug === resultState.archetypeSlug);
+    if (!archetype) return null;
+    return (
+      <main className="min-h-screen bg-gradient-to-b from-background via-background to-muted/40 px-4 py-16">
+        <section className="mx-auto w-full max-w-3xl space-y-6">
+          <GameV2Result
+            game={game}
+            archetype={archetype}
+            scores={resultState.scores}
+            locale={locale}
+            onRetake={handleRetake}
+          />
+          <div className="flex justify-center">
+            <Link href="/">
+              <Button variant="ghost" className="rounded-full">
+                SBTI
+                <ArrowRight className="size-4" aria-hidden="true" />
+              </Button>
+            </Link>
+          </div>
+        </section>
+      </main>
+    );
+  }
 
   return (
     <main className="min-h-screen bg-gradient-to-b from-background via-background to-muted/40 px-4 py-16">
       <section className="mx-auto w-full max-w-3xl space-y-6">
+        {/* Game header */}
         <div className="space-y-3 text-center">
           <Badge variant="outline" className="rounded-full border-primary/20 bg-primary/10 px-3 py-1 text-primary">
             <Sparkles className="size-3.5" aria-hidden="true" />
-            {localize(game.genre, safeLocale)}
+            {game.deck[locale]}
           </Badge>
-          <h1 className="font-heading text-4xl font-black tracking-tight sm:text-5xl">{gameTitle}</h1>
+          <h1 className="font-heading text-4xl font-black tracking-tight sm:text-5xl">
+            {game.title[locale]}
+          </h1>
           <p className="mx-auto max-w-2xl text-base leading-relaxed text-muted-foreground">
-            {localize(game.description, safeLocale)}
+            {game.description[locale]}
           </p>
         </div>
 
-        {game.cover && (
+        {/* Cover image (intro only) */}
+        {phase === 'intro' && game.cover && (
           <div className="overflow-hidden rounded-2xl border border-border/60 bg-card shadow-sm">
             <Image
               src={game.cover.src}
-              alt={localize(game.cover.alt, safeLocale)}
+              alt={game.cover.alt[locale]}
               width={720}
               height={960}
               className="mx-auto h-auto max-h-[40rem] max-w-full"
@@ -127,121 +148,55 @@ export function GameQuizApp({game, locale}: {game: GameQuiz; locale: string}) {
           </div>
         )}
 
-        <div className="space-y-2">
-          <div className="flex items-center justify-between text-sm font-medium text-muted-foreground">
-            <span>{result ? copy.resultKicker : `${copy.question}${current + 1}`}</span>
-            <span>{copy.progress(result ? game.questions.length : current + 1, game.questions.length)}</span>
+        {/* Intro CTA */}
+        {phase === 'intro' && (
+          <div className="flex justify-center pt-2">
+            <Button
+              size="lg"
+              className="rounded-full px-10 text-base shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30"
+              onClick={() => setPhase('quiz')}
+            >
+              {copy.start}
+            </Button>
           </div>
-          <Progress value={progress} className="h-1.5" />
-        </div>
-
-        {!result && currentQuestion && (
-          <Card className="border-0 bg-card/85 shadow-sm">
-            <CardContent className="space-y-5 p-5 sm:p-6">
-              {currentQuestion.illustration && (
-                <Image
-                  src={currentQuestion.illustration.src}
-                  alt={localize(currentQuestion.illustration.alt, safeLocale)}
-                  width={720}
-                  height={960}
-                  className="mx-auto h-auto max-h-[34rem] max-w-full rounded-xl border border-border/60"
-                  unoptimized
-                />
-              )}
-              <h2 className="font-heading text-2xl font-black leading-snug">
-                {localize(currentQuestion.text, safeLocale)}
-              </h2>
-              <div className="space-y-3">
-                {currentQuestion.options.map((item, index) => (
-                  <button
-                    key={`${currentQuestion.id}-${index}`}
-                    type="button"
-                    data-quiz-option={index}
-                    onClick={() => answer(item.resultId)}
-                    className="group flex w-full items-center gap-3 rounded-xl border border-border/60 bg-background/70 px-4 py-3.5 text-left text-base transition-all hover:border-primary/30 hover:bg-primary/5 active:scale-[0.99]"
-                  >
-                    <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-muted text-xs font-bold text-muted-foreground transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
-                      {String.fromCharCode(65 + index)}
-                    </span>
-                    <span className="leading-relaxed">{localize(item.label, safeLocale)}</span>
-                  </button>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
         )}
 
-        {result && (
-          <Card className="overflow-hidden border-0 bg-card shadow-sm">
-            <CardContent className="space-y-6 p-5 sm:p-7">
-              <div className="space-y-3 text-center">
-                {result.image && (
-                  <Image
-                    src={result.image.src}
-                    alt={localize(result.image.alt, safeLocale)}
-                    width={720}
-                    height={720}
-                    className="mx-auto aspect-square w-full max-w-xs rounded-2xl border border-border/60 object-contain shadow-sm"
-                    priority
-                    unoptimized
-                  />
-                )}
-                <p className="text-xs font-bold uppercase tracking-[0.18em] text-primary">
-                  {copy.resultKicker}
-                </p>
-                <div className="space-y-2">
-                  <h2 className="font-heading text-4xl font-black leading-tight tracking-tight">
-                    {localize(result.title, safeLocale)}
-                  </h2>
-                  <Badge variant="secondary" className="rounded-full px-3 py-1">
-                    {localize(result.badge, safeLocale)}
-                  </Badge>
-                </div>
-                <p className="mx-auto max-w-2xl text-lg leading-relaxed text-foreground/78">
-                  {localize(result.description, safeLocale)}
-                </p>
+        {/* Quiz phase */}
+        {phase === 'quiz' && currentQuestion && (
+          <>
+            <div className="space-y-2">
+              <div className="flex items-center justify-between text-sm font-medium text-muted-foreground">
+                <span>{copy.questionLabel(current + 1, questions.length)}</span>
+                <span>{copy.progress(current + 1, questions.length)}</span>
               </div>
+              <Progress value={progress} className="h-1.5" />
+            </div>
 
-              <div className="rounded-xl bg-muted/45 p-4">
-                <h3 className="font-heading text-base font-bold">{copy.traits}</h3>
-                <div className="mt-3 grid gap-2 sm:grid-cols-3">
-                  {result.traits[safeLocale].map((trait) => (
-                    <div key={trait} className="rounded-lg bg-background/80 px-3 py-2 text-sm font-medium text-foreground/78">
-                      {trait}
-                    </div>
+            <Card className="border-0 bg-card/85 shadow-sm">
+              <CardContent className="space-y-5 p-5 sm:p-6">
+                <h2 className="font-heading text-2xl font-black leading-snug">
+                  {currentQuestion.text[locale]}
+                </h2>
+                <div className="space-y-3">
+                  {currentQuestion.options.map((option, idx) => (
+                    <button
+                      key={`${currentQuestion.id}-${idx}`}
+                      type="button"
+                      data-quiz-option={idx}
+                      onClick={() => handleAnswer(idx)}
+                      className="group flex w-full items-center gap-3 rounded-xl border border-border/60 bg-background/70 px-4 py-3.5 text-left text-base transition-all hover:border-primary/30 hover:bg-primary/5 active:scale-[0.99]"
+                    >
+                      <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-muted text-xs font-bold text-muted-foreground transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
+                        {String.fromCharCode(65 + idx)}
+                      </span>
+                      <span className="leading-relaxed">{option.label[locale]}</span>
+                    </button>
                   ))}
                 </div>
-              </div>
-
-              <div className="flex flex-wrap items-center justify-center gap-2">
-                <Button variant="outline" className="rounded-full" onClick={restart}>
-                  <RotateCcw className="size-4" aria-hidden="true" />
-                  {copy.restart}
-                </Button>
-                <div className="flex flex-wrap items-center justify-center gap-2">
-                  <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-muted-foreground">
-                    <Share2 className="size-4" aria-hidden="true" />
-                    {copy.share}
-                  </span>
-                  <ShareButtons
-                    url={`/games/${game.slug}`}
-                    title={`${gameTitle}: ${localize(result.title, safeLocale)}`}
-                    description={localize(result.description, safeLocale)}
-                  />
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+              </CardContent>
+            </Card>
+          </>
         )}
-
-        <div className="flex justify-center">
-          <Link href="/">
-            <Button variant="ghost" className="rounded-full">
-              SBTI
-              <ArrowRight className="size-4" aria-hidden="true" />
-            </Button>
-          </Link>
-        </div>
       </section>
     </main>
   );
