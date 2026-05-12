@@ -4,8 +4,9 @@ import {routing} from '@/i18n/routing';
 import {JsonLd} from '@/components/json-ld';
 import {GameQuizApp} from '@/components/game-quiz-app';
 import {BASE_URL, buildAlternates, buildTwitter, DEFAULT_OG_IMAGE, fitSeoTitle, getAlternateOgLocales, getLocaleUrl, getOgLocale} from '@/lib/metadata';
-import {buildBreadcrumbSchema, buildGameQuizSchema, buildOrganizationSchema, buildWebSiteSchema} from '@/lib/json-ld';
+import {buildBreadcrumbSchema, buildFAQPageSchema, buildGameQuizSchema, buildOrganizationSchema, buildWebSiteSchema} from '@/lib/json-ld';
 import {GAME_SLUGS, getGameQuiz, isSiteLocale, localize, type SiteLocale} from '@/lib/data/game-quizzes';
+import {buildGameHubFAQs} from '@/lib/data/games/faqs';
 
 const GAME_SEO_SUFFIX: Record<SiteLocale, string> = {
   zh: '完成 10 道题后生成玩家圈熟悉的身份结果，文案贴近玩家日常梗，适合作为游戏独立 route、搜索落地页和截图分享页。',
@@ -84,6 +85,7 @@ export default async function GameQuizPage({params}: {params: Promise<{locale: s
   }
 
   setRequestLocale(locale);
+  const safeLocale: SiteLocale = isSiteLocale(locale) ? locale : 'en';
   const path = `/games/${game.slug}`;
   const title = localize(game.title, locale);
   const description = localize(game.description, locale);
@@ -110,6 +112,7 @@ export default async function GameQuizPage({params}: {params: Promise<{locale: s
           {name: title, path},
         ])}
       />
+      <JsonLd data={buildFAQPageSchema(buildGameHubFAQs(game, safeLocale))} />
       <GameQuizApp game={game} locale={locale} />
     </div>
   );
