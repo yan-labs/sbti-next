@@ -1,5 +1,22 @@
-export type { SiteLocale, LocalizedText, GameQuizAsset } from '../game-quizzes';
-import type { LocalizedText, GameQuizAsset } from '../game-quizzes';
+// ── Locale primitives ─────────────────────────────────────────────────────────
+
+export type SiteLocale = 'zh' | 'en' | 'ja' | 'ko';
+
+export type LocalizedText = Record<SiteLocale, string>;
+
+export interface GameQuizAsset {
+  src: string;
+  alt: LocalizedText;
+  prompt: string;
+}
+
+export function isSiteLocale(locale: string): locale is SiteLocale {
+  return locale === 'zh' || locale === 'en' || locale === 'ja' || locale === 'ko';
+}
+
+export function localize<T>(value: Record<SiteLocale, T>, locale: string): T {
+  return value[isSiteLocale(locale) ? locale : 'en'];
+}
 
 // ── Axis identifiers ──────────────────────────────────────────────────────────
 

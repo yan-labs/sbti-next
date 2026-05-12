@@ -2,7 +2,6 @@ import { describe, it, expect } from 'vitest';
 import { computeScores, normalize, derivePolarityCode, mapToArchetype } from '../scoring';
 import game from '../overwatch-2';
 import type { Axis, Polarity } from '../types';
-import { AXES } from '../dimensions';
 
 // ── Shape invariants ──────────────────────────────────────────────────────────
 
@@ -89,12 +88,6 @@ describe('Overwatch 2 axis vote coverage', () => {
 
 // ── Reachability: all 8 archetypes ───────────────────────────────────────────
 
-function buildCode(pattern: Record<Axis, Polarity>): string {
-  return AXES.map((def) =>
-    pattern[def.axis] === 'high' ? def.highLetter : def.lowLetter,
-  ).join('');
-}
-
 function buildAnswersFor(bond: Polarity, tempo: Polarity, mental: Polarity) {
   const targets: Record<Axis, Polarity | null> = {
     Bond: bond,
@@ -160,7 +153,7 @@ describe('Overwatch 2 archetype reachability', () => {
       const raw = computeScores(answers, game.questions);
       const normalized = normalize(raw, game.questions);
       const code = derivePolarityCode(normalized);
-      const archetype = mapToArchetype(code as any, game);
+      const archetype = mapToArchetype(code, game);
       expect(archetype.slug).toBe(slug);
     });
   }

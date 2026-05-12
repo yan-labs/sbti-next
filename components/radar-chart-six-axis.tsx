@@ -1,5 +1,4 @@
-import type { Axis } from '@/lib/data/games/types';
-import type { SiteLocale } from '@/lib/data/game-quizzes';
+import type { Axis, SiteLocale } from '@/lib/data/games/types';
 import { AXES, AXIS_ORDER } from '@/lib/data/games/dimensions';
 
 interface RadarChartSixAxisProps {

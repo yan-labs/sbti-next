@@ -1,8 +1,7 @@
 import type {MetadataRoute} from 'next';
 import {routing} from '@/i18n/routing';
 import {BLOG_POSTS} from '@/lib/data/blog';
-import {GAME_SLUGS} from '@/lib/data/game-quizzes';
-import {ALL_GAMES_V2} from '@/lib/data/games/index';
+import {ALL_GAMES_V2, GAME_SLUGS} from '@/lib/data/games/index';
 
 export const dynamic = 'force-static';
 

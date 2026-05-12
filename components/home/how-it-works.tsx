@@ -1,11 +1,5 @@
 type Locale = 'zh' | 'en' | 'ja' | 'ko';
 
-interface Step {
-  icon: React.ReactNode;
-  title: string;
-  desc: string;
-}
-
 const COPY: Record<Locale, {heading: string; steps: [string, string][]}> = {
   zh: {
     heading: '三步搞定你的玩家档案',
