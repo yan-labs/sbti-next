@@ -1318,6 +1318,300 @@ const game: GameQuizV2 = {
         },
       ],
     },
+    // ── Q25 Compound: Intel + Flair ───────────────────────────────────────────
+    {
+      id: 'cs2-q25',
+      kind: 'compound',
+      text: {
+        zh: '你在 B 包点蹲坑，对方知道你在哪儿，绕后夹你了。',
+        en: 'You\'re holding B post-plant, enemy spotted you and flanked. Caught in the open.',
+        ja: 'Bプラント後で待ち伏せ中、敵に位置がバレて回り込まれた。',
+        ko: 'B 폭설 후 대기 중, 적이 위치 파악하고 후방에서 쌌다.',
+      },
+      options: [
+        {
+          label: {
+            zh: '立刻跑，换个位置，重新架枪',
+            en: 'Immediately relocate, find a new angle',
+            ja: 'すぐに動いて、新しい角度を見つける',
+            ko: '즉시 이동, 새로운 각도 찾는다',
+          },
+          scoring: [{ axis: 'Intel', delta: -1 }, { axis: 'Flair', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '守着，靠反应速度赌一把',
+            en: 'Hold and gamble on reaction speed',
+            ja: 'そのまま守って、反応速度に賭ける',
+            ko: '버티고 반응 속도에 베팅한다',
+          },
+          scoring: [{ axis: 'Intel', delta: 1 }, { axis: 'Flair', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '先预判他的路线，选好时机反夹',
+            en: 'Read his path and time the counter-swing',
+            ja: '相手のルートを読んで、カウンタースイングのタイミングを測る',
+            ko: '경로 읽어서 카운터 스윙 타이밍 맞춘다',
+          },
+          scoring: [{ axis: 'Intel', delta: -1 }, { axis: 'Flair', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '转出去对着他脸打，管他呢',
+            en: 'Swing into his face and shoot, no thinking required',
+            ja: '振り出して顔に打つ、考えるだけ無駄だ',
+            ko: '스윙해서 정면으로 쏜다, 생각할 필요 없다',
+          },
+          scoring: [{ axis: 'Intel', delta: 1 }, { axis: 'Flair', delta: 1 }],
+        },
+      ],
+    },
+    // ── Q26 Compound: Intel + Mental ──────────────────────────────────────────
+    {
+      id: 'cs2-q26',
+      kind: 'compound',
+      text: {
+        zh: '你的 ADR（每局平均伤害）只有 52，但你们赢了。你怎么看这局？',
+        en: 'Your ADR is 52 but you won the match. How do you feel about your performance?',
+        ja: 'ADRは52だけど試合には勝った。自分のプレイをどう見る？',
+        ko: 'ADR 52인데 경기는 이겼다. 이번 퍼포먼스를 어떻게 평가할까?',
+      },
+      options: [
+        {
+          label: {
+            zh: '赢了就好，数据只是参考',
+            en: 'Win is what counts, stats are secondary',
+            ja: '勝てばいい、スタッツは参考程度だ',
+            ko: '이겼으면 됐다, 통계는 부차적이다',
+          },
+          scoring: [{ axis: 'Intel', delta: 1 }, { axis: 'Mental', delta: -1 }],
+        },
+        {
+          label: {
+            zh: 'ADR 52 不行，下局要改进',
+            en: 'ADR 52 is bad, need to do better next match',
+            ja: 'ADR52はダメ、次の試合で改善する',
+            ko: 'ADR 52는 안 된다, 다음 경기에서 개선해야 한다',
+          },
+          scoring: [{ axis: 'Intel', delta: -1 }, { axis: 'Mental', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '赢了，但我知道自己打得不好',
+            en: 'Won, but I know I underperformed',
+            ja: '勝ったけど、自分がよくなかったのはわかってる',
+            ko: '이겼지만 내가 못 했다는 건 안다',
+          },
+          scoring: [{ axis: 'Intel', delta: -1 }, { axis: 'Mental', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '52 ADR 让我很难受，输赢都难受',
+            en: 'ADR 52 is ruining my mood regardless of the win',
+            ja: 'ADR52のせいで気分が最悪、勝ち負け関係なく',
+            ko: 'ADR 52 때문에 기분 나쁘다, 승패 상관없이',
+          },
+          scoring: [{ axis: 'Intel', delta: -1 }, { axis: 'Mental', delta: 1 }],
+        },
+      ],
+    },
+    // ── Q27 Compound: Flair + Mental ──────────────────────────────────────────
+    {
+      id: 'cs2-q27',
+      kind: 'compound',
+      text: {
+        zh: '你用 Desert Eagle 一枪跨图爆头了一个人。事后你怎么样？',
+        en: 'You landed a cross-map Desert Eagle headshot. What happens after?',
+        ja: 'デザートイーグルでマップを横断するヘッドショットを決めた。その後は？',
+        ko: '데저트 이글로 맵 가로질러 헤드샷 맞혔다. 그 다음 어떻게 할까?',
+      },
+      options: [
+        {
+          label: {
+            zh: '正常继续，这只是一枪',
+            en: 'Continue normally, it was just one shot',
+            ja: '普通に続ける、ただの1発だ',
+            ko: '정상적으로 계속한다, 그냥 한 발이다',
+          },
+          scoring: [{ axis: 'Flair', delta: -1 }, { axis: 'Mental', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '大叫一声，超出预期的',
+            en: 'Shout out loud, that was beyond expectation',
+            ja: '大声を上げる、期待を超えた1発だ',
+            ko: '소리 지른다, 예상을 초월했다',
+          },
+          scoring: [{ axis: 'Flair', delta: 1 }, { axis: 'Mental', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '高兴一下，然后继续',
+            en: 'Brief excitement, then right back to focus',
+            ja: '少し喜んで、すぐに集中に戻る',
+            ko: '잠깐 기뻐하고 바로 집중한다',
+          },
+          scoring: [{ axis: 'Flair', delta: 1 }, { axis: 'Mental', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '那枪进了我开始自我怀疑，手感太玄了',
+            en: 'That going in makes me doubt myself, aim feels unreal',
+            ja: 'あれが入ったことで自己不信に陥る、エイムが信じられない',
+            ko: '그게 맞아서 오히려 자기 의심 시작됨, 에임이 비현실적이다',
+          },
+          scoring: [{ axis: 'Flair', delta: -1 }, { axis: 'Mental', delta: 1 }],
+        },
+      ],
+    },
+    // ── Q28 Compound: Tempo + Nerve (peak-end: funniest) ─────────────────────
+    {
+      id: 'cs2-q28',
+      kind: 'compound',
+      text: {
+        zh: '对面刚 rush B cyka，你一个人守着，队友还在 A 边。你怎么办？',
+        en: 'Enemy just rushed B cyka, you\'re alone, teammates stuck on A. What\'s the plan?',
+        ja: '敵がラッシュBチカを仕掛けてきた、あなた1人、味方はAにいる。どうする？',
+        ko: '상대가 방금 러시 B 시작했다, 나 혼자, 팀원은 A에 있다. 어떻게 할까?',
+      },
+      options: [
+        {
+          label: {
+            zh: '冲出去刚正面，死了算',
+            en: 'Peek them head-on, if I die I die',
+            ja: '真正面からぶつかる、死んだら死んだで仕方ない',
+            ko: '정면으로 나간다, 죽으면 죽는 거다',
+          },
+          scoring: [{ axis: 'Tempo', delta: 1 }, { axis: 'Nerve', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '拿一两个，等队友回来再看',
+            en: 'Pick off one or two, hold until teammates rotate',
+            ja: '1、2人を仕留めて、味方がローテートするまで待つ',
+            ko: '한두 명 잡고 팀원 로테이션 올 때까지 버틴다',
+          },
+          scoring: [{ axis: 'Tempo', delta: -1 }, { axis: 'Nerve', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '丢烟，让他们进不了点，自己先撑着',
+            en: 'Throw smoke to delay, hold the site as long as possible',
+            ja: 'スモークを投げて遅らせ、できるだけ長くサイトを守る',
+            ko: '스모크 던져서 지연, 최대한 오래 사이트 버틴다',
+          },
+          scoring: [{ axis: 'Tempo', delta: -1 }, { axis: 'Nerve', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '全速冲出去，反包他们，赌的就是这个',
+            en: 'Full-speed counter-rush, this is exactly the gamble I want',
+            ja: '全速でカウンターラッシュ、これはまさに自分が求めるギャンブルだ',
+            ko: '전속력 카운터 러시, 이게 바로 내가 원하는 도박이다',
+          },
+          scoring: [{ axis: 'Tempo', delta: 1 }, { axis: 'Nerve', delta: 1 }],
+        },
+      ],
+    },
+    // ── Q29 Compound: Bond + Mental (peak-end: funniest) ─────────────────────
+    {
+      id: 'cs2-q29',
+      kind: 'compound',
+      text: {
+        zh: '你们五排，其中一个人已经连续送了三局，但他是朋友。你怎么办？',
+        en: 'Five-stack, one friend has gone 2-14 three rounds straight. What do you say?',
+        ja: '5人PT、友人が3ラウンド連続で2-14のスコア。どうする？',
+        ko: '5인팟, 친구 한 명이 3판 연속 2-14다. 어떻게 할까?',
+      },
+      options: [
+        {
+          label: {
+            zh: '啥都不说，让他自己调整',
+            en: 'Say nothing, let him self-correct',
+            ja: '何も言わない、自分で修正させる',
+            ko: '아무 말 안 한다, 스스로 고치게 둔다',
+          },
+          scoring: [{ axis: 'Bond', delta: -1 }, { axis: 'Mental', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '私信他，"要不要换个位置打？"',
+            en: 'DM him: "want to try a different role?"',
+            ja: 'DMを送る、「違うポジションを試してみる？」',
+            ko: '개인 메시지: "다른 역할 해볼래?"',
+          },
+          scoring: [{ axis: 'Bond', delta: 1 }, { axis: 'Mental', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '心里有点烦，但嘴上没说',
+            en: 'Irritated internally, keeping it to yourself',
+            ja: '心の中ではイライラしてるが、口には出さない',
+            ko: '속으로 짜증나지만 말은 안 한다',
+          },
+          scoring: [{ axis: 'Bond', delta: 1 }, { axis: 'Mental', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '怼了几句，朋友也要讲道理',
+            en: 'Said a few words, friends still need to hear it',
+            ja: '少し文句を言った、友人でも言うべきことは言う',
+            ko: '몇 마디 했다, 친구도 들어야 할 말은 해야 한다',
+          },
+          scoring: [{ axis: 'Bond', delta: -1 }, { axis: 'Mental', delta: 1 }],
+        },
+      ],
+    },
+    // ── Q30 Compound: Intel + Flair (peak-end: funniest) ─────────────────────
+    {
+      id: 'cs2-q30',
+      kind: 'compound',
+      text: {
+        zh: 's1mple 式高光：你打出了人生最秀的一枪。然后下一局你的 Premier 积分掉了 100。',
+        en: 's1mple moment: you hit the most insane shot of your life. Next match, Premier Rating drops 100.',
+        ja: 's1mpleの瞬間: 人生最高の1発を決めた。次の試合でプレミアレーティングが100下がった。',
+        ko: 's1mple 순간: 인생 최고의 샷을 쐈다. 다음 경기에서 프리미어 레이팅 100 떨어졌다.',
+      },
+      options: [
+        {
+          label: {
+            zh: '那一枪值了，积分只是数字',
+            en: 'That shot was worth it, rating is just a number',
+            ja: 'あの1発には価値があった、レーティングはただの数字だ',
+            ko: '그 샷은 값어치 있었다, 레이팅은 그냥 숫자다',
+          },
+          scoring: [{ axis: 'Intel', delta: 1 }, { axis: 'Flair', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '积分掉了才是重点，那枪帮不上忙',
+            en: 'The rating drop is what matters, that shot didn\'t win the match',
+            ja: 'レーティングが下がったことが問題、あの1発は勝ちに繋がらなかった',
+            ko: '레이팅 떨어진 게 핵심이다, 그 샷이 이기는 데 도움 안 됐다',
+          },
+          scoring: [{ axis: 'Intel', delta: -1 }, { axis: 'Flair', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '立刻剪了发出去，丢分不重要',
+            en: 'Clipped and shared it immediately, the loss is irrelevant',
+            ja: 'すぐにクリップして共有した、負けは関係ない',
+            ko: '바로 클립하고 공유했다, 패배는 상관없다',
+          },
+          scoring: [{ axis: 'Intel', delta: 1 }, { axis: 'Flair', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '搞错了优先级，应该先想怎么赢',
+            en: 'Wrong priority; should have been thinking about winning',
+            ja: '優先順位を間違えた、勝つことを考えるべきだった',
+            ko: '우선순위 잘못 잡았다, 이기는 걸 생각했어야 했다',
+          },
+          scoring: [{ axis: 'Intel', delta: -1 }, { axis: 'Flair', delta: -1 }],
+        },
+      ],
+    },
     // ── Q7 Anchor: Intel ─────────────────────────────────────────────────────
     {
       id: 'cs2-q07',
