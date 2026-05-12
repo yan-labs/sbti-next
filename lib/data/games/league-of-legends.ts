@@ -524,7 +524,302 @@ const game: GameQuizV2 = {
       bestSquadSlug: 'lane-tyrant',
     },
   ],
-  questions: [],
-};
+  questions: [
+    // ── BATCH 1: Anchor questions Q1–Q6 ─────────────────────────────────────────
+    // Q1 — Bond anchor (peak-end: funny opener)
+    {
+      id: 'lol-q1',
+      kind: 'anchor',
+      text: {
+        zh: '开局第一件事，你会……',
+        en: 'The very first thing you do after loading into a game is…',
+        ja: 'ゲーム開始直後、最初にやることは……',
+        ko: '게임 시작하자마자 제일 먼저 하는 일은……',
+      },
+      options: [
+        {
+          label: {
+            zh: '在聊天框说"加油队友"，确认大家状态在线',
+            en: 'Type "gl hf team" and check if everyone\'s vibes are okay',
+            ja: 'チャットで「がんばろう！」と打って全員の状態を確認する',
+            ko: '채팅에 "화이팅팀" 치고 다들 괜찮은지 분위기 체크',
+          },
+          scoring: [{ axis: 'Bond', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '全屏静音，开始研究对面出装',
+            en: 'Mute all, then look up the enemy\'s op.gg history',
+            ja: '全員ミュートして相手のop.ggを調べ始める',
+            ko: '전체 음소거하고 상대 op.gg 검색',
+          },
+          scoring: [{ axis: 'Bond', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '走去和队友打个招呼，然后各奔各的路',
+            en: 'Wave to your ADC in lane, then focus on your own farm',
+            ja: 'ADCに手を振って、あとは自分のCSに集中する',
+            ko: '원딜한테 손 흔들고 바로 내 CS에 집중',
+          },
+          scoring: [{ axis: 'Bond', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '想好 solo 路线，默默推进，不和任何人打配合',
+            en: 'Plan your solo route, move out silently, no coordination needed',
+            ja: 'ソロルートを決めて静かに出発。連携なんて不要',
+            ko: '솔로 루트 짜고 조용히 출발. 팀플 필요 없음',
+          },
+          scoring: [{ axis: 'Bond', delta: -1 }],
+        },
+      ],
+    },
+    // Q2 — Bond anchor
+    {
+      id: 'lol-q2',
+      kind: 'anchor',
+      text: {
+        zh: '队友在大龙坑附近被围攻，你……',
+        en: 'A teammate gets caught near Baron pit. You…',
+        ja: 'バロン付近で味方が包囲される。あなたは……',
+        ko: '바론 근처에서 팀원이 포위됐다. 당신은……',
+      },
+      options: [
+        {
+          label: {
+            zh: '立刻赶去支援，结果跟着一起送了',
+            en: 'Rush in to save them and die together, two for the price of one',
+            ja: '助けに走って一緒に死ぬ。おまけ付きで',
+            ko: '바로 달려가서 같이 죽는다. 덤으로 드림',
+          },
+          scoring: [{ axis: 'Bond', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '继续补刀，他本来就不应该过去那里',
+            en: 'Keep farming. They shouldn\'t have been there anyway',
+            ja: 'CSを続ける。そもそもそこにいるべきじゃなかった',
+            ko: 'CS 계속 친다. 거기 있으면 안 됐던 거야',
+          },
+          scoring: [{ axis: 'Bond', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '打了一个"？"ping，然后等他们死完再上大龙',
+            en: 'Send a question mark ping, wait for the fight to finish, then start Baron',
+            ja: '「？」ピンを打ってから戦闘が終わるのを待ち、バロンを始める',
+            ko: '"?" 핑 찍고 싸움 끝나길 기다렸다가 바론 시작',
+          },
+          scoring: [{ axis: 'Bond', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '喊全队一起去救，同时在语音里叫大家收',
+            en: 'Ping everyone to regroup and call in voice "hold, we go together"',
+            ja: '全員に集合ピンを打ちながらボイスで「待て、一緒に行くぞ」と叫ぶ',
+            ko: '전체 집합 핑 찍으면서 보이스에서 "잠깐, 다같이 가자" 외침',
+          },
+          scoring: [{ axis: 'Bond', delta: 1 }],
+        },
+      ],
+    },
+    // Q3 — Nerve anchor
+    {
+      id: 'lol-q3',
+      kind: 'anchor',
+      text: {
+        zh: '对面在塔下血量 30%，你……',
+        en: 'The enemy laner is at 30% HP under their own tower. You…',
+        ja: '相手レーナーが自タワー下でHP30%。あなたは……',
+        ko: '상대 라이너가 본인 타워 밑에서 체력 30%. 당신은……',
+      },
+      options: [
+        {
+          label: {
+            zh: '直接塔下强杀，死一次也值',
+            en: 'Tower dive immediately. Worth dying once to get the kill',
+            ja: '迷わずタワーダイブ。一回死んでもキル取れれば得',
+            ko: '바로 타워 다이브. 한 번 죽어도 킬 따면 이득',
+          },
+          scoring: [{ axis: 'Nerve', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '等对面从塔下走开再追，安全第一',
+            en: 'Wait for them to step out from tower range before chasing',
+            ja: 'タワー射程外に出るまで待ってから追う。安全第一',
+            ko: '타워 사거리 밖으로 나올 때까지 기다렸다가 추격. 안전 제일',
+          },
+          scoring: [{ axis: 'Nerve', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '计算塔伤和自身血量，确认能活着出来再动',
+            en: 'Calculate tower damage versus your HP before committing',
+            ja: 'タワーダメージと自分のHPを計算してから行動する',
+            ko: '타워 피해량 vs 내 체력 계산하고 나서 판단',
+          },
+          scoring: [{ axis: 'Nerve', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '直接冲，凭感觉判断，算太多了就错过了',
+            en: 'Go on instinct. Calculating too long means missing the window',
+            ja: '感覚で行く。考えすぎたらチャンスを逃す',
+            ko: '감으로 간다. 너무 계산하다가 타이밍 놓침',
+          },
+          scoring: [{ axis: 'Nerve', delta: 1 }],
+        },
+      ],
+    },
+    // Q4 — Nerve anchor
+    {
+      id: 'lol-q4',
+      kind: 'anchor',
+      text: {
+        zh: '决策时刻：要不要开大龙？',
+        en: 'Your team is debating whether to start Baron. You vote…',
+        ja: 'バロンを始めるか否か。あなたの判断は……',
+        ko: '바론 할지 말지 논쟁 중. 당신의 판단은……',
+      },
+      options: [
+        {
+          label: {
+            zh: '开！打就完了，拖下去对面也发育',
+            en: 'Start it. If we wait, they scale too',
+            ja: 'やる！待ったら相手も育つ',
+            ko: '시작해! 기다리면 상대도 성장함',
+          },
+          scoring: [{ axis: 'Nerve', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '不开，眼位还没控好，风险太高',
+            en: 'Don\'t start. No vision control, the risk is too high',
+            ja: 'やらない。ビジョンコントロールが不十分でリスクが高い',
+            ko: '시작하지마. 시야 장악 안 됐고 리스크 너무 높음',
+          },
+          scoring: [{ axis: 'Nerve', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '等对面有人死了再打，赢面稳一点',
+            en: 'Wait for an enemy to die first before starting',
+            ja: '相手が一人死んでから始める。勝率が安定する',
+            ko: '상대 한 명 죽고 나서 시작. 이길 확률 안정적',
+          },
+          scoring: [{ axis: 'Nerve', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '直接抢，打死几个再说，先手就是优势',
+            en: 'Force the fight first, worry about Baron after',
+            ja: '先に戦闘を仕掛ける。バロンはその後で考える',
+            ko: '먼저 싸우고 나서 바론 생각. 선빵이 이득',
+          },
+          scoring: [{ axis: 'Nerve', delta: 1 }],
+        },
+      ],
+    },
+    // Q5 — Mental anchor
+    {
+      id: 'lol-q5',
+      kind: 'anchor',
+      text: {
+        zh: '你送了三次人头，接下来……',
+        en: 'You\'ve died three times in the last five minutes. You…',
+        ja: '直近5分で3回デスした。あなたは……',
+        ko: '최근 5분 안에 3번 죽었다. 당신은……',
+      },
+      options: [
+        {
+          label: {
+            zh: '淡定，分析一下刚才哪里出了问题，继续打',
+            en: 'Stay calm, figure out what went wrong, keep playing',
+            ja: '冷静に何がまずかったか考えて、続けてプレイする',
+            ko: '침착하게 뭐가 문제였는지 분석하고 계속함',
+          },
+          scoring: [{ axis: 'Mental', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '开始在聊天框抱怨队友和对面全都是外挂',
+            en: 'Start typing about how jungler diff ruined your lane',
+            ja: 'チャットで「ジャングルdiff」と文句を言い始める',
+            ko: '채팅에 "정글 diff" 써내려가기 시작',
+          },
+          scoring: [{ axis: 'Mental', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '红温了，下一波见到对面直接开冲，不管后果',
+            en: 'You\'re tilted. Next wave you charge in regardless of outcome',
+            ja: 'ガチギレ。次のウェーブは結果を考えずに突撃する',
+            ko: '멘붕 왔다. 다음 웨이브엔 결과 상관없이 돌진',
+          },
+          scoring: [{ axis: 'Mental', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '接着打，死就死了，不影响后续判断',
+            en: 'Play on. Dying doesn\'t cloud your next decision',
+            ja: '続けてプレイする。デスは次の判断に影響しない',
+            ko: '계속 플레이. 죽어도 다음 판단에 영향 없음',
+          },
+          scoring: [{ axis: 'Mental', delta: -1 }],
+        },
+      ],
+    },
+    // Q6 — Mental anchor
+    {
+      id: 'lol-q6',
+      kind: 'anchor',
+      text: {
+        zh: '队友在聊天框里骂了你一句，你……',
+        en: 'A teammate flames you in chat. You…',
+        ja: 'チームメイトがチャットで暴言を吐いた。あなたは……',
+        ko: '팀원이 채팅에서 욕했다. 당신은……',
+      },
+      options: [
+        {
+          label: {
+            zh: '秒回，加倍奉还，谁先骂谁就别怪我',
+            en: 'Fire back immediately. They started it',
+            ja: '即反撃する。向こうが先にやったんだ',
+            ko: '바로 반격. 먼저 시작한 건 쟤야',
+          },
+          scoring: [{ axis: 'Mental', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '没看到，全屏静音早就开了',
+            en: 'Didn\'t see it. Muted all at game start',
+            ja: '見えなかった。試合開始時に全員ミュート済み',
+            ko: '못 봤다. 시작할 때 이미 다 음소거함',
+          },
+          scoring: [{ axis: 'Mental', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '心里有点不舒服，但继续打，不说话',
+            en: 'A bit stung but you keep playing without responding',
+            ja: 'ちょっと嫌な気分になるが、黙って続ける',
+            ko: '좀 불편하지만 말없이 계속 플레이',
+          },
+          scoring: [{ axis: 'Mental', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '把对方骂回去，然后在接下来 10 分钟里都处于亢奋状态',
+            en: 'Snap back, then play the next 10 minutes completely amped up',
+            ja: '言い返して、その後10分間ずっとハイテンションでプレイ',
+            ko: '맞받아치고 이후 10분은 완전 흥분 상태로 플레이',
+          },
+          scoring: [{ axis: 'Mental', delta: 1 }],
+        },
+      ],
+    },
+
 
 export default game;
