@@ -1,5 +1,4 @@
-import type { Axis, Polarity, PolarityLetter } from './types';
-import type { LocalizedText } from '../game-quizzes';
+import type { Axis, Polarity, PolarityLetter, LocalizedText } from './types';
 
 export interface AxisDefinition {
   axis: Axis;

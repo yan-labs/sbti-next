@@ -13,6 +13,7 @@ export type {
   ArchetypeV2,
   GameQuizV2,
 } from './types';
+export { isSiteLocale, localize } from './types';
 
 export type { AxisDefinition } from './dimensions';
 export { AXES, axisByLetter, polarityFromScore } from './dimensions';
