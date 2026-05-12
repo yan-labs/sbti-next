@@ -36,6 +36,7 @@ pnpm-debug.log*
 next-env.d.ts
 .gstack/
 backlink-pilot/
+.wrangler/
 
 # claude code agent worktrees
 .claude/worktrees/

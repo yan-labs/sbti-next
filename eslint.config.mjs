@@ -14,6 +14,7 @@ const eslintConfig = defineConfig([
     "build/**",
     "coverage/**",
     "backlink-pilot/**",
+    ".wrangler/**",
     "next-env.d.ts",
   ]),
 ]);
