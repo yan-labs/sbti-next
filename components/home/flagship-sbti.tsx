@@ -1,38 +1,42 @@
 import Image from 'next/image';
 import {Link} from '@/i18n/navigation';
-import {TYPE_LIBRARY, TYPE_IMAGES} from '@/lib/data/personalities';
+import {NORMAL_TYPES, TYPE_IMAGES} from '@/lib/data/personalities';
 
 type Locale = 'zh' | 'en' | 'ja' | 'ko';
 
-const COPY: Record<Locale, {heading: string; sub: string; cta: string; badge: string}> = {
+const COPY: Record<Locale, {heading: string; sub: string; ctaBrowse: string; ctaTest: string; badge: string}> = {
   zh: {
-    heading: 'SBTI 人格测试',
-    sub: '30 题，15 个维度，27 种荒诞人格类型。不是 MBTI，但你可能更想转发这个。',
-    cta: '开始 SBTI 测试',
-    badge: '人格测试元祖',
+    heading: '想看 27 种 SBTI 完整图谱？',
+    sub: '从 CTRL（控制狂）到 ZZZZ（贪睡型）—— 每种类型有专属插画、长描述、克星和最佳搭档。',
+    ctaBrowse: '浏览全部 27 类型',
+    ctaTest: '没测过？开始测一下',
+    badge: '人格测试图鉴',
   },
   en: {
-    heading: 'SBTI Personality Test',
-    sub: '30 questions, 15 dimensions, 27 absurd types. Not MBTI — but you might share this one instead.',
-    cta: 'Take the SBTI Test',
-    badge: 'Original',
+    heading: 'Browse all 27 SBTI types',
+    sub: 'From CTRL (the Controller) to ZZZZ (the Sleeper) — each type comes with art, long description, rivals, and best squad.',
+    ctaBrowse: 'View all 27 types',
+    ctaTest: 'Haven\'t tested yet? Start here',
+    badge: 'Type library',
   },
   ja: {
-    heading: 'SBTI 性格テスト',
-    sub: '30問・15次元・27の荒唐無稽なタイプ。MBTIではないが、これをシェアしたくなるはず。',
-    cta: 'SBTI テストを始める',
-    badge: 'オリジナル診断',
+    heading: 'SBTI 全27タイプの図鑑',
+    sub: 'CTRL（コントローラー）から ZZZZ（寝坊家）まで —— 各タイプに専用イラスト・詳しい説明・天敵・最高の相棒つき。',
+    ctaBrowse: '全27タイプを見る',
+    ctaTest: 'まだ診断してない？こちらから',
+    badge: 'タイプ図鑑',
   },
   ko: {
-    heading: 'SBTI 성격 테스트',
-    sub: '30문항·15차원·27가지 황당한 유형. MBTI는 아니지만, 이걸 공유하고 싶어질 거야.',
-    cta: 'SBTI 테스트 시작하기',
-    badge: '원조 성격 테스트',
+    heading: 'SBTI 27가지 유형 전체 도감',
+    sub: 'CTRL(컨트롤러)부터 ZZZZ(잠꾸러기)까지 —— 유형마다 일러스트, 상세 설명, 천적, 최고의 짝꿍 정보 제공.',
+    ctaBrowse: '전체 27개 유형 보기',
+    ctaTest: '아직 테스트 안 했다면?',
+    badge: '유형 도감',
   },
 };
 
-// First 9 types for the image grid
-const TYPES_FOR_GRID = Object.keys(TYPE_LIBRARY).slice(0, 9);
+// 12 SBTI types in a 4x3 image grid (most recognisable codes first)
+const TYPES_FOR_GRID = NORMAL_TYPES.slice(0, 12).map((t) => t.code);
 
 interface FlagshipSBTIProps {
   locale: string;
@@ -47,9 +51,9 @@ export function FlagshipSBTI({locale}: FlagshipSBTIProps) {
       <div className="mx-auto max-w-5xl px-6">
         <div className="overflow-hidden rounded-3xl border border-border bg-gradient-to-br from-primary/5 via-card to-accent/5 shadow-sm">
           <div className="grid md:grid-cols-2">
-            {/* Left: type image grid */}
-            <div className="relative p-6 flex items-center justify-center">
-              <div className="grid grid-cols-3 gap-2 max-w-xs w-full">
+            {/* Left: 4x3 type image grid */}
+            <div className="relative p-6 md:p-8 flex items-center justify-center">
+              <div className="grid grid-cols-4 gap-2 max-w-sm w-full">
                 {TYPES_FOR_GRID.map((code) => {
                   const imgSrc = TYPE_IMAGES[code];
                   if (!imgSrc) return null;
@@ -69,7 +73,7 @@ export function FlagshipSBTI({locale}: FlagshipSBTIProps) {
               </div>
             </div>
 
-            {/* Right: CTA */}
+            {/* Right: heading + dual CTA */}
             <div className="flex flex-col justify-center gap-5 p-8 md:py-12">
               <span className="w-fit rounded-full bg-accent/10 px-3 py-1 text-xs font-semibold text-accent">
                 {t.badge}
@@ -83,12 +87,20 @@ export function FlagshipSBTI({locale}: FlagshipSBTIProps) {
                 {t.sub}
               </p>
 
-              <Link
-                href="/test"
-                className="w-fit inline-flex h-11 items-center justify-center rounded-xl bg-primary px-7 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-              >
-                {t.cta}
-              </Link>
+              <div className="flex flex-col items-start gap-2 sm:flex-row sm:items-center">
+                <Link
+                  href="/types"
+                  className="inline-flex h-11 items-center justify-center rounded-xl bg-primary px-6 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                >
+                  {t.ctaBrowse}
+                </Link>
+                <Link
+                  href="/test"
+                  className="inline-flex h-11 items-center justify-center px-2 text-sm font-medium text-foreground/70 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                >
+                  {t.ctaTest} →
+                </Link>
+              </div>
             </div>
           </div>
         </div>

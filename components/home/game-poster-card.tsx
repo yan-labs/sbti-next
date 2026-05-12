@@ -50,7 +50,7 @@ export function GamePosterCard({game, locale, featuredIndices = [0, 1, 2]}: Game
   return (
     <div
       data-game={game.slug}
-      className="group relative h-72 cursor-pointer select-none md:h-80"
+      className="group relative h-96 cursor-pointer select-none md:h-[26rem]"
       style={{perspective: '1000px'}}
       onClick={() => setFlipped((f) => !f)}
       onKeyDown={(e) => {if (e.key === 'Enter' || e.key === ' ') setFlipped((f) => !f);}}
@@ -77,52 +77,59 @@ export function GamePosterCard({game, locale, featuredIndices = [0, 1, 2]}: Game
             color: 'var(--game-ink, var(--card-foreground))',
           }}
         >
-          {/* Decor background (subtle) */}
-          <div
-            className="pointer-events-none absolute inset-0 opacity-[0.07]"
-            style={{backgroundImage: 'var(--game-decor)', backgroundSize: 'cover', backgroundPosition: 'center'}}
-            aria-hidden
-          />
+          {/* Cover image — top 45% */}
+          <div className="relative h-44 w-full overflow-hidden md:h-48">
+            <Image
+              src={`/game-quizzes/${game.slug}/cover.png`}
+              alt={title}
+              fill
+              className="object-cover transition-transform duration-500 group-hover:scale-105"
+              loading="lazy"
+              unoptimized
+            />
+            {/* Gradient veil for legibility of overlaid logo */}
+            <div
+              className="pointer-events-none absolute inset-0"
+              style={{
+                background: 'linear-gradient(to bottom, transparent 40%, color-mix(in srgb, var(--game-surface, var(--card)) 90%, transparent) 100%)',
+              }}
+              aria-hidden
+            />
+            {/* Logo overlay on cover */}
+            <div className="absolute right-3 top-3 flex size-10 items-center justify-center rounded-lg bg-background/70 p-1.5 shadow-sm backdrop-blur-sm">
+              <Image
+                src={`/game-logos/${game.slug}.png`}
+                alt=""
+                width={28}
+                height={28}
+                className="object-contain"
+                loading="lazy"
+              />
+            </div>
+          </div>
 
-          {/* Accent bar */}
+          {/* Accent bar between cover and text */}
           <div
-            className="absolute left-0 top-0 h-1 w-full"
+            className="h-1 w-full"
             style={{background: 'var(--game-primary, var(--primary))'}}
             aria-hidden
           />
 
-          <div className="relative flex h-full flex-col items-center justify-center gap-4 px-6 py-6">
-            {/* Logo */}
-            <div className="flex size-16 items-center justify-center">
-              <Image
-                src={`/game-logos/${game.slug}.png`}
-                alt={title}
-                width={64}
-                height={64}
-                className="object-contain drop-shadow-sm"
-                loading="lazy"
-              />
-            </div>
-
-            {/* Title */}
+          <div className="flex flex-col gap-2 px-5 py-4">
             <h3
-              className="font-heading text-xl font-bold leading-tight text-center"
+              className="font-heading text-lg font-bold leading-tight"
               style={{color: 'var(--game-ink, inherit)'}}
             >
               {title}
             </h3>
-
-            {/* Deck */}
             <p
-              className="text-sm text-center leading-snug opacity-80"
+              className="text-xs leading-snug opacity-75 line-clamp-2"
               style={{color: 'var(--game-ink, inherit)'}}
             >
               {deck}
             </p>
-
-            {/* Meta */}
             <span
-              className="font-mono text-xs font-medium opacity-60"
+              className="font-mono text-[11px] font-medium opacity-60"
               style={{color: 'var(--game-ink, inherit)'}}
             >
               {meta}
@@ -154,7 +161,7 @@ export function GamePosterCard({game, locale, featuredIndices = [0, 1, 2]}: Game
             aria-hidden
           />
 
-          <div className="relative flex h-full flex-col gap-3 px-5 py-5">
+          <div className="relative flex h-full flex-col gap-3 px-5 py-6">
             <p
               className="font-mono text-xs font-semibold uppercase tracking-wider opacity-60"
               style={{color: 'var(--game-ink, inherit)'}}
@@ -190,7 +197,7 @@ export function GamePosterCard({game, locale, featuredIndices = [0, 1, 2]}: Game
             <Link
               href={`/games/${game.slug}`}
               onClick={(e) => e.stopPropagation()}
-              className="mt-1 inline-flex w-full items-center justify-center rounded-xl py-2 text-sm font-semibold transition-opacity hover:opacity-90"
+              className="mt-1 inline-flex w-full items-center justify-center rounded-xl py-2.5 text-sm font-semibold transition-opacity hover:opacity-90"
               style={{
                 background: 'var(--game-primary, var(--primary))',
                 color: 'var(--game-surface, var(--primary-foreground))',

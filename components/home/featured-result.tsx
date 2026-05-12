@@ -31,7 +31,7 @@ const COPY: Record<Locale, {heading: string; sub: string; pct: string; cta: stri
   },
 };
 
-// Suggested: most culturally signature archetype from top-3 SEO-priority games
+// Top SEO-priority games × signature archetypes (Phase 0 / 1 picks)
 const FEATURED = [
   {gameSlug: 'league-of-legends', archetypeSlug: 'aram-comedian', pct: '12'},
   {gameSlug: 'valorant', archetypeSlug: 'data-duelist', pct: '14'},
@@ -52,7 +52,7 @@ export function FeaturedResult({locale}: FeaturedResultProps) {
     const arch = getArchetype(game, archetypeSlug);
     if (!arch) return null;
     return {game, arch, pct};
-  }).filter(Boolean) as {game: ReturnType<typeof getGameV2> & {}; arch: NonNullable<ReturnType<typeof getArchetype>>; pct: string}[];
+  }).filter(Boolean) as {game: NonNullable<ReturnType<typeof getGameV2>>; arch: NonNullable<ReturnType<typeof getArchetype>>; pct: string}[];
 
   return (
     <section id="featured-result" className="bg-muted/40 py-16 md:py-20">
@@ -76,30 +76,45 @@ export function FeaturedResult({locale}: FeaturedResultProps) {
             return (
               <Link
                 key={arch.slug}
+                data-game={game.slug}
                 href={`/games/${game.slug}/result/${arch.slug}`}
                 className="group flex shrink-0 w-72 snap-center flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition-shadow hover:shadow-md md:w-auto"
               >
-                {/* Cover image area */}
-                <div className="relative h-36 overflow-hidden bg-muted">
+                {/* Cover image — full bleed */}
+                <div className="relative h-40 w-full overflow-hidden">
                   <Image
-                    src={`/game-logos/${game.slug}.png`}
+                    src={`/game-quizzes/${game.slug}/cover.png`}
                     alt={gameTitle}
                     fill
-                    className="object-contain p-6 opacity-20 transition-opacity group-hover:opacity-30"
+                    className="object-cover transition-transform duration-300 group-hover:scale-105"
                     loading="lazy"
+                    unoptimized
                   />
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="text-center px-4">
-                      <p className="font-mono text-xs text-muted-foreground mb-1">{gameTitle}</p>
-                      <p className="font-heading text-lg font-bold text-foreground leading-tight">{archName}</p>
-                    </div>
+                  {/* Dark gradient + game label */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" aria-hidden />
+                  <div className="absolute bottom-2 left-3 flex items-center gap-2">
+                    <Image
+                      src={`/game-logos/${game.slug}.png`}
+                      alt=""
+                      width={20}
+                      height={20}
+                      className="rounded bg-white/90 p-0.5 object-contain"
+                      loading="lazy"
+                    />
+                    <p className="font-mono text-xs font-medium text-white/95">{gameTitle}</p>
                   </div>
                 </div>
 
-                <div className="flex flex-1 flex-col gap-3 p-4">
+                {/* Body */}
+                <div className="flex flex-1 flex-col gap-2 p-4">
+                  <p
+                    className="font-heading text-lg font-bold leading-tight text-foreground"
+                    style={{color: 'var(--game-primary, inherit)'}}
+                  >
+                    {archName}
+                  </p>
                   <p className="text-sm leading-relaxed text-muted-foreground line-clamp-2">{oneLiner}</p>
-
-                  <div className="mt-auto flex items-center gap-2">
+                  <div className="mt-auto flex items-center gap-2 pt-2">
                     <span className="font-mono text-xs font-semibold text-primary">{pct}%</span>
                     <span className="text-xs text-muted-foreground">{t.pct}</span>
                   </div>
