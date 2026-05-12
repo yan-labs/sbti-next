@@ -1703,8 +1703,303 @@ const game: GameQuizV2 = {
         },
       ],
     },
+    // Q25 — Tempo + Intel
+    {
+      id: 'lol-q25',
+      kind: 'compound',
+      text: {
+        zh: '对线期你怎么安排补刀节奏？',
+        en: 'How do you approach CSing in lane?',
+        ja: 'レーン中のCSの取り方をどう計画する？',
+        ko: '라인전에서 CS 리듬을 어떻게 잡아?',
+      },
+      options: [
+        {
+          label: {
+            zh: '每分钟目标 10 个刀，低了就复盘在哪里丢的',
+            en: 'Target 10 CS per minute and review where you fell short afterward',
+            ja: '1分間10CS目標。不足した場合は後で振り返る',
+            ko: '분당 10CS 목표. 못 미치면 어디서 놓쳤는지 복기',
+          },
+          scoring: [{ axis: 'Tempo', delta: -1 }, { axis: 'Intel', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '快刀流：能补就补，但对线时机出现就放弃刀',
+            en: 'CS when safe, drop farm the moment a kill window opens',
+            ja: 'CSできるときにCSして、キルチャンスが来たら諦める',
+            ko: '안전할 때 CS, 킬 기회 생기면 CS 포기',
+          },
+          scoring: [{ axis: 'Tempo', delta: 1 }, { axis: 'Intel', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '看整体节奏，哪个资源性价比高就先抓哪个',
+            en: 'Follow overall rhythm and prioritize whichever resource has highest return',
+            ja: '全体的なリズムを見て、最も効率的なリソースを優先する',
+            ko: '전체 흐름 보면서 효율 높은 자원부터 챙기기',
+          },
+          scoring: [{ axis: 'Tempo', delta: -1 }, { axis: 'Intel', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '刀到手感就好，手感不好就找团战代替',
+            en: 'Farm when you\'re in the groove; replace farming with fighting when the feel is off',
+            ja: '調子いいときはCS。調子悪いときはチームファイトで代替',
+            ko: '손 맞을 때 CS. 감 없을 때는 싸움으로 대신',
+          },
+          scoring: [{ axis: 'Tempo', delta: 1 }, { axis: 'Intel', delta: 1 }],
+        },
+      ],
+    },
+    // Q26 — Flair + Intel
+    {
+      id: 'lol-q26',
+      kind: 'compound',
+      text: {
+        zh: '你怎么看待"炫技操作"？',
+        en: 'What\'s your take on flashy outplays?',
+        ja: '「魅せプレイ」についてどう思う？',
+        ko: '"화려한 아웃플레이"에 대한 생각은?',
+      },
+      options: [
+        {
+          label: {
+            zh: '只要效率最高，怎么打都对，炫不炫不重要',
+            en: 'Whatever\'s most efficient wins. Style is irrelevant',
+            ja: '最も効率的な方法が正解。スタイルは関係ない',
+            ko: '효율이 제일 높은 게 정답. 스타일은 관계없음',
+          },
+          scoring: [{ axis: 'Flair', delta: -1 }, { axis: 'Intel', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '秀起来更开心，即使风险大也值得一试',
+            en: 'It\'s more fun when it looks good. Worth the extra risk',
+            ja: '見栄えが良い方が楽しい。リスクが高くても試す価値はある',
+            ko: '멋있어 보이면 더 재밌다. 리스크 높아도 시도할 가치 있음',
+          },
+          scoring: [{ axis: 'Flair', delta: 1 }, { axis: 'Intel', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '先数据上正确再说，能秀是奖励，不能秀就算了',
+            en: 'Correct play first. If it happens to look flashy, great',
+            ja: 'まず正しいプレイをする。見栄えが良ければボーナス',
+            ko: '일단 올바른 플레이 먼저. 멋있으면 보너스',
+          },
+          scoring: [{ axis: 'Flair', delta: -1 }, { axis: 'Intel', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '感觉到位了就出手，秀的到位比数据还爽',
+            en: 'When the feel is right, go for it. Nailing a play feels better than any stat',
+            ja: '感覚が来たら決める。決まった瞬間の感覚はどんな数字より気持ちいい',
+            ko: '감 왔을 때 치고 들어가기. 딱 맞아떨어지는 느낌이 어떤 통계보다 좋음',
+          },
+          scoring: [{ axis: 'Flair', delta: 1 }, { axis: 'Intel', delta: 1 }],
+        },
+      ],
+    },
+    // Q27 — Flair + Intel
+    {
+      id: 'lol-q27',
+      kind: 'compound',
+      text: {
+        zh: '你如何选择皮肤？',
+        en: 'How do you pick skins?',
+        ja: 'スキンはどうやって選ぶ？',
+        ko: '스킨은 어떻게 고르나요?',
+      },
+      options: [
+        {
+          label: {
+            zh: '看皮肤特效有没有让音效和技能更清晰，实战优先',
+            en: 'Check whether the VFX/SFX make abilities clearer in fights',
+            ja: 'エフェクトとサウンドが実戦で見やすくなるか確認する',
+            ko: '스킬 이펙트·사운드 효과가 실전에서 더 명확한지 확인',
+          },
+          scoring: [{ axis: 'Flair', delta: -1 }, { axis: 'Intel', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '帅就行，能看就买，数据和风格一起满足',
+            en: 'If it looks sick, that\'s reason enough. Style and performance overlap',
+            ja: 'かっこよければいい。見た目と性能が一致してれば買う',
+            ko: '멋있으면 그걸로 충분. 스타일이랑 성능 겹치면 구매',
+          },
+          scoring: [{ axis: 'Flair', delta: 1 }, { axis: 'Intel', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '默认皮肤也无所谓，影响不了技术',
+            en: 'Default skin is fine. It doesn\'t affect your mechanics',
+            ja: 'デフォルトスキンでもいい。技術には関係ない',
+            ko: '기본 스킨도 괜찮다. 실력엔 관계없음',
+          },
+          scoring: [{ axis: 'Flair', delta: -1 }, { axis: 'Intel', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '喜欢就入，看到好看的皮肤打游戏心情特别好',
+            en: 'Buy it if you like it. Playing with a skin you love puts you in a better mood',
+            ja: '気に入ったら買う。好きなスキンで遊ぶと気分がいい',
+            ko: '마음에 들면 산다. 좋아하는 스킨으로 하면 기분이 달라짐',
+          },
+          scoring: [{ axis: 'Flair', delta: 1 }, { axis: 'Intel', delta: 1 }],
+        },
+      ],
+    },
+    // Q28 — Tempo + Flair
+    {
+      id: 'lol-q28',
+      kind: 'compound',
+      text: {
+        zh: '你赢了一场快攻局，你会……',
+        en: 'You win a game with a super fast push. You…',
+        ja: '速攻プッシュで試合に勝った。あなたは……',
+        ko: '빠른 push로 게임 이겼다. 당신은……',
+      },
+      options: [
+        {
+          label: {
+            zh: '发一条朋友圈，晒一下时间短胜率高的战绩',
+            en: 'Post the 20-minute win screenshot with the "shortest game" badge',
+            ja: '「最短試合」バッジ付きの20分勝利スクリーンショットを投稿する',
+            ko: '"최단 게임" 배지 붙은 20분 승리 스크린샷 올리기',
+          },
+          scoring: [{ axis: 'Tempo', delta: 1 }, { axis: 'Flair', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '算一下这局节省了多少时间，高效就行，不用发',
+            en: 'Calculate how much time you saved. No need to post anything',
+            ja: '節約した時間を計算する。発信する必要はない',
+            ko: '아낀 시간 계산하기. 뭔가 올릴 필요 없음',
+          },
+          scoring: [{ axis: 'Tempo', delta: 1 }, { axis: 'Flair', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '慢慢回味，翻看一下刚才打出来的击杀镜头',
+            en: 'Slowly replay those kill clips in your head before queuing again',
+            ja: 'キルクリップをゆっくり振り返ってから次のキューに入る',
+            ko: '킬 클립 천천히 곱씹고 나서 다음 큐 들어가기',
+          },
+          scoring: [{ axis: 'Tempo', delta: -1 }, { axis: 'Flair', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '直接下一局，刚才的战绩不用记，打好眼前的才重要',
+            en: 'Queue immediately. Past wins don\'t matter; focus on the next',
+            ja: 'すぐ次のキューに入る。過去の勝利は関係ない',
+            ko: '바로 다음 큐. 지난 승리는 상관없고 지금이 중요',
+          },
+          scoring: [{ axis: 'Tempo', delta: 1 }, { axis: 'Flair', delta: -1 }],
+        },
+      ],
+    },
+    // Q29 — Flair + Mental
+    {
+      id: 'lol-q29',
+      kind: 'compound',
+      text: {
+        zh: '你觉得怎样的结果是"完美的一局"？',
+        en: 'What makes a game feel perfect to you?',
+        ja: 'あなたにとって「完璧な一試合」とはどんなもの？',
+        ko: '당신에게 "완벽한 한 판"이란?',
+      },
+      options: [
+        {
+          label: {
+            zh: '打出一个漂亮的操作，队友喊了一声"牛逼"',
+            en: 'Landing a clean outplay and hearing "nice" from your team',
+            ja: 'きれいなアウトプレイを決めて、チームメイトに「うまい」と言われる',
+            ko: '깔끔한 아웃플레이 성공하고 팀원한테 "잘한다" 듣기',
+          },
+          scoring: [{ axis: 'Flair', delta: 1 }, { axis: 'Mental', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '即使输了，整局过得很爽，有个精彩片段值得截图',
+            en: 'Even a loss can be perfect if there\'s one highlight worth clipping',
+            ja: '負けても、クリップする価値のあるハイライトがあれば完璧だ',
+            ko: '져도 클립할 만한 하이라이트가 있으면 완벽',
+          },
+          scoring: [{ axis: 'Flair', delta: 1 }, { axis: 'Mental', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '赢了就完美，过程不重要，结果才是唯一标准',
+            en: 'Winning is the only metric. Process is noise',
+            ja: '勝利が唯一の基準。プロセスはノイズだ',
+            ko: '이기는 게 유일한 기준. 과정은 노이즈',
+          },
+          scoring: [{ axis: 'Flair', delta: -1 }, { axis: 'Mental', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '全程状态在线，没有一次因为队友崩掉情绪',
+            en: 'Playing in flow all game without tilting once over teammates',
+            ja: '全試合ゾーン状態で、チームメイトに一度も乱されなかった',
+            ko: '전 경기 몰입 상태로 팀원 때문에 단 한 번도 멘붕 안 함',
+          },
+          scoring: [{ axis: 'Flair', delta: -1 }, { axis: 'Mental', delta: -1 }],
+        },
+      ],
+    },
+    // Q30 — Tempo + Nerve (peak-end: wildly funny last question)
+    {
+      id: 'lol-q30',
+      kind: 'compound',
+      text: {
+        zh: '游戏剩下 30 秒，你们要决战了，你……',
+        en: 'Thirty seconds left in the game, final fight incoming. You…',
+        ja: 'ゲーム残り30秒、最終決戦が迫る。あなたは……',
+        ko: '게임 30초 남았고 최종 결전이 다가온다. 당신은……',
+      },
+      options: [
+        {
+          label: {
+            zh: '直接开团，不管血量，人死了就 respawn，输了就下一局',
+            en: 'Charge in regardless of HP. Death means respawn; loss means next game',
+            ja: 'HPを無視して突撃。死んだらリスポーン、負けたら次のゲーム',
+            ko: '체력 무시하고 돌진. 죽으면 리스폰이고 지면 다음 게임',
+          },
+          scoring: [{ axis: 'Tempo', delta: 1 }, { axis: 'Nerve', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '等到有人犯错才出手，急了容易送',
+            en: 'Wait for their mistake. Impatience is how games get thrown',
+            ja: '相手がミスするまで待つ。焦りはゲームを投げることになる',
+            ko: '상대 실수 날 때까지 대기. 조급하면 게임 던짐',
+          },
+          scoring: [{ axis: 'Tempo', delta: -1 }, { axis: 'Nerve', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '先发制人，用大招起手打断对方节奏，然后速推',
+            en: 'Open with your ult, disrupt their rhythm, then speed-close the game',
+            ja: 'アルティメットで先手を取り相手のリズムを崩し、速攻で終わらせる',
+            ko: '궁으로 선수 치고 상대 리듬 붕괴시킨 다음 속공으로 마무리',
+          },
+          scoring: [{ axis: 'Tempo', delta: 1 }, { axis: 'Nerve', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '等大家集合好再动，宁可慢一点也不要失去人数优势',
+            en: 'Wait for everyone to group up. Slower is fine; 5v5 beats 4v5 every time',
+            ja: '全員が集まるのを待つ。少し遅くてもいい。5v5は4v5より必ず強い',
+            ko: '전원 집합 기다리기. 조금 느려도 좋으니 5v5가 4v5보다 항상 강함',
+          },
+          scoring: [{ axis: 'Tempo', delta: -1 }, { axis: 'Nerve', delta: -1 }],
+        },
+      ],
+    },
   ],
 };
 
 export default game;
+
 
