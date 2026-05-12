@@ -1113,4 +1113,304 @@ const game: GameQuizV2 = {
       ],
     },
 
+    // ── COMPOUND Q13: Tempo + Flair (slide-jump showboating — peak opener feel) ─
+    {
+      id: 'apex-c01',
+      kind: 'compound',
+      text: {
+        zh: '你刚滑铲过了一条护甲线，出现在对手盲区。此刻的主要想法是什么？',
+        en: 'You just slide-jumped over a barrier and appeared in the enemy\'s blind spot. Main thought?',
+        ja: 'バリアをスライドジャンプで越えて敵の死角に現れた。今一番頭にあることは？',
+        ko: '방금 장벽 넘어 슬라이드 점프로 적 사각지대에 나타났다. 지금 주된 생각은?',
+      },
+      options: [
+        {
+          label: {
+            zh: '赶紧打完撤，占位优势不等人',
+            en: 'Fire fast and pull back. Position advantage expires.',
+            ja: 'さっさと撃って引く。ポジション優位は待ってくれない。',
+            ko: '빠르게 쏘고 빠진다. 위치 우위는 기다려주지 않는다.',
+          },
+          scoring: [{ axis: 'Tempo', delta: 1 }, { axis: 'Flair', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '先把这段滑铲录下来，打不打得到是其次',
+            en: 'Replay is running, right? The slide matters more than the trade.',
+            ja: 'リプレイは回ってる？スライドがトレードより重要だ。',
+            ko: '리플레이 돌아가고 있지? 슬라이드가 교전보다 중요하다.',
+          },
+          scoring: [{ axis: 'Tempo', delta: 1 }, { axis: 'Flair', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '等等，这个角度我还没用过，先观察一下才打',
+            en: 'Haven\'t used this angle before. Observe one beat before committing.',
+            ja: 'このアングルは初めて使う。動く前に一拍観察する。',
+            ko: '이 각도 처음 써본다. 교전 전에 한 박자 관찰한다.',
+          },
+          scoring: [{ axis: 'Tempo', delta: -1 }, { axis: 'Flair', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '我主要在想我是怎么滑进来的，能重复这个路线吗',
+            en: 'Mostly thinking about how I got here and whether that route is repeatable.',
+            ja: 'どうやってここに来たか、このルートが再現できるかを主に考えている。',
+            ko: '어떻게 여기 들어왔는지, 이 루트 반복 가능한지 주로 생각하고 있다.',
+          },
+          scoring: [{ axis: 'Tempo', delta: -1 }, { axis: 'Flair', delta: -1 }],
+        },
+      ],
+    },
+
+    // ── COMPOUND Q14: Tempo + Bond ───────────────────────────────────────────
+    {
+      id: 'apex-c02',
+      kind: 'compound',
+      text: {
+        zh: '队友还没到位，但最佳打架窗口就是现在，30秒后对面会修好甲。',
+        en: 'Teammates aren\'t in position yet. But the window to engage is right now — in 30 seconds the enemy rearms.',
+        ja: 'チームメイトはまだポジションに着いていない。でも交戦の窓は今だ。30秒後に敵は装備を整える。',
+        ko: '팀원이 아직 자리 못 잡았다. 그런데 교전 타이밍은 지금이다 — 30초 후에는 적이 재무장한다.',
+      },
+      options: [
+        {
+          label: {
+            zh: '先打，队友会跟上来的',
+            en: 'Engage now. They\'ll follow.',
+            ja: '今交戦する。ついてくるはずだ。',
+            ko: '지금 교전. 따라올 거다.',
+          },
+          scoring: [{ axis: 'Tempo', delta: 1 }, { axis: 'Bond', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '等十秒，给队友一个窗口跟上，然后一起压',
+            en: 'Wait ten seconds, give them a chance to rotate, then go in together.',
+            ja: '10秒待ってチームメイトがローテーションする時間を与え、それから一緒に攻める。',
+            ko: '10초 기다려 팀원이 로테이션할 시간 주고, 같이 들어간다.',
+          },
+          scoring: [{ axis: 'Tempo', delta: -1 }, { axis: 'Bond', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '我进去拖，队友赶来后再真打',
+            en: 'I\'ll bait the fight and stall. Real push starts when they arrive.',
+            ja: 'フェイクで戦闘を引き延ばす。本番はチームメイトが来てから。',
+            ko: '내가 들어가서 시간 끈다. 팀원 오면 진짜 교전 시작.',
+          },
+          scoring: [{ axis: 'Tempo', delta: 1 }, { axis: 'Bond', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '窗口过了就过了，等到下一个安全的机会',
+            en: 'Window closed is window closed. Wait for the next safe one.',
+            ja: '窓が閉まれば閉まったまま。次の安全なチャンスを待つ。',
+            ko: '타이밍 지나면 지난 거다. 다음 안전한 기회 기다린다.',
+          },
+          scoring: [{ axis: 'Tempo', delta: -1 }, { axis: 'Bond', delta: -1 }],
+        },
+      ],
+    },
+
+    // ── COMPOUND Q15: Flair + Bond ───────────────────────────────────────────
+    {
+      id: 'apex-c03',
+      kind: 'compound',
+      text: {
+        zh: '你刚发现了一套漂亮的撤离喷漆。你会等队友都到了再喷，还是先自己喷了再说？',
+        en: 'You found the last evacuation spray at the dropship. Spray now alone, or wait for the team?',
+        ja: '撤離スプレーの最後のスポットを発見した。一人で先に使うか、チームを待つか？',
+        ko: '이탈 스프레이 마지막 자리 발견했다. 혼자 지금 뿌리나, 아니면 팀 기다리나?',
+      },
+      options: [
+        {
+          label: {
+            zh: '先喷了，喷完叫他们来拍照',
+            en: 'Spray now, then call them over for a group shot.',
+            ja: '先に使って、その後グループショットのために呼ぶ。',
+            ko: '지금 뿌리고 나서 단체 사진 찍으러 불러온다.',
+          },
+          scoring: [{ axis: 'Flair', delta: 1 }, { axis: 'Bond', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '等他们，这种事一起才有意思',
+            en: 'Wait for them. These moments only work together.',
+            ja: '待つ。こういう瞬間は一緒じゃないと意味がない。',
+            ko: '기다린다. 이런 순간은 같이 해야 의미 있다.',
+          },
+          scoring: [{ axis: 'Flair', delta: -1 }, { axis: 'Bond', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '我自己喷了，队友愿不愿意来看无所谓',
+            en: 'I sprayed it. Whether they come look is up to them.',
+            ja: '自分で使った。見に来るかどうかは彼らの自由。',
+            ko: '나 뿌렸다. 팀원이 보러 올지는 그들 자유.',
+          },
+          scoring: [{ axis: 'Flair', delta: 1 }, { axis: 'Bond', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '我不在乎喷漆，只想找安全位等撤离',
+            en: 'I don\'t care about the spray. Just want a safe position at the evac.',
+            ja: 'スプレーには興味ない。撤離での安全なポジションが欲しいだけ。',
+            ko: '스프레이 관심 없다. 이탈 지점에서 안전한 위치만 잡으면 된다.',
+          },
+          scoring: [{ axis: 'Flair', delta: -1 }, { axis: 'Bond', delta: -1 }],
+        },
+      ],
+    },
+
+    // ── COMPOUND Q16: Tempo + Nerve ──────────────────────────────────────────
+    {
+      id: 'apex-c04',
+      kind: 'compound',
+      text: {
+        zh: '你站在一栋楼的二楼，一楼有敌人在活动，楼道很窄。',
+        en: 'You\'re on the second floor of a building. Enemy is on the ground floor. Stairway is tight.',
+        ja: '建物の2階にいる。1階に敵がいる。階段が狭い。',
+        ko: '건물 2층에 있다. 1층에 적이 있다. 계단이 좁다.',
+      },
+      options: [
+        {
+          label: {
+            zh: '现在就跳下去，用落差拉扯',
+            en: 'Drop down immediately. Use the height gap to confuse their tracking.',
+            ja: '今すぐ飛び降りる。高さの差で追跡を惑わす。',
+            ko: '지금 바로 내려간다. 높이 차이로 추적 교란시킨다.',
+          },
+          scoring: [{ axis: 'Tempo', delta: 1 }, { axis: 'Nerve', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '守楼梯，让他们上来',
+            en: 'Hold the stairway. Make them come to me.',
+            ja: '階段を守る。向こうを上らせる。',
+            ko: '계단 지킨다. 올라오게 만든다.',
+          },
+          scoring: [{ axis: 'Tempo', delta: -1 }, { axis: 'Nerve', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '跳窗跑路，找更好的角度再打',
+            en: 'Jump out the window. Find a better angle before engaging.',
+            ja: '窓から脱出。交戦前にいいアングルを見つける。',
+            ko: '창문으로 탈출. 교전 전에 더 좋은 각도 찾는다.',
+          },
+          scoring: [{ axis: 'Tempo', delta: 1 }, { axis: 'Nerve', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '扔手雷下去，等反应再说',
+            en: 'Throw a grenade down first. See how they react before committing.',
+            ja: '先に手榴弾を投げる。動く前に反応を見る。',
+            ko: '먼저 수류탄 던진다. 교전 전에 반응 본다.',
+          },
+          scoring: [{ axis: 'Tempo', delta: -1 }, { axis: 'Nerve', delta: 1 }],
+        },
+      ],
+    },
+
+    // ── COMPOUND Q17: Flair + Intel ──────────────────────────────────────────
+    {
+      id: 'apex-c05',
+      kind: 'compound',
+      text: {
+        zh: '你看了一个高手的移动视频，里面有一个你没见过的滑铲路线。你怎么回应？',
+        en: 'You watched a pro\'s movement clip with a slide path you\'ve never seen. What happens next?',
+        ja: 'プロの移動クリップを見た。見たことのないスライドルートがある。次はどうする？',
+        ko: '프로의 움직임 클립 봤는데 본 적 없는 슬라이드 루트가 있다. 다음은?',
+      },
+      options: [
+        {
+          label: {
+            zh: '立刻开训练模式练这个路线',
+            en: 'Open training mode immediately and drill the route.',
+            ja: 'すぐにトレーニングモードを開いてルートを練習する。',
+            ko: '바로 훈련 모드 열고 루트 연습한다.',
+          },
+          scoring: [{ axis: 'Flair', delta: 1 }, { axis: 'Intel', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '先记下来，等真实对局里有机会再试',
+            en: 'Noted. Try it in a real match when the opportunity shows up.',
+            ja: 'メモしておく。実戦で機会が来たら試す。',
+            ko: '메모해 뒀다. 실전에서 기회 오면 시도한다.',
+          },
+          scoring: [{ axis: 'Flair', delta: 1 }, { axis: 'Intel', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '看看评论区有没有人分析这段技术的输入法',
+            en: 'Check the comments for someone who broke down the key inputs.',
+            ja: 'コメント欄でキー入力を分析した人がいるか確認する。',
+            ko: '댓글에서 키 입력 분석한 사람 있는지 확인한다.',
+          },
+          scoring: [{ axis: 'Flair', delta: -1 }, { axis: 'Intel', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '保存了，但不会专门去练，有感觉了自然会',
+            en: 'Saved it, but not going to drill it. If it flows naturally in a match, great.',
+            ja: '保存した。でも練習はしない。試合で自然に出てきたらそれでいい。',
+            ko: '저장했다. 그런데 연습은 안 할 거다. 실전에서 자연스럽게 나오면 그걸로.',
+          },
+          scoring: [{ axis: 'Flair', delta: -1 }, { axis: 'Intel', delta: 1 }],
+        },
+      ],
+    },
+
+    // ── COMPOUND Q18: Bond + Mental ──────────────────────────────────────────
+    {
+      id: 'apex-c06',
+      kind: 'compound',
+      text: {
+        zh: '队友连续两次走错路把你带进了不利位置。你接下来怎么做？',
+        en: 'Teammate led you into bad position twice in a row. What now?',
+        ja: 'チームメイトが2回連続で悪いポジションに引き込んだ。次はどうする？',
+        ko: '팀원이 연속 두 번 당신을 불리한 위치로 끌어들였다. 이제 어떻게 하나?',
+      },
+      options: [
+        {
+          label: {
+            zh: '提醒一次，然后继续跟，可能他有我看不到的判断',
+            en: 'Mention it once, then keep following. Maybe they have information I don\'t.',
+            ja: '一度指摘して、それでもついていく。自分が知らない情報があるかもしれない。',
+            ko: '한 번 말하고 계속 따라간다. 내가 모르는 정보가 있을 수도 있다.',
+          },
+          scoring: [{ axis: 'Bond', delta: 1 }, { axis: 'Mental', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '之后的路线我自己决定，不跟了',
+            en: 'I\'m making my own rotation calls from here. Done following.',
+            ja: 'これ以降は自分でローテーションを決める。ついていくのは終わり。',
+            ko: '앞으로 로테이션은 내가 결정한다. 따라가기 끝.',
+          },
+          scoring: [{ axis: 'Bond', delta: -1 }, { axis: 'Mental', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '语音里说清楚我的不满，然后继续配合',
+            en: 'Say clearly in voice chat that this isn\'t working. Keep cooperating after.',
+            ja: 'ボイスチャットでうまくいっていないと伝える。その後は引き続き協力する。',
+            ko: '보이스에서 이게 안 된다고 분명히 말한다. 그 다음은 계속 협력한다.',
+          },
+          scoring: [{ axis: 'Bond', delta: 1 }, { axis: 'Mental', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '我现在已经有点红温了，但不会说，只是会走得离他们稍微远一点',
+            en: 'Irritated but silent. I\'ll just naturally drift a little further from them.',
+            ja: 'イライラしているが黙っている。自然に少し距離を置くようになる。',
+            ko: '짜증나지만 말 안 한다. 자연스럽게 조금 더 거리를 둔다.',
+          },
+          scoring: [{ axis: 'Bond', delta: -1 }, { axis: 'Mental', delta: 1 }],
+        },
+      ],
+    },
+
 
