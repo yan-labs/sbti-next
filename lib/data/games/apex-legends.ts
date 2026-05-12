@@ -813,5 +813,304 @@ const game: GameQuizV2 = {
       ],
     },
 
+    // ── ANCHOR Q7: Nerve ─────────────────────────────────────────────────────
+    {
+      id: 'apex-a07',
+      kind: 'anchor',
+      text: {
+        zh: '最后三队。你们满状态，另外两队在打。要不要进去抢？',
+        en: 'Final three squads. Your team is full health. Two other squads are mid-fight. Go in?',
+        ja: '最終3チーム。自チームは満タン。他の2チームが交戦中だ。突入する？',
+        ko: '마지막 세 팀. 내 팀은 풀피. 다른 두 팀이 교전 중이다. 들어갈까?',
+      },
+      options: [
+        {
+          label: {
+            zh: '进，现在是最好时机，拖就是给别人机会',
+            en: 'Go. This is the best window. Waiting hands them the next fight for free.',
+            ja: '行く。今が最高のタイミングだ。待てば次の戦闘を向こうに譲ることになる。',
+            ko: '간다. 지금이 최고 타이밍이다. 기다리면 다음 교전 공짜로 준다.',
+          },
+          scoring: [{ axis: 'Nerve', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '等一波，等其中一队被清掉再选择对手',
+            en: 'Wait one cycle. Let one squad get wiped before choosing who to fight.',
+            ja: 'もう少し待つ。1チームが全滅してから相手を選ぶ。',
+            ko: '한 사이클 기다린다. 한 팀 전멸하고 나서 상대 선택한다.',
+          },
+          scoring: [{ axis: 'Nerve', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '绕到圈中心占位，让两队来撞我',
+            en: 'Rotate to ring center and hold high ground. Let both squads walk into us.',
+            ja: 'サークル中心に移動して高台を確保。両チームをこちらに歩かせる。',
+            ko: '자기장 중심으로 이동해서 고지 잡는다. 두 팀이 우리한테 걸어오게 한다.',
+          },
+          scoring: [{ axis: 'Nerve', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '直接弹射板进去，三队同时存在才好玩',
+            en: 'Jump pad right in. Three squads colliding at once is what this game was made for.',
+            ja: 'ジャンプパッドで突っ込む。3チームが同時に衝突するのがこのゲームの醍醐味だ。',
+            ko: '점프 패드로 바로 들어간다. 세 팀이 동시에 충돌하는 게 이 게임의 묘미다.',
+          },
+          scoring: [{ axis: 'Nerve', delta: 1 }],
+        },
+      ],
+    },
 
-export default game;
+    // ── ANCHOR Q8: Nerve ─────────────────────────────────────────────────────
+    {
+      id: 'apex-a08',
+      kind: 'anchor',
+      text: {
+        zh: '你扫描到一个不稳定的位置，可以出手但风险很高。',
+        en: 'You spot an unsupported enemy in a risky angle. High damage potential, high exposure.',
+        ja: '不安定なポジションの敵を発見。高ダメージ可能性、高露出リスク。',
+        ko: '불안정한 위치의 적 발견. 높은 피해 가능성, 높은 노출 위험.',
+      },
+      options: [
+        {
+          label: {
+            zh: '直接上，打就完了，打完再撤',
+            en: 'Commit. Trade and disengage. Thinking too long just costs position.',
+            ja: '行く。ダメージ交換して離脱。考えすぎるとポジションを失う。',
+            ko: '간다. 교전하고 이탈. 너무 오래 생각하면 위치 잃는다.',
+          },
+          scoring: [{ axis: 'Nerve', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '先观察一轮再说，搞不好对面有埋伏',
+            en: 'Observe one cycle. Could be bait. Better to confirm before committing.',
+            ja: '1サイクル観察してから。罠かもしれない。確認してから動く方がいい。',
+            ko: '한 사이클 관찰 먼저. 함정일 수도 있다. 확인하고 움직이는 게 낫다.',
+          },
+          scoring: [{ axis: 'Nerve', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '标记给队友，让他们判断要不要打',
+            en: 'Ping it for the team and let them call whether to engage.',
+            ja: 'チームにピングして、交戦するかどうか判断させる。',
+            ko: '팀에 핑 찍고 교전 여부 판단하게 한다.',
+          },
+          scoring: [{ axis: 'Nerve', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '先绕后再出手，风险归风险，入射角更重要',
+            en: 'Flank first, then commit. Risk is risk, but angle matters more.',
+            ja: '先にフランクしてから動く。リスクはリスクだが、角度の方が重要だ。',
+            ko: '먼저 플랭크하고 나서 교전. 위험은 위험이지만 각도가 더 중요하다.',
+          },
+          scoring: [{ axis: 'Nerve', delta: 1 }],
+        },
+      ],
+    },
+
+    // ── ANCHOR Q9: Intel ─────────────────────────────────────────────────────
+    {
+      id: 'apex-a09',
+      kind: 'anchor',
+      text: {
+        zh: '队友说"我感觉那楼里面有人"。你怎么处理这条信息？',
+        en: 'Teammate says "I feel like there\'s someone in that building." How do you handle this?',
+        ja: 'チームメイトが「あの建物に誰かいる気がする」と言った。この情報をどう扱う？',
+        ko: '팀원이 "저 건물에 누가 있는 것 같아"라고 한다. 이 정보를 어떻게 처리하나?',
+      },
+      options: [
+        {
+          label: {
+            zh: '直接绕着建筑扫一圈，用脚步声判断',
+            en: 'Circle the building and listen for footsteps. Confirm before acting.',
+            ja: '建物を一周して足音を聞く。行動前に確認する。',
+            ko: '건물 주변 돌면서 발소리 듣는다. 행동 전에 확인한다.',
+          },
+          scoring: [{ axis: 'Intel', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '"感觉"不算数，有声音、有脚步、有血痕才算',
+            en: '"Feeling" doesn\'t count. I need sound, footsteps, or blood trail before I act.',
+            ja: '「感じ」では動かない。音、足音、血痕があって初めて動く。',
+            ko: '"느낌"은 안 된다. 소리, 발소리, 혈흔이 있어야 움직인다.',
+          },
+          scoring: [{ axis: 'Intel', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '信了，我进去看',
+            en: 'Trusted it. Going in to check.',
+            ja: '信じた。中に入って確認する。',
+            ko: '믿었다. 들어가서 확인한다.',
+          },
+          scoring: [{ axis: 'Intel', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '我也有这种感觉——主要是因为我们五分钟没遇到人了',
+            en: 'I have the same feeling, mostly because we haven\'t seen anyone in five minutes.',
+            ja: '自分も同じ感じがする — 主に5分間誰とも会っていないから。',
+            ko: '나도 그 느낌 있다 — 주로 5분째 아무도 못 만났으니까.',
+          },
+          scoring: [{ axis: 'Intel', delta: 1 }],
+        },
+      ],
+    },
+
+    // ── ANCHOR Q10: Intel ────────────────────────────────────────────────────
+    {
+      id: 'apex-a10',
+      kind: 'anchor',
+      text: {
+        zh: '游戏后你会回放录像、看击杀数据，还是凭感觉记住今天打得好不好？',
+        en: 'After a session, do you review VODs and stats, or remember how the game felt?',
+        ja: 'セッション後にVODやデータを確認するか、ゲームの感触で覚えているか？',
+        ko: '게임 후 VOD와 통계를 확인하나, 아니면 게임이 어떻게 느껴졌는지로 기억하나?',
+      },
+      options: [
+        {
+          label: {
+            zh: '我会看击杀数据，找自己的问题点',
+            en: 'I check stats and kill data. Find my own problem areas.',
+            ja: '統計とキルデータを確認する。自分の問題点を見つける。',
+            ko: '통계와 킬 데이터 확인한다. 내 문제 영역 찾는다.',
+          },
+          scoring: [{ axis: 'Intel', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '凭手感记，我知道哪把打得好，不需要数字确认',
+            en: 'I know which sessions felt right. Numbers don\'t tell me more than the feel does.',
+            ja: '感触で覚える。どのセッションがよかったか分かる。数字より感触の方が多くを語る。',
+            ko: '느낌으로 기억한다. 어느 판이 잘 됐는지 안다. 숫자가 느낌보다 더 말해주진 않는다.',
+          },
+          scoring: [{ axis: 'Intel', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '只看能不能跑图的数据，比如移速和区域覆盖',
+            en: 'Only check movement data: did I cover the right areas at the right times?',
+            ja: '移動データだけ確認する。正しいエリアを正しいタイミングでカバーできたか？',
+            ko: '움직임 데이터만 확인한다. 맞는 타이밍에 맞는 구역 커버했는지?',
+          },
+          scoring: [{ axis: 'Intel', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '啥也不看，我游戏打完就关了，感觉还行就行',
+            en: 'Nothing. Close the game and call it. "Felt fine" is enough review.',
+            ja: '何も見ない。ゲームを閉じて終わり。「まあよかった」で十分なレビューだ。',
+            ko: '아무것도 안 본다. 게임 끄고 끝. "괜찮았어"면 충분한 복기다.',
+          },
+          scoring: [{ axis: 'Intel', delta: 1 }],
+        },
+      ],
+    },
+
+    // ── ANCHOR Q11: Mental ───────────────────────────────────────────────────
+    {
+      id: 'apex-a11',
+      kind: 'anchor',
+      text: {
+        zh: '队友弹射板把你发射进了对面阵地。你在飞行中的第一反应？',
+        en: 'Your teammate\'s jump pad launched you directly into the enemy squad. You\'re mid-air.',
+        ja: 'チームメイトのジャンプパッドが敵チームに向けて自分を発射した。今空中にいる。',
+        ko: '팀원 점프 패드가 당신을 적 팀 쪽으로 발사했다. 지금 공중이다.',
+      },
+      options: [
+        {
+          label: {
+            zh: '冷静找落点，看看能不能反客为主',
+            en: 'Stay calm, find a landing spot, see if I can flip the situation.',
+            ja: '冷静に着地点を探す。状況をひっくり返せるか確認する。',
+            ko: '침착하게 착지 지점 찾는다. 상황을 뒤집을 수 있는지 본다.',
+          },
+          scoring: [{ axis: 'Mental', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '边飞边骂，但骂完了还是会想怎么拉扯',
+            en: 'Curse mid-flight. Then immediately think about how to fight out of it.',
+            ja: '飛行中に悪態をつく。その後すぐに戦い方を考える。',
+            ko: '비행 중에 욕한다. 그 다음 바로 빠져나올 방법 생각한다.',
+          },
+          scoring: [{ axis: 'Mental', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '直接认了，这把要没了，不是我的问题',
+            en: 'Accept the wipe. This round is gone. Not on me.',
+            ja: 'ワイプを受け入れる。このラウンドは終わった。自分のせいじゃない。',
+            ko: '전멸 인정. 이 판 끝났다. 내 잘못 아니다.',
+          },
+          scoring: [{ axis: 'Mental', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '开始手抖，然后死了，之后花三分钟想起来还是在气队友',
+            en: 'Hands shook. Died. Spent the next three minutes thinking about that teammate.',
+            ja: '手が震えた。死んだ。その後3分間そのチームメイトのことを考えていた。',
+            ko: '손 떨렸다. 죽었다. 그 다음 3분 동안 그 팀원 생각했다.',
+          },
+          scoring: [{ axis: 'Mental', delta: 1 }],
+        },
+      ],
+    },
+
+    // ── ANCHOR Q12: Mental ───────────────────────────────────────────────────
+    {
+      id: 'apex-a12',
+      kind: 'anchor',
+      text: {
+        zh: '你已经输了三把了。现在开第四把。',
+        en: 'Three losses in a row. You\'re queuing for the fourth.',
+        ja: '3連敗中。4回目のキューを入れている。',
+        ko: '3연패 중이다. 네 번째 큐 넣고 있다.',
+      },
+      options: [
+        {
+          label: {
+            zh: '没感觉，输赢都正常，下把专注就行',
+            en: 'Fine with it. Losses happen. Focus on the next one.',
+            ja: '別に気にしない。負けは普通。次に集中するだけ。',
+            ko: '괜찮다. 패배는 원래 있는 거다. 다음 판에 집중하면 된다.',
+          },
+          scoring: [{ axis: 'Mental', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '有点烦，但再来一把的想法比烦躁更强',
+            en: 'Annoyed, but the urge to queue again is stronger than the annoyance.',
+            ja: 'イライラしているが、もう一回やりたい気持ちの方が強い。',
+            ko: '짜증나는데 다시 큐 넣고 싶은 마음이 짜증보다 크다.',
+          },
+          scoring: [{ axis: 'Mental', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '第三把之后我就知道今天手感不对，但我还是开了',
+            en: 'I knew after the third loss that today\'s aim is off. Queued anyway.',
+            ja: '3敗目の後、今日は調子が悪いと分かった。それでもキューした。',
+            ko: '세 번째 패배 후 오늘 컨디션 안 좋은 거 알았다. 그래도 큐 넣었다.',
+          },
+          scoring: [{ axis: 'Mental', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '我就是会输三把，然后赢两把，然后又输，这很正常',
+            en: 'I always lose three, win two, lose again. Standard cycle. Don\'t think about it.',
+            ja: '自分はいつも3敗してから2勝して、また負ける。標準サイクル。気にしない。',
+            ko: '항상 세 번 지고 두 번 이기고 또 진다. 표준 사이클. 신경 안 쓴다.',
+          },
+          scoring: [{ axis: 'Mental', delta: -1 }],
+        },
+      ],
+    },
+
+
