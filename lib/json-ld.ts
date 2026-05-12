@@ -332,6 +332,52 @@ export function buildCollectionPageSchema(
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
+// DefinedTerm — game archetype
+// ─────────────────────────────────────────────────────────────────────────────
+
+export function buildArchetypeDefinedTermSchema(
+  locale: string,
+  input: {
+    gameSlug: string;
+    gameTitle: string;
+    archetypeSlug: string;
+    archetypeName: string;
+    description: string;
+    url: string;
+    imageUrl?: string;
+  },
+) {
+  const termSetName: Record<string, string> = {
+    zh: `${input.gameTitle} 玩家类型`,
+    en: `${input.gameTitle} Player Types`,
+    ja: `${input.gameTitle} プレイヤータイプ`,
+    ko: `${input.gameTitle} 플레이어 유형`,
+  };
+
+  return {
+    '@context': SCHEMA_ORG,
+    '@type': 'DefinedTerm',
+    '@id': `${input.url}#archetype`,
+    name: input.archetypeName,
+    description: input.description,
+    url: input.url,
+    inDefinedTermSet: {
+      '@type': 'DefinedTermSet',
+      '@id': `${BASE_URL}/games/${input.gameSlug}#archetypes`,
+      name: termSetName[locale] ?? termSetName.en,
+      url: getLocaleUrl(locale, `/games/${input.gameSlug}`),
+    },
+    image: input.imageUrl
+      ? {'@type': 'ImageObject', url: input.imageUrl}
+      : undefined,
+    inLanguage: inLanguage(locale),
+    isPartOf: {
+      '@id': `${BASE_URL}/#website`,
+    },
+  };
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
 // WebPage (blog list, compat)
 // ─────────────────────────────────────────────────────────────────────────────
 
