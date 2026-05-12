@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
+  <!-- Pixel-clipped corner geometry -->
+  <!-- Top-left clipped corner block -->
+  <polygon
+    points="0,0 60,0 0,60"
+    fill="currentColor"
+    opacity="0.12"
+  />
+  <!-- Top-right clipped corner block -->
+  <polygon
+    points="200,0 140,0 200,60"
+    fill="currentColor"
+    opacity="0.12"
+  />
+  <!-- Bottom-left clipped corner block -->
+  <polygon
+    points="0,200 0,140 60,200"
+    fill="currentColor"
+    opacity="0.12"
+  />
+  <!-- Bottom-right clipped corner block -->
+  <polygon
+    points="200,200 140,200 200,140"
+    fill="currentColor"
+    opacity="0.12"
+  />
+  <!-- Corner cut lines top-left -->
+  <line x1="0" y1="48" x2="48" y2="0" stroke="currentColor" stroke-width="1.5" opacity="0.7"/>
+  <!-- Corner cut lines top-right -->
+  <line x1="200" y1="48" x2="152" y2="0" stroke="currentColor" stroke-width="1.5" opacity="0.7"/>
+  <!-- Corner cut lines bottom-left -->
+  <line x1="0" y1="152" x2="48" y2="200" stroke="currentColor" stroke-width="1.5" opacity="0.7"/>
+  <!-- Corner cut lines bottom-right -->
+  <line x1="200" y1="152" x2="152" y2="200" stroke="currentColor" stroke-width="1.5" opacity="0.7"/>
+  <!-- Central V-shape (Valorant logo echo) -->
+  <polyline
+    points="70,70 100,130 130,70"
+    stroke="currentColor"
+    stroke-width="3"
+    fill="none"
+    opacity="0.8"
+    stroke-linejoin="miter"
+  />
+  <!-- Side accent bars -->
+  <rect x="8" y="90" width="20" height="3" fill="currentColor" opacity="0.5"/>
+  <rect x="172" y="90" width="20" height="3" fill="currentColor" opacity="0.5"/>
+  <rect x="8" y="97" width="12" height="2" fill="currentColor" opacity="0.3"/>
+  <rect x="180" y="97" width="12" height="2" fill="currentColor" opacity="0.3"/>
+  <!-- Pixel grid accent rows -->
+  <rect x="85" y="148" width="6" height="6" fill="currentColor" opacity="0.4"/>
+  <rect x="95" y="148" width="6" height="6" fill="currentColor" opacity="0.6"/>
+  <rect x="105" y="148" width="6" height="6" fill="currentColor" opacity="0.4"/>
+  <rect x="85" y="158" width="6" height="3" fill="currentColor" opacity="0.2"/>
+  <rect x="95" y="158" width="6" height="3" fill="currentColor" opacity="0.3"/>
+  <rect x="105" y="158" width="6" height="3" fill="currentColor" opacity="0.2"/>
+</svg>

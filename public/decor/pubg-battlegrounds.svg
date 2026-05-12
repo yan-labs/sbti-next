@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
+  <!-- Bullet-hole + tactical-tape motif -->
+  <!-- Tactical tape strips (diagonal) -->
+  <rect x="-20" y="30" width="240" height="12" fill="currentColor" opacity="0.07" transform="rotate(-8 0 40)"/>
+  <rect x="-20" y="155" width="240" height="10" fill="currentColor" opacity="0.06" transform="rotate(-8 0 160)"/>
+  <!-- Bullet hole (center) — concentric shatter rings -->
+  <circle cx="100" cy="100" r="6" fill="currentColor" opacity="0.9"/>
+  <circle cx="100" cy="100" r="12" stroke="currentColor" stroke-width="1.5" fill="none" opacity="0.6"/>
+  <circle cx="100" cy="100" r="22" stroke="currentColor" stroke-width="1" fill="none" opacity="0.4"/>
+  <circle cx="100" cy="100" r="35" stroke="currentColor" stroke-width="0.8" fill="none" opacity="0.25"/>
+  <!-- Shatter cracks radiating from bullet hole -->
+  <line x1="100" y1="88" x2="98" y2="68" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+  <line x1="112" y1="100" x2="132" y2="98" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+  <line x1="100" y1="112" x2="103" y2="132" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+  <line x1="88" y1="100" x2="68" y2="103" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+  <line x1="108" y1="92" x2="122" y2="78" stroke="currentColor" stroke-width="0.8" opacity="0.4"/>
+  <line x1="92" y1="92" x2="76" y2="78" stroke="currentColor" stroke-width="0.8" opacity="0.4"/>
+  <line x1="108" y1="108" x2="122" y2="122" stroke="currentColor" stroke-width="0.8" opacity="0.4"/>
+  <line x1="92" y1="108" x2="78" y2="124" stroke="currentColor" stroke-width="0.8" opacity="0.4"/>
+  <!-- Small secondary bullet hole (top-right) -->
+  <circle cx="155" cy="45" r="3.5" fill="currentColor" opacity="0.7"/>
+  <circle cx="155" cy="45" r="8" stroke="currentColor" stroke-width="1" fill="none" opacity="0.4"/>
+  <circle cx="155" cy="45" r="14" stroke="currentColor" stroke-width="0.7" fill="none" opacity="0.2"/>
+  <!-- Small tertiary bullet hole (bottom-left) -->
+  <circle cx="45" cy="158" r="3" fill="currentColor" opacity="0.6"/>
+  <circle cx="45" cy="158" r="7" stroke="currentColor" stroke-width="0.8" fill="none" opacity="0.35"/>
+  <!-- Contour lines (topographic echo) -->
+  <path d="M10,170 Q50,155 100,165 Q150,175 190,160" stroke="currentColor" stroke-width="0.6" fill="none" opacity="0.2"/>
+  <path d="M10,180 Q50,165 100,175 Q150,185 190,170" stroke="currentColor" stroke-width="0.6" fill="none" opacity="0.15"/>
+</svg>

@@ -1,4 +1,14 @@
-import {Space_Grotesk, DM_Sans, JetBrains_Mono} from 'next/font/google';
+import {
+  Space_Grotesk,
+  DM_Sans,
+  JetBrains_Mono,
+  Cinzel,
+  Bebas_Neue,
+  Oswald,
+  Saira_Condensed,
+  Noto_Sans_SC,
+  Noto_Serif_SC,
+} from 'next/font/google';
 import localFont from 'next/font/local';
 import Script from 'next/script';
 import {NextIntlClientProvider, hasLocale} from 'next-intl';
@@ -10,9 +20,17 @@ import {SiteFooter} from '@/components/site-footer';
 import {LocaleSwitcher} from '@/components/locale-switcher';
 import {cn} from '@/lib/utils';
 
-const fontDisplay = Space_Grotesk({subsets: ['latin'], variable: '--font-display', weight: ['400', '500', '600', '700']});
-const fontSans = DM_Sans({subsets: ['latin'], variable: '--font-dm'});
-const fontMono = JetBrains_Mono({subsets: ['latin'], variable: '--font-mono'});
+const fontDisplay = Space_Grotesk({subsets: ['latin'], variable: '--font-display', weight: ['400', '500', '600', '700'], display: 'swap'});
+const fontSans = DM_Sans({subsets: ['latin'], variable: '--font-dm', display: 'swap'});
+const fontMono = JetBrains_Mono({subsets: ['latin'], variable: '--font-mono', display: 'swap'});
+
+// Per-game display fonts (Phase 5)
+const fontLol = Cinzel({subsets: ['latin', 'latin-ext'], variable: '--font-lol', weight: ['400', '700'], display: 'swap'});
+const fontOw = Bebas_Neue({subsets: ['latin', 'latin-ext'], variable: '--font-ow', weight: ['400'], display: 'swap'});
+const fontPubg = Oswald({subsets: ['latin', 'latin-ext'], variable: '--font-pubg', weight: ['400', '700'], display: 'swap'});
+const fontApex = Saira_Condensed({subsets: ['latin', 'latin-ext'], variable: '--font-apex', weight: ['400', '700'], display: 'swap'});
+const fontZhSans = Noto_Sans_SC({subsets: ['latin'], variable: '--font-zh-sans', weight: ['400', '700'], display: 'swap'});
+const fontZhSerif = Noto_Serif_SC({subsets: ['latin'], variable: '--font-zh-serif', weight: ['400', '700'], display: 'swap'});
 const fontKR = localFont({
   src: '../fonts/PretendardVariable.woff2',
   variable: '--font-kr',
@@ -48,6 +66,12 @@ export default async function LocaleLayout({
         fontSans.variable,
         fontMono.variable,
         fontKR.variable,
+        fontLol.variable,
+        fontOw.variable,
+        fontPubg.variable,
+        fontApex.variable,
+        fontZhSans.variable,
+        fontZhSerif.variable,
         'font-sans',
       )}
     >

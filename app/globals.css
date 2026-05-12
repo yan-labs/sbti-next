@@ -129,6 +129,84 @@
     }
 }
 
+/* ── Per-game visual identity tokens ─────────────────────────────────────── */
+/* Each block is scoped to :root[data-game="<slug>"] and defines 6 variables. */
+/* --game-decor uses currentColor so the SVG inherits the surface ink.        */
+
+@layer base {
+  :root[data-game="league-of-legends"] {
+    --game-primary: #0AC8B9;
+    --game-secondary: #C89B3C;
+    --game-accent: #785A28;
+    --game-surface: #0A1428;
+    --game-ink: #F0E6D2;
+    --game-decor: url("/decor/league-of-legends.svg");
+  }
+
+  :root[data-game="counter-strike-2"] {
+    --game-primary: #DE9B35;
+    --game-secondary: #1B6EC2;
+    --game-accent: #E84855;
+    --game-surface: #0F1419;
+    --game-ink: #C5D0D8;
+    --game-decor: url("/decor/counter-strike-2.svg");
+  }
+
+  :root[data-game="valorant"] {
+    --game-primary: #FF4655;
+    --game-secondary: #0F1923;
+    --game-accent: #ECE8E1;
+    --game-surface: #0F1923;
+    --game-ink: #ECE8E1;
+    --game-decor: url("/decor/valorant.svg");
+  }
+
+  :root[data-game="delta-force"] {
+    --game-primary: #C19A4B;
+    --game-secondary: #5E4F2E;
+    --game-accent: #E84B25;
+    --game-surface: #1E1B14;
+    --game-ink: #D4C8A8;
+    --game-decor: url("/decor/delta-force.svg");
+  }
+
+  :root[data-game="honor-of-kings"] {
+    --game-primary: #A8141A;
+    --game-secondary: #D4A14A;
+    --game-accent: #0E0506;
+    --game-surface: #1A0B0F;
+    --game-ink: #F7E9CD;
+    --game-decor: url("/decor/honor-of-kings.svg");
+  }
+
+  :root[data-game="overwatch-2"] {
+    --game-primary: #F99E1A;
+    --game-secondary: #218FFF;
+    --game-accent: #FF5C5C;
+    --game-surface: #1E1E22;
+    --game-ink: #FFFFFF;
+    --game-decor: url("/decor/overwatch-2.svg");
+  }
+
+  :root[data-game="pubg-battlegrounds"] {
+    --game-primary: #FCBF1E;
+    --game-secondary: #6B6B47;
+    --game-accent: #E63946;
+    --game-surface: #1A1A1A;
+    --game-ink: #C7B299;
+    --game-decor: url("/decor/pubg-battlegrounds.svg");
+  }
+
+  :root[data-game="apex-legends"] {
+    --game-primary: #DA292A;
+    --game-secondary: #2B2D31;
+    --game-accent: #11D5FF;
+    --game-surface: #101317;
+    --game-ink: #B2B3B3;
+    --game-decor: url("/decor/apex-legends.svg");
+  }
+}
+
 /* Blog article prose styles */
 .prose-custom h2 {
   @apply font-heading text-2xl font-bold tracking-tight mt-10 mb-4;

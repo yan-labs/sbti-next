@@ -90,7 +90,7 @@ export default async function GameQuizPage({params}: {params: Promise<{locale: s
   const imageUrl = game.cover ? `${BASE_URL}${game.cover.src}` : DEFAULT_OG_IMAGE.url;
 
   return (
-    <>
+    <div data-game={game.slug}>
       <JsonLd data={buildWebSiteSchema(locale)} />
       <JsonLd data={buildOrganizationSchema()} />
       <JsonLd
@@ -111,6 +111,6 @@ export default async function GameQuizPage({params}: {params: Promise<{locale: s
         ])}
       />
       <GameQuizApp game={game} locale={locale} />
-    </>
+    </div>
   );
 }
