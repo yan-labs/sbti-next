@@ -25,7 +25,6 @@ import {
 } from '@/lib/json-ld';
 import {GAME_SLUGS, getGameV2, isSiteLocale, type SiteLocale} from '@/lib/data/games/index';
 import {buildGameHubFAQs} from '@/lib/data/games/faqs';
-import {getArchetypeArt} from '@/lib/data/games/archetype-art';
 
 export function generateStaticParams() {
   return routing.locales.flatMap((locale) =>

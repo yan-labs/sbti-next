@@ -4,7 +4,6 @@ import {useState} from 'react';
 import Image from 'next/image';
 import {Link} from '@/i18n/navigation';
 import {PaperGrain} from '@/components/ui/paper-grain';
-import {ChapterMark} from '@/components/ui/chapter-mark';
 import type {GameQuizV2} from '@/lib/data/games/types';
 
 type Locale = 'zh' | 'en' | 'ja' | 'ko';
