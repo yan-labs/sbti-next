@@ -1114,4 +1114,302 @@ const game: GameQuizV2 = {
         },
       ],
     },
+    // ── Compound questions Q13–Q30 ────────────────────────────────────────────────
+    // Q13 — Bond + Nerve
+    {
+      id: 'lol-q13',
+      kind: 'compound',
+      text: {
+        zh: '野区打架打起来了，你……',
+        en: 'There\'s a skirmish in the jungle. You…',
+        ja: 'ジャングルで乱戦が起きた。あなたは……',
+        ko: '정글에서 교전이 붙었다. 당신은……',
+      },
+      options: [
+        {
+          label: {
+            zh: '立刻赶去帮忙，不管自己多少血量',
+            en: 'Run over to help regardless of your own HP',
+            ja: '自分のHPを気にせず駆けつける',
+            ko: '내 체력 상관없이 바로 달려가서 도움',
+          },
+          scoring: [{ axis: 'Bond', delta: 1 }, { axis: 'Nerve', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '远远观望，等打出胜负再决定要不要跟进',
+            en: 'Watch from a distance and decide once you see who wins',
+            ja: '遠くから様子を見て、勝敗がわかってから動く',
+            ko: '멀리서 관망하고 누가 이기는지 보고 합류 결정',
+          },
+          scoring: [{ axis: 'Bond', delta: -1 }, { axis: 'Nerve', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '告诉队友去支援，自己继续补刀压线',
+            en: 'Ping teammates to go help while you keep pushing your wave',
+            ja: 'チームメイトに助けに行くよう指示して自分はウェーブを押し続ける',
+            ko: '팀원한테 지원 핑 찍어주고 나는 계속 웨이브 push',
+          },
+          scoring: [{ axis: 'Bond', delta: 1 }, { axis: 'Nerve', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '单独绕后奇袭，不配合队友但能拿到斜线击杀',
+            en: 'Flank alone for a surprise kill. No coordination, just results',
+            ja: '一人で裏取りして不意打ちキル。連携なし、成果あり',
+            ko: '혼자 뒤로 돌아서 기습 킬. 협력 없이 결과만 챙기기',
+          },
+          scoring: [{ axis: 'Bond', delta: -1 }, { axis: 'Nerve', delta: 1 }],
+        },
+      ],
+    },
+    // Q14 — Bond + Nerve
+    {
+      id: 'lol-q14',
+      kind: 'compound',
+      text: {
+        zh: '队伍陷入争执，有人要 FF15，你……',
+        en: 'The team is arguing and someone wants FF15. You…',
+        ja: 'チームが言い合いになり、FF15を提案する人が出た。あなたは……',
+        ko: '팀이 다투는 중에 누군가 FF15 제안. 당신은……',
+      },
+      options: [
+        {
+          label: {
+            zh: '投反对票，然后在语音里喊"能翻能翻"',
+            en: 'Vote no and call out "we can still win this" on voice',
+            ja: '反対票を入れ、「まだ勝てる！」とボイスで叫ぶ',
+            ko: '반대표 누르고 보이스에서 "아직 할 수 있어!" 외침',
+          },
+          scoring: [{ axis: 'Bond', delta: 1 }, { axis: 'Nerve', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '投同意票，不如省点时间，下一局更重要',
+            en: 'Vote yes. Save time for the next game',
+            ja: '賛成票を入れる。時間を節約して次のゲームに集中',
+            ko: '동의표. 시간 아끼고 다음 게임 집중',
+          },
+          scoring: [{ axis: 'Bond', delta: -1 }, { axis: 'Nerve', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '投弃权，自己打自己的，FF 不 FF 都无所谓',
+            en: 'Abstain and keep playing. Doesn\'t matter either way',
+            ja: '棄権して自分のプレイを続ける。どちらでもいい',
+            ko: '기권하고 계속 내 플레이. 어떻게 되든 상관없음',
+          },
+          scoring: [{ axis: 'Bond', delta: -1 }, { axis: 'Nerve', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '投反对票，然后单骑冲进对面高地证明自己的判断',
+            en: 'Vote no, then charge their base solo to prove you\'re right',
+            ja: '反対票を入れ、一人で相手のベースに突撃して判断が正しいと証明する',
+            ko: '반대표 누르고 혼자 상대 기지 돌진해서 내 판단 증명',
+          },
+          scoring: [{ axis: 'Bond', delta: 1 }, { axis: 'Nerve', delta: 1 }],
+        },
+      ],
+    },
+    // Q15 — Bond + Nerve (funny mid-test high-watermark)
+    {
+      id: 'lol-q15',
+      kind: 'compound',
+      text: {
+        zh: '你在对线，野区突然出现"三换一"机会，队友开团了，你……',
+        en: 'You\'re laning, the jungle goes for a 3-for-1 fight, your team engages. You…',
+        ja: 'レーン中、3対1のチャンスが生まれ、チームが開幕した。あなたは……',
+        ko: '라이닝 중에 3대1 기회가 생겨서 팀이 개전했다. 당신은……',
+      },
+      options: [
+        {
+          label: {
+            zh: '立刻放弃补刀，全速赶去团战，一个人都不能少',
+            en: 'Drop the farm and sprint to the fight. Everyone contributes',
+            ja: 'CSを諦めて全速力でチームファイトへ。全員で戦う',
+            ko: 'CS 버리고 전속력으로 팀파이트 합류. 다 같이 싸워야 함',
+          },
+          scoring: [{ axis: 'Bond', delta: 1 }, { axis: 'Nerve', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '先把这波线补完再去，损失 50 补刀等于送了资源',
+            en: 'Clear this wave first. Losing 50 CS is giving them resources',
+            ja: 'このウェーブをクリアしてから行く。CS50を失うのはリソース提供になる',
+            ko: '이 웨이브 먼저 정리하고 합류. CS 50 잃으면 자원 손실',
+          },
+          scoring: [{ axis: 'Bond', delta: -1 }, { axis: 'Nerve', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '一边跑去一边告诉自己等资源不如投资团战',
+            en: 'Run over while rationalizing that teamfight value beats farm',
+            ja: '走りながら「CSよりチームファイトの価値が高い」と自分に言い聞かせる',
+            ko: '뛰어가면서 "CS보다 팀파이트 가치가 더 높아"라고 스스로 설득',
+          },
+          scoring: [{ axis: 'Bond', delta: 1 }, { axis: 'Nerve', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '继续对线，等赢了我这边推一波比跑去更赚',
+            en: 'Keep laning. Your push will be worth more than one teamfight',
+            ja: 'レーンを続ける。こっちをプッシュした方が一回のチームファイトより価値がある',
+            ko: '라인 계속. 내가 밀어붙이는 게 팀파이트 한 번보다 이득',
+          },
+          scoring: [{ axis: 'Bond', delta: -1 }, { axis: 'Nerve', delta: -1 }],
+        },
+      ],
+    },
+    // Q16 — Bond + Mental
+    {
+      id: 'lol-q16',
+      kind: 'compound',
+      text: {
+        zh: '队友在聊天框吵架，影响了打法，你……',
+        en: 'Two teammates are arguing in chat and it\'s affecting the game. You…',
+        ja: 'チームメイト同士がチャットで口論して試合に影響が出ている。あなたは……',
+        ko: '팀원들이 채팅에서 싸우면서 게임에 영향을 미치고 있다. 당신은……',
+      },
+      options: [
+        {
+          label: {
+            zh: '出来调停，叫大家停止内耗，一起专注打球',
+            en: 'Step in and tell them to stop. Focus on the game',
+            ja: '仲裁に入り、内輪もめをやめて試合に集中するよう言う',
+            ko: '나서서 싸움 멈추라고 하고 게임 집중하자고 함',
+          },
+          scoring: [{ axis: 'Bond', delta: 1 }, { axis: 'Mental', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '把两个人都静音，闭上眼睛继续打自己的',
+            en: 'Mute both of them and keep playing your game',
+            ja: '二人ともミュートして自分のプレイを続ける',
+            ko: '둘 다 음소거하고 내 플레이 계속',
+          },
+          scoring: [{ axis: 'Bond', delta: -1 }, { axis: 'Mental', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '加入骂战，既然都烂了不如一起红温',
+            en: 'Join the flame war. If it\'s already burning, might as well add fuel',
+            ja: '口論に加わる。どうせもう燃えてるなら燃料を追加してもいい',
+            ko: '욕싸움 합류. 어차피 망해가는 거 같이 멘붕하기',
+          },
+          scoring: [{ axis: 'Bond', delta: 1 }, { axis: 'Mental', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '看都不看，沉浸在自己的视野里，他们爱怎样就怎样',
+            en: 'Don\'t even look. Stay locked in your own view; they can do what they want',
+            ja: '見もしない。自分の画面に集中して、彼らは好きにさせる',
+            ko: '쳐다보지도 않음. 내 화면에만 집중하고 걔들은 알아서 하라고',
+          },
+          scoring: [{ axis: 'Bond', delta: -1 }, { axis: 'Mental', delta: -1 }],
+        },
+      ],
+    },
+    // Q17 — Bond + Mental
+    {
+      id: 'lol-q17',
+      kind: 'compound',
+      text: {
+        zh: '你在辅助位置，你的 ADC 不断犯错，你……',
+        en: 'You\'re support. Your ADC keeps making costly mistakes. You…',
+        ja: 'あなたはサポート。ADCがミスを繰り返している。あなたは……',
+        ko: '당신은 서폿. ADC가 계속 실수를 반복한다. 당신은……',
+      },
+      options: [
+        {
+          label: {
+            zh: '耐心给他发提示，不批评，帮他找到感觉',
+            en: 'Give patient callouts without criticism. Help them find their rhythm',
+            ja: '批判せずに忍耐強くヒントを出す。リズムを取り戻す手助けをする',
+            ko: '비판 없이 참을성 있게 힌트 줌. 리듬 찾도록 도와줌',
+          },
+          scoring: [{ axis: 'Bond', delta: 1 }, { axis: 'Mental', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '彻底放弃 ADC，自己去野区找机会',
+            en: 'Give up on the ADC and roam the jungle for opportunities',
+            ja: 'ADCを諦めてジャングルに機会を探しに行く',
+            ko: 'ADC 포기하고 정글 돌아다니며 기회 찾기',
+          },
+          scoring: [{ axis: 'Bond', delta: -1 }, { axis: 'Mental', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '在聊天框里表示他这样下去要送掉，已经憋不住了',
+            en: 'Type in chat that they\'re going to throw the game; you can\'t hold it in',
+            ja: 'このままじゃゲームを投げると思ってチャットに書く。我慢できない',
+            ko: '이러다 게임 던진다고 채팅에 쏟아내기. 더 못 참겠음',
+          },
+          scoring: [{ axis: 'Bond', delta: 1 }, { axis: 'Mental', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '沉默地保护他，心里知道这局赢不了但还是做好本分',
+            en: 'Shield them silently. You know you\'ll lose but you do your job anyway',
+            ja: '黙って守り続ける。負けるとわかっていても自分の役割を果たす',
+            ko: '묵묵히 보호. 질 거 알면서도 내 할 일 함',
+          },
+          scoring: [{ axis: 'Bond', delta: 1 }, { axis: 'Mental', delta: -1 }],
+        },
+      ],
+    },
+    // Q18 — Bond + Mental
+    {
+      id: 'lol-q18',
+      kind: 'compound',
+      text: {
+        zh: '你的团队在大乱斗大桥上一路溃败，你……',
+        en: 'Your ARAM team is getting destroyed on the bridge. You…',
+        ja: 'ARAMで橋の上で惨敗が続いている。あなたは……',
+        ko: '칼바람에서 다리 위에서 계속 터지고 있다. 당신은……',
+      },
+      options: [
+        {
+          label: {
+            zh: '在聊天框搞笑，反正大乱斗输了也没关系',
+            en: 'Joke in chat. It\'s ARAM, nobody\'s crying about this loss',
+            ja: 'チャットでボケる。ARAMだし負けても関係ない',
+            ko: '채팅에서 드립 침. 칼바람이잖아, 이거 져도 괜찮음',
+          },
+          scoring: [{ axis: 'Bond', delta: 1 }, { axis: 'Mental', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '默默调整走位，不说话，赢不赢靠自己',
+            en: 'Quietly adjust your positioning. Win or lose, it\'s on you',
+            ja: '黙ってポジションを調整する。勝敗は自分次第',
+            ko: '조용히 포지션 조정. 승패는 내가 결정',
+          },
+          scoring: [{ axis: 'Bond', delta: -1 }, { axis: 'Mental', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '喊全队重新聚起来，制定一个稍微靠谱的进攻路线',
+            en: 'Rally the team to regroup and plan a slightly less chaotic attack',
+            ja: '全員に集合をかけ、もう少しまともな攻撃ルートを決める',
+            ko: '전원 재집결 외치고 좀 더 나은 공격 루트 계획',
+          },
+          scoring: [{ axis: 'Bond', delta: 1 }, { axis: 'Mental', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '开始在聊天框数已经送了多少人头，气氛越来越崩',
+            en: 'Start counting deaths in chat. The vibe collapses accordingly',
+            ja: 'チャットでデス数を数え始める。雰囲気がますます崩壊する',
+            ko: '채팅에서 데스 수 세기 시작. 분위기는 점점 붕괴',
+          },
+          scoring: [{ axis: 'Bond', delta: -1 }, { axis: 'Mental', delta: 1 }],
+        },
+      ],
+    },
+  ],
+};
 
+export default game;
