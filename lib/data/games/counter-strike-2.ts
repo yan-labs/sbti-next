@@ -730,6 +730,300 @@ const game: GameQuizV2 = {
         },
       ],
     },
+    // ── Q13 Compound: Tempo + Nerve ──────────────────────────────────────────
+    {
+      id: 'cs2-q13',
+      kind: 'compound',
+      text: {
+        zh: 'Dust2 B 区，你刚从 B 洞出来，对面有两个人，烟雾有了，闪光弹没了。',
+        en: 'Dust2 B tunnels, you just exited, two enemies ahead, smoke up but no flash left.',
+        ja: 'Dust2のBトンネルを出た、敵が2人、スモークはある、フラッシュはない。',
+        ko: 'Dust2 B 터널 방금 나왔다, 앞에 적 두 명, 스모크는 있고 플래시는 없다.',
+      },
+      options: [
+        {
+          label: {
+            zh: '扔烟，慢慢等队友跟上来',
+            en: 'Throw smoke and wait for teammates to catch up',
+            ja: 'スモークを投げて、味方が追いつくのを待つ',
+            ko: '스모크 던지고 팀원 따라올 때까지 기다린다',
+          },
+          scoring: [{ axis: 'Tempo', delta: -1 }, { axis: 'Nerve', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '扔烟，自己先闯进去',
+            en: 'Throw smoke and push through anyway',
+            ja: 'スモークを投げてそのまま突っ込む',
+            ko: '스모크 던지고 그냥 돌진한다',
+          },
+          scoring: [{ axis: 'Tempo', delta: 1 }, { axis: 'Nerve', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '退回去守 B 洞，等时机',
+            en: 'Fall back to tunnels, hold for better timing',
+            ja: 'トンネルに戻って、タイミングを待つ',
+            ko: '터널로 후퇴해서 타이밍 기다린다',
+          },
+          scoring: [{ axis: 'Tempo', delta: -1 }, { axis: 'Nerve', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '扔烟，然后靠猜裸冲进去',
+            en: 'Smoke it and blind push on a read',
+            ja: 'スモークして読みで突っ込む',
+            ko: '스모크 치고 읽기로 돌격한다',
+          },
+          scoring: [{ axis: 'Tempo', delta: 1 }, { axis: 'Nerve', delta: 1 }],
+        },
+      ],
+    },
+    // ── Q14 Compound: Tempo + Bond ────────────────────────────────────────────
+    {
+      id: 'cs2-q14',
+      kind: 'compound',
+      text: {
+        zh: '你在跑路，队友在包点，他让你回来守，你要多跑 10 秒。',
+        en: 'You\'re rotating, teammate is planting, he calls for you to hold. It adds 10 seconds.',
+        ja: 'ローテート中、味方がプラント中、守備を求めてくる。10秒余分にかかる。',
+        ko: '로테이션 중, 팀원 설치 중, 지키러 오라고 한다. 10초 더 걸린다.',
+      },
+      options: [
+        {
+          label: {
+            zh: '回去，他需要我',
+            en: 'Go back, he needs me',
+            ja: '戻る、彼には自分が必要だ',
+            ko: '돌아간다, 그가 나를 필요로 한다',
+          },
+          scoring: [{ axis: 'Tempo', delta: -1 }, { axis: 'Bond', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '继续走，让他自己守',
+            en: 'Keep rotating, he can hold it himself',
+            ja: 'ローテートを続ける、自分で守れる',
+            ko: '계속 로테이션, 혼자 지킬 수 있다',
+          },
+          scoring: [{ axis: 'Tempo', delta: 1 }, { axis: 'Bond', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '先确认包点有没有危险，再决定',
+            en: 'Check if the plant spot is safe first, then decide',
+            ja: '設置場所が安全か確認してから決める',
+            ko: '설치 지점이 안전한지 확인하고 결정한다',
+          },
+          scoring: [{ axis: 'Tempo', delta: -1 }, { axis: 'Bond', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '不管他，先找人打掉再说',
+            en: 'Ignore the call, clear enemies first',
+            ja: '無視して、先に敵を片付ける',
+            ko: '무시하고, 먼저 적 잡는다',
+          },
+          scoring: [{ axis: 'Tempo', delta: 1 }, { axis: 'Bond', delta: -1 }],
+        },
+      ],
+    },
+    // ── Q15 Compound: Tempo + Intel ───────────────────────────────────────────
+    {
+      id: 'cs2-q15',
+      kind: 'compound',
+      text: {
+        zh: 'Mirage，你打 T 边，上半场你们 A 打了六次赢了四次。下半场打 CT，对面会怎么守 A？',
+        en: 'Mirage, T side, A execute worked 4 of 6 first-half rounds. CT side now: how will they defend A?',
+        ja: 'ミラージュのT側、前半にAでの攻撃が6回中4回成功。後半はCT側、相手はAをどう守る？',
+        ko: '미라지 T 사이드, 전반 A 실행 6번 중 4번 성공. 후반 CT 사이드, 상대는 A를 어떻게 지킬까?',
+      },
+      options: [
+        {
+          label: {
+            zh: '他们一定会加强 A 的守备，我去 B 给压力',
+            en: 'They\'ll stack A, so I apply pressure on B',
+            ja: '相手は絶対Aを固める、だからBにプレッシャーをかける',
+            ko: '상대는 분명 A 보강할 것이다, 나는 B에 압박 준다',
+          },
+          scoring: [{ axis: 'Tempo', delta: 1 }, { axis: 'Intel', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '等看第一局他们怎么站再决定',
+            en: 'See how they set up in round one before committing',
+            ja: '1ラウンド目の配置を見てから決める',
+            ko: '1라운드 배치 보고 나서 결정한다',
+          },
+          scoring: [{ axis: 'Tempo', delta: -1 }, { axis: 'Intel', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '感觉他们还会回 A，我直接去挡',
+            en: 'I feel they\'re coming A again, I\'ll pre-position there',
+            ja: 'またAに来る気がする、先にそこに行く',
+            ko: '또 A 올 것 같다, 먼저 거기 간다',
+          },
+          scoring: [{ axis: 'Tempo', delta: 1 }, { axis: 'Intel', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '反正等他们来再说，守好位置就行',
+            en: 'Hold my position and react when they come',
+            ja: 'とにかく来るまで待つ、ポジションを守るだけ',
+            ko: '어차피 올 때 반응하면 된다, 포지션만 잘 잡으면 돼',
+          },
+          scoring: [{ axis: 'Tempo', delta: -1 }, { axis: 'Intel', delta: 1 }],
+        },
+      ],
+    },
+    // ── Q16 Compound: Tempo + Flair ───────────────────────────────────────────
+    {
+      id: 'cs2-q16',
+      kind: 'compound',
+      text: {
+        zh: '你们这局赢定了，剩下 10 秒，对面只有一个人。怎么打完这局？',
+        en: 'Round is won, 10 seconds left, one enemy remaining. How do you close it?',
+        ja: 'ラウンドは勝ちが確定、残り10秒、敌は1人。どう終わらせる？',
+        ko: '이번 라운드 이긴 거 확정, 10초 남았고 적 한 명. 어떻게 마무리할까?',
+      },
+      options: [
+        {
+          label: {
+            zh: '快点解决，下局要节省时间',
+            en: 'Finish fast, save time for next round',
+            ja: 'さっさと終わらせる、次のラウンドのために',
+            ko: '빨리 끝낸다, 다음 판을 위해',
+          },
+          scoring: [{ axis: 'Tempo', delta: 1 }, { axis: 'Flair', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '慢慢压，稳赢就行',
+            en: 'Take it slow and clean, a win is a win',
+            ja: 'ゆっくり追い詰める、勝ちは勝ちだ',
+            ko: '천천히 몰아간다, 이기면 그만이다',
+          },
+          scoring: [{ axis: 'Tempo', delta: -1 }, { axis: 'Flair', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '试一个好看的操作，反正赢了',
+            en: 'Try something flashy, we\'ve already won',
+            ja: '派手なプレイを試す、どうせ勝ちだし',
+            ko: '화려한 플레이 시도해본다, 어차피 이긴 거니까',
+          },
+          scoring: [{ axis: 'Tempo', delta: 1 }, { axis: 'Flair', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '等他出来再说，给他机会也没问题',
+            en: 'Let him come out, I can afford to give him the chance',
+            ja: '出てくるのを待つ、機会を与えても問題ない',
+            ko: '나올 때까지 기다린다, 기회 줘도 상관없다',
+          },
+          scoring: [{ axis: 'Tempo', delta: -1 }, { axis: 'Flair', delta: 1 }],
+        },
+      ],
+    },
+    // ── Q17 Compound: Tempo + Mental ──────────────────────────────────────────
+    {
+      id: 'cs2-q17',
+      kind: 'compound',
+      text: {
+        zh: '你们在赶时间包 A，队友走位太慢，5 秒钟后就没时间了。',
+        en: 'Executing to A, a teammate is moving too slowly, five seconds from no time to plant.',
+        ja: 'Aへの実行中、味方の動きが遅い、あと5秒で設置できなくなる。',
+        ko: 'A 실행 중, 팀원이 너무 느리게 움직인다, 5초 후면 설치할 시간이 없다.',
+      },
+      options: [
+        {
+          label: {
+            zh: '冲，自己包点，不等了',
+            en: 'Go yourself, plant it, no more waiting',
+            ja: '自分で設置に行く、もう待たない',
+            ko: '혼자 간다, 설치한다, 더 안 기다린다',
+          },
+          scoring: [{ axis: 'Tempo', delta: 1 }, { axis: 'Mental', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '叫他快点，语气急了',
+            en: 'Tell him to hurry up, tone getting sharp',
+            ja: '早くしろと言う、口調がきつくなってる',
+            ko: '빨리 하라고 말한다, 목소리 날카로워진다',
+          },
+          scoring: [{ axis: 'Tempo', delta: 1 }, { axis: 'Mental', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '等，时间不够就省着，下局再打',
+            en: 'Wait, if time runs out we save and retry next round',
+            ja: '待つ、時間がなくなれば節約して次のラウンドに',
+            ko: '기다린다, 시간 없으면 아끼고 다음 판에',
+          },
+          scoring: [{ axis: 'Tempo', delta: -1 }, { axis: 'Mental', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '骂他走位，然后自己也开始慌',
+            en: 'Call him out and start panicking myself',
+            ja: '彼を怒鳴って、自分もパニックになる',
+            ko: '욕하고 나도 패닉 시작한다',
+          },
+          scoring: [{ axis: 'Tempo', delta: -1 }, { axis: 'Mental', delta: 1 }],
+        },
+      ],
+    },
+    // ── Q18 Compound: Nerve + Bond ────────────────────────────────────────────
+    {
+      id: 'cs2-q18',
+      kind: 'compound',
+      text: {
+        zh: 'Force buy 局，队友说全队一起冲 B，但你觉得成功率很低。',
+        en: 'Force buy round, team wants to full rush B, you think it\'s a long shot.',
+        ja: '強気買いラウンド、チームはBへのフルラッシュを望んでいるが、成功率は低いと思う。',
+        ko: '풀바이 라운드, 팀이 B 풀러시하자는데 성공률이 낮다고 생각한다.',
+      },
+      options: [
+        {
+          label: {
+            zh: '跟队，一起冲，成功率是另一回事',
+            en: 'Go with the team, odds are a separate matter',
+            ja: 'チームについていく、確率は別問題だ',
+            ko: '팀 따라간다, 확률은 별개 문제다',
+          },
+          scoring: [{ axis: 'Nerve', delta: 1 }, { axis: 'Bond', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '跟队，但准备好在危险时先撤',
+            en: 'Follow but ready to peel if it goes bad',
+            ja: 'ついていくが、危なくなったら引く準備をする',
+            ko: '따라가지만 위험하면 빠질 준비한다',
+          },
+          scoring: [{ axis: 'Nerve', delta: -1 }, { axis: 'Bond', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '说出来反对，建议换方案',
+            en: 'Speak up, suggest a better plan',
+            ja: '反対意見を言う、別のプランを提案する',
+            ko: '반대 의견 낸다, 다른 방안 제안한다',
+          },
+          scoring: [{ axis: 'Nerve', delta: -1 }, { axis: 'Bond', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '独立行动，去 A 单边打信息',
+            en: 'Split off, go A solo for info',
+            ja: '単独行動、Aへ情報を取りに行く',
+            ko: '단독 행동, A로 정보 따러 간다',
+          },
+          scoring: [{ axis: 'Nerve', delta: 1 }, { axis: 'Bond', delta: -1 }],
+        },
+      ],
+    },
     // ── Q7 Anchor: Intel ─────────────────────────────────────────────────────
     {
       id: 'cs2-q07',
