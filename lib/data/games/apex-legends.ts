@@ -1713,4 +1713,307 @@ const game: GameQuizV2 = {
       ],
     },
 
+    // ── COMPOUND Q25: Tempo + Flair (third-party tension) ────────────────────
+    {
+      id: 'apex-c13',
+      kind: 'compound',
+      text: {
+        zh: '两队正在激战，你们在二十米外观望。什么情况下你会选择渔翁入局？',
+        en: 'Two squads hammering each other. You\'re 20 meters out. What triggers you to third-party?',
+        ja: '2チームが激しく戦っている。あなたは20メートル外で観察中。何がサードパーティのトリガーになる？',
+        ko: '두 팀이 치열하게 싸우는 중. 당신은 20미터 밖에서 관찰 중이다. 무엇이 어부지리 트리거가 되나?',
+      },
+      options: [
+        {
+          label: {
+            zh: '枪声密度降低就是信号，说明有一队快打光了',
+            en: 'Gunfire rate drops. That\'s the signal: one squad is almost out.',
+            ja: '銃声の密度が下がったらサイン。1チームが消耗してきている。',
+            ko: '총소리 밀도 낮아지면 신호다. 한 팀이 거의 소진됐다는 뜻.',
+          },
+          scoring: [{ axis: 'Tempo', delta: -1 }, { axis: 'Flair', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '我看到护甲掉了就冲，护甲差就是我的机会',
+            en: 'I see armor break animations and push. Cracked shields are my window.',
+            ja: 'アーマーブレークアニメーションが見えたら突っ込む。割れたシールドが自分のチャンスだ。',
+            ko: '방어구 파괴 애니메이션 보이면 밀어 들어간다. 깨진 방어구가 내 기회다.',
+          },
+          scoring: [{ axis: 'Tempo', delta: 1 }, { axis: 'Flair', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '等他们自己打完，我们干净收尸',
+            en: 'Let them finish each other, then walk in for the cleanup.',
+            ja: '向こうが決着をつけるのを待ってから、掃討に入る。',
+            ko: '알아서 끝내게 두고 나서 정리하러 들어간다.',
+          },
+          scoring: [{ axis: 'Tempo', delta: -1 }, { axis: 'Flair', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '我不进，我转点，打完架的队肯定要来找我们',
+            en: 'Don\'t go in. Rotate. Whoever wins will come looking for us anyway.',
+            ja: '入らない。ローテーションする。どちらが勝っても向こうが来る。',
+            ko: '안 들어간다. 로테이션한다. 이긴 팀이 어차피 우리 찾아온다.',
+          },
+          scoring: [{ axis: 'Tempo', delta: 1 }, { axis: 'Flair', delta: -1 }],
+        },
+      ],
+    },
+
+    // ── COMPOUND Q26: Bond + Flair ───────────────────────────────────────────
+    {
+      id: 'apex-c14',
+      kind: 'compound',
+      text: {
+        zh: '比赛结束了，你们赢了。队友想截图留念，你的第一反应？',
+        en: 'Match over, your squad wins. Teammates want a screenshot. Your first move?',
+        ja: '試合終了、チームが勝った。チームメイトがスクリーンショットを撮りたがっている。最初の行動は？',
+        ko: '경기 끝나고 팀이 이겼다. 팀원들이 스크린샷 찍고 싶어 한다. 첫 번째 행동은?',
+      },
+      options: [
+        {
+          label: {
+            zh: '我已经在调好看的姿势了，等我',
+            en: 'Already adjusting my position for the shot. Hold on.',
+            ja: 'すでにショット用にポジションを整えている。待って。',
+            ko: '이미 샷을 위한 자세 잡는 중이다. 기다려.',
+          },
+          scoring: [{ axis: 'Bond', delta: 1 }, { axis: 'Flair', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '截就截，随便站，我不在乎好不好看',
+            en: 'Fine with a screenshot, wherever I\'m standing is fine.',
+            ja: 'スクリーンショットはいいが、どこに立っていてもいい。見た目は気にしない。',
+            ko: '스크린샷 좋아, 내가 서 있는 데서 찍으면 된다.',
+          },
+          scoring: [{ axis: 'Bond', delta: 1 }, { axis: 'Flair', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '我自己截了一张，发到群里',
+            en: 'I\'ll take my own solo screenshot and drop it in the group chat.',
+            ja: '自分で単独スクリーンショットを撮ってグループチャットに投稿する。',
+            ko: '나 혼자 스크린샷 찍어서 단톡에 올린다.',
+          },
+          scoring: [{ axis: 'Bond', delta: -1 }, { axis: 'Flair', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '已经在选下一把了，截图随你们',
+            en: 'Already in queue for the next match. Screenshot without me.',
+            ja: 'もう次の試合のキューに入っている。スクリーンショットは自分なしで。',
+            ko: '이미 다음 판 큐 넣는 중이다. 스크린샷은 없이 해.',
+          },
+          scoring: [{ axis: 'Bond', delta: -1 }, { axis: 'Flair', delta: -1 }],
+        },
+      ],
+    },
+
+    // ── COMPOUND Q27: Tempo + Mental ─────────────────────────────────────────
+    {
+      id: 'apex-c15',
+      kind: 'compound',
+      text: {
+        zh: '你被一个移速比你快的队伍追着打，跑路还是强行拉扯？',
+        en: 'A faster squad is chasing you down. Keep running or force a fight?',
+        ja: 'より速いチームに追いかけられている。逃げ続けるか、無理やり交戦するか？',
+        ko: '더 빠른 팀이 당신을 추격하고 있다. 계속 도망가나, 억지로 교전 걸어오나?',
+      },
+      options: [
+        {
+          label: {
+            zh: '反身强打，拼了',
+            en: 'Turn and fight. Commit to the trade.',
+            ja: '振り返って戦う。交換を覚悟する。',
+            ko: '돌아서서 싸운다. 교전에 걸겠다.',
+          },
+          scoring: [{ axis: 'Tempo', delta: 1 }, { axis: 'Mental', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '继续跑，找掩体重置，然后打',
+            en: 'Keep running, find cover, reset, then fight on my terms.',
+            ja: '走り続け、遮蔽物を見つけてリセットし、それから自分の条件で戦う。',
+            ko: '계속 뛰고, 엄폐물 찾아 리셋하고, 내 조건에서 교전한다.',
+          },
+          scoring: [{ axis: 'Tempo', delta: -1 }, { axis: 'Mental', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '边跑边骂，然后找个地方反打',
+            en: 'Running and fuming. When cover shows up, I\'m turning around.',
+            ja: '走りながら悪態をつく。遮蔽物が見えたら振り返る。',
+            ko: '뛰면서 욕하고, 엄폐물 보이면 돌아선다.',
+          },
+          scoring: [{ axis: 'Tempo', delta: 1 }, { axis: 'Mental', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '冷静地找最优路线，速度快的队追不上走位骚的队',
+            en: 'Stay calm and find the optimal escape line. Speed beats juke only half the time.',
+            ja: '冷静に最適な逃走ルートを見つける。速さだけでフェイントを上回れるのは半分だ。',
+            ko: '침착하게 최적 탈출 라인 찾는다. 속도만으로는 페이크를 절반밖에 이기지 못한다.',
+          },
+          scoring: [{ axis: 'Tempo', delta: -1 }, { axis: 'Mental', delta: 1 }],
+        },
+      ],
+    },
+
+    // ── COMPOUND Q28: Flair + Bond (Wraith portal regret — peak-end) ─────────
+    {
+      id: 'apex-c16',
+      kind: 'compound',
+      text: {
+        zh: '你开的传送门另一头是什么你没确认——然后队友穿过去全团灭了。',
+        en: 'You set the portal without checking the exit. Team went through. Everyone died.',
+        ja: 'ポータルの出口を確認せずに設置した。チームが通過した。全員が死んだ。',
+        ko: '출구 확인 안 하고 포탈 설치했다. 팀이 통과했다. 다 죽었다.',
+      },
+      options: [
+        {
+          label: {
+            zh: '我知道了，下次确认出口——但那个想法当时真的很合理',
+            en: 'Noted. Check the exit next time. But the idea genuinely made sense in the moment.',
+            ja: '学んだ。次は出口を確認する。でも、その瞬間のアイデアは本当に理にかなっていた。',
+            ko: '알겠다. 다음엔 출구 확인. 근데 그 순간 그 생각은 진짜 말이 됐어.',
+          },
+          scoring: [{ axis: 'Flair', delta: 1 }, { axis: 'Bond', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '在道歉，但不太真诚，因为我还是不确定我错了',
+            en: 'Apologizing, but not very convincingly, because I\'m still not sure I was wrong.',
+            ja: '謝っているが、あまり説得力がない。自分が間違っていたかまだよく分からないから。',
+            ko: '사과는 하는데 그다지 설득력 없다. 내가 틀렸는지 아직 잘 모르겠어서.',
+          },
+          scoring: [{ axis: 'Flair', delta: 1 }, { axis: 'Bond', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '沉默，等这把结束再反思，现在说什么也没用',
+            en: 'Silence. Reflect after the match. Saying anything now changes nothing.',
+            ja: '沈黙。試合後に振り返る。今何を言っても何も変わらない。',
+            ko: '침묵. 경기 끝나고 반성한다. 지금 뭘 말해도 바뀌는 건 없다.',
+          },
+          scoring: [{ axis: 'Flair', delta: -1 }, { axis: 'Bond', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '我只是在想我能不能把门开出口直接是敌人身后的战术写下来',
+            en: 'Thinking about whether "portal exit behind enemy" could work as a written tactic.',
+            ja: '「ポータルの出口を敵の後ろに」を書き留めた戦術として機能するか考えている。',
+            ko: '"포탈 출구를 적 뒤로" 전술로 적어두면 작동할 수 있는지 생각하는 중이다.',
+          },
+          scoring: [{ axis: 'Flair', delta: -1 }, { axis: 'Bond', delta: -1 }],
+        },
+      ],
+    },
+
+    // ── COMPOUND Q29: Bond + Intel ───────────────────────────────────────────
+    {
+      id: 'apex-c17',
+      kind: 'compound',
+      text: {
+        zh: '你的队伍在排位赛里已经进了前五。队友说全力押注打这场架。你怎么看？',
+        en: 'Ranked match, you\'re in the final five squads. Teammate calls to go all-in on a fight. Your read?',
+        ja: 'ランク戦で最終5チームまで残った。チームメイトが全力で交戦するよう呼びかけている。どう見る？',
+        ko: '랭크전에서 최종 5팀까지 살아남았다. 팀원이 교전에 올인하자고 부른다. 어떻게 보나?',
+      },
+      options: [
+        {
+          label: {
+            zh: '我支持，胜点要打出来',
+            en: 'Agree. LP comes from kills, not from hiding.',
+            ja: '同意。LPはキルから来る。隠れてても増えない。',
+            ko: '동의. LP는 킬에서 온다. 숨어있으면 안 오른다.',
+          },
+          scoring: [{ axis: 'Bond', delta: 1 }, { axis: 'Intel', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '我反对，放置分比打架分值，保位才是正确 RP 路线',
+            en: 'Disagree. Placement points beat kill points at this stage. Hold position.',
+            ja: '反対。このステージでは順位ポイントがキルポイントを上回る。ポジションを維持する。',
+            ko: '반대. 이 단계에서 순위 점수가 킬 점수 이긴다. 위치 유지해야 한다.',
+          },
+          scoring: [{ axis: 'Bond', delta: 1 }, { axis: 'Intel', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '随便，打不打都行，感觉赢就赢',
+            en: 'Either way. Fight or don\'t fight. It\'ll work out.',
+            ja: 'どちらでもいい。戦っても戦わなくてもいい。何とかなる。',
+            ko: '뭐든. 교전하든 안 하든. 어떻게든 된다.',
+          },
+          scoring: [{ axis: 'Bond', delta: -1 }, { axis: 'Intel', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '我已经在找包抄路线了，队友的意见我后来才看到',
+            en: 'Already flanking. Saw the teammate\'s callout five seconds later.',
+            ja: 'すでにフランクしている。チームメイトのコールは5秒後に気づいた。',
+            ko: '이미 플랭크 중이다. 팀원 콜아웃은 5초 뒤에 봤다.',
+          },
+          scoring: [{ axis: 'Bond', delta: -1 }, { axis: 'Intel', delta: -1 }],
+        },
+      ],
+    },
+
+    // ── COMPOUND Q30: Tempo + Flair (slide-jump showboating — peak-end closer) ─
+    {
+      id: 'apex-c18',
+      kind: 'compound',
+      text: {
+        zh: '决赛圈，就差一个队，你们全甲满血。你想怎么结束这把？',
+        en: 'Final ring. One squad left. Your team is full health, full shields. How do you close it?',
+        ja: '最終リング。残り1チーム。チームは満タン。どう締める？',
+        ko: '마지막 자기장. 한 팀 남았다. 팀은 풀피 풀갑. 어떻게 끝내나?',
+      },
+      options: [
+        {
+          label: {
+            zh: '滑铲进去，最漂亮的移动收尾',
+            en: 'Slide-jump in. Close the match with the cleanest movement possible.',
+            ja: 'スライドジャンプで突入。できる限りきれいな動きで試合を締める。',
+            ko: '슬라이드 점프로 들어간다. 가장 깔끔한 움직임으로 경기 마무리.',
+          },
+          scoring: [{ axis: 'Tempo', delta: 1 }, { axis: 'Flair', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '稳稳推进，包好位，打完就算',
+            en: 'Slow advance, hold positions, win cleanly. That\'s the whole point.',
+            ja: 'ゆっくり前進してポジションを確保し、きれいに勝つ。それが全ての目的だ。',
+            ko: '천천히 전진, 위치 잡고, 깔끔하게 이긴다. 그게 전부다.',
+          },
+          scoring: [{ axis: 'Tempo', delta: -1 }, { axis: 'Flair', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '让队友先压，我找好角度再打',
+            en: 'Have teammates push first. I find a clean angle and let the fight come to me.',
+            ja: 'チームメイトに先に攻めさせる。自分はいいアングルを見つけて戦闘を待つ。',
+            ko: '팀원들이 먼저 밀게 한다. 나는 좋은 각도 잡고 교전이 오기를 기다린다.',
+          },
+          scoring: [{ axis: 'Tempo', delta: -1 }, { axis: 'Flair', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '弹射板弹进去，三个人空降结束，干净利落',
+            en: 'Jump pad all three in at once. Air-assault finish. Clean, fast, done.',
+            ja: '3人全員をジャンプパッドで同時に飛ばす。エアアサルトフィニッシュ。きれい、速い、終わり。',
+            ko: '점프 패드로 셋 다 동시에 날린다. 에어 어썰트 피니쉬. 깔끔, 빠름, 끝.',
+          },
+          scoring: [{ axis: 'Tempo', delta: 1 }, { axis: 'Flair', delta: -1 }],
+        },
+      ],
+    },
+  ],
+};
+
+export default game;
 
