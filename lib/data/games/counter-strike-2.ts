@@ -533,7 +533,301 @@ const game: GameQuizV2 = {
       bestSquadSlug: 'flash-entry',
     },
   ],
-  questions: [],
+  questions: [
+    // ── Q1 Anchor: Tempo ──────────────────────────────────────────────────────
+    {
+      id: 'cs2-q01',
+      kind: 'anchor',
+      text: {
+        zh: '买枪阶段结束，你第一个想法是什么？',
+        en: 'Buy phase ends. What\'s your first thought?',
+        ja: '購入フェーズが終わった。最初に頭に浮かぶことは？',
+        ko: '구매 페이즈가 끝났다. 처음 드는 생각은?',
+      },
+      options: [
+        {
+          label: {
+            zh: '先拿信息，别急着进',
+            en: 'Get info first, no rush',
+            ja: 'まず情報を取る、焦らない',
+            ko: '정보 먼저, 서두르지 않는다',
+          },
+          scoring: [{ axis: 'Tempo', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '直接压，给对面一点压力',
+            en: 'Push now, put pressure on them',
+            ja: '今すぐ前に出る、プレッシャーをかける',
+            ko: '바로 압박한다, 상대에게 압박 가한다',
+          },
+          scoring: [{ axis: 'Tempo', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '跟着指挥走，他说怎样就怎样',
+            en: 'Follow the IGL\'s call, whatever it is',
+            ja: 'IGLの指示に従う、何であれ',
+            ko: 'IGL 콜 따라간다, 뭐든',
+          },
+          scoring: [{ axis: 'Tempo', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '闪光弹已经在手上了，就等倒计时',
+            en: 'Flash already in hand, waiting for the countdown',
+            ja: 'もうフラッシュを持って、カウントダウン待ちだ',
+            ko: '이미 플래시 들고 카운트다운 기다리는 중',
+          },
+          scoring: [{ axis: 'Tempo', delta: 1 }],
+        },
+      ],
+    },
+    // ── Q2 Anchor: Tempo ──────────────────────────────────────────────────────
+    {
+      id: 'cs2-q02',
+      kind: 'anchor',
+      text: {
+        zh: '你们 CT 还剩 45 秒，对面没信息，你怎么办？',
+        en: 'CT side, 45 seconds left, no read on their position. Your move?',
+        ja: 'CT側、残り45秒、相手の位置も不明。どうする？',
+        ko: 'CT 사이드, 45초 남았고 상대 위치도 모른다. 어떻게 할까?',
+      },
+      options: [
+        {
+          label: {
+            zh: '守着守着，他们总会来的',
+            en: 'Hold position, they\'ll show up eventually',
+            ja: 'ここで待つ、そのうち来る',
+            ko: '포지션 지킨다, 언젠가 온다',
+          },
+          scoring: [{ axis: 'Tempo', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '主动出去抢角，信息比命重要',
+            en: 'Push for info, intel is worth more than my life',
+            ja: '前に出て情報を取る、命より情報が大事だ',
+            ko: '앞으로 나가서 정보 딴다, 정보가 목숨보다 중요',
+          },
+          scoring: [{ axis: 'Tempo', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '等队友先动，再看情况',
+            en: 'Wait for a teammate to move, then react',
+            ja: '味方が動いてから、状況を見る',
+            ko: '팀원이 움직이길 기다리고 상황 본다',
+          },
+          scoring: [{ axis: 'Tempo', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '直接 A rush，45 秒够了',
+            en: 'A rush right now, 45 seconds is plenty',
+            ja: '今すぐAラッシュ、45秒もあれば十分だ',
+            ko: '바로 A 러시, 45초면 충분하다',
+          },
+          scoring: [{ axis: 'Tempo', delta: 1 }],
+        },
+      ],
+    },
+    // ── Q3 Anchor: Nerve ──────────────────────────────────────────────────────
+    {
+      id: 'cs2-q03',
+      kind: 'anchor',
+      text: {
+        zh: 'Eco 局，你兜里有 800 刀，同伴全省着。你怎么买？',
+        en: 'Eco round, you have $800, teammates are all saving. What do you buy?',
+        ja: 'エコラウンド、所持金800ドル、味方は全員節約中。どう買う？',
+        ko: '에코 라운드, 돈 800달러, 팀원 전원 아끼는 중. 뭘 살까?',
+      },
+      options: [
+        {
+          label: {
+            zh: '省着，下局加一起买',
+            en: 'Save it, add it to next round\'s full buy',
+            ja: '節約して、次のラウンドのフルバイに加える',
+            ko: '아낀다, 다음 라운드 풀바이에 더한다',
+          },
+          scoring: [{ axis: 'Nerve', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '买把手枪加护甲，抗一波',
+            en: 'Pistol and armor, take a trade or two',
+            ja: 'ピストルと防具、トレードを取りに行く',
+            ko: '권총이랑 방어구, 트레이드 노린다',
+          },
+          scoring: [{ axis: 'Nerve', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '买霰弹枪，万一我打出来了呢',
+            en: 'Nova time, maybe I pop off',
+            ja: 'ショットガン買う、もしかしたら爆発するかも',
+            ko: '샷건 산다, 혹시 내가 터질 수도',
+          },
+          scoring: [{ axis: 'Nerve', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '全买，抵抗到底，省钱有什么意思',
+            en: 'Spend it all, go down swinging, saving is for accountants',
+            ja: '全部使う、最後まで戦う、節約は会計士にまかせる',
+            ko: '다 쓴다, 끝까지 싸운다, 아끼는 건 회계사한테 맡긴다',
+          },
+          scoring: [{ axis: 'Nerve', delta: 1 }],
+        },
+      ],
+    },
+    // ── Q4 Anchor: Nerve ──────────────────────────────────────────────────────
+    {
+      id: 'cs2-q04',
+      kind: 'anchor',
+      text: {
+        zh: '你 1v2，炸弹在手，还差 10 秒，两个人不知道在哪。怎么打？',
+        en: '1v2, bomb in hand, 10 seconds left, two enemies at unknown positions. Call it.',
+        ja: '1v2、爆弾を持ってる、残り10秒、敵2人の位置不明。どうする？',
+        ko: '1v2, 폭탄 들고 있고, 10초 남았고, 적 두 명 위치 모른다. 어떻게 할까?',
+      },
+      options: [
+        {
+          label: {
+            zh: '找最安全的包点藏着，等他们来拆',
+            en: 'Find the safest plant spot, bait the defuse',
+            ja: '一番安全な設置場所に隠れて、解除をおびき出す',
+            ko: '제일 안전한 설치 지점 찾아서 해제 기다린다',
+          },
+          scoring: [{ axis: 'Nerve', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '找一个干掉，再拼一个',
+            en: 'Hunt one, then handle the other',
+            ja: '1人倒して、もう1人に当たる',
+            ko: '한 명 잡고 나머지 상대한다',
+          },
+          scoring: [{ axis: 'Nerve', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '包点，然后等，极限反夹',
+            en: 'Plant, then swing an extreme counter-peek',
+            ja: '設置して待ち、極限のカウンターピーク',
+            ko: '설치하고 기다렸다가 극한 역피킹',
+          },
+          scoring: [{ axis: 'Nerve', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '直接冲出去，用位置差打懵他们',
+            en: 'Push them off angle, catch them surprised',
+            ja: '飛び出していって、奇襲をかける',
+            ko: '바로 돌격해서 기습으로 당황하게 한다',
+          },
+          scoring: [{ axis: 'Nerve', delta: 1 }],
+        },
+      ],
+    },
+    // ── Q5 Anchor: Bond ──────────────────────────────────────────────────────
+    {
+      id: 'cs2-q05',
+      kind: 'anchor',
+      text: {
+        zh: '你们 5 个人连麦，有人开始吵起来了。你的第一反应？',
+        en: 'Five of you in voice chat, someone starts an argument. First instinct?',
+        ja: '5人でボイスチャット中、誰かが言い争いを始めた。最初の反応は？',
+        ko: '다섯 명 보이스 챗 중에 누군가 싸움 시작했다. 첫 반응은?',
+      },
+      options: [
+        {
+          label: {
+            zh: '静音，专注打枪，他们自己闹去',
+            en: 'Mute, focus on playing, let them sort it out',
+            ja: 'ミュートして集中、彼らで解決させる',
+            ko: '뮤트하고 게임에 집중, 알아서 해결하라고',
+          },
+          scoring: [{ axis: 'Bond', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '"停，专注打枪" 然后继续',
+            en: '"Stop arguing and focus" then carry on',
+            ja: '"言い争いをやめろ、集中しよう" そして続ける',
+            ko: '"그만 싸우고 집중해" 하고 계속 진행',
+          },
+          scoring: [{ axis: 'Bond', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '偶尔发一两条信息，不想卷进去',
+            en: 'Drop a message or two, try not to get dragged in',
+            ja: 'メッセージを一言二言、巻き込まれたくない',
+            ko: '메시지 한두 마디, 엮이고 싶지 않아',
+          },
+          scoring: [{ axis: 'Bond', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '主动调停，这局输不起',
+            en: 'Step in and mediate, can\'t afford to lose this one',
+            ja: '積極的に仲裁する、この試合は負けられない',
+            ko: '적극적으로 중재한다, 이 판은 질 수 없다',
+          },
+          scoring: [{ axis: 'Bond', delta: 1 }],
+        },
+      ],
+    },
+    // ── Q6 Anchor: Bond ──────────────────────────────────────────────────────
+    {
+      id: 'cs2-q06',
+      kind: 'anchor',
+      text: {
+        zh: '队友要你丢枪给他，你刚好只有这一把 AK。',
+        en: 'Teammate asks for your AK. It\'s your only rifle.',
+        ja: '味方がAKを要求してきた。それがあなたの唯一のライフルだ。',
+        ko: '팀원이 AK 달라고 한다. 이게 내 유일한 라이플이다.',
+      },
+      options: [
+        {
+          label: {
+            zh: '不给，我打得比他好',
+            en: 'No. I\'m the better fragger right now',
+            ja: '渡さない。今の自分の方がうまい',
+            ko: '안 준다. 지금 내가 더 잘 쏜다',
+          },
+          scoring: [{ axis: 'Bond', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '给，他这局比我重要',
+            en: 'Give it. He\'s more important this round',
+            ja: '渡す。彼の方が今ラウンドは重要だ',
+            ko: '준다. 이 판엔 그가 더 중요하다',
+          },
+          scoring: [{ axis: 'Bond', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '看他上局打的怎样再决定',
+            en: 'Depends on how he played last round',
+            ja: '前のラウンドのプレイ次第で決める',
+            ko: '전 판 플레이 봐서 결정한다',
+          },
+          scoring: [{ axis: 'Bond', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '给，但希望他能打好',
+            en: 'Give it, hoping he makes it count',
+            ja: '渡す、ちゃんと使ってほしいけど',
+            ko: '준다, 잘 써주길 바라면서',
+          },
+          scoring: [{ axis: 'Bond', delta: 1 }],
+        },
+      ],
+    },
 };
 
 export default game;
