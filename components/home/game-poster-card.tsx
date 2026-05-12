@@ -1,6 +1,3 @@
-'use client';
-
-import {useState} from 'react';
 import Image from 'next/image';
 import {Link} from '@/i18n/navigation';
 import {PaperGrain} from '@/components/ui/paper-grain';
@@ -22,7 +19,7 @@ const CTA_COPY: Record<Locale, string> = {
   ko: '테스트 시작',
 };
 
-const BACK_LABEL: Record<Locale, string> = {
+const TOP_LABEL: Record<Locale, string> = {
   zh: '热门原型',
   en: 'Top Archetypes',
   ja: '人気タイプ',
@@ -32,9 +29,9 @@ const BACK_LABEL: Record<Locale, string> = {
 interface GamePosterCardProps {
   game: GameQuizV2;
   locale: string;
-  /** Sort order (1-8) used for the ChapterMark corner number */
+  /** Sort order (1-8) used for the corner number on the cover */
   sortIndex?: number;
-  /** Indices of top-3 archetypes to show on flip side */
+  /** Indices of top-3 archetypes to show below */
   featuredIndices?: [number, number, number];
 }
 
@@ -44,203 +41,150 @@ export function GamePosterCard({
   sortIndex,
   featuredIndices = [0, 1, 2],
 }: GamePosterCardProps) {
-  const [flipped, setFlipped] = useState(false);
   const l = (locale as Locale) in META_COPY ? (locale as Locale) : 'en';
 
   const title = game.title[l] ?? game.title.en;
   const deck = game.deck[l] ?? game.deck.en;
   const meta = META_COPY[l](game.questions.length, game.archetypes.length);
   const cta = CTA_COPY[l];
-  const backLabel = BACK_LABEL[l];
+  const topLabel = TOP_LABEL[l];
 
   const featured = featuredIndices.map((i) => game.archetypes[i]).filter(Boolean);
-
   const chapterNum = sortIndex != null ? String(sortIndex).padStart(2, '0') : undefined;
 
   return (
-    <div
+    <article
       data-game={game.slug}
-      className="group relative h-96 cursor-pointer select-none md:h-[26rem]"
-      style={{perspective: '1000px'}}
-      onClick={() => setFlipped((f) => !f)}
-      onKeyDown={(e) => {
-        if (e.key === 'Enter' || e.key === ' ') setFlipped((f) => !f);
+      className="group relative flex flex-col overflow-hidden rounded-2xl border border-border/60 shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+      style={{
+        background: 'var(--game-surface, var(--card))',
+        color: 'var(--game-ink, var(--card-foreground))',
       }}
-      tabIndex={0}
-      role="button"
-      aria-pressed={flipped}
-      aria-label={title}
     >
-      {/* Card shell with 3D flip + sticker hover rotation */}
-      <div
-        className="relative h-full w-full transition-all duration-500 group-hover:-translate-y-1 group-hover:rotate-1"
-        style={{
-          transformStyle: 'preserve-3d',
-          transform: flipped ? 'rotateY(180deg)' : undefined,
-          transition: 'transform 0.5s ease, box-shadow 0.3s ease',
-        }}
-      >
-        {/* ── FRONT ─────────────────────────────────────────────────────────── */}
+      <PaperGrain opacity={0.04} />
+
+      {/* ── Cover image (top 200px) ──────────────────────────────────────── */}
+      <div className="relative h-48 w-full overflow-hidden md:h-56">
+        <Image
+          src={`/game-quizzes/${game.slug}/cover.png`}
+          alt={title}
+          fill
+          className="object-cover transition-transform duration-500 group-hover:scale-105"
+          loading="lazy"
+          unoptimized
+        />
+        {/* Gradient veil so any overlaid text stays legible */}
         <div
-          className="absolute inset-0 overflow-hidden rounded-2xl border border-border/60 shadow-md group-hover:shadow-xl"
+          className="pointer-events-none absolute inset-0"
           style={{
-            backfaceVisibility: 'hidden',
-            WebkitBackfaceVisibility: 'hidden',
-            background: 'var(--game-surface, var(--card))',
-            color: 'var(--game-ink, var(--card-foreground))',
-            boxShadow: 'var(--tw-shadow)',
-            transition: 'box-shadow 0.3s ease',
+            background:
+              'linear-gradient(to bottom, transparent 50%, color-mix(in srgb, var(--game-surface, var(--card)) 90%, transparent) 100%)',
           }}
-        >
-          <PaperGrain opacity={0.04} />
-
-          {/* Cover image — top 45% */}
-          <div className="relative h-44 w-full overflow-hidden md:h-48">
-            <Image
-              src={`/game-quizzes/${game.slug}/cover.png`}
-              alt={title}
-              fill
-              className="object-cover transition-transform duration-500 group-hover:scale-105"
-              loading="lazy"
-              unoptimized
-            />
-            {/* Gradient veil for legibility of overlaid logo */}
-            <div
-              className="pointer-events-none absolute inset-0"
-              style={{
-                background:
-                  'linear-gradient(to bottom, transparent 40%, color-mix(in srgb, var(--game-surface, var(--card)) 90%, transparent) 100%)',
-              }}
-              aria-hidden
-            />
-            {/* Logo overlay on cover */}
-            <div className="absolute right-3 top-3 flex size-10 items-center justify-center rounded-lg bg-background/70 p-1.5 shadow-sm backdrop-blur-sm">
-              <Image
-                src={`/game-logos/${game.slug}.png`}
-                alt=""
-                width={28}
-                height={28}
-                className="object-contain"
-                loading="lazy"
-              />
-            </div>
-
-            {/* Chapter mark corner (sort order) */}
-            {chapterNum && (
-              <div className="absolute left-3 top-3">
-                <span
-                  className="font-mono text-xs font-black opacity-80 leading-none"
-                  style={{
-                    color: 'var(--game-primary, var(--primary))',
-                    textShadow: '0 1px 3px rgba(0,0,0,0.5)',
-                  }}
-                >
-                  {chapterNum}
-                </span>
-              </div>
-            )}
-          </div>
-
-          {/* Accent bar between cover and text */}
-          <div
-            className="h-1 w-full"
-            style={{background: 'var(--game-primary, var(--primary))'}}
-            aria-hidden
+          aria-hidden
+        />
+        {/* Game logo (right top corner) */}
+        <div className="absolute right-3 top-3 flex size-10 items-center justify-center rounded-lg bg-background/70 p-1.5 shadow-sm backdrop-blur-sm">
+          <Image
+            src={`/game-logos/${game.slug}.png`}
+            alt=""
+            width={28}
+            height={28}
+            className="object-contain"
+            loading="lazy"
           />
-
-          <div className="flex flex-col gap-2 px-5 py-4">
-            <h3
-              className="font-heading text-lg font-bold leading-tight"
-              style={{color: 'var(--game-ink, inherit)'}}
-            >
-              {title}
-            </h3>
-            <p
-              className="text-xs leading-snug opacity-75 line-clamp-2"
-              style={{color: 'var(--game-ink, inherit)'}}
-            >
-              {deck}
-            </p>
+        </div>
+        {/* Chapter number (left top corner) */}
+        {chapterNum && (
+          <div className="absolute left-3 top-3">
             <span
-              className="font-mono text-[11px] font-medium opacity-60"
-              style={{color: 'var(--game-ink, inherit)'}}
+              className="font-mono text-xs font-black opacity-80 leading-none"
+              style={{
+                color: 'var(--game-primary, var(--primary))',
+                textShadow: '0 1px 3px rgba(0,0,0,0.5)',
+              }}
             >
-              {meta}
+              {chapterNum}
             </span>
           </div>
+        )}
+      </div>
 
-          {/* Hover glow border (game-color) */}
-          <div
-            className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-            style={{boxShadow: '0 0 0 2px var(--game-primary, var(--primary))'}}
-            aria-hidden
-          />
-        </div>
+      {/* Accent bar separating cover from body */}
+      <div
+        className="h-1 w-full"
+        style={{background: 'var(--game-primary, var(--primary))'}}
+        aria-hidden
+      />
 
-        {/* ── BACK ──────────────────────────────────────────────────────────── */}
-        <div
-          className="absolute inset-0 overflow-hidden rounded-2xl border border-border/60 shadow-md"
-          style={{
-            backfaceVisibility: 'hidden',
-            WebkitBackfaceVisibility: 'hidden',
-            transform: 'rotateY(180deg)',
-            background: 'var(--game-surface, var(--card))',
-            color: 'var(--game-ink, var(--card-foreground))',
-          }}
+      {/* ── Title + deck + meta ──────────────────────────────────────────── */}
+      <div className="relative flex flex-col gap-2 px-5 py-4">
+        <h3
+          className="font-heading text-xl font-bold leading-tight"
+          style={{color: 'var(--game-ink, inherit)'}}
         >
-          <PaperGrain opacity={0.04} />
+          {title}
+        </h3>
+        <p
+          className="text-sm leading-snug opacity-80"
+          style={{color: 'var(--game-ink, inherit)'}}
+        >
+          {deck}
+        </p>
+        <span
+          className="mt-0.5 font-mono text-[11px] font-medium opacity-60"
+          style={{color: 'var(--game-ink, inherit)'}}
+        >
+          {meta}
+        </span>
+      </div>
 
-          <div
-            className="absolute left-0 top-0 h-1 w-full"
-            style={{background: 'var(--game-primary, var(--primary))'}}
-            aria-hidden
-          />
-
-          <div className="relative flex h-full flex-col gap-3 px-5 py-6">
-            <p
-              className="font-mono text-xs font-semibold uppercase tracking-wider opacity-60"
-              style={{color: 'var(--game-ink, inherit)'}}
-            >
-              {backLabel}
-            </p>
-
-            <div className="flex flex-1 flex-col gap-2">
-              {featured.map((arch) => (
-                <div
-                  key={arch.slug}
-                  className="rounded-lg px-3 py-2 text-sm"
-                  style={{
-                    background:
-                      'color-mix(in srgb, var(--game-primary, var(--primary)) 12%, transparent)',
-                  }}
-                >
-                  <span className="font-medium" style={{color: 'var(--game-ink, inherit)'}}>
-                    {arch.name[l] ?? arch.name.en}
-                  </span>
-                  <p
-                    className="mt-0.5 text-xs leading-snug opacity-70"
-                    style={{color: 'var(--game-ink, inherit)'}}
-                  >
-                    {arch.oneLiner[l] ?? arch.oneLiner.en}
-                  </p>
-                </div>
-              ))}
-            </div>
-
-            <Link
-              href={`/games/${game.slug}`}
-              onClick={(e) => e.stopPropagation()}
-              className="mt-1 inline-flex w-full items-center justify-center rounded-xl py-2.5 text-sm font-semibold transition-opacity hover:opacity-90"
+      {/* ── Top archetypes (was the flip back side; now stacked) ─────────── */}
+      <div className="relative flex flex-col gap-2 px-5 pb-4">
+        <p
+          className="font-mono text-[10px] font-semibold uppercase tracking-[0.18em] opacity-60"
+          style={{color: 'var(--game-ink, inherit)'}}
+        >
+          {topLabel}
+        </p>
+        <ul className="flex flex-col gap-1.5">
+          {featured.map((arch) => (
+            <li
+              key={arch.slug}
+              className="rounded-lg px-3 py-2 text-sm"
               style={{
-                background: 'var(--game-primary, var(--primary))',
-                color: 'var(--game-surface, var(--primary-foreground))',
+                background: 'color-mix(in srgb, var(--game-primary, var(--primary)) 14%, transparent)',
               }}
             >
-              {cta}
-            </Link>
-          </div>
-        </div>
+              <span
+                className="font-medium"
+                style={{color: 'var(--game-ink, inherit)'}}
+              >
+                {arch.name[l] ?? arch.name.en}
+              </span>
+              <p
+                className="mt-0.5 text-xs leading-snug opacity-70"
+                style={{color: 'var(--game-ink, inherit)'}}
+              >
+                {arch.oneLiner[l] ?? arch.oneLiner.en}
+              </p>
+            </li>
+          ))}
+        </ul>
       </div>
-    </div>
+
+      {/* ── CTA ──────────────────────────────────────────────────────────── */}
+      <div className="relative px-5 pb-5">
+        <Link
+          href={`/games/${game.slug}`}
+          className="inline-flex w-full items-center justify-center rounded-xl py-3 text-sm font-bold transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
+          style={{
+            background: 'var(--game-primary, var(--primary))',
+            color: 'var(--game-surface, var(--primary-foreground))',
+          }}
+        >
+          {cta}
+        </Link>
+      </div>
+    </article>
   );
 }
