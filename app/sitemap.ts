@@ -2,6 +2,7 @@ import type {MetadataRoute} from 'next';
 import {routing} from '@/i18n/routing';
 import {BLOG_POSTS} from '@/lib/data/blog';
 import {GAME_SLUGS} from '@/lib/data/game-quizzes';
+import {ALL_GAMES_V2} from '@/lib/data/games/index';
 
 export const dynamic = 'force-static';
 
@@ -58,6 +59,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Game personality tests
   for (const slug of GAME_SLUGS) {
     addLocalized(`/games/${slug}`, 0.82, '2026-05-11');
+  }
+
+  // Game archetype result pages (8 games × 8 archetypes = 64 routes)
+  for (const game of ALL_GAMES_V2) {
+    for (const archetype of game.archetypes) {
+      addLocalized(`/games/${game.slug}/result/${archetype.slug}`, 0.78, '2026-05-12');
+    }
   }
 
   // Type pages
