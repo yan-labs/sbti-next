@@ -1,4 +1,4 @@
-import type { GameQuiz, SiteLocale } from '../game-quizzes';
+import type { GameQuizV2, SiteLocale } from './types';
 import { AXES } from './dimensions';
 
 type QA = { question: string; answer: string };
@@ -129,13 +129,13 @@ function splitQuestions(total: number): { anchor: number; compound: number } {
 
 // ── Public API ────────────────────────────────────────────────────────────────
 
-export function buildGameHubFAQs(game: GameQuiz, locale: SiteLocale): QA[] {
+export function buildGameHubFAQs(game: GameQuizV2, locale: SiteLocale): QA[] {
   const t = TEMPLATES[locale];
   const gameTitle = game.title[locale];
   const { anchor, compound } = splitQuestions(game.questions.length);
   const listSep = locale === 'en' ? ', ' : '、';
-  const typesList = game.results.map((r) => r.title[locale]).join(listSep);
-  const typeCount = game.results.length;
+  const typesList = game.archetypes.map((a) => a.name[locale]).join(listSep);
+  const typeCount = game.archetypes.length;
   const axesDesc = buildAxesDescription(locale);
 
   return [
