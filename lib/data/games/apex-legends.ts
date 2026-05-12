@@ -1413,4 +1413,304 @@ const game: GameQuizV2 = {
       ],
     },
 
+    // ── COMPOUND Q19: Tempo + Intel ──────────────────────────────────────────
+    {
+      id: 'apex-c07',
+      kind: 'compound',
+      text: {
+        zh: '你知道安全区缩到了这一片，但现在圈伤还没开始。你怎么决定转点时机？',
+        en: 'Ring is closing to this area but damage hasn\'t started yet. When do you rotate?',
+        ja: 'リングはこのエリアに縮まっているが、ダメージはまだ始まっていない。いつローテーションする？',
+        ko: '자기장이 이 구역으로 좁혀지는데 피해는 아직 시작 안 했다. 언제 이동하나?',
+      },
+      options: [
+        {
+          label: {
+            zh: '已经在路上了，我不等圈伤开',
+            en: 'Already moving. I don\'t wait for ring damage.',
+            ja: 'もう移動中。リングダメージを待たない。',
+            ko: '이미 이동 중이다. 자기장 피해 기다리지 않는다.',
+          },
+          scoring: [{ axis: 'Tempo', delta: 1 }, { axis: 'Intel', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '等圈伤 10% 再动，那是其他队伍开始承压的节点',
+            en: 'Move when ring hits 10% damage. That\'s when other squads start feeling it.',
+            ja: 'リングが10%ダメージになったら動く。他チームが感じ始めるタイミングだ。',
+            ko: '자기장 피해가 10%일 때 이동. 다른 팀들이 부담 느끼기 시작하는 시점이다.',
+          },
+          scoring: [{ axis: 'Tempo', delta: -1 }, { axis: 'Intel', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '靠手感，打仗的感觉告诉我什么时候要走',
+            en: 'I go by feel. When the fight instinct says move, I move.',
+            ja: '感覚で動く。戦闘の本能が移動する時を教えてくれる。',
+            ko: '감각으로 간다. 교전 본능이 이동할 때 알려준다.',
+          },
+          scoring: [{ axis: 'Tempo', delta: 1 }, { axis: 'Intel', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '我会算好时间，圈差、行进时间、扫清路上障碍的时间，精确到秒',
+            en: 'Calculate ring gap, travel time, and time to clear obstacles. Accurate to within seconds.',
+            ja: 'リングギャップ、移動時間、障害物を排除する時間を計算する。秒単位で正確に。',
+            ko: '자기장 거리, 이동 시간, 장애물 제거 시간 계산한다. 초 단위로 정확하게.',
+          },
+          scoring: [{ axis: 'Tempo', delta: -1 }, { axis: 'Intel', delta: 1 }],
+        },
+      ],
+    },
+
+    // ── COMPOUND Q20: Bond + Nerve ───────────────────────────────────────────
+    {
+      id: 'apex-c08',
+      kind: 'compound',
+      text: {
+        zh: '队伍正在对一个强势位拉扯，而对面有三个人。你的角色是什么？',
+        en: 'Your squad is peeking a three-man squad in an entrenched position. What\'s your role?',
+        ja: 'チームが3人チームの強固なポジションに対してピークしている。自分の役割は？',
+        ko: '팀이 견고한 위치의 3인 팀에 피크 중이다. 당신의 역할은?',
+      },
+      options: [
+        {
+          label: {
+            zh: '我带头压，打开局面，队友跟进',
+            en: 'I lead the push, open up the fight, team follows.',
+            ja: '自分が先頭に立って攻める。戦闘を開かせてチームをついてこさせる。',
+            ko: '내가 선두로 밀고 들어가 교전 열어, 팀이 따라온다.',
+          },
+          scoring: [{ axis: 'Bond', delta: 1 }, { axis: 'Nerve', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '守好自己的侧翼，让更激进的队友打头阵',
+            en: 'Cover the flank and let the more aggressive teammate lead.',
+            ja: 'フランクを守り、より積極的なチームメイトを先頭に立てる。',
+            ko: '사이드 커버하고, 더 공격적인 팀원이 선두 서게 한다.',
+          },
+          scoring: [{ axis: 'Bond', delta: 1 }, { axis: 'Nerve', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '自己找包抄，不需要跟队友协调',
+            en: 'Find my own flanking path. Don\'t need to coordinate.',
+            ja: '自分でフランクルートを見つける。チームメイトとの調整は不要。',
+            ko: '직접 플랭크 루트 찾는다. 팀원과 조율할 필요 없다.',
+          },
+          scoring: [{ axis: 'Bond', delta: -1 }, { axis: 'Nerve', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '这个架不值得打，建议转点',
+            en: 'This fight isn\'t worth it. Calling a rotate.',
+            ja: 'この戦闘は価値がない。ローテーションを呼ぶ。',
+            ko: '이 교전 가치 없다. 로테이션 부른다.',
+          },
+          scoring: [{ axis: 'Bond', delta: -1 }, { axis: 'Nerve', delta: -1 }],
+        },
+      ],
+    },
+
+    // ── COMPOUND Q21: Flair + Mental ─────────────────────────────────────────
+    {
+      id: 'apex-c09',
+      kind: 'compound',
+      text: {
+        zh: '你打出了一个绝妙的兔跳弹射，但接下来的枪没打中，把这个好开局浪费了。',
+        en: 'Perfect bunny hop into the flank. Then you whiffed three shots and lost the trade.',
+        ja: '完璧なバニーホップでフランクした。でも3発外して交換を失った。',
+        ko: '완벽한 버니합으로 플랭크했다. 그런데 3발 빗나가 교전 패배했다.',
+      },
+      options: [
+        {
+          label: {
+            zh: '无所谓，那个移动本身就值，下次再补枪就行',
+            en: 'No issue. The movement was worth it; fix the aim next time.',
+            ja: '問題ない。移動自体に価値があった。次は照準を直す。',
+            ko: '상관없다. 움직임 자체가 가치 있었다. 다음엔 에임 고치면 된다.',
+          },
+          scoring: [{ axis: 'Flair', delta: 1 }, { axis: 'Mental', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '有点懊恼，好开头配上坏结尾最难受',
+            en: 'That sting is real. Good entry plus bad execution is the worst outcome.',
+            ja: '悔しい。いいエントリー + 悪い実行は最悪の結果だ。',
+            ko: '그 찌릿함 진짜다. 좋은 진입 + 나쁜 실행이 최악의 결과다.',
+          },
+          scoring: [{ axis: 'Flair', delta: 1 }, { axis: 'Mental', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '早就说了，花里胡哨不如站稳打准，下次走直路',
+            en: 'Told myself: flashy is worthless if the aim isn\'t there. Next one is a straight line.',
+            ja: '照準が伴わなければ派手な動きに価値はない、と心に刻んだ。次は直線ルートで。',
+            ko: '에임이 없으면 화려한 건 소용없다고 스스로 새겼다. 다음은 직선 루트.',
+          },
+          scoring: [{ axis: 'Flair', delta: -1 }, { axis: 'Mental', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '发生过了，忘了。下把继续移动，继续尝试',
+            en: 'Happened, forgotten. Keep moving, keep trying next round.',
+            ja: '起きた、忘れた。動き続けて、次のラウンドも試し続ける。',
+            ko: '일어났고, 잊었다. 계속 움직이고 다음 판도 시도한다.',
+          },
+          scoring: [{ axis: 'Flair', delta: -1 }, { axis: 'Mental', delta: -1 }],
+        },
+      ],
+    },
+
+    // ── COMPOUND Q22: Tempo + Bond ───────────────────────────────────────────
+    {
+      id: 'apex-c10',
+      kind: 'compound',
+      text: {
+        zh: '开局你们三个人落地不同区域。怎么合兵？',
+        en: 'Drop goes wrong. Three of you land in separate zones. How do you regroup?',
+        ja: 'ドロップが失敗。3人が別々のエリアに着地した。どうやって合流する？',
+        ko: '낙하 실패. 셋이 별도 구역에 착지했다. 어떻게 합류하나?',
+      },
+      options: [
+        {
+          label: {
+            zh: '我直接往最近的队友跑，边跑边舔包',
+            en: 'Run to the nearest teammate immediately. Loot on the way.',
+            ja: '最も近いチームメイトにすぐ走る。途中でルートしながら。',
+            ko: '가장 가까운 팀원한테 바로 달린다. 이동 중에 루팅한다.',
+          },
+          scoring: [{ axis: 'Tempo', delta: 1 }, { axis: 'Bond', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '先把这个区域舔完再合兵，满装备见面',
+            en: 'Loot this zone first, then regroup. Meet with full gear.',
+            ja: 'まずこのゾーンをルートしてから合流。フル装備で会う。',
+            ko: '이 구역 먼저 다 루팅하고 합류. 풀 장비로 만난다.',
+          },
+          scoring: [{ axis: 'Tempo', delta: -1 }, { axis: 'Bond', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '各自收装备，各自打，后面反正也要分头行动',
+            en: 'Each loot separately, each fight separately. We\'ll split anyway later.',
+            ja: 'それぞれがルートし、それぞれが戦う。どうせ後で分かれる。',
+            ko: '각자 루팅, 각자 교전. 어차피 나중에 갈라질 거다.',
+          },
+          scoring: [{ axis: 'Tempo', delta: 1 }, { axis: 'Bond', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '先找个安全点等大家到齐，再统一行动',
+            en: 'Find a safe spot and wait for everyone before moving as a unit.',
+            ja: '安全な場所を見つけて全員が揃うのを待ち、ユニットとして動く。',
+            ko: '안전한 장소 잡고 다 모일 때까지 기다린 뒤 함께 움직인다.',
+          },
+          scoring: [{ axis: 'Tempo', delta: -1 }, { axis: 'Bond', delta: -1 }],
+        },
+      ],
+    },
+
+    // ── COMPOUND Q23: Flair + Nerve ──────────────────────────────────────────
+    {
+      id: 'apex-c11',
+      kind: 'compound',
+      text: {
+        zh: '你打算用恶灵传送门帮队友撤退，但你也看到了一个进攻机会。',
+        en: 'You\'re setting a Wraith portal to extract the team. You also see an offensive opening.',
+        ja: 'チームを撤退させるワープポータルを設置中。攻撃のチャンスも見える。',
+        ko: '팀 이탈용 워프 포탈 설치 중이다. 공격 기회도 보인다.',
+      },
+      options: [
+        {
+          label: {
+            zh: '先攻击，把对面打懵再打门',
+            en: 'Attack first, stagger the enemy, then place the portal.',
+            ja: 'まず攻撃して敵を混乱させてからポータルを設置する。',
+            ko: '먼저 공격해서 적 혼란시키고 포탈 설치한다.',
+          },
+          scoring: [{ axis: 'Flair', delta: 1 }, { axis: 'Nerve', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '先开门，让队友先撤，进攻的事等进到门里再说',
+            en: 'Portal first. Team extracts. Engage from the safe side if the angle is still there.',
+            ja: 'まずポータル。チームを撤退させる。安全な側から角度が残っていれば交戦。',
+            ko: '포탈 먼저. 팀 이탈시킨다. 안전한 쪽에서 각도 남아있으면 교전.',
+          },
+          scoring: [{ axis: 'Flair', delta: -1 }, { axis: 'Nerve', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '门指向进攻方向，撤退同时也是突袭',
+            en: 'Set the portal exit into the enemy position. Retreat becomes assault.',
+            ja: 'ポータルの出口を敵のポジションに向ける。撤退が突撃になる。',
+            ko: '포탈 출구를 적 위치로 향하게 한다. 이탈이 돌격이 된다.',
+          },
+          scoring: [{ axis: 'Flair', delta: 1 }, { axis: 'Nerve', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '放弃进攻机会，门放好，把队友安全拉走',
+            en: 'Ignore the opening. Place a clean portal and get the team out safely.',
+            ja: 'チャンスは無視。きれいなポータルを置いてチームを安全に撤退させる。',
+            ko: '기회 무시. 깔끔한 포탈 설치해서 팀 안전하게 빠져나간다.',
+          },
+          scoring: [{ axis: 'Flair', delta: -1 }, { axis: 'Nerve', delta: 1 }],
+        },
+      ],
+    },
+
+    // ── COMPOUND Q24: Bond + Intel ───────────────────────────────────────────
+    {
+      id: 'apex-c12',
+      kind: 'compound',
+      text: {
+        zh: '标记系统里，你更倾向用哪一种标记方式传递信息？',
+        en: 'In the ping system, which pings do you rely on most to communicate?',
+        ja: 'ピングシステムで、情報を伝えるためにどのピングを最もよく使うか？',
+        ko: '핑 시스템에서 정보 전달에 가장 많이 쓰는 핑은?',
+      },
+      options: [
+        {
+          label: {
+            zh: '"敌人在这里"——我的眼睛就是全队的情报',
+            en: '"Enemy here" — my eyes are the team\'s intelligence feed.',
+            ja: '「敵ここ」— 自分の目がチームの情報源だ。',
+            ko: '"적 여기" — 내 눈이 팀의 정보 공급원이다.',
+          },
+          scoring: [{ axis: 'Bond', delta: 1 }, { axis: 'Intel', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '"我在这里"——让队友知道我在哪，方便配合',
+            en: '"I\'m here" — let the team track my position for coordination.',
+            ja: '「ここにいる」— チームが協調しやすいよう自分の位置を知らせる。',
+            ko: '"나 여기" — 팀이 협조하기 쉽게 내 위치 알린다.',
+          },
+          scoring: [{ axis: 'Bond', delta: 1 }, { axis: 'Intel', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '"物资在这里"——大家自己过来拿，我不管分配',
+            en: '"Loot here" — I ping it, others come if they want. Not my job to assign.',
+            ja: '「ここに物資」— ピングしておく。欲しければ来る。分配は自分の仕事じゃない。',
+            ko: '"물자 여기" — 핑 찍어두면 원하는 사람이 온다. 배분은 내 일 아니다.',
+          },
+          scoring: [{ axis: 'Bond', delta: -1 }, { axis: 'Intel', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '我一般不主动 ping，等队友先标记再回应',
+            en: 'I rarely ping first. I respond to what teammates mark.',
+            ja: 'あまり自分からピングしない。チームメイトのピングに反応する。',
+            ko: '먼저 핑 찍는 경우 드물다. 팀원이 찍은 핑에 반응한다.',
+          },
+          scoring: [{ axis: 'Bond', delta: -1 }, { axis: 'Intel', delta: -1 }],
+        },
+      ],
+    },
+
 
