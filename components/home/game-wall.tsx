@@ -58,8 +58,8 @@ export function GameWall({locale}: GameWallProps) {
         </div>
 
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-5 lg:gap-6">
-          {sorted.map((game) => (
-            <GamePosterCard key={game.slug} game={game} locale={locale} />
+          {sorted.map((game, i) => (
+            <GamePosterCard key={game.slug} game={game} locale={locale} sortIndex={i + 1} />
           ))}
         </div>
       </div>

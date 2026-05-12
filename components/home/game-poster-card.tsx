@@ -3,6 +3,8 @@
 import {useState} from 'react';
 import Image from 'next/image';
 import {Link} from '@/i18n/navigation';
+import {PaperGrain} from '@/components/ui/paper-grain';
+import {ChapterMark} from '@/components/ui/chapter-mark';
 import type {GameQuizV2} from '@/lib/data/games/types';
 
 type Locale = 'zh' | 'en' | 'ja' | 'ko';
@@ -31,11 +33,18 @@ const BACK_LABEL: Record<Locale, string> = {
 interface GamePosterCardProps {
   game: GameQuizV2;
   locale: string;
+  /** Sort order (1-8) used for the ChapterMark corner number */
+  sortIndex?: number;
   /** Indices of top-3 archetypes to show on flip side */
   featuredIndices?: [number, number, number];
 }
 
-export function GamePosterCard({game, locale, featuredIndices = [0, 1, 2]}: GamePosterCardProps) {
+export function GamePosterCard({
+  game,
+  locale,
+  sortIndex,
+  featuredIndices = [0, 1, 2],
+}: GamePosterCardProps) {
   const [flipped, setFlipped] = useState(false);
   const l = (locale as Locale) in META_COPY ? (locale as Locale) : 'en';
 
@@ -47,36 +56,45 @@ export function GamePosterCard({game, locale, featuredIndices = [0, 1, 2]}: Game
 
   const featured = featuredIndices.map((i) => game.archetypes[i]).filter(Boolean);
 
+  const chapterNum = sortIndex != null ? String(sortIndex).padStart(2, '0') : undefined;
+
   return (
     <div
       data-game={game.slug}
       className="group relative h-96 cursor-pointer select-none md:h-[26rem]"
       style={{perspective: '1000px'}}
       onClick={() => setFlipped((f) => !f)}
-      onKeyDown={(e) => {if (e.key === 'Enter' || e.key === ' ') setFlipped((f) => !f);}}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') setFlipped((f) => !f);
+      }}
       tabIndex={0}
       role="button"
       aria-pressed={flipped}
       aria-label={title}
     >
-      {/* Card shell with 3D flip */}
+      {/* Card shell with 3D flip + sticker hover rotation */}
       <div
-        className="relative h-full w-full transition-transform duration-500"
+        className="relative h-full w-full transition-all duration-500 group-hover:-translate-y-1 group-hover:rotate-1"
         style={{
           transformStyle: 'preserve-3d',
-          transform: flipped ? 'rotateY(180deg)' : 'rotateY(0deg)',
+          transform: flipped ? 'rotateY(180deg)' : undefined,
+          transition: 'transform 0.5s ease, box-shadow 0.3s ease',
         }}
       >
         {/* ── FRONT ─────────────────────────────────────────────────────────── */}
         <div
-          className="absolute inset-0 overflow-hidden rounded-2xl border border-border/60 shadow-md"
+          className="absolute inset-0 overflow-hidden rounded-2xl border border-border/60 shadow-md group-hover:shadow-xl"
           style={{
             backfaceVisibility: 'hidden',
             WebkitBackfaceVisibility: 'hidden',
             background: 'var(--game-surface, var(--card))',
             color: 'var(--game-ink, var(--card-foreground))',
+            boxShadow: 'var(--tw-shadow)',
+            transition: 'box-shadow 0.3s ease',
           }}
         >
+          <PaperGrain opacity={0.04} />
+
           {/* Cover image — top 45% */}
           <div className="relative h-44 w-full overflow-hidden md:h-48">
             <Image
@@ -91,7 +109,8 @@ export function GamePosterCard({game, locale, featuredIndices = [0, 1, 2]}: Game
             <div
               className="pointer-events-none absolute inset-0"
               style={{
-                background: 'linear-gradient(to bottom, transparent 40%, color-mix(in srgb, var(--game-surface, var(--card)) 90%, transparent) 100%)',
+                background:
+                  'linear-gradient(to bottom, transparent 40%, color-mix(in srgb, var(--game-surface, var(--card)) 90%, transparent) 100%)',
               }}
               aria-hidden
             />
@@ -106,6 +125,21 @@ export function GamePosterCard({game, locale, featuredIndices = [0, 1, 2]}: Game
                 loading="lazy"
               />
             </div>
+
+            {/* Chapter mark corner (sort order) */}
+            {chapterNum && (
+              <div className="absolute left-3 top-3">
+                <span
+                  className="font-mono text-xs font-black opacity-80 leading-none"
+                  style={{
+                    color: 'var(--game-primary, var(--primary))',
+                    textShadow: '0 1px 3px rgba(0,0,0,0.5)',
+                  }}
+                >
+                  {chapterNum}
+                </span>
+              </div>
+            )}
           </div>
 
           {/* Accent bar between cover and text */}
@@ -136,12 +170,12 @@ export function GamePosterCard({game, locale, featuredIndices = [0, 1, 2]}: Game
             </span>
           </div>
 
-          {/* Hover hint */}
-          <div className="absolute bottom-3 right-4 opacity-0 transition-opacity duration-200 group-hover:opacity-60 group-focus:opacity-60">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden>
-              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </div>
+          {/* Hover glow border (game-color) */}
+          <div
+            className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+            style={{boxShadow: '0 0 0 2px var(--game-primary, var(--primary))'}}
+            aria-hidden
+          />
         </div>
 
         {/* ── BACK ──────────────────────────────────────────────────────────── */}
@@ -155,6 +189,8 @@ export function GamePosterCard({game, locale, featuredIndices = [0, 1, 2]}: Game
             color: 'var(--game-ink, var(--card-foreground))',
           }}
         >
+          <PaperGrain opacity={0.04} />
+
           <div
             className="absolute left-0 top-0 h-1 w-full"
             style={{background: 'var(--game-primary, var(--primary))'}}
@@ -175,13 +211,11 @@ export function GamePosterCard({game, locale, featuredIndices = [0, 1, 2]}: Game
                   key={arch.slug}
                   className="rounded-lg px-3 py-2 text-sm"
                   style={{
-                    background: 'color-mix(in srgb, var(--game-primary, var(--primary)) 12%, transparent)',
+                    background:
+                      'color-mix(in srgb, var(--game-primary, var(--primary)) 12%, transparent)',
                   }}
                 >
-                  <span
-                    className="font-medium"
-                    style={{color: 'var(--game-ink, inherit)'}}
-                  >
+                  <span className="font-medium" style={{color: 'var(--game-ink, inherit)'}}>
                     {arch.name[l] ?? arch.name.en}
                   </span>
                   <p
