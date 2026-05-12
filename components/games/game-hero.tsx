@@ -67,29 +67,29 @@ export function GameHero({game, locale}: GameHeroProps) {
       />
 
       <div className="relative mx-auto flex max-w-6xl flex-col items-center gap-8 px-6 py-16 md:flex-row md:items-stretch md:gap-12 md:py-20">
-        {/* Cover image — left 55% */}
-        {game.cover && (
-          <div className="w-full shrink-0 md:w-[55%]">
-            <div className="relative overflow-hidden rounded-2xl shadow-2xl" style={{aspectRatio: '4/3'}}>
-              <Image
-                src={game.cover.src}
-                alt={game.cover.alt[locale]}
-                fill
-                className="object-cover"
-                priority
-                unoptimized
-              />
-              {/* Dark edge veil */}
-              <div
-                className="absolute inset-0"
-                style={{
-                  background: 'linear-gradient(135deg, transparent 50%, color-mix(in srgb, var(--game-surface) 60%, transparent) 100%)',
-                }}
-                aria-hidden
-              />
-            </div>
+        {/* Cover image — left 55%. Path is deterministic per slug; the game
+        data layer's optional `cover` field is empty in V2 so we render the
+        public asset directly. */}
+        <div className="w-full shrink-0 md:w-[55%]">
+          <div className="relative overflow-hidden rounded-2xl shadow-2xl" style={{aspectRatio: '4/3'}}>
+            <Image
+              src={`/game-quizzes/${game.slug}/cover.png`}
+              alt={title}
+              fill
+              className="object-cover"
+              priority
+              unoptimized
+            />
+            {/* Dark edge veil */}
+            <div
+              className="absolute inset-0"
+              style={{
+                background: 'linear-gradient(135deg, transparent 50%, color-mix(in srgb, var(--game-surface) 60%, transparent) 100%)',
+              }}
+              aria-hidden
+            />
           </div>
-        )}
+        </div>
 
         {/* Right column — kicker + H1 + deck + stats + CTA */}
         <div className="flex w-full flex-col justify-center gap-6 md:w-[45%]">
