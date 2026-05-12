@@ -730,6 +730,202 @@ const game: GameQuizV2 = {
         },
       ],
     },
+    // ── Q7 Anchor: Intel ─────────────────────────────────────────────────────
+    {
+      id: 'cs2-q07',
+      kind: 'anchor',
+      text: {
+        zh: '你今天手感不在状态，枪法比平时差了一档。你怎么应对？',
+        en: 'Your aim is off today, noticeably worse than usual. How do you adjust?',
+        ja: '今日はエイムの調子が悪い、普段より明らかに劣ってる。どう対応する？',
+        ko: '오늘 에임 상태가 안 좋다, 평소보다 눈에 띄게 떨어진다. 어떻게 대처할까?',
+      },
+      options: [
+        {
+          label: {
+            zh: '去死亡记录看落弹点，分析原因',
+            en: 'Check the death cam and analyze where shots went',
+            ja: 'デスカムで弾の着弾点を確認して分析する',
+            ko: '데스캠 보면서 탄착점 분석한다',
+          },
+          scoring: [{ axis: 'Intel', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '继续打，等手感回来',
+            en: 'Keep playing, the feel comes back on its own',
+            ja: 'プレイを続ける、感覚は自然に戻る',
+            ko: '계속 한다, 감각은 알아서 돌아온다',
+          },
+          scoring: [{ axis: 'Intel', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '换打法，多走位少拼枪',
+            en: 'Switch to positioning over duels, reduce raw aim reliance',
+            ja: 'エイム勝負を減らして、ポジショニング重視に切り替える',
+            ko: '포지셔닝 위주로 전환, 에임 의존을 줄인다',
+          },
+          scoring: [{ axis: 'Intel', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '手感有时候就是玄学，扛着打',
+            en: 'Aim is half vibe, push through and trust the muscle memory',
+            ja: 'エイムは半分気分次第、筋肉記憶を信じて押し通す',
+            ko: '에임은 반은 기분이다, 근육 기억 믿고 밀어붙인다',
+          },
+          scoring: [{ axis: 'Intel', delta: 1 }],
+        },
+      ],
+    },
+    // ── Q8 Anchor: Intel ─────────────────────────────────────────────────────
+    {
+      id: 'cs2-q08',
+      kind: 'anchor',
+      text: {
+        zh: '新版本更新，你第一件事是什么？',
+        en: 'New update drops. What do you do first?',
+        ja: 'アップデートが来た。最初にすることは？',
+        ko: '새 업데이트가 나왔다. 제일 먼저 하는 것은?',
+      },
+      options: [
+        {
+          label: {
+            zh: '查 patch notes 和 HLTV 分析',
+            en: 'Read the patch notes and check HLTV for reactions',
+            ja: 'パッチノートを読んでHLTVの反応を確認する',
+            ko: '패치 노트 읽고 HLTV 반응 체크한다',
+          },
+          scoring: [{ axis: 'Intel', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '直接进游戏感受一下',
+            en: 'Jump in and feel it out',
+            ja: 'そのままゲームに入って感じる',
+            ko: '바로 들어가서 느껴본다',
+          },
+          scoring: [{ axis: 'Intel', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '等 Reddit 和 B 站总结完再说',
+            en: 'Wait for Reddit and YouTube to summarise it for me',
+            ja: 'RedditやYouTubeのまとめを待つ',
+            ko: 'Reddit이랑 유튜브 요약 나올 때까지 기다린다',
+          },
+          scoring: [{ axis: 'Intel', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '"数据再多不如一枪爆头" 直接开干',
+            en: '"Stats don\'t land headshots" — just play',
+            ja: '"データより爆頭" で、そのまま始める',
+            ko: '"통계보다 헤드샷이 중요" 바로 시작한다',
+          },
+          scoring: [{ axis: 'Intel', delta: 1 }],
+        },
+      ],
+    },
+    // ── Q9 Anchor: Flair ─────────────────────────────────────────────────────
+    {
+      id: 'cs2-q09',
+      kind: 'anchor',
+      text: {
+        zh: '你刚打出一个 3K，下一步你怎么做？',
+        en: 'You just got a 3K. What happens next?',
+        ja: '3キルを取った直後。次は何をする？',
+        ko: '방금 3킬 했다. 다음 행동은?',
+      },
+      options: [
+        {
+          label: {
+            zh: '报位，继续走位，不分心',
+            en: 'Call positions, keep moving, stay focused',
+            ja: '位置を報告して、動き続ける、集中を切らさない',
+            ko: '위치 콜하고 계속 움직인다, 집중 유지',
+          },
+          scoring: [{ axis: 'Flair', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '在频道里叫一声，大家都该知道',
+            en: 'Call it out, everyone should know',
+            ja: 'チャットで叫ぶ、みんなに知らせる',
+            ko: '채팅에서 외친다, 다들 알아야 한다',
+          },
+          scoring: [{ axis: 'Flair', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '默默继续，3K 是基本操作',
+            en: 'Continue silently, a 3K is just standard',
+            ja: '黙って続ける、3キルは標準的なプレイだ',
+            ko: '조용히 계속한다, 3킬은 기본이다',
+          },
+          scoring: [{ axis: 'Flair', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '等着录播看那一段，打得确实好看',
+            en: 'Already looking forward to watching it in the replay',
+            ja: 'リプレイでその部分を見るのが楽しみだ',
+            ko: '리플레이에서 그 구간 보는 게 기대된다',
+          },
+          scoring: [{ axis: 'Flair', delta: 1 }],
+        },
+      ],
+    },
+    // ── Q10 Anchor: Flair ────────────────────────────────────────────────────
+    {
+      id: 'cs2-q10',
+      kind: 'anchor',
+      text: {
+        zh: 'Premier 积分上去了 500，你怎么看这件事？',
+        en: 'Your Premier Rating just went up 500. How do you feel about it?',
+        ja: 'プレミアレーティングが500上がった。どう思う？',
+        ko: '프리미어 레이팅이 500 올랐다. 어떻게 생각해?',
+      },
+      options: [
+        {
+          label: {
+            zh: '记录在小本子里，继续爬',
+            en: 'Note it, move on, keep climbing',
+            ja: 'メモしておいて、次に進む、登り続ける',
+            ko: '기록해두고 계속 올라간다',
+          },
+          scoring: [{ axis: 'Flair', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '截图发群，让大家看看',
+            en: 'Screenshot it, share it in the group chat',
+            ja: 'スクショしてグループチャットに送る',
+            ko: '스크린샷 찍어서 단톡방에 공유한다',
+          },
+          scoring: [{ axis: 'Flair', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '只是数字，赢了比分数重要',
+            en: 'Just a number, winning matters more than the rating',
+            ja: 'ただの数字、勝つことの方がレートより重要だ',
+            ko: '그냥 숫자다, 이기는 게 레이팅보다 중요하다',
+          },
+          scoring: [{ axis: 'Flair', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '更新个人简介，现在是新段位',
+            en: 'Update the profile bio, new rating calls for it',
+            ja: 'プロフィールを更新する、新しいレートを載せる',
+            ko: '프로필 업데이트한다, 새 레이팅 올려야지',
+          },
+          scoring: [{ axis: 'Flair', delta: 1 }],
+        },
+      ],
+    },
     // ── Q5 Anchor: Bond ──────────────────────────────────────────────────────
     {
       id: 'cs2-q05',
@@ -825,6 +1021,104 @@ const game: GameQuizV2 = {
             ko: '준다, 잘 써주길 바라면서',
           },
           scoring: [{ axis: 'Bond', delta: 1 }],
+        },
+      ],
+    },
+    // ── Q11 Anchor: Mental ───────────────────────────────────────────────────
+    {
+      id: 'cs2-q11',
+      kind: 'anchor',
+      text: {
+        zh: '你连输三局，每局都是被队友送的。现在第四局开始了。',
+        en: 'Three straight losses, all because teammates fed. Round four is starting now.',
+        ja: '3連敗、全部チームのせい。4戦目が始まる。',
+        ko: '3연패, 전부 팀원 탓이다. 4번째 판이 시작된다.',
+      },
+      options: [
+        {
+          label: {
+            zh: '重置心态，当作新的开始',
+            en: 'Reset mentally, treat it as a fresh start',
+            ja: '気持ちをリセット、新しいスタートとして捉える',
+            ko: '멘탈 리셋, 새로운 시작으로 본다',
+          },
+          scoring: [{ axis: 'Mental', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '还是有点烦，但能打',
+            en: 'Still a bit annoyed but playable',
+            ja: 'まだちょっとイライラするけどプレイはできる',
+            ko: '아직 좀 짜증나지만 할 수 있다',
+          },
+          scoring: [{ axis: 'Mental', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '三局对我影响不大，继续就行',
+            en: 'Three losses barely registers, just keep going',
+            ja: '3連敗はたいして気にならない、続けるだけ',
+            ko: '3연패 별 영향 없다, 그냥 계속한다',
+          },
+          scoring: [{ axis: 'Mental', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '已经开始在打字骂人了',
+            en: 'Already typing something in all-chat',
+            ja: 'もうオールチャットに何か打ち込んでる',
+            ko: '이미 올챗에 뭔가 치고 있다',
+          },
+          scoring: [{ axis: 'Mental', delta: 1 }],
+        },
+      ],
+    },
+    // ── Q12 Anchor: Mental ───────────────────────────────────────────────────
+    {
+      id: 'cs2-q12',
+      kind: 'anchor',
+      text: {
+        zh: '对面有人一直在 trash talk，你怎么应对？',
+        en: 'An opponent keeps trash talking in all-chat. Your response?',
+        ja: '相手がずっとオールチャットで煽ってくる。どう対応する？',
+        ko: '상대가 올챗에서 계속 도발한다. 어떻게 할까?',
+      },
+      options: [
+        {
+          label: {
+            zh: '不看聊天，继续打枪',
+            en: 'Ignore the chat, keep shooting',
+            ja: 'チャットを見ない、プレイに集中',
+            ko: '채팅 안 본다, 계속 게임한다',
+          },
+          scoring: [{ axis: 'Mental', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '杀他一次，"帮我说话了"',
+            en: 'Kill him once, that\'s my reply',
+            ja: '一回倒す、それが自分の返答だ',
+            ko: '한 번 죽인다, 그게 내 답변이다',
+          },
+          scoring: [{ axis: 'Mental', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '回骂几句，气都撒在打字上了',
+            en: 'Fire back a few lines, spend the anger on typing',
+            ja: '言い返す、怒りをタイピングで発散する',
+            ko: '몇 마디 받아친다, 화를 타이핑으로 푼다',
+          },
+          scoring: [{ axis: 'Mental', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '被煽成功，这局状态开始崩了',
+            en: 'The tilt lands, this round\'s gone sideways',
+            ja: '挑発が効いた、このラウンドは崩れ始める',
+            ko: '도발에 넘어갔다, 이 판은 무너지기 시작한다',
+          },
+          scoring: [{ axis: 'Mental', delta: 1 }],
         },
       ],
     },
