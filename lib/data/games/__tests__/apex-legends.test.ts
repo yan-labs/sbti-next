@@ -2,7 +2,6 @@ import { describe, it, expect } from 'vitest';
 import { computeScores, normalize, derivePolarityCode, mapToArchetype } from '../scoring';
 import game from '../apex-legends';
 import type { Axis, Polarity } from '../types';
-import { AXES } from '../dimensions';
 
 // ── Shape invariants ──────────────────────────────────────────────────────────
 
@@ -136,12 +135,6 @@ function buildAnswersFor(tempo: Polarity, flair: Polarity, bond: Polarity) {
   });
 }
 
-function buildCode(pattern: Record<Axis, Polarity>): string {
-  return AXES.map((def) =>
-    pattern[def.axis] === 'high' ? def.highLetter : def.lowLetter,
-  ).join('');
-}
-
 describe('Apex Legends archetype reachability', () => {
   const archetypeTargets: Array<{
     slug: string;
@@ -173,7 +166,7 @@ describe('Apex Legends archetype reachability', () => {
       const raw = computeScores(answers, game.questions);
       const normalized = normalize(raw, game.questions);
       const code = derivePolarityCode(normalized);
-      const archetype = mapToArchetype(code as any, game);
+      const archetype = mapToArchetype(code, game);
       expect(archetype.slug).toBe(slug);
     });
   }

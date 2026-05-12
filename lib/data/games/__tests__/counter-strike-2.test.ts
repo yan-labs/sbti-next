@@ -5,17 +5,8 @@ import {
   derivePolarityCode,
   mapToArchetype,
 } from '../scoring';
-import type { Axis, Polarity, PolarityCode } from '../types';
-import { AXES } from '../dimensions';
+import type { Axis, Polarity } from '../types';
 import cs2 from '../counter-strike-2';
-
-// ── Helpers ───────────────────────────────────────────────────────────────────
-
-function buildCode(pattern: Record<Axis, Polarity>): PolarityCode {
-  return AXES.map((def) =>
-    pattern[def.axis] === 'high' ? def.highLetter : def.lowLetter,
-  ).join('') as PolarityCode;
-}
 
 /**
  * Return answers that push each dominant axis toward the specified polarity

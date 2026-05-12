@@ -2,7 +2,6 @@ import { describe, it, expect } from 'vitest';
 import { computeScores, normalize, derivePolarityCode, mapToArchetype } from '../scoring';
 import game from '../pubg-battlegrounds';
 import type { Axis, Polarity } from '../types';
-import { AXES } from '../dimensions';
 
 // ── Shape invariants ──────────────────────────────────────────────────────────
 
@@ -154,7 +153,7 @@ describe('PUBG Battlegrounds archetype reachability', () => {
       const raw = computeScores(answers, game.questions);
       const normalized = normalize(raw, game.questions);
       const code = derivePolarityCode(normalized);
-      const archetype = mapToArchetype(code as any, game);
+      const archetype = mapToArchetype(code, game);
       expect(archetype.slug).toBe(slug);
     });
   }

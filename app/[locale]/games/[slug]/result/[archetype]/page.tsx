@@ -26,7 +26,7 @@ import {
   buildWebSiteSchema,
   buildArchetypeDefinedTermSchema,
 } from '@/lib/json-ld';
-import {ALL_GAMES_V2, getArchetype, getGameV2} from '@/lib/data/games/index';
+import {ALL_GAMES_V2, getGameV2} from '@/lib/data/games/index';
 import {AXES, AXIS_ORDER, polarityFromScore} from '@/lib/data/games/dimensions';
 import {derivePolarityCode} from '@/lib/data/games/scoring';
 import type {Axis, ArchetypeV2, SiteLocale} from '@/lib/data/games/types';

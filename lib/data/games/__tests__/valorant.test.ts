@@ -2,7 +2,6 @@ import { describe, it, expect } from 'vitest';
 import { computeScores, normalize, derivePolarityCode, mapToArchetype } from '../scoring';
 import game from '../valorant';
 import type { Axis, Polarity } from '../types';
-import { AXES } from '../dimensions';
 
 // ── Shape invariants ──────────────────────────────────────────────────────────
 
@@ -90,15 +89,6 @@ describe('VALORANT axis vote coverage', () => {
 // ── Reachability: all 8 archetypes ───────────────────────────────────────────
 
 /**
- * Build a polarity code from an axis→polarity map.
- */
-function buildCode(pattern: Record<Axis, Polarity>): string {
-  return AXES.map((def) =>
-    pattern[def.axis] === 'high' ? def.highLetter : def.lowLetter,
-  ).join('');
-}
-
-/**
  * Construct answers for all 30 questions that attempt to drive Bond, Intel,
  * Flair toward the given polarities. For each question, pick the option whose
  * combined contribution to the 3 dominant axes is best (weighted sum).
@@ -169,7 +159,7 @@ describe('VALORANT archetype reachability', () => {
       const raw = computeScores(answers, game.questions);
       const normalized = normalize(raw, game.questions);
       const code = derivePolarityCode(normalized);
-      const archetype = mapToArchetype(code as any, game);
+      const archetype = mapToArchetype(code, game);
       expect(archetype.slug).toBe(slug);
     });
   }
