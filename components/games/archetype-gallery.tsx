@@ -3,6 +3,7 @@ import {Link} from '@/i18n/navigation';
 import {ChapterMark} from '@/components/ui/chapter-mark';
 import {PaperGrain} from '@/components/ui/paper-grain';
 import {getArchetypeArt} from '@/lib/data/games/archetype-art';
+import {AXES} from '@/lib/data/games/dimensions';
 import type {GameQuizV2, SiteLocale} from '@/lib/data/games/types';
 
 const COPY: Record<SiteLocale, {heading: string; kicker: string; viewResult: string}> = {
@@ -36,9 +37,15 @@ export function ArchetypeGallery({game, locale}: ArchetypeGalleryProps) {
             const name = arch.name[locale];
             const oneLiner = arch.oneLiner[locale];
 
-            // Derive short polarity badge from dominant axes
+            // Polarity badge using canonical axis letters per AXES (Tempo L/R,
+            // Nerve C/A, Bond S/T, Intel D/F, Flair U/H, Mental K/B). Brand-
+            // consistent with the 6-letter player identity code (e.g. SAB
+            // means Bond=low + Nerve=high + Mental=high for aram-comedian).
             const badge = game.dominantAxes
-              .map((axis) => arch.polarityPattern[axis].slice(0, 1).toUpperCase())
+              .map((axis) => {
+                const def = AXES.find((a) => a.axis === axis)!;
+                return arch.polarityPattern[axis] === 'high' ? def.highLetter : def.lowLetter;
+              })
               .join('');
 
             return (
