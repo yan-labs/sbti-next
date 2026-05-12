@@ -512,7 +512,306 @@ const game: GameQuizV2 = {
       bestSquadSlug: 'shield-influencer',
     },
   ],
-  questions: [],
-};
+  questions: [
+    // ── ANCHOR Q1: Tempo (peak opener — jumpmaster scenario) ─────────────────
+    {
+      id: 'apex-a01',
+      kind: 'anchor',
+      text: {
+        zh: '掉落倒计时归零，跳伞领航权在你手上。你怎么选？',
+        en: 'Jumpmaster countdown hits zero. The drop is yours to call. What do you do?',
+        ja: 'ジャンプマスターのカウントダウンがゼロになった。降下先を決めるのはあなただ。どうする？',
+        ko: '점프마스터 카운트다운 끝. 낙하 지점을 결정하는 건 당신이다. 어떻게 한다?',
+      },
+      options: [
+        {
+          label: {
+            zh: '直接跳热门点，没有物资就没有打架资格',
+            en: 'Drop hot. No gear, no right to fight — earn it in the first ten seconds.',
+            ja: '熱いドロップポイントに直行。装備なければ戦う資格なし — 最初の10秒で稼げ。',
+            ko: '핫 드랍 직행. 장비 없으면 싸울 자격 없다 — 처음 10초에 벌어라.',
+          },
+          scoring: [{ axis: 'Tempo', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '先看圈中心在哪，定一个既有物资又顺路转点的地方',
+            en: 'Check where the ring is closing first. Pick a spot with decent loot on the rotation path.',
+            ja: 'まずリングの縮小先を確認する。ルート上でそこそこ物資が出る場所を選ぶ。',
+            ko: '자기장이 어디로 좁혀지는지 먼저 확인. 로테이션 경로에 있는 루팅 장소 선택.',
+          },
+          scoring: [{ axis: 'Tempo', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '队友在哪我就跟去哪，我不挑地方',
+            en: 'Follow wherever the team goes. Location is their call, not mine.',
+            ja: 'チームについていく。場所の選択はチームに任せる。',
+            ko: '팀이 어디 가든 따라간다. 장소 결정은 팀 몫이다.',
+          },
+          scoring: [{ axis: 'Tempo', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '手速快的那个人会先按，反正也不是真的我来选',
+            en: 'Whoever clicks fastest will overrule me anyway. I\'m technically in charge but realistically not.',
+            ja: '結局、一番早くクリックした人が勝つ。名目上は自分がジャンプマスターだが実際は違う。',
+            ko: '어차피 제일 빨리 클릭한 사람이 이긴다. 명목상은 내가 점프마스터지만 현실은 아니다.',
+          },
+          scoring: [{ axis: 'Tempo', delta: 1 }],
+        },
+      ],
+    },
+
+    // ── ANCHOR Q2: Tempo ─────────────────────────────────────────────────────
+    {
+      id: 'apex-a02',
+      kind: 'anchor',
+      text: {
+        zh: '你们团队附近有枪声。战斗已经开打两秒了。',
+        en: 'Gunfire nearby. A fight has been going for two seconds.',
+        ja: '近くで銃声。戦闘が2秒続いている。',
+        ko: '근처에서 총소리. 교전이 2초째 지속 중이다.',
+      },
+      options: [
+        {
+          label: {
+            zh: '立刻压进去，现在是最乱的时候，正好是我们的机会',
+            en: 'Push immediately. This second is the most chaotic — exactly when to move.',
+            ja: '今すぐ攻め込む。今が最も混乱している瞬間 — 動くタイミングだ。',
+            ko: '바로 밀고 들어간다. 지금이 제일 혼란스러운 순간 — 움직일 타이밍이다.',
+          },
+          scoring: [{ axis: 'Tempo', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '等一等，听一听，算一算双方打了多久再决定',
+            en: 'Wait, listen, estimate how long both squads have been fighting before deciding.',
+            ja: '待って、聞いて、両チームがどれだけ戦っているか推定してから決める。',
+            ko: '기다리고, 듣고, 양 팀이 얼마나 싸웠는지 추정하고 결정한다.',
+          },
+          scoring: [{ axis: 'Tempo', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '离枪声反方向走，不是我们的战斗',
+            en: 'Walk the other direction. Not our fight.',
+            ja: '銃声と反対方向に歩く。自分たちの戦闘じゃない。',
+            ko: '총소리 반대 방향으로 걷는다. 우리 교전 아니다.',
+          },
+          scoring: [{ axis: 'Tempo', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '标记一下枪声方向然后推进，先占地形',
+            en: 'Ping the direction and push. Claim the high ground before the surviving squad does.',
+            ja: '方向にピングしてから進む。生き残ったチームより先に高台を取る。',
+            ko: '방향 핑 찍고 밀어간다. 살아남은 팀보다 먼저 고지를 잡는다.',
+          },
+          scoring: [{ axis: 'Tempo', delta: 1 }],
+        },
+      ],
+    },
+
+    // ── ANCHOR Q3: Flair ─────────────────────────────────────────────────────
+    {
+      id: 'apex-a03',
+      kind: 'anchor',
+      text: {
+        zh: '你刚成功合成了一块红甲。录屏开着吗？',
+        en: 'You just crafted a red shield at low HP. Is the recording running?',
+        ja: '低体力で赤シールドを合成した。録画は回ってる？',
+        ko: '낮은 체력에서 빨간 방어구를 합성했다. 녹화 중인가?',
+      },
+      options: [
+        {
+          label: {
+            zh: '当然，录屏常开，这一段肯定要剪进去',
+            en: 'Always recording. This clip is going in the next compilation.',
+            ja: 'もちろん常に録画中。このクリップは次のコンピレーションに入れる。',
+            ko: '항상 녹화 중. 이 클립은 다음 모음집에 들어간다.',
+          },
+          scoring: [{ axis: 'Flair', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '没开，我只在乎合成成功没有，不在乎好不好看',
+            en: 'Not running. I care about surviving the swap, not whether it looks good.',
+            ja: '録画してない。スワップを乗り切ることだけに集中してる。見た目は関係ない。',
+            ko: '안 켰다. 스왑 성공이 중요하지 예쁘게 나오는 건 관심 없다.',
+          },
+          scoring: [{ axis: 'Flair', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '合成完了回头想了想，悔恨地打开了录屏软件',
+            en: 'Crafted it, then regretted not recording. Opened the software two seconds too late.',
+            ja: '合成してから後悔して録画ソフトを開いた。2秒遅かった。',
+            ko: '합성하고 나서 후회하며 녹화 소프트웨어 열었다. 2초 늦었다.',
+          },
+          scoring: [{ axis: 'Flair', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '不录，但我会记住这次，下次记得开',
+            en: 'Not recording, but I\'ll remember this one and set up better next time.',
+            ja: '録画してないが、この機会を覚えておいて次は準備する。',
+            ko: '안 켰는데 이건 기억해두고 다음엔 준비할 거다.',
+          },
+          scoring: [{ axis: 'Flair', delta: -1 }],
+        },
+      ],
+    },
+
+    // ── ANCHOR Q4: Flair ─────────────────────────────────────────────────────
+    {
+      id: 'apex-a04',
+      kind: 'anchor',
+      text: {
+        zh: '你可以用一条直路跑过去，也可以绕一段滑铲接跳跃。哪个？',
+        en: 'Straight path in front of you. There\'s also a longer line with a slide-jump arc. Which one?',
+        ja: '目の前に直線ルートがある。スライドジャンプのアークもある。どっちを選ぶ？',
+        ko: '앞에 직선 경로가 있다. 슬라이드 점프 아크로 가는 더 긴 루트도 있다. 어느 쪽?',
+      },
+      options: [
+        {
+          label: {
+            zh: '直路。快就是王道，好看是浪费时间',
+            en: 'Straight path. Fast is king. Pretty is wasted time.',
+            ja: '直線。速さが正義。かっこよさは時間の無駄。',
+            ko: '직선. 빠른 게 최고다. 예쁜 건 시간 낭비.',
+          },
+          scoring: [{ axis: 'Flair', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '滑铲线。移速差不多，但好看，而且练移动技术必须用真实场景',
+            en: 'Slide-jump line. Speed is similar but it looks better and this is how you train movement.',
+            ja: 'スライドジャンプライン。速さはほぼ同じだが見栄えがいい。移動の練習にもなる。',
+            ko: '슬라이드 점프 라인. 속도 비슷한데 더 멋있고 움직임 훈련이기도 하다.',
+          },
+          scoring: [{ axis: 'Flair', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '看情况，如果不赶时间我会选好看那条',
+            en: 'Depends on urgency. If there\'s no rush, I take the prettier one.',
+            ja: '状況による。急いでなければ見栄えのいい方を取る。',
+            ko: '상황에 따라. 급하지 않으면 예쁜 쪽 선택.',
+          },
+          scoring: [{ axis: 'Flair', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '两个都不选，我在原地想半秒然后乱按了一个',
+            en: 'Neither, really. I hesitated half a second and pressed something randomly.',
+            ja: 'どちらでもない。半秒迷ってランダムに選んだ。',
+            ko: '둘 다 아님. 반초 망설이다가 아무렇게나 눌렀다.',
+          },
+          scoring: [{ axis: 'Flair', delta: -1 }],
+        },
+      ],
+    },
+
+    // ── ANCHOR Q5: Bond (peak opener — squad coordination) ───────────────────
+    {
+      id: 'apex-a05',
+      kind: 'anchor',
+      text: {
+        zh: '队友倒地，救援需要五秒钻出掩体。此刻你们三个人各有不同判断。',
+        en: 'Teammate is down. A res takes five seconds in the open. Three of you have different reads.',
+        ja: 'チームメイトがダウン。蘇生には5秒かかるが遮蔽物がない。3人それぞれ判断が違う。',
+        ko: '팀원 다운. 부활에 5초 걸리는데 엄폐물이 없다. 세 명이 각자 다른 판단을 하고 있다.',
+      },
+      options: [
+        {
+          label: {
+            zh: '我来救，其他人掩护，三个人一起协调才能出来',
+            en: 'I res, others cover. We coordinate or nobody comes out of this.',
+            ja: '自分が蘇生、他は援護。協調しなければ誰も生き残れない。',
+            ko: '내가 살리고 나머지는 엄호. 협조 안 하면 아무도 못 나온다.',
+          },
+          scoring: [{ axis: 'Bond', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '叫两个人先撤，等安全窗口再救，不能三个人全折进去',
+            en: 'Call the other two back first. Wait for a safe window. Can\'t lose all three.',
+            ja: '2人を先に下がらせる。安全なタイミングを待つ。3人全員を失うわけにはいかない。',
+            ko: '두 명 먼저 물러서게 한다. 안전한 창구 기다린다. 셋 다 잃으면 안 된다.',
+          },
+          scoring: [{ axis: 'Bond', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '我先找个好位置，队友那边爱咋搞咋搞',
+            en: 'I\'m finding a better position. What they do over there is their call.',
+            ja: '自分はいいポジションを探す。向こうでチームがどうするかは彼らの決断だ。',
+            ko: '나는 더 좋은 위치 잡는다. 저쪽에서 팀이 어떻게 할지는 그들 결정.',
+          },
+          scoring: [{ axis: 'Bond', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '直接自己冲进去救，三分都值不了这段等待',
+            en: 'Rush in and res alone. Any delay costs more than five seconds of exposure.',
+            ja: '一人で突っ込んで蘇生する。待機コストは5秒の露出より高い。',
+            ko: '혼자 돌진해서 살린다. 기다리는 비용이 5초 노출보다 크다.',
+          },
+          scoring: [{ axis: 'Bond', delta: -1 }],
+        },
+      ],
+    },
+
+    // ── ANCHOR Q6: Bond ──────────────────────────────────────────────────────
+    {
+      id: 'apex-a06',
+      kind: 'anchor',
+      text: {
+        zh: '你在最后圈开始前找到了红甲，但只有一件。队友也需要护甲升级。',
+        en: 'You find a red shield before the final ring. Only one. A teammate needs an armor upgrade too.',
+        ja: '最終リング前に赤シールドを発見。1枚しかない。チームメイトも防具のアップグレードが必要だ。',
+        ko: '마지막 자기장 전에 빨간 방어구 하나 발견. 팀원도 방어구 업그레이드가 필요하다.',
+      },
+      options: [
+        {
+          label: {
+            zh: '给队友，他下盘打得比我稳',
+            en: 'Give it to the teammate. They\'ve been more solid this match.',
+            ja: 'チームメイトに渡す。この試合での安定感が高い。',
+            ko: '팀원에게 준다. 이번 판에서 더 안정적이었다.',
+          },
+          scoring: [{ axis: 'Bond', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '留着，红甲在我手上能发挥最大价值',
+            en: 'Keep it. Red armor in my hands gives the team the best return.',
+            ja: '自分が持つ。自分の手の方がチームにとって最大のリターンになる。',
+            ko: '가진다. 내 손에 있을 때 팀 리턴이 가장 크다.',
+          },
+          scoring: [{ axis: 'Bond', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '先合成，合成完再分配其他位置的物资',
+            en: 'Craft it first, then redistribute other loot around the squad.',
+            ja: 'まず合成して、その後チームで他の物資を再配分する。',
+            ko: '먼저 합성하고 나서 다른 루팅을 팀 내에서 재분배한다.',
+          },
+          scoring: [{ axis: 'Bond', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '各自找各自的，这种事没必要协调',
+            en: 'Everyone finds their own gear. No point coordinating this.',
+            ja: 'それぞれが自分の装備を探す。これを協調する必要はない。',
+            ko: '각자 자기 장비 찾는다. 이걸 협조할 필요 없다.',
+          },
+          scoring: [{ axis: 'Bond', delta: -1 }],
+        },
+      ],
+    },
+
 
 export default game;
