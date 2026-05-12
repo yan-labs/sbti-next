@@ -56,9 +56,17 @@ interface ResultState {
   archetypeSlug: string;
 }
 
-export function GameQuizApp({game, locale}: {game: GameQuizV2; locale: SiteLocale}) {
+export function GameQuizApp({
+  game,
+  locale,
+  initialPhase = 'intro',
+}: {
+  game: GameQuizV2;
+  locale: SiteLocale;
+  initialPhase?: 'intro' | 'quiz';
+}) {
   const copy = UI_COPY[locale];
-  const [phase, setPhase] = useState<Phase>('intro');
+  const [phase, setPhase] = useState<Phase>(initialPhase);
   const [current, setCurrent] = useState(0);
   const [answers, setAnswers] = useState<Answer[]>([]);
   const [resultState, setResultState] = useState<ResultState | null>(null);
