@@ -1,0 +1,837 @@
+{
+  "generatedAt": "2026-05-11T12:51:31.192Z",
+  "items": [
+    {
+      "type": "cover",
+      "game": "league-of-legends",
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01c71425e481918a79db4184232abd.png",
+      "output": "/game-quizzes/league-of-legends/cover.png"
+    },
+    {
+      "type": "question",
+      "game": "league-of-legends",
+      "question": 1,
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01c71425e481918a79db4184232abd.png",
+      "output": "/game-quizzes/league-of-legends/cover.png"
+    },
+    {
+      "type": "question",
+      "game": "league-of-legends",
+      "question": 2,
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01c71425e481918a79db4184232abd.png",
+      "output": "/game-quizzes/league-of-legends/cover.png"
+    },
+    {
+      "type": "question",
+      "game": "league-of-legends",
+      "question": 3,
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01c71425e481918a79db4184232abd.png",
+      "output": "/game-quizzes/league-of-legends/cover.png"
+    },
+    {
+      "type": "question",
+      "game": "league-of-legends",
+      "question": 4,
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01c71425e481918a79db4184232abd.png",
+      "output": "/game-quizzes/league-of-legends/cover.png"
+    },
+    {
+      "type": "question",
+      "game": "league-of-legends",
+      "question": 5,
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01c71425e481918a79db4184232abd.png",
+      "output": "/game-quizzes/league-of-legends/cover.png"
+    },
+    {
+      "type": "question",
+      "game": "league-of-legends",
+      "question": 6,
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01c71425e481918a79db4184232abd.png",
+      "output": "/game-quizzes/league-of-legends/cover.png"
+    },
+    {
+      "type": "question",
+      "game": "league-of-legends",
+      "question": 7,
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01c71425e481918a79db4184232abd.png",
+      "output": "/game-quizzes/league-of-legends/cover.png"
+    },
+    {
+      "type": "question",
+      "game": "league-of-legends",
+      "question": 8,
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01c71425e481918a79db4184232abd.png",
+      "output": "/game-quizzes/league-of-legends/cover.png"
+    },
+    {
+      "type": "question",
+      "game": "league-of-legends",
+      "question": 9,
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01c71425e481918a79db4184232abd.png",
+      "output": "/game-quizzes/league-of-legends/cover.png"
+    },
+    {
+      "type": "question",
+      "game": "league-of-legends",
+      "question": 10,
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01c71425e481918a79db4184232abd.png",
+      "output": "/game-quizzes/league-of-legends/cover.png"
+    },
+    {
+      "type": "result",
+      "game": "league-of-legends",
+      "result": "planner",
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01b8456c74819194740ef80a44401d.png",
+      "output": "/game-quizzes/league-of-legends/results/planner.png"
+    },
+    {
+      "type": "result",
+      "game": "league-of-legends",
+      "result": "carry",
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01b8456c74819194740ef80a44401d.png",
+      "output": "/game-quizzes/league-of-legends/results/carry.png"
+    },
+    {
+      "type": "result",
+      "game": "league-of-legends",
+      "result": "support",
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01b8456c74819194740ef80a44401d.png",
+      "output": "/game-quizzes/league-of-legends/results/support.png"
+    },
+    {
+      "type": "result",
+      "game": "league-of-legends",
+      "result": "chaos",
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01b8456c74819194740ef80a44401d.png",
+      "output": "/game-quizzes/league-of-legends/results/chaos.png"
+    },
+    {
+      "type": "cover",
+      "game": "counter-strike-2",
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01c781b7dc8191b8abf869f5deeb36.png",
+      "output": "/game-quizzes/counter-strike-2/cover.png"
+    },
+    {
+      "type": "question",
+      "game": "counter-strike-2",
+      "question": 1,
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01c781b7dc8191b8abf869f5deeb36.png",
+      "output": "/game-quizzes/counter-strike-2/cover.png"
+    },
+    {
+      "type": "question",
+      "game": "counter-strike-2",
+      "question": 2,
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01c781b7dc8191b8abf869f5deeb36.png",
+      "output": "/game-quizzes/counter-strike-2/cover.png"
+    },
+    {
+      "type": "question",
+      "game": "counter-strike-2",
+      "question": 3,
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01c781b7dc8191b8abf869f5deeb36.png",
+      "output": "/game-quizzes/counter-strike-2/cover.png"
+    },
+    {
+      "type": "question",
+      "game": "counter-strike-2",
+      "question": 4,
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01c781b7dc8191b8abf869f5deeb36.png",
+      "output": "/game-quizzes/counter-strike-2/cover.png"
+    },
+    {
+      "type": "question",
+      "game": "counter-strike-2",
+      "question": 5,
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01c781b7dc8191b8abf869f5deeb36.png",
+      "output": "/game-quizzes/counter-strike-2/cover.png"
+    },
+    {
+      "type": "question",
+      "game": "counter-strike-2",
+      "question": 6,
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01c781b7dc8191b8abf869f5deeb36.png",
+      "output": "/game-quizzes/counter-strike-2/cover.png"
+    },
+    {
+      "type": "question",
+      "game": "counter-strike-2",
+      "question": 7,
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01c781b7dc8191b8abf869f5deeb36.png",
+      "output": "/game-quizzes/counter-strike-2/cover.png"
+    },
+    {
+      "type": "question",
+      "game": "counter-strike-2",
+      "question": 8,
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01c781b7dc8191b8abf869f5deeb36.png",
+      "output": "/game-quizzes/counter-strike-2/cover.png"
+    },
+    {
+      "type": "question",
+      "game": "counter-strike-2",
+      "question": 9,
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01c781b7dc8191b8abf869f5deeb36.png",
+      "output": "/game-quizzes/counter-strike-2/cover.png"
+    },
+    {
+      "type": "question",
+      "game": "counter-strike-2",
+      "question": 10,
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01c781b7dc8191b8abf869f5deeb36.png",
+      "output": "/game-quizzes/counter-strike-2/cover.png"
+    },
+    {
+      "type": "result",
+      "game": "counter-strike-2",
+      "result": "planner",
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01b8bb40fc8191bdf3b366d831b4ea.png",
+      "output": "/game-quizzes/counter-strike-2/results/planner.png"
+    },
+    {
+      "type": "result",
+      "game": "counter-strike-2",
+      "result": "carry",
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01b8bb40fc8191bdf3b366d831b4ea.png",
+      "output": "/game-quizzes/counter-strike-2/results/carry.png"
+    },
+    {
+      "type": "result",
+      "game": "counter-strike-2",
+      "result": "support",
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01b8bb40fc8191bdf3b366d831b4ea.png",
+      "output": "/game-quizzes/counter-strike-2/results/support.png"
+    },
+    {
+      "type": "result",
+      "game": "counter-strike-2",
+      "result": "chaos",
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01b8bb40fc8191bdf3b366d831b4ea.png",
+      "output": "/game-quizzes/counter-strike-2/results/chaos.png"
+    },
+    {
+      "type": "cover",
+      "game": "valorant",
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01c8362f9c8191a75f0f3cf0d8cea8.png",
+      "output": "/game-quizzes/valorant/cover.png"
+    },
+    {
+      "type": "question",
+      "game": "valorant",
+      "question": 1,
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01c8362f9c8191a75f0f3cf0d8cea8.png",
+      "output": "/game-quizzes/valorant/cover.png"
+    },
+    {
+      "type": "question",
+      "game": "valorant",
+      "question": 2,
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01c8362f9c8191a75f0f3cf0d8cea8.png",
+      "output": "/game-quizzes/valorant/cover.png"
+    },
+    {
+      "type": "question",
+      "game": "valorant",
+      "question": 3,
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01c8362f9c8191a75f0f3cf0d8cea8.png",
+      "output": "/game-quizzes/valorant/cover.png"
+    },
+    {
+      "type": "question",
+      "game": "valorant",
+      "question": 4,
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01c8362f9c8191a75f0f3cf0d8cea8.png",
+      "output": "/game-quizzes/valorant/cover.png"
+    },
+    {
+      "type": "question",
+      "game": "valorant",
+      "question": 5,
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01c8362f9c8191a75f0f3cf0d8cea8.png",
+      "output": "/game-quizzes/valorant/cover.png"
+    },
+    {
+      "type": "question",
+      "game": "valorant",
+      "question": 6,
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01c8362f9c8191a75f0f3cf0d8cea8.png",
+      "output": "/game-quizzes/valorant/cover.png"
+    },
+    {
+      "type": "question",
+      "game": "valorant",
+      "question": 7,
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01c8362f9c8191a75f0f3cf0d8cea8.png",
+      "output": "/game-quizzes/valorant/cover.png"
+    },
+    {
+      "type": "question",
+      "game": "valorant",
+      "question": 8,
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01c8362f9c8191a75f0f3cf0d8cea8.png",
+      "output": "/game-quizzes/valorant/cover.png"
+    },
+    {
+      "type": "question",
+      "game": "valorant",
+      "question": 9,
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01c8362f9c8191a75f0f3cf0d8cea8.png",
+      "output": "/game-quizzes/valorant/cover.png"
+    },
+    {
+      "type": "question",
+      "game": "valorant",
+      "question": 10,
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01c8362f9c8191a75f0f3cf0d8cea8.png",
+      "output": "/game-quizzes/valorant/cover.png"
+    },
+    {
+      "type": "result",
+      "game": "valorant",
+      "result": "planner",
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01b92e3dd48191b780811721fff635.png",
+      "output": "/game-quizzes/valorant/results/planner.png"
+    },
+    {
+      "type": "result",
+      "game": "valorant",
+      "result": "carry",
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01b92e3dd48191b780811721fff635.png",
+      "output": "/game-quizzes/valorant/results/carry.png"
+    },
+    {
+      "type": "result",
+      "game": "valorant",
+      "result": "support",
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01b92e3dd48191b780811721fff635.png",
+      "output": "/game-quizzes/valorant/results/support.png"
+    },
+    {
+      "type": "result",
+      "game": "valorant",
+      "result": "chaos",
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01b92e3dd48191b780811721fff635.png",
+      "output": "/game-quizzes/valorant/results/chaos.png"
+    },
+    {
+      "type": "cover",
+      "game": "delta-force",
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01c8fd52b08191bf425bf072c287ac.png",
+      "output": "/game-quizzes/delta-force/cover.png"
+    },
+    {
+      "type": "question",
+      "game": "delta-force",
+      "question": 1,
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01c8fd52b08191bf425bf072c287ac.png",
+      "output": "/game-quizzes/delta-force/cover.png"
+    },
+    {
+      "type": "question",
+      "game": "delta-force",
+      "question": 2,
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01c8fd52b08191bf425bf072c287ac.png",
+      "output": "/game-quizzes/delta-force/cover.png"
+    },
+    {
+      "type": "question",
+      "game": "delta-force",
+      "question": 3,
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01c8fd52b08191bf425bf072c287ac.png",
+      "output": "/game-quizzes/delta-force/cover.png"
+    },
+    {
+      "type": "question",
+      "game": "delta-force",
+      "question": 4,
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01c8fd52b08191bf425bf072c287ac.png",
+      "output": "/game-quizzes/delta-force/cover.png"
+    },
+    {
+      "type": "question",
+      "game": "delta-force",
+      "question": 5,
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01c8fd52b08191bf425bf072c287ac.png",
+      "output": "/game-quizzes/delta-force/cover.png"
+    },
+    {
+      "type": "question",
+      "game": "delta-force",
+      "question": 6,
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01c8fd52b08191bf425bf072c287ac.png",
+      "output": "/game-quizzes/delta-force/cover.png"
+    },
+    {
+      "type": "question",
+      "game": "delta-force",
+      "question": 7,
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01c8fd52b08191bf425bf072c287ac.png",
+      "output": "/game-quizzes/delta-force/cover.png"
+    },
+    {
+      "type": "question",
+      "game": "delta-force",
+      "question": 8,
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01c8fd52b08191bf425bf072c287ac.png",
+      "output": "/game-quizzes/delta-force/cover.png"
+    },
+    {
+      "type": "question",
+      "game": "delta-force",
+      "question": 9,
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01c8fd52b08191bf425bf072c287ac.png",
+      "output": "/game-quizzes/delta-force/cover.png"
+    },
+    {
+      "type": "question",
+      "game": "delta-force",
+      "question": 10,
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01c8fd52b08191bf425bf072c287ac.png",
+      "output": "/game-quizzes/delta-force/cover.png"
+    },
+    {
+      "type": "result",
+      "game": "delta-force",
+      "result": "planner",
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01b9a395c8819199ed69a326b4a325.png",
+      "output": "/game-quizzes/delta-force/results/planner.png"
+    },
+    {
+      "type": "result",
+      "game": "delta-force",
+      "result": "carry",
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01b9a395c8819199ed69a326b4a325.png",
+      "output": "/game-quizzes/delta-force/results/carry.png"
+    },
+    {
+      "type": "result",
+      "game": "delta-force",
+      "result": "support",
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01b9a395c8819199ed69a326b4a325.png",
+      "output": "/game-quizzes/delta-force/results/support.png"
+    },
+    {
+      "type": "result",
+      "game": "delta-force",
+      "result": "chaos",
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01b9a395c8819199ed69a326b4a325.png",
+      "output": "/game-quizzes/delta-force/results/chaos.png"
+    },
+    {
+      "type": "cover",
+      "game": "honor-of-kings",
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01c9b58858819189655a8f686ef6b2.png",
+      "output": "/game-quizzes/honor-of-kings/cover.png"
+    },
+    {
+      "type": "question",
+      "game": "honor-of-kings",
+      "question": 1,
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01c9b58858819189655a8f686ef6b2.png",
+      "output": "/game-quizzes/honor-of-kings/cover.png"
+    },
+    {
+      "type": "question",
+      "game": "honor-of-kings",
+      "question": 2,
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01c9b58858819189655a8f686ef6b2.png",
+      "output": "/game-quizzes/honor-of-kings/cover.png"
+    },
+    {
+      "type": "question",
+      "game": "honor-of-kings",
+      "question": 3,
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01c9b58858819189655a8f686ef6b2.png",
+      "output": "/game-quizzes/honor-of-kings/cover.png"
+    },
+    {
+      "type": "question",
+      "game": "honor-of-kings",
+      "question": 4,
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01c9b58858819189655a8f686ef6b2.png",
+      "output": "/game-quizzes/honor-of-kings/cover.png"
+    },
+    {
+      "type": "question",
+      "game": "honor-of-kings",
+      "question": 5,
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01c9b58858819189655a8f686ef6b2.png",
+      "output": "/game-quizzes/honor-of-kings/cover.png"
+    },
+    {
+      "type": "question",
+      "game": "honor-of-kings",
+      "question": 6,
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01c9b58858819189655a8f686ef6b2.png",
+      "output": "/game-quizzes/honor-of-kings/cover.png"
+    },
+    {
+      "type": "question",
+      "game": "honor-of-kings",
+      "question": 7,
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01c9b58858819189655a8f686ef6b2.png",
+      "output": "/game-quizzes/honor-of-kings/cover.png"
+    },
+    {
+      "type": "question",
+      "game": "honor-of-kings",
+      "question": 8,
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01c9b58858819189655a8f686ef6b2.png",
+      "output": "/game-quizzes/honor-of-kings/cover.png"
+    },
+    {
+      "type": "question",
+      "game": "honor-of-kings",
+      "question": 9,
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01c9b58858819189655a8f686ef6b2.png",
+      "output": "/game-quizzes/honor-of-kings/cover.png"
+    },
+    {
+      "type": "question",
+      "game": "honor-of-kings",
+      "question": 10,
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01c9b58858819189655a8f686ef6b2.png",
+      "output": "/game-quizzes/honor-of-kings/cover.png"
+    },
+    {
+      "type": "result",
+      "game": "honor-of-kings",
+      "result": "planner",
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01ba1017f881919edb0c3d4f4eb76b.png",
+      "output": "/game-quizzes/honor-of-kings/results/planner.png"
+    },
+    {
+      "type": "result",
+      "game": "honor-of-kings",
+      "result": "carry",
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01ba1017f881919edb0c3d4f4eb76b.png",
+      "output": "/game-quizzes/honor-of-kings/results/carry.png"
+    },
+    {
+      "type": "result",
+      "game": "honor-of-kings",
+      "result": "support",
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01ba1017f881919edb0c3d4f4eb76b.png",
+      "output": "/game-quizzes/honor-of-kings/results/support.png"
+    },
+    {
+      "type": "result",
+      "game": "honor-of-kings",
+      "result": "chaos",
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01ba1017f881919edb0c3d4f4eb76b.png",
+      "output": "/game-quizzes/honor-of-kings/results/chaos.png"
+    },
+    {
+      "type": "cover",
+      "game": "overwatch-2",
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01cb69b288819190322548e5c98754.png",
+      "output": "/game-quizzes/overwatch-2/cover.png"
+    },
+    {
+      "type": "question",
+      "game": "overwatch-2",
+      "question": 1,
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01cb69b288819190322548e5c98754.png",
+      "output": "/game-quizzes/overwatch-2/cover.png"
+    },
+    {
+      "type": "question",
+      "game": "overwatch-2",
+      "question": 2,
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01cb69b288819190322548e5c98754.png",
+      "output": "/game-quizzes/overwatch-2/cover.png"
+    },
+    {
+      "type": "question",
+      "game": "overwatch-2",
+      "question": 3,
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01cb69b288819190322548e5c98754.png",
+      "output": "/game-quizzes/overwatch-2/cover.png"
+    },
+    {
+      "type": "question",
+      "game": "overwatch-2",
+      "question": 4,
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01cb69b288819190322548e5c98754.png",
+      "output": "/game-quizzes/overwatch-2/cover.png"
+    },
+    {
+      "type": "question",
+      "game": "overwatch-2",
+      "question": 5,
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01cb69b288819190322548e5c98754.png",
+      "output": "/game-quizzes/overwatch-2/cover.png"
+    },
+    {
+      "type": "question",
+      "game": "overwatch-2",
+      "question": 6,
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01cb69b288819190322548e5c98754.png",
+      "output": "/game-quizzes/overwatch-2/cover.png"
+    },
+    {
+      "type": "question",
+      "game": "overwatch-2",
+      "question": 7,
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01cb69b288819190322548e5c98754.png",
+      "output": "/game-quizzes/overwatch-2/cover.png"
+    },
+    {
+      "type": "question",
+      "game": "overwatch-2",
+      "question": 8,
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01cb69b288819190322548e5c98754.png",
+      "output": "/game-quizzes/overwatch-2/cover.png"
+    },
+    {
+      "type": "question",
+      "game": "overwatch-2",
+      "question": 9,
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01cb69b288819190322548e5c98754.png",
+      "output": "/game-quizzes/overwatch-2/cover.png"
+    },
+    {
+      "type": "question",
+      "game": "overwatch-2",
+      "question": 10,
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01cb69b288819190322548e5c98754.png",
+      "output": "/game-quizzes/overwatch-2/cover.png"
+    },
+    {
+      "type": "result",
+      "game": "overwatch-2",
+      "result": "planner",
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01ba8901f481918d7ab740077a5411.png",
+      "output": "/game-quizzes/overwatch-2/results/planner.png"
+    },
+    {
+      "type": "result",
+      "game": "overwatch-2",
+      "result": "carry",
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01ba8901f481918d7ab740077a5411.png",
+      "output": "/game-quizzes/overwatch-2/results/carry.png"
+    },
+    {
+      "type": "result",
+      "game": "overwatch-2",
+      "result": "support",
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01ba8901f481918d7ab740077a5411.png",
+      "output": "/game-quizzes/overwatch-2/results/support.png"
+    },
+    {
+      "type": "result",
+      "game": "overwatch-2",
+      "result": "chaos",
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01ba8901f481918d7ab740077a5411.png",
+      "output": "/game-quizzes/overwatch-2/results/chaos.png"
+    },
+    {
+      "type": "cover",
+      "game": "pubg-battlegrounds",
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01cbda6d488191b88cb84c5bbf2e12.png",
+      "output": "/game-quizzes/pubg-battlegrounds/cover.png"
+    },
+    {
+      "type": "question",
+      "game": "pubg-battlegrounds",
+      "question": 1,
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01cbda6d488191b88cb84c5bbf2e12.png",
+      "output": "/game-quizzes/pubg-battlegrounds/cover.png"
+    },
+    {
+      "type": "question",
+      "game": "pubg-battlegrounds",
+      "question": 2,
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01cbda6d488191b88cb84c5bbf2e12.png",
+      "output": "/game-quizzes/pubg-battlegrounds/cover.png"
+    },
+    {
+      "type": "question",
+      "game": "pubg-battlegrounds",
+      "question": 3,
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01cbda6d488191b88cb84c5bbf2e12.png",
+      "output": "/game-quizzes/pubg-battlegrounds/cover.png"
+    },
+    {
+      "type": "question",
+      "game": "pubg-battlegrounds",
+      "question": 4,
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01cbda6d488191b88cb84c5bbf2e12.png",
+      "output": "/game-quizzes/pubg-battlegrounds/cover.png"
+    },
+    {
+      "type": "question",
+      "game": "pubg-battlegrounds",
+      "question": 5,
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01cbda6d488191b88cb84c5bbf2e12.png",
+      "output": "/game-quizzes/pubg-battlegrounds/cover.png"
+    },
+    {
+      "type": "question",
+      "game": "pubg-battlegrounds",
+      "question": 6,
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01cbda6d488191b88cb84c5bbf2e12.png",
+      "output": "/game-quizzes/pubg-battlegrounds/cover.png"
+    },
+    {
+      "type": "question",
+      "game": "pubg-battlegrounds",
+      "question": 7,
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01cbda6d488191b88cb84c5bbf2e12.png",
+      "output": "/game-quizzes/pubg-battlegrounds/cover.png"
+    },
+    {
+      "type": "question",
+      "game": "pubg-battlegrounds",
+      "question": 8,
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01cbda6d488191b88cb84c5bbf2e12.png",
+      "output": "/game-quizzes/pubg-battlegrounds/cover.png"
+    },
+    {
+      "type": "question",
+      "game": "pubg-battlegrounds",
+      "question": 9,
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01cbda6d488191b88cb84c5bbf2e12.png",
+      "output": "/game-quizzes/pubg-battlegrounds/cover.png"
+    },
+    {
+      "type": "question",
+      "game": "pubg-battlegrounds",
+      "question": 10,
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01cbda6d488191b88cb84c5bbf2e12.png",
+      "output": "/game-quizzes/pubg-battlegrounds/cover.png"
+    },
+    {
+      "type": "result",
+      "game": "pubg-battlegrounds",
+      "result": "planner",
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01bb08358c8191b805efa92e631d02.png",
+      "output": "/game-quizzes/pubg-battlegrounds/results/planner.png"
+    },
+    {
+      "type": "result",
+      "game": "pubg-battlegrounds",
+      "result": "carry",
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01bb08358c8191b805efa92e631d02.png",
+      "output": "/game-quizzes/pubg-battlegrounds/results/carry.png"
+    },
+    {
+      "type": "result",
+      "game": "pubg-battlegrounds",
+      "result": "support",
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01bb08358c8191b805efa92e631d02.png",
+      "output": "/game-quizzes/pubg-battlegrounds/results/support.png"
+    },
+    {
+      "type": "result",
+      "game": "pubg-battlegrounds",
+      "result": "chaos",
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01bb08358c8191b805efa92e631d02.png",
+      "output": "/game-quizzes/pubg-battlegrounds/results/chaos.png"
+    },
+    {
+      "type": "cover",
+      "game": "apex-legends",
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01ccba35408191958c804d971df929.png",
+      "output": "/game-quizzes/apex-legends/cover.png"
+    },
+    {
+      "type": "question",
+      "game": "apex-legends",
+      "question": 1,
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01ccba35408191958c804d971df929.png",
+      "output": "/game-quizzes/apex-legends/cover.png"
+    },
+    {
+      "type": "question",
+      "game": "apex-legends",
+      "question": 2,
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01ccba35408191958c804d971df929.png",
+      "output": "/game-quizzes/apex-legends/cover.png"
+    },
+    {
+      "type": "question",
+      "game": "apex-legends",
+      "question": 3,
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01ccba35408191958c804d971df929.png",
+      "output": "/game-quizzes/apex-legends/cover.png"
+    },
+    {
+      "type": "question",
+      "game": "apex-legends",
+      "question": 4,
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01ccba35408191958c804d971df929.png",
+      "output": "/game-quizzes/apex-legends/cover.png"
+    },
+    {
+      "type": "question",
+      "game": "apex-legends",
+      "question": 5,
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01ccba35408191958c804d971df929.png",
+      "output": "/game-quizzes/apex-legends/cover.png"
+    },
+    {
+      "type": "question",
+      "game": "apex-legends",
+      "question": 6,
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01ccba35408191958c804d971df929.png",
+      "output": "/game-quizzes/apex-legends/cover.png"
+    },
+    {
+      "type": "question",
+      "game": "apex-legends",
+      "question": 7,
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01ccba35408191958c804d971df929.png",
+      "output": "/game-quizzes/apex-legends/cover.png"
+    },
+    {
+      "type": "question",
+      "game": "apex-legends",
+      "question": 8,
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01ccba35408191958c804d971df929.png",
+      "output": "/game-quizzes/apex-legends/cover.png"
+    },
+    {
+      "type": "question",
+      "game": "apex-legends",
+      "question": 9,
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01ccba35408191958c804d971df929.png",
+      "output": "/game-quizzes/apex-legends/cover.png"
+    },
+    {
+      "type": "question",
+      "game": "apex-legends",
+      "question": 10,
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01ccba35408191958c804d971df929.png",
+      "output": "/game-quizzes/apex-legends/cover.png"
+    },
+    {
+      "type": "result",
+      "game": "apex-legends",
+      "result": "planner",
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01bb7bd5608191b3a4419ebfdd4bd5.png",
+      "output": "/game-quizzes/apex-legends/results/planner.png"
+    },
+    {
+      "type": "result",
+      "game": "apex-legends",
+      "result": "carry",
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01bb7bd5608191b3a4419ebfdd4bd5.png",
+      "output": "/game-quizzes/apex-legends/results/carry.png"
+    },
+    {
+      "type": "result",
+      "game": "apex-legends",
+      "result": "support",
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01bb7bd5608191b3a4419ebfdd4bd5.png",
+      "output": "/game-quizzes/apex-legends/results/support.png"
+    },
+    {
+      "type": "result",
+      "game": "apex-legends",
+      "result": "chaos",
+      "source": "/Users/kcsx/.codex/generated_images/019e164c-76ab-7132-bb59-7d06468718af/ig_02d6102f0a09e51f016a01bb7bd5608191b3a4419ebfdd4bd5.png",
+      "output": "/game-quizzes/apex-legends/results/chaos.png"
+    }
+  ]
+}
