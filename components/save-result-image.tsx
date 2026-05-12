@@ -7,6 +7,15 @@ import {type CompatArchetype} from '@/lib/data/compat';
 import {TYPE_IMAGES} from '@/lib/data/personalities';
 import {type DimCode, type Level} from '@/lib/types';
 
+// Six-axis types — mirrors lib/data/games/types.ts when that module is present
+type Axis = 'Tempo' | 'Nerve' | 'Bond' | 'Intel' | 'Flair' | 'Mental';
+// Branded string: prevents plain `string` from being passed as a polarity code
+declare const _polarityCodeBrand: unique symbol;
+type PolarityCode = string & { readonly [_polarityCodeBrand]: true };
+
+// Canonical axis order (Tempo → Mental) determines letter position in the code
+const AXIS_ORDER: readonly Axis[] = ['Tempo', 'Nerve', 'Bond', 'Intel', 'Flair', 'Mental'];
+
 interface SaveImageButtonProps {
   code: string;
   name: string;
@@ -20,6 +29,10 @@ interface SaveImageButtonProps {
     level: Level;
     levelLabel: string;
   }[];
+  /** Normalised 0–100 scores per axis. When provided together with
+   *  `polarityCode`, the share card renders a mini radar + the 6-letter code. */
+  scores?: Record<Axis, number>;
+  polarityCode?: PolarityCode;
 }
 
 interface SaveCompatImageButtonProps {
@@ -161,6 +174,81 @@ function drawFittedText(
   ctx.fillText(text, x, y);
 }
 
+/**
+ * Draw a compact 6-axis radar thumbnail on the canvas.
+ *
+ * @param cx   Centre x
+ * @param cy   Centre y
+ * @param r    Outer radius of the hexagon grid
+ * @param scores  Normalised 0–100 per axis (50 = centre)
+ */
+function drawMiniRadar(
+  ctx: CanvasRenderingContext2D,
+  cx: number,
+  cy: number,
+  r: number,
+  scores: Record<Axis, number>,
+) {
+  const n = AXIS_ORDER.length; // 6
+  // Vertex angle: first axis points straight up (−π/2), then clockwise
+  const angleStep = (Math.PI * 2) / n;
+  const axisAngle = (i: number) => -Math.PI / 2 + i * angleStep;
+
+  // Grid rings at 33%, 66%, 100%
+  for (const frac of [1 / 3, 2 / 3, 1]) {
+    ctx.beginPath();
+    for (let i = 0; i < n; i++) {
+      const a = axisAngle(i);
+      const px = cx + Math.cos(a) * r * frac;
+      const py = cy + Math.sin(a) * r * frac;
+      if (i === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
+    }
+    ctx.closePath();
+    ctx.strokeStyle = 'rgba(0,0,0,0.10)';
+    ctx.lineWidth = 1;
+    ctx.stroke();
+  }
+
+  // Radial spoke lines
+  for (let i = 0; i < n; i++) {
+    const a = axisAngle(i);
+    ctx.beginPath();
+    ctx.moveTo(cx, cy);
+    ctx.lineTo(cx + Math.cos(a) * r, cy + Math.sin(a) * r);
+    ctx.strokeStyle = 'rgba(0,0,0,0.10)';
+    ctx.lineWidth = 1;
+    ctx.stroke();
+  }
+
+  // Data polygon: normalised score 0–100 maps linearly to 0–r
+  ctx.beginPath();
+  AXIS_ORDER.forEach((axis, i) => {
+    const score = scores[axis] ?? 50;
+    const frac = Math.max(0, Math.min(100, score)) / 100;
+    const a = axisAngle(i);
+    const px = cx + Math.cos(a) * r * frac;
+    const py = cy + Math.sin(a) * r * frac;
+    if (i === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
+  });
+  ctx.closePath();
+  ctx.fillStyle = 'rgba(16,185,129,0.22)';
+  ctx.fill();
+  ctx.strokeStyle = PRIMARY;
+  ctx.lineWidth = 2.5;
+  ctx.stroke();
+
+  // Vertex dots
+  AXIS_ORDER.forEach((axis, i) => {
+    const score = scores[axis] ?? 50;
+    const frac = Math.max(0, Math.min(100, score)) / 100;
+    const a = axisAngle(i);
+    ctx.beginPath();
+    ctx.arc(cx + Math.cos(a) * r * frac, cy + Math.sin(a) * r * frac, 4, 0, Math.PI * 2);
+    ctx.fillStyle = PRIMARY;
+    ctx.fill();
+  });
+}
+
 // Clips a rounded rectangle on the canvas for image masking
 function clipRoundedRect(
   ctx: CanvasRenderingContext2D,
@@ -192,7 +280,9 @@ async function generateImage({
   exactHitsLabel,
   dimensionsTitle,
   dimensions,
-}: Omit<SaveImageButtonProps, never>): Promise<Blob> {
+  scores,
+  polarityCode,
+}: SaveImageButtonProps): Promise<Blob> {
   const W = 1080;
   const H = 1440;
 
@@ -261,6 +351,32 @@ async function generateImage({
   ctx.font = '500 29px -apple-system, BlinkMacSystemFont, "Segoe UI", "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif';
   wrapText(ctx, description, 588, 530, 360, 44, 3);
   ctx.restore();
+
+  // ── 6-letter player identity code + mini radar (optional) ────────────────
+  if (scores && polarityCode) {
+    // Mini radar: centred below the type image, in the left column
+    const radarCx = 120 + 420 / 2; // 330 — horizontal centre of image
+    const radarCy = 660 + 100;      // 760
+    const radarR = 96;
+    drawMiniRadar(ctx, radarCx, radarCy, radarR, scores);
+
+    // Polarity code: large monospace text, right column, below description
+    ctx.save();
+    ctx.textAlign = 'left';
+    ctx.textBaseline = 'top';
+
+    // Label row
+    ctx.fillStyle = FOREGROUND_MUTED;
+    ctx.font = '700 20px -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif';
+    ctx.fillText('PLAYER CODE', 588, 672);
+
+    // The 6-letter code — monospace, bold, large
+    ctx.fillStyle = FOREGROUND;
+    ctx.font = '900 78px "SF Mono", "Fira Code", "Fira Mono", "Roboto Mono", Menlo, Consolas, monospace';
+    ctx.fillText(polarityCode, 588, 702);
+
+    ctx.restore();
+  }
 
   ctx.save();
   ctx.fillStyle = FOREGROUND;
