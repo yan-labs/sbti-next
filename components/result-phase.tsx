@@ -19,6 +19,7 @@ import type {ArchetypeV2, GameQuizV2, Axis} from '@/lib/data/games/types';
 import type {SiteLocale} from '@/lib/data/game-quizzes';
 import {AXES, AXIS_ORDER, polarityFromScore} from '@/lib/data/games/dimensions';
 import {derivePolarityCode} from '@/lib/data/games/scoring';
+import {getArchetype} from '@/lib/data/games/index';
 import {RotateCcw, Share2} from 'lucide-react';
 
 // ── V2 game quiz result props ─────────────────────────────────────────────────
@@ -84,7 +85,7 @@ const GAME_RESULT_UI: Record<SiteLocale, {
   },
 };
 
-function GameV2Result({game, archetype, scores, locale, onRetake}: GameV2ResultProps) {
+export function GameV2Result({game, archetype, scores, locale, onRetake}: GameV2ResultProps) {
   const copy = GAME_RESULT_UI[locale];
   const polarityCode = derivePolarityCode(scores);
   const gameTitle = game.title[locale];
@@ -93,11 +94,9 @@ function GameV2Result({game, archetype, scores, locale, onRetake}: GameV2ResultP
   const description = archetype.description?.[locale];
   const shareUrl = `/games/${game.slug}/result/${archetype.slug}`;
 
-  const rivalArchetype = archetype.rivalSlug
-    ? game.archetypes.find((a) => a.slug === archetype.rivalSlug)
-    : undefined;
+  const rivalArchetype = archetype.rivalSlug ? getArchetype(game, archetype.rivalSlug) : undefined;
   const bestSquadArchetype = archetype.bestSquadSlug
-    ? game.archetypes.find((a) => a.slug === archetype.bestSquadSlug)
+    ? getArchetype(game, archetype.bestSquadSlug)
     : undefined;
 
   return (
@@ -307,21 +306,7 @@ function GameV2Result({game, archetype, scores, locale, onRetake}: GameV2ResultP
 
 // ── SBTI main test result (unchanged) ────────────────────────────────────────
 
-export function ResultPhase(props?: Partial<GameV2ResultProps>) {
-  // If full V2 game props are provided, render game result
-  if (props?.game && props?.archetype && props?.scores && props?.locale && props?.onRetake) {
-    return (
-      <GameV2Result
-        game={props.game}
-        archetype={props.archetype}
-        scores={props.scores}
-        locale={props.locale}
-        onRetake={props.onRetake}
-      />
-    );
-  }
-
-  // Otherwise fall through to SBTI main test result
+export function ResultPhase() {
   return <SBTIResultPhase />;
 }
 

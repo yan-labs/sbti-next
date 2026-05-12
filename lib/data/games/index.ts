@@ -27,7 +27,7 @@ import honorOfKings from './honor-of-kings';
 import overwatch2 from './overwatch-2';
 import pubgBattlegrounds from './pubg-battlegrounds';
 import apexLegends from './apex-legends';
-import type { GameQuizV2 } from './types';
+import type { ArchetypeV2, GameQuizV2 } from './types';
 
 export const GAME_SLUGS = [
   'league-of-legends',
@@ -55,4 +55,8 @@ export const ALL_GAMES_V2: GameQuizV2[] = [
 
 export function getGameV2(slug: string): GameQuizV2 | undefined {
   return ALL_GAMES_V2.find((g) => g.slug === slug);
+}
+
+export function getArchetype(game: GameQuizV2, slug: string): ArchetypeV2 | undefined {
+  return game.archetypes.find((a) => a.slug === slug);
 }

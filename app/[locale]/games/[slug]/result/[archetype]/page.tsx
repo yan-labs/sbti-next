@@ -26,11 +26,11 @@ import {
   buildWebSiteSchema,
   buildArchetypeDefinedTermSchema,
 } from '@/lib/json-ld';
-import {ALL_GAMES_V2, GAME_SLUGS, getGameV2} from '@/lib/data/games/index';
+import {ALL_GAMES_V2, getArchetype, getGameV2} from '@/lib/data/games/index';
 import {AXES, AXIS_ORDER, polarityFromScore} from '@/lib/data/games/dimensions';
 import {derivePolarityCode} from '@/lib/data/games/scoring';
-import type {Axis, ArchetypeV2, GameQuizV2} from '@/lib/data/games/types';
-import type {SiteLocale} from '@/lib/data/game-quizzes';
+import type {Axis, ArchetypeV2} from '@/lib/data/games/types';
+import {isSiteLocale, type SiteLocale} from '@/lib/data/game-quizzes';
 import {RotateCcw} from 'lucide-react';
 
 // ── Static generation ─────────────────────────────────────────────────────────
@@ -49,10 +49,6 @@ export function generateStaticParams() {
 }
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
-
-function isSiteLocale(v: string): v is SiteLocale {
-  return v === 'zh' || v === 'en' || v === 'ja' || v === 'ko';
-}
 
 function safeLocale(locale: string): SiteLocale {
   return isSiteLocale(locale) ? locale : 'en';
