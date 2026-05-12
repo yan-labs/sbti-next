@@ -548,7 +548,1481 @@ const game: GameQuizV2 = {
       bestSquadSlug: 'loadout-romantic',
     },
   ],
-  questions: [],
+  questions: [
+    // ── Anchor questions Q1–Q12 ──────────────────────────────────────────────────
+    // Q1 — Nerve anchor (peak-end: funny opener — loadout regret)
+    {
+      id: 'df-q1',
+      kind: 'anchor',
+      text: {
+        zh: '今天带了套 2 万块的装备进高价值区，结果第一分钟遇到四人组，你……',
+        en: 'You queued in with a 20,000-credit kit and ran into a four-stack in the first minute. You…',
+        ja: '2万クレジット装備で高価値エリアに入ったら、最初の1分で4人組と遭遇した。あなたは……',
+        ko: '2만 크레딧짜리 장비 들고 고가치 구역에 입장했는데 첫 1분에 4인 파티와 맞닥뜨렸다. 당신은……',
+      },
+      options: [
+        {
+          label: {
+            zh: '直接打，这套装备值得冒险，输了就输了',
+            en: 'Fight. The kit is worth the risk — losing it hurts but that\'s the game',
+            ja: '戦う。この装備は賭ける価値がある。負けたら負けたで仕方ない',
+            ko: '싸운다. 이 장비는 리스크를 감수할 가치가 있다. 잃으면 잃는 거지',
+          },
+          scoring: [{ axis: 'Nerve', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '立刻撤，先把装备保住，下次再来',
+            en: 'Disengage immediately. Protect the kit; there\'s always another run',
+            ja: 'すぐ退く。装備を守る。次のランがある',
+            ko: '즉시 빠진다. 장비 먼저 지키고 다음에 다시 오면 된다',
+          },
+          scoring: [{ axis: 'Nerve', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '先判断对面装备价值，再决定打不打',
+            en: 'Read their gear first. If their kit is weaker, fight; otherwise, fade',
+            ja: '相手の装備を見てから判断する。弱ければ戦う、そうでなければ退く',
+            ko: '상대 장비부터 파악한다. 약하면 싸우고 아니면 빠진다',
+          },
+          scoring: [{ axis: 'Nerve', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '冲，四人组说不定也在抢物资没心思打我',
+            en: 'Push through. Four-stacks are busy looting half the time anyway',
+            ja: 'そのまま進む。4人組も半分くらい略奪中だ',
+            ko: '그냥 밀고 간다. 4인 파티도 절반은 루팅 중이니까',
+          },
+          scoring: [{ axis: 'Nerve', delta: 1 }],
+        },
+      ],
+    },
+    // Q2 — Nerve anchor
+    {
+      id: 'df-q2',
+      kind: 'anchor',
+      text: {
+        zh: '撤离点只剩 3 分钟，你背包装满了好东西，但通往撤离点的走廊里有枪声，你……',
+        en: 'Three minutes to extraction. Your bag is packed. There\'s gunfire in the corridor to the exit. You…',
+        ja: '撤退まで残り3分。バッグは満杯。出口の廊下で銃声がする。あなたは……',
+        ko: '철수까지 3분. 배낭 가득 찼다. 출구 복도에서 총소리가 난다. 당신은……',
+      },
+      options: [
+        {
+          label: {
+            zh: '直接冲过去，背包里的东西比命还重要',
+            en: 'Push through. The bag is worth more than the detour cost',
+            ja: '突っ込む。バッグの中身は迂回コストより価値がある',
+            ko: '그냥 돌파한다. 배낭 안 물건이 돌아가는 비용보다 가치 있다',
+          },
+          scoring: [{ axis: 'Nerve', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '找绕路，多花两分钟也比送了强',
+            en: 'Find another route. Two extra minutes beats dropping everything',
+            ja: '別ルートを探す。2分余計にかかっても全部失うよりマシだ',
+            ko: '우회로 찾는다. 2분 더 걸려도 다 날리는 것보단 낫다',
+          },
+          scoring: [{ axis: 'Nerve', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '先听声音，判断有几个人，单个的话打过去',
+            en: 'Listen first. One opponent, you fight; more than that, you reroute',
+            ja: '先に音を聞く。一人なら戦う、複数なら迂回する',
+            ko: '먼저 소리 듣는다. 한 명이면 싸우고 더 많으면 우회',
+          },
+          scoring: [{ axis: 'Nerve', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '管他几个，先把弹药补满，然后开冲',
+            en: 'Top off ammo and charge. Whoever\'s in that corridor is going down',
+            ja: '弾薬を補充してから突撃。廊下の誰かを倒す',
+            ko: '탄약 채우고 돌격. 복도에 있는 놈 쓰러뜨린다',
+          },
+          scoring: [{ axis: 'Nerve', delta: 1 }],
+        },
+      ],
+    },
+    // Q3 — Intel anchor
+    {
+      id: 'df-q3',
+      kind: 'anchor',
+      text: {
+        zh: '进局之前，你对这次带的装备配置……',
+        en: 'Before queuing in, your relationship with the kit you\'re bringing is…',
+        ja: 'キューに入る前、持ち込む装備に対してあなたは……',
+        ko: '큐 잡기 전, 들고 갈 장비에 대해 당신은……',
+      },
+      options: [
+        {
+          label: {
+            zh: '算过性价比，确认期望收益是正的才进',
+            en: 'You\'ve run the expected-value math and confirmed it\'s positive before queuing',
+            ja: 'コスパを計算して、期待収益がプラスと確認してからキューに入る',
+            ko: '기대 수익 계산해서 양수로 확인하고 나서 큐 잡는다',
+          },
+          scoring: [{ axis: 'Intel', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '凭感觉选，这套装备进局的"手感"对',
+            en: 'Picked by feel. This kit just feels right for today\'s run',
+            ja: '感覚で選んだ。今日のランにこの装備は合ってる気がする',
+            ko: '감으로 골랐다. 오늘 런에 이 장비가 맞는 느낌이다',
+          },
+          scoring: [{ axis: 'Intel', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '看了一眼数据，但最终还是用了喜欢那套',
+            en: 'Checked the stats, then brought what you always bring anyway',
+            ja: 'データは確認したけど、結局いつものを持ってきた',
+            ko: '데이터 확인했지만 결국 늘 쓰던 거 들고 왔다',
+          },
+          scoring: [{ axis: 'Intel', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '根据这张地图的收益数据调整了配置，不同地图套路不同',
+            en: 'Adjusted based on this map\'s loot-tier data. Different maps, different loadouts',
+            ja: 'このマップのデータをもとに装備を調整した。マップごとに戦略が違う',
+            ko: '이 지도의 루팅 데이터 기반으로 구성 조정했다. 지도마다 전략이 다르다',
+          },
+          scoring: [{ axis: 'Intel', delta: -1 }],
+        },
+      ],
+    },
+    // Q4 — Intel anchor
+    {
+      id: 'df-q4',
+      kind: 'anchor',
+      text: {
+        zh: '你判断一个陌生区域安不安全，主要靠……',
+        en: 'To decide if an unfamiliar zone is safe, you mainly rely on…',
+        ja: '知らないエリアの安全性を判断するのに、主に頼るのは……',
+        ko: '낯선 구역이 안전한지 판단할 때 주로 의존하는 것은……',
+      },
+      options: [
+        {
+          label: {
+            zh: '这条路上次进来多少人受伤，有历史数据',
+            en: 'Historical patterns: how many players got hit here in recent runs',
+            ja: '過去のデータ。最近このルートで被弾した人数',
+            ko: '역사적 패턴. 최근 런에서 이 루트에서 피격된 사람 수',
+          },
+          scoring: [{ axis: 'Intel', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '脚步声、枪声、呼吸声，耳朵告诉我一切',
+            en: 'Footsteps, shots, breathing. Your ears are the real sensor',
+            ja: '足音、銃声、呼吸音。耳が全部教えてくれる',
+            ko: '발소리, 총소리, 숨소리. 귀가 다 알려준다',
+          },
+          scoring: [{ axis: 'Intel', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '地图标注的危险等级，先查再进',
+            en: 'The map\'s official danger rating. Check before entering',
+            ja: 'マップの公式危険度ランク。入る前に確認する',
+            ko: '지도의 공식 위험 등급. 입장 전 확인한다',
+          },
+          scoring: [{ axis: 'Intel', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '直觉，进过几次就知道那里有没有人气场',
+            en: 'Gut feel. After a few runs you just sense whether a place is hot',
+            ja: '直感。何回か入れば、そこに人がいる気配がわかる',
+            ko: '직감. 몇 번 들어가다 보면 사람 있는 기운이 느껴진다',
+          },
+          scoring: [{ axis: 'Intel', delta: 1 }],
+        },
+      ],
+    },
+    // Q5 — Tempo anchor (peak-end: funny opener)
+    {
+      id: 'df-q5',
+      kind: 'anchor',
+      text: {
+        zh: '入局之后，你的第一步是……',
+        en: 'After spawning in, your first move is…',
+        ja: 'スポーン直後の最初の行動は……',
+        ko: '스폰 후 첫 번째 행동은……',
+      },
+      options: [
+        {
+          label: {
+            zh: '查看地图，规划出撤离点和最优路线',
+            en: 'Open the map and plan the route to the extraction point',
+            ja: 'マップを開いて撤退ポイントへの最適ルートを計画する',
+            ko: '지도 열고 철수 지점까지 최적 루트 계획',
+          },
+          scoring: [{ axis: 'Tempo', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '直奔地图上第一个枪响的方向',
+            en: 'Sprint toward wherever the first shot came from',
+            ja: '最初の銃声が聞こえた方向に全力で走る',
+            ko: '첫 총소리 난 방향으로 전력 질주',
+          },
+          scoring: [{ axis: 'Tempo', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '找一个有门的房间，把门关上，开始搜刮',
+            en: 'Find a room with a door, close it, and start looting methodically',
+            ja: 'ドア付きの部屋を見つけて閉めてから、落ち着いて略奪を始める',
+            ko: '문 달린 방 찾아서 닫고 체계적으로 루팅 시작',
+          },
+          scoring: [{ axis: 'Tempo', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '跑向高价值区，要快，别人比你先到就少一层',
+            en: 'Race to the high-value zone. First one there skims the best layer',
+            ja: '高価値エリアへ急ぐ。先着が最上層を取る',
+            ko: '고가치 구역으로 달린다. 먼저 도착한 사람이 제일 좋은 거 챙긴다',
+          },
+          scoring: [{ axis: 'Tempo', delta: 1 }],
+        },
+      ],
+    },
+    // Q6 — Tempo anchor
+    {
+      id: 'df-q6',
+      kind: 'anchor',
+      text: {
+        zh: '撤离时间快到了，还有两个没打开的箱子，你……',
+        en: 'Extraction window is almost up. Two crates still unopened. You…',
+        ja: '撤退時間がもうすぐ終わる。箱が2つ未開封のまま。あなたは……',
+        ko: '철수 시간이 거의 다 됐다. 아직 못 연 상자가 두 개 남았다. 당신은……',
+      },
+      options: [
+        {
+          label: {
+            zh: '把箱子开完再走，时间肯定够的',
+            en: 'Open both crates and then go. Time\'s enough if you move fast',
+            ja: '全部開けてから行く。速く動けば時間は十分だ',
+            ko: '상자 다 열고 간다. 빠르게 움직이면 시간 충분하다',
+          },
+          scoring: [{ axis: 'Tempo', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '放弃箱子，先保撤离，物资不值一条命',
+            en: 'Leave the crates. Extraction first; loot isn\'t worth the extraction',
+            ja: '箱は諦めて撤退を優先する。戦利品は命より安い',
+            ko: '상자 포기하고 철수 먼저. 루팅은 철수보다 안 중요하다',
+          },
+          scoring: [{ axis: 'Tempo', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '开一个，时间不够就跑',
+            en: 'Open one. If there\'s no time left after that, you run',
+            ja: '1つだけ開ける。時間が足りなければ走る',
+            ko: '하나만 연다. 그 후 시간 없으면 뛰는 거다',
+          },
+          scoring: [{ axis: 'Tempo', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '提前 5 分钟就已经在撤离点了，这种情况根本不会发生',
+            en: 'You were at the extraction point five minutes ago. This situation never happens to you',
+            ja: '5分前にはもう撤退ポイントにいる。こんな状況にはならない',
+            ko: '5분 전에 이미 철수 지점에 있다. 이런 상황 자체가 생기지 않는다',
+          },
+          scoring: [{ axis: 'Tempo', delta: -1 }],
+        },
+      ],
+    },
+    // Q7 — Bond anchor
+    {
+      id: 'df-q7',
+      kind: 'anchor',
+      text: {
+        zh: '队友被击倒了，距离撤离点还有 200 米，你……',
+        en: 'A teammate goes down 200 meters from the extraction point. You…',
+        ja: 'チームメイトが撤退ポイントまで200mのところで倒れた。あなたは……',
+        ko: '팀원이 철수 지점 200미터 앞에서 쓰러졌다. 당신은……',
+      },
+      options: [
+        {
+          label: {
+            zh: '去救，哪怕浪费时间，队友不能丢',
+            en: 'Go back for them. Wasting time is fine; you don\'t leave teammates',
+            ja: '助けに行く。時間がかかってもチームメイトを見捨てない',
+            ko: '구하러 간다. 시간 낭비여도 팀원은 버리지 않는다',
+          },
+          scoring: [{ axis: 'Bond', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '先撤，活下去是第一原则，重新入局再开一把',
+            en: 'Extract first. Surviving is the principle; next run you queue together again',
+            ja: '先に撤退する。生き残ることが第一。次のランでまたチームを組む',
+            ko: '먼저 철수한다. 살아남는 게 제1원칙. 다음 런에 다시 같이 큐 잡으면 된다',
+          },
+          scoring: [{ axis: 'Bond', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '压制对面火力，等队友自救，不贸然进去',
+            en: 'Suppress the enemy fire and wait for them to self-revive; no reckless dive',
+            ja: '敵の火力を制圧しながらチームメイトの自己蘇生を待つ。無謀に突っ込まない',
+            ko: '적 화력 제압하면서 팀원 자가 부활 대기. 무모하게 들어가지 않는다',
+          },
+          scoring: [{ axis: 'Bond', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '看一眼周围情况，太危险就走，能救就救',
+            en: 'Quick read of the surroundings. Too risky and you go; safe enough and you try',
+            ja: '周囲を素早く確認。危険すぎれば去る、安全なら助けに行く',
+            ko: '주변 상황 빠르게 확인. 너무 위험하면 가고, 안전하면 구한다',
+          },
+          scoring: [{ axis: 'Bond', delta: -1 }],
+        },
+      ],
+    },
+    // Q8 — Bond anchor
+    {
+      id: 'df-q8',
+      kind: 'anchor',
+      text: {
+        zh: '组队进场，队友提议"我们分头行动"，你……',
+        en: 'You\'re in a squad and someone suggests splitting up. You…',
+        ja: 'チームで入場。仲間が「バラバラに動こう」と提案した。あなたは……',
+        ko: '팀 입장, 팀원이 "각자 움직이자"고 제안했다. 당신은……',
+      },
+      options: [
+        {
+          label: {
+            zh: '同意，各自效率更高，物资分布均匀',
+            en: 'Agree. Solo efficiency is higher and loot spreads better',
+            ja: '賛成。各自の効率が上がって、戦利品も均等に分散する',
+            ko: '동의. 각자 효율이 더 높고 루팅도 고르게 분산된다',
+          },
+          scoring: [{ axis: 'Bond', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '反对，分开了遇到麻烦救援慢，要走一起走',
+            en: 'Disagree. Split up means slower rescue response; you move as a unit',
+            ja: '反対。バラバラだと救援が遅くなる。一緒に動く',
+            ko: '반대. 나뉘면 구조가 느려진다. 같이 움직인다',
+          },
+          scoring: [{ axis: 'Bond', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '无所谓，我本来就不指望队友',
+            en: 'Indifferent. You weren\'t counting on them anyway',
+            ja: 'どうでもいい。もともとチームメイトに頼ってない',
+            ko: '상관없다. 어차피 팀원 믿고 있지 않았다',
+          },
+          scoring: [{ axis: 'Bond', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '分区行动但保持语音，随时通报情况',
+            en: 'Split zones but stay on voice. Constant status updates',
+            ja: 'ゾーンは分けるがボイスはつなぐ。常に状況を報告する',
+            ko: '구역은 나누되 보이스는 유지. 수시로 상황 보고',
+          },
+          scoring: [{ axis: 'Bond', delta: 1 }],
+        },
+      ],
+    },
+    // Q9 — Flair anchor
+    {
+      id: 'df-q9',
+      kind: 'anchor',
+      text: {
+        zh: '撤离成功的瞬间，你……',
+        en: 'The moment your extraction succeeds, you…',
+        ja: '撤退成功の瞬間、あなたは……',
+        ko: '철수 성공 순간, 당신은……',
+      },
+      options: [
+        {
+          label: {
+            zh: '截图战利品列表，发 B 站或朋友圈',
+            en: 'Screenshot the loot list and post it to Bilibili or your group chat',
+            ja: 'ドロップリストをスクリーンショットして、BilibiliかSNSに投稿する',
+            ko: '전리품 목록 스크린샷 찍어서 빌리빌리나 단톡방에 올린다',
+          },
+          scoring: [{ axis: 'Flair', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '记录一下这次的时间和收益，更新自己的撤离统计',
+            en: 'Log the run time and returns. Update your personal extraction stats',
+            ja: '今回のタイムと収益を記録する。自分の撤退統計を更新する',
+            ko: '이번 시간과 수익 기록한다. 개인 철수 통계 업데이트',
+          },
+          scoring: [{ axis: 'Flair', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '回放最后几分钟的操作，看看有没有值得剪辑的片段',
+            en: 'Rewatch the last few minutes for anything clip-worthy',
+            ja: '最後の数分を振り返って、クリップにできる場面がないか確認する',
+            ko: '마지막 몇 분 다시 보며 클립할 만한 장면 찾는다',
+          },
+          scoring: [{ axis: 'Flair', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '静静感受一下，然后直接开下一把',
+            en: 'Sit with the feeling for a second, then queue again',
+            ja: '少しだけ余韻に浸って、次のキューに入る',
+            ko: '잠깐 여운 느끼고 바로 다음 큐 잡는다',
+          },
+          scoring: [{ axis: 'Flair', delta: -1 }],
+        },
+      ],
+    },
+    // Q10 — Flair anchor
+    {
+      id: 'df-q10',
+      kind: 'anchor',
+      text: {
+        zh: '把对面打倒，然后……',
+        en: 'You drop an opponent. What you do next is…',
+        ja: '相手を倒した後、あなたは……',
+        ko: '상대를 쓰러뜨리고 나서……',
+      },
+      options: [
+        {
+          label: {
+            zh: '立刻舔包，看看有没有好东西',
+            en: 'Loot the body immediately. Could be something good in there',
+            ja: '即座に舐め包（ルーティング）する。良いものが入ってるかもしれない',
+            ko: '즉시 전리품 뒤진다. 좋은 게 있을 수도 있다',
+          },
+          scoring: [{ axis: 'Flair', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '先确认周围安全，再考虑要不要舔包',
+            en: 'Secure the area first, then decide about looting the body',
+            ja: '周囲を安全確認してから、舐め包するか考える',
+            ko: '주변 안전 확보 먼저, 그 다음 전리품 여부 결정',
+          },
+          scoring: [{ axis: 'Flair', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '庆祝一下，顺手录个屏',
+            en: 'Celebrate the moment and hit record. That one\'s going on the channel',
+            ja: 'ちょっと喜んでから録画ボタンを押す。これはチャンネルに上げる',
+            ko: '한 번 기뻐하고 녹화 버튼 누른다. 이거 채널에 올릴 거다',
+          },
+          scoring: [{ axis: 'Flair', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '留下特定战利品打个标记，告诉对面"好东西我拿走了"',
+            en: 'Mark a choice item and leave the rest, a message: the good stuff is gone',
+            ja: '良い物だけ取って残りに印をつける。メッセージは「良いものはもらった」',
+            ko: '좋은 거만 챙기고 나머지에 표시 남긴다. 메시지: 좋은 건 내가 가져갔다',
+          },
+          scoring: [{ axis: 'Flair', delta: 1 }],
+        },
+      ],
+    },
+    // Q11 — Mental anchor
+    {
+      id: 'df-q11',
+      kind: 'anchor',
+      text: {
+        zh: '满载装备被人在门口蹲死，你的第一反应是……',
+        en: 'You get gate-camped at the extraction point and lose a full kit. First reaction is…',
+        ja: '出口でゲートキャンプされて装備を全部失った。最初の反応は……',
+        ko: '철수 지점에서 게이트 캠핑 당해 풀 장비 날렸다. 첫 번째 반응은……',
+      },
+      options: [
+        {
+          label: {
+            zh: '爆粗，然后立刻开下一把气消一半',
+            en: 'Swear out loud, then queue again. Half the rage is gone before loading in',
+            ja: '毒づいて、即座に次のキューに入る。ロード中に怒りの半分は消える',
+            ko: '욕 한 마디 하고 바로 다음 큐 잡는다. 로딩 중에 화가 반쯤 가신다',
+          },
+          scoring: [{ axis: 'Mental', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '平静地记下这个出生点的蹲守规律，下次绕路',
+            en: 'Calmly note the camping pattern at this exit. Next time you reroute',
+            ja: '落ち着いてこの出口のキャンプパターンをメモする。次は迂回する',
+            ko: '침착하게 이 출구 캠핑 패턴 기록한다. 다음엔 우회한다',
+          },
+          scoring: [{ axis: 'Mental', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '在队伍群里骂骂咧咧，至少让别人知道发生了什么',
+            en: 'Vent in the squad chat. At least let everyone know what just happened',
+            ja: 'チャットで愚痴る。少なくとも何が起きたかみんなに知らせる',
+            ko: '팀 채팅에 분풀이한다. 최소한 무슨 일이 있었는지 알려야 한다',
+          },
+          scoring: [{ axis: 'Mental', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '叹口气，算了，下把换个撤离点',
+            en: 'Sigh, let it go, pick a different exit next run',
+            ja: 'ため息をついて、諦める。次は別の出口にする',
+            ko: '한숨 쉬고 넘어간다. 다음 런에 다른 출구 선택하면 된다',
+          },
+          scoring: [{ axis: 'Mental', delta: -1 }],
+        },
+      ],
+    },
+    // Q12 — Mental anchor
+    {
+      id: 'df-q12',
+      kind: 'anchor',
+      text: {
+        zh: '连续三把没撤离成功，你……',
+        en: 'Three consecutive failed extractions. You…',
+        ja: '撤退失敗が3回連続。あなたは……',
+        ko: '3연속 철수 실패. 당신은……',
+      },
+      options: [
+        {
+          label: {
+            zh: '关游戏冷静一下，下次再来',
+            en: 'Close the game, cool down, come back later',
+            ja: 'ゲームを閉じて落ち着く。また後で戻ってくる',
+            ko: '게임 끄고 진정한다. 나중에 다시 온다',
+          },
+          scoring: [{ axis: 'Mental', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '还是继续，就是手气差，下把一定成',
+            en: 'Keep going. Just bad luck; the next run will land',
+            ja: 'まだ続ける。ただ運が悪いだけ。次は成功する',
+            ko: '계속한다. 그냥 운이 나쁜 거다. 다음 번엔 될 거다',
+          },
+          scoring: [{ axis: 'Mental', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '越挫越勇，三把失败证明下把该赢了',
+            en: 'Loss streak means the win is overdue. You go harder',
+            ja: '3回負けたなら次は勝ちの順番だ。さらに気合を入れる',
+            ko: '3번 연패하면 다음 판 이길 차례다. 더 기합 넣는다',
+          },
+          scoring: [{ axis: 'Mental', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '分析三把失败的原因，找到共同点，下把避开',
+            en: 'Analyze all three failures for a common factor and avoid it next run',
+            ja: '3回の失敗の共通点を分析して、次のランで避ける',
+            ko: '3번 실패 원인 분석해서 공통점 찾고 다음에 피한다',
+          },
+          scoring: [{ axis: 'Mental', delta: -1 }],
+        },
+      ],
+    },
+
+    // ── Compound questions Q13–Q30 ───────────────────────────────────────────────
+    // Q13 — Nerve × Intel (vacuum effect / high-value zone)
+    {
+      id: 'df-q13',
+      kind: 'compound',
+      text: {
+        zh: '你注意到地图西边打得很热闹，东边一片安静，你……',
+        en: 'Heavy fighting in the west sector, east sector quiet. You…',
+        ja: '西エリアで激しい戦闘、東エリアは静かだ。あなたは……',
+        ko: '서쪽 구역 전투 격렬, 동쪽 구역 조용하다. 당신은……',
+      },
+      options: [
+        {
+          label: {
+            zh: '奔向西边，高风险高收益，打架才有好东西',
+            en: 'Head west. High risk, high reward; fighting means better loot left over',
+            ja: '西へ向かう。高リスク高リターン。戦闘の後には良い戦利品が残る',
+            ko: '서쪽으로 간다. 고위험 고수익. 싸우다 남은 루팅이 좋다',
+          },
+          scoring: [{ axis: 'Nerve', delta: 1 }, { axis: 'Intel', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '去东边，这是真空效应，安静的地方才是真正的金矿',
+            en: 'Go east. That\'s the vacuum effect: the quiet zone is where the real loot sits',
+            ja: '東へ行く。これが真空効果。静かなエリアこそ本当の金鉱だ',
+            ko: '동쪽으로 간다. 이게 진공 효과다. 조용한 구역이 진짜 황금이다',
+          },
+          scoring: [{ axis: 'Nerve', delta: -1 }, { axis: 'Intel', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '先绕过去看一眼西边战况，再决定',
+            en: 'Circle wide to scout the west situation before committing',
+            ja: '西の状況を偵察してから決める',
+            ko: '서쪽 상황 원거리 정찰하고 결정한다',
+          },
+          scoring: [{ axis: 'Nerve', delta: -1 }, { axis: 'Intel', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '直接走我已经盯好的那条路线，别人打架是别人的事',
+            en: 'Follow my pre-planned route. What others are fighting about is their business',
+            ja: '決めておいたルートを進む。他の人が戦っているのは関係ない',
+            ko: '미리 정해둔 루트대로 간다. 남들이 싸우는 건 남의 일이다',
+          },
+          scoring: [{ axis: 'Nerve', delta: -1 }, { axis: 'Intel', delta: -1 }],
+        },
+      ],
+    },
+    // Q14 — Nerve × Tempo (Boss spawn — boss-contractor scenario)
+    {
+      id: 'df-q14',
+      kind: 'compound',
+      text: {
+        zh: '"成为 Boss"模式开启了，Boss 刷新点在地图中心，你……',
+        en: '"Become the Boss" mode activates. Boss spawn is dead center on the map. You…',
+        ja: '「ボスになる」モードが発動。ボスのスポーン地点はマップ中央。あなたは……',
+        ko: '"보스가 되어라" 모드 활성화. 보스 스폰은 지도 정중앙. 당신은……',
+      },
+      options: [
+        {
+          label: {
+            zh: '立刻冲，争取第一个到 Boss 刷新点',
+            en: 'Sprint there immediately. First to the Boss spawn wins the drop',
+            ja: '即ダッシュ。ボスのスポーン地点に最初に着いた者が勝つ',
+            ko: '즉시 전력 질주. 보스 스폰에 제일 먼저 도착한 사람이 드랍 가져간다',
+          },
+          scoring: [{ axis: 'Nerve', delta: 1 }, { axis: 'Tempo', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '等第一波交火结束，趁乱去拣漏',
+            en: 'Wait for the first wave to finish fighting each other, then sweep in',
+            ja: '最初の交戦が終わるのを待ってから漁夫の利を得る',
+            ko: '첫 교전이 끝날 때까지 기다렸다가 어부지리 노린다',
+          },
+          scoring: [{ axis: 'Nerve', delta: -1 }, { axis: 'Tempo', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '快速移动但找掩护路线，不和人正面',
+            en: 'Move fast but use cover routes. No frontal contacts until you\'re set',
+            ja: '素早く動くが掩蔽ルートを使う。準備が整うまで正面衝突しない',
+            ko: '빠르게 이동하되 엄폐 루트 사용. 준비될 때까지 정면 접촉 없음',
+          },
+          scoring: [{ axis: 'Nerve', delta: -1 }, { axis: 'Tempo', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '留在当前位置继续搜刮，Boss 掉落有人比我更需要',
+            en: 'Stay put and keep looting. Others want the Boss drop more than you do',
+            ja: '今の位置で略奪を続ける。ボスドロップを必要としてる人が他にいる',
+            ko: '현재 위치 유지하고 루팅 계속. 보스 드랍은 다른 사람이 더 필요하다',
+          },
+          scoring: [{ axis: 'Nerve', delta: -1 }, { axis: 'Tempo', delta: -1 }],
+        },
+      ],
+    },
+    // Q15 — Intel × Tempo (footstep audio / whisper-runner)
+    {
+      id: 'df-q15',
+      kind: 'compound',
+      text: {
+        zh: '你在走廊里听到了疑似脚步声，你……',
+        en: 'You hear what might be footsteps in the corridor. You…',
+        ja: '廊下で足音らしき音が聞こえた。あなたは……',
+        ko: '복도에서 발소리 같은 소리가 들렸다. 당신은……',
+      },
+      options: [
+        {
+          label: {
+            zh: '立刻停下来，靠耳朵精确定位，等对面先动',
+            en: 'Stop immediately, use audio to place them precisely, let them move first',
+            ja: '即座に止まって音で正確に位置を特定し、相手が先に動くのを待つ',
+            ko: '즉시 멈추고 소리로 정확히 위치 파악, 상대가 먼저 움직이길 기다린다',
+          },
+          scoring: [{ axis: 'Intel', delta: 1 }, { axis: 'Tempo', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '加速推过去，主动发起接触，先下手为强',
+            en: 'Accelerate and push. Make contact first; initiative is the advantage',
+            ja: '加速して押し込む。先に接触する。主導権が優位性だ',
+            ko: '가속해서 밀어붙인다. 먼저 접촉한다. 선제가 유리함이다',
+          },
+          scoring: [{ axis: 'Intel', delta: 1 }, { axis: 'Tempo', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '换路线，不确定的信息不值得用生命验证',
+            en: 'Reroute. Unconfirmed intel isn\'t worth testing with your life',
+            ja: 'ルートを変更する。不確かな情報を命で確認する価値はない',
+            ko: '루트 변경. 불확실한 정보를 목숨 걸고 확인할 가치 없다',
+          },
+          scoring: [{ axis: 'Intel', delta: -1 }, { axis: 'Tempo', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '凭感觉判断危不危险，手感告诉我没事就继续走',
+            en: 'Gut check: if it feels safe it probably is. Keep moving at pace',
+            ja: '感覚で危険かどうか判断する。大丈夫と感じたら歩き続ける',
+            ko: '감으로 위험한지 판단. 괜찮은 느낌이면 계속 걷는다',
+          },
+          scoring: [{ axis: 'Intel', delta: 1 }, { axis: 'Tempo', delta: 1 }],
+        },
+      ],
+    },
+    // Q16 — Nerve × Bond (救人 / team play)
+    {
+      id: 'df-q16',
+      kind: 'compound',
+      text: {
+        zh: '队友在高价值区遭遇伏击，呼叫支援，你当时背包已经装得七八成满，你……',
+        en: 'Your teammate is ambushed in the hot zone and calls for backup. Your bag is 70% full. You…',
+        ja: 'チームメイットが高価値エリアで待ち伏せに遭い支援を要請。バッグは7割満杯。あなたは……',
+        ko: '팀원이 핫존에서 매복 당해 지원 요청. 배낭은 70% 찼다. 당신은……',
+      },
+      options: [
+        {
+          label: {
+            zh: '冲过去支援，背包满了也能打，兄弟先救',
+            en: 'Rush in. Bag is full enough; your teammate comes first',
+            ja: '支援に駆ける。バッグは十分。チームメイットが先だ',
+            ko: '지원하러 달려간다. 배낭 충분히 찼다. 팀원이 먼저다',
+          },
+          scoring: [{ axis: 'Nerve', delta: 1 }, { axis: 'Bond', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '先把自己的东西搜完再过去，不然就浪费了',
+            en: 'Finish looting the current room first. Rushing in half-stocked is wasteful',
+            ja: '今の部屋を全部漁ってから行く。半端なまま突っ込むのは無駄だ',
+            ko: '현재 방 루팅 다 마치고 간다. 반만 채우고 돌진하는 건 낭비다',
+          },
+          scoring: [{ axis: 'Nerve', delta: -1 }, { axis: 'Bond', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '过去了，但保持距离观察，不贸然进战',
+            en: 'Move toward them but hold distance. Observe before committing to the fight',
+            ja: '移動はするが距離を保つ。戦闘に参加する前に状況を確認する',
+            ko: '이동은 하되 거리 유지. 전투 합류 전 상황 관찰',
+          },
+          scoring: [{ axis: 'Nerve', delta: -1 }, { axis: 'Bond', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '让他坚持，我这边情况也复杂，各自解决各自的',
+            en: 'Tell them to hold. Your side is complicated too; handle your own situation',
+            ja: '踏ん張ってと伝える。こちらも状況が複雑だ。各自で解決する',
+            ko: '버티라고 한다. 이쪽도 상황이 복잡하다. 각자 해결하면 된다',
+          },
+          scoring: [{ axis: 'Nerve', delta: -1 }, { axis: 'Bond', delta: -1 }],
+        },
+      ],
+    },
+    // Q17 — Intel × Bond (information sharing / recon)
+    {
+      id: 'df-q17',
+      kind: 'compound',
+      text: {
+        zh: '你发现了一个没人知道的安全撤离路线，你……',
+        en: 'You\'ve found a safe extraction route nobody else knows about. You…',
+        ja: '誰も知らない安全な撤退ルートを発見した。あなたは……',
+        ko: '아무도 모르는 안전한 철수 루트를 발견했다. 당신은……',
+      },
+      options: [
+        {
+          label: {
+            zh: '告诉全队，信息分享了才有团队优势',
+            en: 'Share it with the whole squad. Information shared is team advantage',
+            ja: 'チーム全員に教える。情報を共有してこそチームの優位性が生まれる',
+            ko: '팀 전체에 공유한다. 정보 나눠야 팀 이점이 생긴다',
+          },
+          scoring: [{ axis: 'Intel', delta: -1 }, { axis: 'Bond', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '留着自用，人多了那条路就不安全了',
+            en: 'Keep it. More people on that route means it stops being safe',
+            ja: '自分用に取っておく。人が増えたらそのルートは安全じゃなくなる',
+            ko: '혼자만 쓴다. 사람 많아지면 그 루트도 안전하지 않아진다',
+          },
+          scoring: [{ axis: 'Intel', delta: 1 }, { axis: 'Bond', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '标记在地图上，不说话，队友自己发现吧',
+            en: 'Mark it on the map silently. If teammates notice, good for them',
+            ja: 'マップに印をつけるだけ。チームメイットが気づけば幸運だ',
+            ko: '지도에 표시만 한다. 팀원이 알아채면 그만이다',
+          },
+          scoring: [{ axis: 'Intel', delta: 1 }, { axis: 'Bond', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '先用这次，下次再和队友分享，保险起见',
+            en: 'Use it this run, share it with the squad next time once confirmed',
+            ja: '今回は自分で使う。次回、確認が取れたらチームと共有する',
+            ko: '이번엔 혼자 쓰고 다음엔 팀과 공유한다. 확인 후에 알려주는 게 안전하다',
+          },
+          scoring: [{ axis: 'Intel', delta: -1 }, { axis: 'Bond', delta: 1 }],
+        },
+      ],
+    },
+    // Q18 — Tempo × Flair (armored-showoff / extraction ceremony)
+    {
+      id: 'df-q18',
+      kind: 'compound',
+      text: {
+        zh: '你发现了一辆装甲车，距离撤离点还有 3 分钟，你……',
+        en: 'You find an armored vehicle with three minutes to extraction. You…',
+        ja: '撤退まで3分のところで装甲車を発見した。あなたは……',
+        ko: '철수까지 3분 남은 상황에서 장갑차를 발견했다. 당신은……',
+      },
+      options: [
+        {
+          label: {
+            zh: '开车撤离，大场面，这才叫结局',
+            en: 'Drive out in style. This is how an extraction should end',
+            ja: '車で撤退する。これこそがエンディングだ',
+            ko: '차 타고 퇴장한다. 이게 철수다',
+          },
+          scoring: [{ axis: 'Tempo', delta: 1 }, { axis: 'Flair', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '不坐，开车声音太大，暴露位置不划算',
+            en: 'Skip it. The engine noise gives away your position; not worth the drama',
+            ja: '乗らない。エンジン音で位置がバレる。そのリスクに見合わない',
+            ko: '안 탄다. 엔진 소리로 위치 노출된다. 리스크가 이점보다 크다',
+          },
+          scoring: [{ axis: 'Tempo', delta: -1 }, { axis: 'Flair', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '坐上去，要快，别管有没有好看',
+            en: 'Get in and go fast. Efficiency over aesthetics',
+            ja: '乗って急ぐ。見た目より効率だ',
+            ko: '타고 빠르게 간다. 효율이 미학보다 우선이다',
+          },
+          scoring: [{ axis: 'Tempo', delta: 1 }, { axis: 'Flair', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '找个角度录个开车出来的镜头，然后再走',
+            en: 'Set up the angle for the clip first, then drive out',
+            ja: 'まずクリップ映えするアングルを確認してから出発する',
+            ko: '클립 찍기 좋은 각도 먼저 잡고 나서 출발한다',
+          },
+          scoring: [{ axis: 'Tempo', delta: -1 }, { axis: 'Flair', delta: 1 }],
+        },
+      ],
+    },
+    // Q19 — Nerve × Flair (loadout-romantic / weapon identity)
+    {
+      id: 'df-q19',
+      kind: 'compound',
+      text: {
+        zh: '版本更新削弱了你最爱的枪，你……',
+        en: 'A patch nerfed your favorite weapon. You…',
+        ja: 'アップデートでお気に入りの武器がナーフされた。あなたは……',
+        ko: '업데이트로 좋아하는 총이 너프됐다. 당신은……',
+      },
+      options: [
+        {
+          label: {
+            zh: '换枪，跟版本跑是基本功，感情用事会输',
+            en: 'Switch weapons. Following the meta is fundamentals; sentiment loses games',
+            ja: '武器を変える。メタに合わせることが基本。感情で戦うと負ける',
+            ko: '총 바꾼다. 메타 따라가는 게 기본기. 감정으로 하면 진다',
+          },
+          scoring: [{ axis: 'Nerve', delta: -1 }, { axis: 'Flair', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '继续用，削弱了也打，这把枪是我的身份',
+            en: 'Keep using it. Nerfed or not, this weapon is your identity',
+            ja: 'ナーフされても使い続ける。この武器は自分のアイデンティティだ',
+            ko: '계속 쓴다. 너프됐어도 이 총은 내 정체성이다',
+          },
+          scoring: [{ axis: 'Nerve', delta: 1 }, { axis: 'Flair', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '先测一下新数据，看看削弱了多少，再决定',
+            en: 'Test the new numbers first, then decide based on how much it dropped',
+            ja: '新しいデータをテストしてから、どれくらい弱体化したか確認して決める',
+            ko: '새 수치 먼저 테스트하고 얼마나 약해졌는지 확인 후 결정',
+          },
+          scoring: [{ axis: 'Nerve', delta: -1 }, { axis: 'Flair', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '坚持用，打出来的高光更有价值，不靠强版本',
+            en: 'Stick with it. Highlights with an off-meta weapon mean more',
+            ja: '使い続ける。弱い武器でのハイライトの方が価値がある',
+            ko: '계속 쓴다. 비메타 무기로 찍은 하이라이트가 더 가치 있다',
+          },
+          scoring: [{ axis: 'Nerve', delta: 1 }, { axis: 'Flair', delta: 1 }],
+        },
+      ],
+    },
+    // Q20 — Tempo × Bond (squad coordination speed)
+    {
+      id: 'df-q20',
+      kind: 'compound',
+      text: {
+        zh: '团队还在讨论策略，你已经看好路线了，你……',
+        en: 'The squad is still debating the plan and you\'ve already mapped the route. You…',
+        ja: 'チームがまだ戦略を議論している間に、あなたはもうルートを決めた。あなたは……',
+        ko: '팀이 전략 논의 중인데 당신은 이미 루트 정했다. 당신은……',
+      },
+      options: [
+        {
+          label: {
+            zh: '等大家讨论完，整队行动效果更好',
+            en: 'Wait for the discussion to wrap up. Coordinated moves hit harder',
+            ja: '議論が終わるまで待つ。まとまって動く方が効果的だ',
+            ko: '토론이 끝날 때까지 기다린다. 함께 움직이면 더 효과적이다',
+          },
+          scoring: [{ axis: 'Tempo', delta: -1 }, { axis: 'Bond', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '先走，等他们找到我就行了',
+            en: 'Move ahead. They\'ll find you when they\'re ready',
+            ja: '先に出発する。準備ができたら向こうが来る',
+            ko: '먼저 출발한다. 준비되면 그쪽에서 올 거다',
+          },
+          scoring: [{ axis: 'Tempo', delta: 1 }, { axis: 'Bond', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '把我的路线分享给大家，然后出发',
+            en: 'Share your route with everyone, then go',
+            ja: '自分のルートをみんなに共有してから出発する',
+            ko: '내 루트 팀에 공유하고 출발한다',
+          },
+          scoring: [{ axis: 'Tempo', delta: 1 }, { axis: 'Bond', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '等人，但在心里把方案优化三遍',
+            en: 'Wait for them, but mentally refine the plan three times while doing it',
+            ja: '待つが、頭の中でルートを3回最適化する',
+            ko: '기다리되 머릿속으로 루트를 세 번 최적화한다',
+          },
+          scoring: [{ axis: 'Tempo', delta: -1 }, { axis: 'Bond', delta: 1 }],
+        },
+      ],
+    },
+    // Q21 — Nerve × Mental (tilt / risk under pressure)
+    {
+      id: 'df-q21',
+      kind: 'compound',
+      text: {
+        zh: '你和对面单挑输了，对面开始嘲讽，你……',
+        en: 'You lost a 1v1 and the opponent is teabagging. You…',
+        ja: '1v1で負けて、相手が挑発を始めた。あなたは……',
+        ko: '1v1에서 지고 상대가 도발하기 시작했다. 당신은……',
+      },
+      options: [
+        {
+          label: {
+            zh: '立刻重新开把去找他，一定要赢回来',
+            en: 'Queue again immediately to hunt them down. You need that win back',
+            ja: 'すぐに再キューして追いかける。取り返さないといけない',
+            ko: '즉시 다시 큐 잡아서 찾아간다. 반드시 되찾아야 한다',
+          },
+          scoring: [{ axis: 'Nerve', delta: 1 }, { axis: 'Mental', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '无所谓，嘲讽是游戏的一部分，下把更稳就好',
+            en: 'Doesn\'t matter. Taunting is part of the game; play cleaner next time',
+            ja: 'どうでもいい。挑発はゲームの一部。次はもっとうまくやる',
+            ko: '상관없다. 도발은 게임의 일부. 다음 판 더 잘하면 된다',
+          },
+          scoring: [{ axis: 'Nerve', delta: -1 }, { axis: 'Mental', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '记住那个玩家名字，下次再遇见一定教训他',
+            en: 'Memorize the username. Next time you meet, you settle it properly',
+            ja: 'プレイヤー名を覚える。次会ったとき、ちゃんとやり返す',
+            ko: '플레이어 이름 기억해둔다. 다음에 만나면 제대로 처리한다',
+          },
+          scoring: [{ axis: 'Nerve', delta: 1 }, { axis: 'Mental', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '总结一下输在哪，减少下次犯同样错误的概率',
+            en: 'Figure out where you went wrong. Fewer repeat mistakes next run',
+            ja: 'どこで負けたか分析する。同じミスを次で減らす',
+            ko: '어디서 졌는지 분석한다. 다음엔 같은 실수를 줄인다',
+          },
+          scoring: [{ axis: 'Nerve', delta: -1 }, { axis: 'Mental', delta: -1 }],
+        },
+      ],
+    },
+    // Q22 — Intel × Flair (loadout display / data vs. feel)
+    {
+      id: 'df-q22',
+      kind: 'compound',
+      text: {
+        zh: '你在 B 站看到了一个"最强高价值区配置推荐"视频，你……',
+        en: 'You find a Bilibili video titled "Best High-Value Zone Loadout Guide." You…',
+        ja: 'Bilibiliで「最強高価値エリア装備推薦」動画を見つけた。あなたは……',
+        ko: '빌리빌리에서 "최강 고가치 구역 장비 추천" 영상을 발견했다. 당신은……',
+      },
+      options: [
+        {
+          label: {
+            zh: '认真看完，下次进局用推荐配置试试',
+            en: 'Watch it carefully and try the recommended loadout next run',
+            ja: 'しっかり見て、次のランで推薦装備を試す',
+            ko: '꼼꼼히 보고 다음 런에 추천 장비 써본다',
+          },
+          scoring: [{ axis: 'Intel', delta: -1 }, { axis: 'Flair', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '看一眼但不跟，感觉那套不适合我的打法',
+            en: 'Glance at it but pass. That kit doesn\'t match your playstyle',
+            ja: 'ちらっと見るが従わない。あの装備は自分のプレースタイルに合わない',
+            ko: '잠깐 보지만 따르진 않는다. 그 장비는 내 플레이스타일에 안 맞는다',
+          },
+          scoring: [{ axis: 'Intel', delta: 1 }, { axis: 'Flair', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '把数据记下来，自己做对比验证',
+            en: 'Write down the numbers and run your own comparison tests',
+            ja: 'データを書き留めて、自分で比較検証する',
+            ko: '수치 기록하고 직접 비교 테스트를 한다',
+          },
+          scoring: [{ axis: 'Intel', delta: -1 }, { axis: 'Flair', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '自己也想出一个配置，拍视频发上去',
+            en: 'Come up with your own loadout guide and post it',
+            ja: '自分でも装備ガイドを考えて投稿する',
+            ko: '나만의 장비 가이드 만들어서 올린다',
+          },
+          scoring: [{ axis: 'Intel', delta: 1 }, { axis: 'Flair', delta: 1 }],
+        },
+      ],
+    },
+    // Q23 — Tempo × Mental (pace under pressure)
+    {
+      id: 'df-q23',
+      kind: 'compound',
+      text: {
+        zh: '队友一直在催你快点，你……',
+        en: 'A teammate keeps telling you to hurry up. You…',
+        ja: 'チームメイットがずっと急かしてくる。あなたは……',
+        ko: '팀원이 계속 빨리하라고 재촉한다. 당신은……',
+      },
+      options: [
+        {
+          label: {
+            zh: '确实加快了，反正已经搜得差不多了',
+            en: 'You do speed up. You were mostly done anyway',
+            ja: 'たしかに少し急ぐ。もともとほぼ終わってたし',
+            ko: '실제로 속도를 높인다. 어차피 거의 다 했다',
+          },
+          scoring: [{ axis: 'Tempo', delta: 1 }, { axis: 'Mental', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '无视，按自己的节奏，催了出错更麻烦',
+            en: 'Ignore it. Your pace is your pace; rushing leads to mistakes',
+            ja: '無視する。自分のペースを守る。焦るとミスが増える',
+            ko: '무시한다. 내 페이스대로. 서두르면 실수가 많아진다',
+          },
+          scoring: [{ axis: 'Tempo', delta: -1 }, { axis: 'Mental', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '有点烦，但忍着，等把这个箱子搜完',
+            en: 'Mildly annoyed but hold it in. Just finish this crate first',
+            ja: '少しイラっとするが我慢する。この箱を開け終わるまで',
+            ko: '조금 짜증나지만 참는다. 이 상자만 다 열면 된다',
+          },
+          scoring: [{ axis: 'Tempo', delta: -1 }, { axis: 'Mental', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '直接开麦说"我有计划，你跟着走就好"',
+            en: 'Unmute and say "I have a plan. Just follow my lead"',
+            ja: 'マイクをオンにして「計画がある。ついてきて」と伝える',
+            ko: '마이크 켜고 "계획 있다. 그냥 따라와"라고 말한다',
+          },
+          scoring: [{ axis: 'Tempo', delta: 1 }, { axis: 'Mental', delta: 1 }],
+        },
+      ],
+    },
+    // Q24 — Nerve × Tempo (crate-philosopher vacuum / ROI speed)
+    {
+      id: 'df-q24',
+      kind: 'compound',
+      text: {
+        zh: '你找到一个几乎没人来过的角落，里面有四个箱子，你……',
+        en: 'You find a corner no one else has touched. Four crates inside. You…',
+        ja: '誰もほとんど来ていないコーナーを見つけた。中に箱が4つある。あなたは……',
+        ko: '거의 아무도 오지 않은 구석을 발견했다. 안에 상자가 네 개 있다. 당신은……',
+      },
+      options: [
+        {
+          label: {
+            zh: '关门，全部搜完，这就是"苟活"的黄金地带',
+            en: 'Close the door and clear all four. This is what "rat mode" looks like at its best',
+            ja: 'ドアを閉めて4つ全部開ける。これが「苟活」の黄金地帯だ',
+            ko: '문 닫고 다 뒤진다. 이게 "쥐 플레이"의 황금 구역이다',
+          },
+          scoring: [{ axis: 'Nerve', delta: -1 }, { axis: 'Tempo', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '快速扫一遍，只拿最值钱的，然后继续移动',
+            en: 'Speed-scan all four, grab only the highest-value items, keep moving',
+            ja: '素早くスキャンして最も価値のある物だけ取り、移動を続ける',
+            ko: '빠르게 훑어서 가장 가치 있는 것만 챙기고 계속 이동',
+          },
+          scoring: [{ axis: 'Nerve', delta: 1 }, { axis: 'Tempo', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '有点想全搜，但撤离时间快到了，只能取舍',
+            en: 'Want to clear all of them, but time is short. You triage',
+            ja: '全部開けたいが時間が迫っている。取捨選択する',
+            ko: '다 열고 싶은데 시간이 촉박하다. 우선순위 정해야 한다',
+          },
+          scoring: [{ axis: 'Nerve', delta: -1 }, { axis: 'Tempo', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '记下位置，这次全搜，下次还来',
+            en: 'Note the location, clear everything now, and plan to return next run',
+            ja: '場所をメモして今回は全部取り、次回また来る計画を立てる',
+            ko: '위치 기록해두고 이번엔 다 챙기고 다음에도 온다',
+          },
+          scoring: [{ axis: 'Nerve', delta: -1 }, { axis: 'Tempo', delta: -1 }],
+        },
+      ],
+    },
+    // Q25 — Intel × Mental (information overload / tilt)
+    {
+      id: 'df-q25',
+      kind: 'compound',
+      text: {
+        zh: '你在局内没有什么关键信息，视野一片混乱，你……',
+        en: 'You\'re in a run with no solid intel and the situation is chaotic. You…',
+        ja: 'ランの最中に重要な情報がなく、状況が混乱している。あなたは……',
+        ko: '런 중에 핵심 정보가 없고 상황이 혼란스럽다. 당신은……',
+      },
+      options: [
+        {
+          label: {
+            zh: '冷静，耳朵和眼睛同时工作，慢慢拼出一张地图',
+            en: 'Stay calm. Ears and eyes work together to piece the map together',
+            ja: '落ち着いて耳と目を同時に使い、少しずつ状況を把握していく',
+            ko: '침착하게 귀와 눈을 함께 써서 천천히 상황을 파악한다',
+          },
+          scoring: [{ axis: 'Intel', delta: 1 }, { axis: 'Mental', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '不管了，凭感觉走，混乱中靠直觉更有用',
+            en: 'Stop trying to figure it out. Instinct works better in chaos',
+            ja: '考えるのをやめる。混乱の中では直感の方が役立つ',
+            ko: '파악하려는 걸 포기한다. 혼란 속에서는 직감이 더 유용하다',
+          },
+          scoring: [{ axis: 'Intel', delta: 1 }, { axis: 'Mental', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '有点焦虑，但强撑着继续分析',
+            en: 'A bit anxious, but you push through and keep analyzing anyway',
+            ja: '少し焦るが、強引に分析を続ける',
+            ko: '조금 불안하지만 억지로 분석을 계속한다',
+          },
+          scoring: [{ axis: 'Intel', delta: -1 }, { axis: 'Mental', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '信息不够直接暂停行动，找到安全点再重新评估',
+            en: 'Not enough intel to move. Find a safe spot, stop, and reassess',
+            ja: '情報不足で行動をいったん止める。安全な場所を見つけて再評価する',
+            ko: '정보 부족이면 행동 중단. 안전 지점 찾아서 재평가한다',
+          },
+          scoring: [{ axis: 'Intel', delta: -1 }, { axis: 'Mental', delta: -1 }],
+        },
+      ],
+    },
+    // Q26 — Bond × Flair (squad showmanship)
+    {
+      id: 'df-q26',
+      kind: 'compound',
+      text: {
+        zh: '全队一起撤离成功，最后的撤离镜头里……',
+        en: 'The whole squad extracts successfully. In the extraction cutscene…',
+        ja: 'チーム全員の撤退成功。撤退カットシーンで……',
+        ko: '팀 전체 철수 성공. 철수 컷씬에서……',
+      },
+      options: [
+        {
+          label: {
+            zh: '我就站在队友旁边，合影一下也好看',
+            en: 'You stand next to your teammates. A group shot is a good shot',
+            ja: 'チームメイットの隣に立つ。集合写真もいい',
+            ko: '팀원 옆에 서있다. 단체 사진도 잘 나온다',
+          },
+          scoring: [{ axis: 'Bond', delta: 1 }, { axis: 'Flair', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '低调站着，不需要特别的仪式感',
+            en: 'You stand quietly. No ceremony needed; you all made it',
+            ja: 'そっと立っている。特別な儀式は要らない。全員脱出できた',
+            ko: '조용히 서있다. 특별한 의식 필요 없다. 다 살았으면 됐지',
+          },
+          scoring: [{ axis: 'Bond', delta: -1 }, { axis: 'Flair', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '把这次合作的高光时刻整理成一个剪辑，发给大家',
+            en: 'You cut together the squad highlights from this run and share them in the group',
+            ja: 'このランのチームハイライトを編集してみんなに送る',
+            ko: '이번 런 팀 하이라이트 편집해서 다들에게 공유한다',
+          },
+          scoring: [{ axis: 'Bond', delta: 1 }, { axis: 'Flair', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '撤离就撤离，截图战利品比截图人更有意义',
+            en: 'Skip the cutscene screenshot. Loot lists are more meaningful than group shots',
+            ja: 'カットシーンの写真より戦利品リストの方が意味がある',
+            ko: '컷씬 사진보다 전리품 목록 스크린샷이 더 의미 있다',
+          },
+          scoring: [{ axis: 'Bond', delta: -1 }, { axis: 'Flair', delta: -1 }],
+        },
+      ],
+    },
+    // Q27 — Bond × Mental (rescue stress)
+    {
+      id: 'df-q27',
+      kind: 'compound',
+      text: {
+        zh: '一个陌生人在频道里求救，位置离你不远，你……',
+        en: 'A random player calls for help in voice chat. They\'re not far. You…',
+        ja: 'ボイスチャットで知らないプレイヤーが助けを求めている。場所は遠くない。あなたは……',
+        ko: '음성 채팅에서 모르는 플레이어가 도움을 요청한다. 위치가 멀지 않다. 당신은……',
+      },
+      options: [
+        {
+          label: {
+            zh: '去救，万一是个好人呢',
+            en: 'Go help. Could be a decent person, could be a good trade',
+            ja: '助けに行く。いい人かもしれないし、いい取引になるかもしれない',
+            ko: '도우러 간다. 좋은 사람일 수도 있고 좋은 거래가 될 수도 있다',
+          },
+          scoring: [{ axis: 'Bond', delta: 1 }, { axis: 'Mental', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '不去，陌生人的情况我无法判断，风险太高',
+            en: 'Pass. A stranger\'s situation is unknown; the risk isn\'t worth it',
+            ja: '行かない。見知らぬ人の状況は判断できない。リスクが高い',
+            ko: '안 간다. 낯선 사람의 상황은 판단할 수 없다. 위험이 크다',
+          },
+          scoring: [{ axis: 'Bond', delta: -1 }, { axis: 'Mental', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '先问问他们有没有好装备可以共享，条件合适再去',
+            en: 'Ask if they\'ve got good gear to share first. Fair trade, then help',
+            ja: 'まず共有できる良い装備があるか聞く。条件が合えば助けに行く',
+            ko: '공유할 좋은 장비 있는지 먼저 물어본다. 조건 맞으면 도우러 간다',
+          },
+          scoring: [{ axis: 'Bond', delta: -1 }, { axis: 'Mental', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '去，但做好被背刺的准备，无所谓',
+            en: 'Go, but mentally prepared to get betrayed. Fine either way',
+            ja: '行く。でも裏切られる覚悟はある。どちらでもいい',
+            ko: '간다. 하지만 배신당할 준비는 돼 있다. 어느 쪽이든 괜찮다',
+          },
+          scoring: [{ axis: 'Bond', delta: 1 }, { axis: 'Mental', delta: -1 }],
+        },
+      ],
+    },
+    // Q28 — Nerve × Intel × dominants (peak-end: funny scenario — loadout regret comedy)
+    {
+      id: 'df-q28',
+      kind: 'compound',
+      text: {
+        zh: '你带了一把新版本数据非常好的枪，结果用起来完全不顺手，你……',
+        en: 'You brought the weapon with the best stats in the new patch. It feels completely wrong in your hands. You…',
+        ja: '新バージョンで性能が一番良い武器を持ってきた。でも全然しっくりこない。あなたは……',
+        ko: '새 패치에서 스탯이 제일 좋다는 총을 들고 왔다. 근데 손에 전혀 안 맞는다. 당신은……',
+      },
+      options: [
+        {
+          label: {
+            zh: '忍着用，数据好才是真好，手感可以练出来',
+            en: 'Gut it out. Good stats win; you can train the feel later',
+            ja: '我慢して使う。数値が良いのが本物。手に馴染むのは練習次第',
+            ko: '참고 쓴다. 좋은 스탯이 진짜 좋은 거다. 손 맞는 건 연습하면 된다',
+          },
+          scoring: [{ axis: 'Nerve', delta: -1 }, { axis: 'Intel', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '换回熟悉那把，感觉好才能发挥水平',
+            en: 'Switch back to the familiar one. Comfort is performance',
+            ja: '慣れた武器に戻す。しっくりくるから実力が出せる',
+            ko: '익숙한 거로 돌아간다. 편해야 실력이 나온다',
+          },
+          scoring: [{ axis: 'Nerve', delta: 1 }, { axis: 'Intel', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '在背包里放两把，视情况换',
+            en: 'Carry both in your bag and swap depending on the situation',
+            ja: 'バッグに両方入れて状況に応じて使い分ける',
+            ko: '배낭에 둘 다 넣고 상황에 따라 바꿔 쓴다',
+          },
+          scoring: [{ axis: 'Nerve', delta: -1 }, { axis: 'Intel', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '直接测这把枪能不能在高价值区压住对面，不行再说',
+            en: 'Test it under pressure in the hot zone first. If it fails, you\'ll know',
+            ja: '高価値エリアでこの武器がプレッシャーに耐えられるか直接テストする。ダメなら考える',
+            ko: '고가치 구역에서 직접 테스트한다. 안 되면 그때 생각한다',
+          },
+          scoring: [{ axis: 'Nerve', delta: 1 }, { axis: 'Intel', delta: -1 }],
+        },
+      ],
+    },
+    // Q29 — Tempo × Intel (extraction timing — vacuum effect comedy)
+    {
+      id: 'df-q29',
+      kind: 'compound',
+      text: {
+        zh: '所有人都在抢撤离点，你……',
+        en: 'Every player left is converging on the same extraction point. You…',
+        ja: '残っている全員が同じ撤退ポイントに集まってきた。あなたは……',
+        ko: '남은 모든 플레이어가 같은 철수 지점으로 몰려든다. 당신은……',
+      },
+      options: [
+        {
+          label: {
+            zh: '直接推过去，提前到了就是优势',
+            en: 'Push straight through. First there has the angle advantage',
+            ja: '直接向かう。先に着いた方が有利だ',
+            ko: '그냥 밀고 간다. 먼저 도착하면 각도 우위가 생긴다',
+          },
+          scoring: [{ axis: 'Tempo', delta: 1 }, { axis: 'Intel', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '等他们先互相打，我再出现',
+            en: 'Wait for them to fight each other first, then appear',
+            ja: '先に彼らが戦い合うのを待ってから登場する',
+            ko: '먼저 서로 싸우게 내버려두고 나서 등장한다',
+          },
+          scoring: [{ axis: 'Tempo', delta: -1 }, { axis: 'Intel', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '换一个没人争的撤离点，我早就查好备用方案了',
+            en: 'Switch to the other extraction point nobody\'s fighting over. You had a backup',
+            ja: '誰も争っていない別の撤退ポイントに変更する。予備プランは用意してあった',
+            ko: '아무도 안 싸우는 다른 철수 지점으로 바꾼다. 대안은 이미 준비해뒀다',
+          },
+          scoring: [{ axis: 'Tempo', delta: -1 }, { axis: 'Intel', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '绕到人群后方，趁乱打一波，再撤',
+            en: 'Circle behind the crowd, land a play in the chaos, then extract',
+            ja: '人の後ろに回り込んで混乱に乗じて動き、撤退する',
+            ko: '군중 뒤쪽으로 돌아서 혼란 속에 한 방 먹이고 철수한다',
+          },
+          scoring: [{ axis: 'Tempo', delta: 1 }, { axis: 'Intel', delta: 1 }],
+        },
+      ],
+    },
+    // Q30 — Nerve × Tempo × Flair (peak-end: armored-showoff extract-zone showmanship)
+    {
+      id: 'df-q30',
+      kind: 'compound',
+      text: {
+        zh: '这把你背包全满，装甲全上，撤离点就在前方，只有一个人挡路，你……',
+        en: 'Full bag, full armor, extraction ahead, one person in the way. You…',
+        ja: 'バッグ満杯、アーマー全装着、撤退ポイントは目の前、一人だけが邪魔している。あなたは……',
+        ko: '가방 가득, 방탄복 완전 장착, 철수 지점이 눈앞에, 한 명이 막고 있다. 당신은……',
+      },
+      options: [
+        {
+          label: {
+            zh: '绕路，保住装备比打架重要，撤离才是目标',
+            en: 'Detour around them. Gear safety over glory; extraction is the point',
+            ja: '迂回する。装備を守ることが戦闘より重要。撤退がゴールだ',
+            ko: '우회한다. 장비 안전이 전투보다 중요. 철수가 목표다',
+          },
+          scoring: [{ axis: 'Nerve', delta: -1 }, { axis: 'Flair', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '正面冲，打死他，然后走，简单干净',
+            en: 'Frontal charge, take them down, then extract. Clean and simple',
+            ja: '正面突撃。倒してから撤退する。シンプルで明快だ',
+            ko: '정면 돌격, 쓰러뜨리고 철수한다. 단순하고 깔끔하다',
+          },
+          scoring: [{ axis: 'Nerve', delta: 1 }, { axis: 'Flair', delta: -1 }],
+        },
+        {
+          label: {
+            zh: '找个装甲车开过去，碾过他再撤离，这才叫电影',
+            en: 'Find the nearest vehicle, run him over on the way to extraction — that\'s a movie ending',
+            ja: '装甲車を見つけて轢いてから撤退する。それこそが映画のラストだ',
+            ko: '장갑차 찾아서 치고 철수한다. 이게 영화 엔딩이지',
+          },
+          scoring: [{ axis: 'Nerve', delta: 1 }, { axis: 'Flair', delta: 1 }],
+        },
+        {
+          label: {
+            zh: '先用战术烟雾遮住自己，等他误判位置，绕过去',
+            en: 'Pop smoke to cover your position, let them misread the angle, slip through',
+            ja: '煙幕で位置を隠して相手に誤判断させ、すり抜ける',
+            ko: '연막탄 터뜨려서 위치 가리고 상대가 각도 오판하게 만들어 통과한다',
+          },
+          scoring: [{ axis: 'Nerve', delta: -1 }, { axis: 'Flair', delta: 1 }],
+        },
+      ],
+    },
+  ],
 };
 
 export default game;
