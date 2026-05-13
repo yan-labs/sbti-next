@@ -9,7 +9,7 @@ import {type DimCode, type Level} from '@/lib/types';
 import {AXIS_ORDER} from '@/lib/data/games/dimensions';
 import type {Axis, PolarityCode} from '@/lib/data/games/types';
 
-interface SaveImageButtonProps {
+export interface SaveImageButtonProps {
   code: string;
   name: string;
   description: string;
@@ -266,7 +266,7 @@ function clipRoundedRect(
   ctx.clip();
 }
 
-async function generateImage({
+export async function generateImage({
   code,
   name,
   description,

@@ -3,8 +3,7 @@
 import {useEffect, useState} from 'react';
 import Image from 'next/image';
 import {useLocale, useTranslations} from 'next-intl';
-import {ShareButtons} from '@/components/share-buttons';
-import {SaveImageButton} from '@/components/save-result-image';
+import {generateImage} from '@/components/save-result-image';
 import {BlogCards} from '@/components/blog-cards';
 import {Link} from '@/i18n/navigation';
 import {decodeResultState} from '@/lib/result-share';
@@ -74,6 +73,50 @@ function todayStamp(locale: string) {
   }
 }
 
+/** Editorial icon chip — 44px square, ink border, hover inverts. Adjacent
+ *  chips share borders via negative margin so the strip reads as a single
+ *  toolbar rather than separated buttons. */
+function ChipButton({
+  onClick,
+  label,
+  children,
+  active = false,
+  first = false,
+}: {
+  onClick: () => void;
+  label: string;
+  children: React.ReactNode;
+  active?: boolean;
+  first?: boolean;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      aria-label={label}
+      title={label}
+      className={`relative inline-flex h-11 w-11 items-center justify-center border-2 transition-colors duration-150 hover:z-[1] focus-visible:z-[1] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-1 ${first ? '' : '-ml-[2px]'}`}
+      style={{
+        borderColor: 'var(--ink)',
+        background: active ? 'var(--ink)' : 'var(--paper-soft)',
+        color: active ? 'var(--paper-soft)' : 'var(--ink)',
+      }}
+      onMouseEnter={(e) => {
+        if (active) return;
+        e.currentTarget.style.background = 'var(--ink)';
+        e.currentTarget.style.color = 'var(--paper-soft)';
+      }}
+      onMouseLeave={(e) => {
+        if (active) return;
+        e.currentTarget.style.background = 'var(--paper-soft)';
+        e.currentTarget.style.color = 'var(--ink)';
+      }}
+    >
+      {children}
+    </button>
+  );
+}
+
 function ResultSharePageInner({code}: {code: string}) {
   const t = useTranslations('result');
   const ts = useTranslations('share');
@@ -84,6 +127,8 @@ function ResultSharePageInner({code}: {code: string}) {
   const td = useTranslations('dimensions');
   const locale = useLocale();
   const [resultStateParam, setResultStateParam] = useState<string | null>(null);
+  const [saving, setSaving] = useState(false);
+  const [copied, setCopied] = useState(false);
 
   useEffect(() => {
     const frame = requestAnimationFrame(() => {
@@ -134,6 +179,64 @@ function ResultSharePageInner({code}: {code: string}) {
   // Body split for 3-col newspaper + dropcap
   const dropcap = desc ? [...desc][0] : '';
   const descBody = desc ? desc.slice(dropcap.length) : '';
+
+  // ── Share handlers (inline so the strip can speak the editorial visual
+  // language without reaching into the generic ShareButtons component) ────
+  const localizedShareUrl = (() => {
+    if (/^\/(zh|ja|ko)(\/|$)/.test(shareUrl)) return shareUrl;
+    return locale === 'en' ? shareUrl : `/${locale}${shareUrl}`;
+  })();
+  const fullShareUrl = `https://sbti.support${localizedShareUrl}`;
+  const shareTitle = `${code} — ${cn}`;
+  const shareText = intro;
+
+  const handleSaveImage = async () => {
+    if (saving || !levels) return;
+    setSaving(true);
+    try {
+      const blob = await generateImage({
+        code,
+        name: cn,
+        description: intro,
+        matchLabel: result ? `${result.primary.similarity}%` : '100%',
+        exactHitsLabel: result ? `${result.primary.exact}/15` : '15/15',
+        dimensionsTitle: t('dimensions'),
+        dimensions: DIMENSION_ORDER.map((dim) => {
+          const level = levels[dim];
+          return {code: dim, label: td(dim), level, levelLabel: t(`level${level}`)};
+        }),
+      });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `sbti-${code}.png`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    } catch (err) {
+      console.error('Save image failed:', err);
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  const copyLink = async () => {
+    await navigator.clipboard.writeText(fullShareUrl);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+  const popup = (href: string) =>
+    window.open(href, '_blank', 'width=550,height=420');
+  const shareTwitter = () => popup(
+    `https://twitter.com/intent/tweet?text=${encodeURIComponent(`${shareTitle}\n${shareText}`)}&url=${encodeURIComponent(fullShareUrl)}`,
+  );
+  const shareFacebook = () => popup(
+    `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(fullShareUrl)}`,
+  );
+  const shareLine = () => popup(
+    `https://line.me/R/msg/text/?${encodeURIComponent(`${shareTitle}\n${shareText}\n${fullShareUrl}`)}`,
+  );
 
   return (
     <div
@@ -294,6 +397,91 @@ function ResultSharePageInner({code}: {code: string}) {
               {intro || s(tr, 'strapFallback', '本期独家样本')}
             </span>
           </p>
+
+          {/* ── EDITORIAL SHARE STRIP ─────────────────────────────────────
+              Lives inside the hero column so it's the first thing readers
+              see — sharp-edge primary CTA + ink-bordered icon chips that
+              share borders like a print toolbar. */}
+          <div className="mt-6 max-w-[440px]">
+            <div
+              className="mono-label mb-2 flex items-baseline justify-between gap-3"
+              style={{color: 'var(--vermillion)'}}
+            >
+              <span>{ts('shareResult')} · SHARE</span>
+              <span
+                aria-hidden
+                className="hidden flex-1 self-center border-t sm:block"
+                style={{borderColor: 'var(--vermillion)', opacity: 0.35}}
+              />
+              <span style={{color: 'var(--ink-muted, var(--muted-foreground))'}}>
+                Nº {fmtNo(no)}
+              </span>
+            </div>
+            <div className="flex flex-wrap items-stretch gap-2">
+              {levels && (
+                <button
+                  type="button"
+                  onClick={handleSaveImage}
+                  disabled={saving}
+                  aria-label={saving ? ts('saving') : ts('saveImage')}
+                  className="group/save inline-flex h-11 items-center justify-center gap-2 rounded-none px-4 font-bold text-sm transition-[transform,box-shadow] duration-200 hover:-translate-y-[1px] active:translate-y-0 disabled:opacity-60"
+                  style={{
+                    background: 'var(--vermillion)',
+                    color: 'var(--paper-soft)',
+                    boxShadow: '4px 4px 0 0 var(--ink)',
+                  }}
+                >
+                  {saving ? (
+                    <svg viewBox="0 0 24 24" className="h-4 w-4 animate-spin" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                      <path d="M21 12a9 9 0 1 1-6.219-8.56" />
+                    </svg>
+                  ) : (
+                    <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                      <polyline points="7 10 12 15 17 10" />
+                      <line x1="12" y1="15" x2="12" y2="3" />
+                    </svg>
+                  )}
+                  <span>{saving ? ts('saving') : ts('saveImage')}</span>
+                </button>
+              )}
+              {/* Icon chip row — adjacent borders collapse via -ml-[2px] */}
+              <div className="flex items-stretch">
+                <ChipButton
+                  onClick={copyLink}
+                  label={copied ? ts('linkCopied') : ts('copyLink')}
+                  active={copied}
+                  first
+                >
+                  {copied ? (
+                    <svg viewBox="0 0 24 24" className="h-[18px] w-[18px]" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                  ) : (
+                    <svg viewBox="0 0 24 24" className="h-[18px] w-[18px]" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                      <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+                      <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+                    </svg>
+                  )}
+                </ChipButton>
+                <ChipButton onClick={shareLine} label={ts('line')}>
+                  <svg viewBox="0 0 24 24" className="h-[18px] w-[18px]" fill="currentColor" aria-hidden>
+                    <path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314" />
+                  </svg>
+                </ChipButton>
+                <ChipButton onClick={shareTwitter} label={ts('twitter')}>
+                  <svg viewBox="0 0 24 24" className="h-[16px] w-[16px]" fill="currentColor" aria-hidden>
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                  </svg>
+                </ChipButton>
+                <ChipButton onClick={shareFacebook} label={ts('facebook')}>
+                  <svg viewBox="0 0 24 24" className="h-[18px] w-[18px]" fill="currentColor" aria-hidden>
+                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                  </svg>
+                </ChipButton>
+              </div>
+            </div>
+          </div>
 
           {/* Stats row */}
           {result && (
@@ -525,69 +713,38 @@ function ResultSharePageInner({code}: {code: string}) {
         </section>
       )}
 
-      {/* ─────────── ACTION ROW ─────────── */}
+      {/* ─────────── NEXT STEPS ─────────── */}
       <section className="py-8 md:py-10">
-        <div className="mb-4 flex flex-wrap items-baseline justify-between gap-3">
-          <div className="mono-label" style={{color: 'var(--vermillion)'}}>
-            {s(tr, 'actionsKicker', '把这份头版带走')}
-          </div>
-          <div className="mono-label">{ts('shareResult')}</div>
+        <div className="mb-4 mono-label" style={{color: 'var(--vermillion)'}}>
+          {s(tr, 'actionsKicker', '下一步 · WHAT NEXT')}
         </div>
-        <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
-          <div className="grid grid-cols-2 gap-3 sm:flex sm:flex-wrap sm:items-center">
-            <Link
-              href="/test"
-              className="inline-flex items-center justify-center gap-2.5 rounded-none px-4 py-3 font-bold transition-[background,transform,box-shadow] duration-200 hover:-translate-y-[1px] sm:px-6"
-              style={{
-                background: 'var(--vermillion)',
-                color: 'var(--paper-soft)',
-                boxShadow: '4px 4px 0 0 var(--ink)',
-              }}
-            >
-              <span>{ti('start')}</span>
-              <span aria-hidden className="font-heading text-lg leading-none">→</span>
-            </Link>
-            <Link
-              href={`/type/${code}`}
-              className="inline-flex items-center justify-center gap-2.5 rounded-none border-2 border-foreground px-4 py-3 font-semibold text-foreground transition-colors duration-200 hover:bg-foreground hover:text-background sm:px-6"
-            >
-              <span>
-                {locale === 'zh'
-                  ? '查看人格档案'
-                  : locale === 'ja'
-                    ? 'タイプ解説を見る'
-                    : locale === 'ko'
-                      ? '유형 해석 보기'
-                      : 'View Type Guide'}
-              </span>
-            </Link>
-          </div>
-          <div className="flex flex-wrap items-center gap-2">
-            {levels && (
-              <SaveImageButton
-                code={code}
-                name={cn}
-                description={intro}
-                matchLabel={result ? `${result.primary.similarity}%` : '100%'}
-                exactHitsLabel={result ? `${result.primary.exact}/15` : '15/15'}
-                dimensionsTitle={t('dimensions')}
-                dimensions={DIMENSION_ORDER.map((dim) => {
-                  const level = levels[dim];
-                  return {
-                    code: dim,
-                    label: td(dim),
-                    level,
-                    levelLabel: t(`level${level}`),
-                  };
-                })}
-              />
-            )}
-            <ShareButtons
-              url={shareUrl}
-              title={`${code} — ${cn}`}
-              description={intro}
-            />
-          </div>
+        <div className="grid grid-cols-2 gap-3 sm:flex sm:flex-wrap sm:items-center">
+          <Link
+            href="/test"
+            className="inline-flex items-center justify-center gap-2.5 rounded-none px-4 py-3 font-bold transition-[background,transform,box-shadow] duration-200 hover:-translate-y-[1px] sm:px-6"
+            style={{
+              background: 'var(--vermillion)',
+              color: 'var(--paper-soft)',
+              boxShadow: '4px 4px 0 0 var(--ink)',
+            }}
+          >
+            <span>{ti('start')}</span>
+            <span aria-hidden className="font-heading text-lg leading-none">→</span>
+          </Link>
+          <Link
+            href={`/type/${code}`}
+            className="inline-flex items-center justify-center gap-2.5 rounded-none border-2 border-foreground px-4 py-3 font-semibold text-foreground transition-colors duration-200 hover:bg-foreground hover:text-background sm:px-6"
+          >
+            <span>
+              {locale === 'zh'
+                ? '查看人格档案'
+                : locale === 'ja'
+                  ? 'タイプ解説を見る'
+                  : locale === 'ko'
+                    ? '유형 해석 보기'
+                    : 'View Type Guide'}
+            </span>
+          </Link>
         </div>
       </section>
 
