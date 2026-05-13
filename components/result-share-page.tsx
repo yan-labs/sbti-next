@@ -4,6 +4,7 @@ import {useEffect, useState} from 'react';
 import Image from 'next/image';
 import {useLocale, useTranslations} from 'next-intl';
 import {ShareButtons} from '@/components/share-buttons';
+import {SaveImageButton} from '@/components/save-result-image';
 import {BlogCards} from '@/components/blog-cards';
 import {Link} from '@/i18n/navigation';
 import {decodeResultState} from '@/lib/result-share';
@@ -80,6 +81,7 @@ function ResultSharePageInner({code}: {code: string}) {
   const tr = useTranslations('resultPage');
   const tp = useTranslations('personalities');
   const tm = useTranslations('models');
+  const td = useTranslations('dimensions');
   const locale = useLocale();
   const [resultStateParam, setResultStateParam] = useState<string | null>(null);
 
@@ -146,7 +148,7 @@ function ResultSharePageInner({code}: {code: string}) {
             {s(tr, 'oneOfOne', 'YOUR ISSUE · ONE-OF-ONE')}
           </span>
         </div>
-        <div className="flex items-baseline justify-between gap-4">
+        <div className="flex flex-col items-stretch gap-2 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4">
           <h1
             className="font-heading m-0 text-foreground"
             style={{
@@ -170,12 +172,14 @@ function ResultSharePageInner({code}: {code: string}) {
             </em>
           </h1>
           <span
-            className="font-mono text-right text-[11px] uppercase tracking-[0.18em] text-muted-foreground"
+            className="font-mono flex justify-between gap-3 text-[11px] uppercase tracking-[0.18em] text-muted-foreground sm:block sm:text-right"
             aria-hidden
           >
-            Vol. 27 · No. {issue}
-            <br />
-            FILE Nº {fmtNo(no)} / 027
+            <span>Vol. 27 · No. {issue}</span>
+            <span className="hidden sm:block">
+              <br />
+            </span>
+            <span>FILE Nº {fmtNo(no)} / 027</span>
           </span>
         </div>
       </header>
@@ -529,34 +533,55 @@ function ResultSharePageInner({code}: {code: string}) {
           </div>
           <div className="mono-label">{ts('shareResult')}</div>
         </div>
-        <div className="flex flex-wrap items-center gap-3">
-          <Link
-            href="/test"
-            className="inline-flex items-center gap-2.5 rounded-none px-6 py-3 font-bold transition-[background,transform,box-shadow] duration-200 hover:-translate-y-[1px]"
-            style={{
-              background: 'var(--vermillion)',
-              color: 'var(--paper-soft)',
-              boxShadow: '4px 4px 0 0 var(--ink)',
-            }}
-          >
-            <span>{ti('start')}</span>
-            <span aria-hidden className="font-heading text-lg leading-none">→</span>
-          </Link>
-          <Link
-            href={`/type/${code}`}
-            className="inline-flex items-center gap-2.5 rounded-none border-2 border-foreground px-6 py-3 font-semibold text-foreground transition-colors duration-200 hover:bg-foreground hover:text-background"
-          >
-            <span>
-              {locale === 'zh'
-                ? '查看人格档案'
-                : locale === 'ja'
-                  ? 'タイプ解説を見る'
-                  : locale === 'ko'
-                    ? '유형 해석 보기'
-                    : 'View Type Guide'}
-            </span>
-          </Link>
+        <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+          <div className="grid grid-cols-2 gap-3 sm:flex sm:flex-wrap sm:items-center">
+            <Link
+              href="/test"
+              className="inline-flex items-center justify-center gap-2.5 rounded-none px-4 py-3 font-bold transition-[background,transform,box-shadow] duration-200 hover:-translate-y-[1px] sm:px-6"
+              style={{
+                background: 'var(--vermillion)',
+                color: 'var(--paper-soft)',
+                boxShadow: '4px 4px 0 0 var(--ink)',
+              }}
+            >
+              <span>{ti('start')}</span>
+              <span aria-hidden className="font-heading text-lg leading-none">→</span>
+            </Link>
+            <Link
+              href={`/type/${code}`}
+              className="inline-flex items-center justify-center gap-2.5 rounded-none border-2 border-foreground px-4 py-3 font-semibold text-foreground transition-colors duration-200 hover:bg-foreground hover:text-background sm:px-6"
+            >
+              <span>
+                {locale === 'zh'
+                  ? '查看人格档案'
+                  : locale === 'ja'
+                    ? 'タイプ解説を見る'
+                    : locale === 'ko'
+                      ? '유형 해석 보기'
+                      : 'View Type Guide'}
+              </span>
+            </Link>
+          </div>
           <div className="flex flex-wrap items-center gap-2">
+            {levels && (
+              <SaveImageButton
+                code={code}
+                name={cn}
+                description={intro}
+                matchLabel={result ? `${result.primary.similarity}%` : '100%'}
+                exactHitsLabel={result ? `${result.primary.exact}/15` : '15/15'}
+                dimensionsTitle={t('dimensions')}
+                dimensions={DIMENSION_ORDER.map((dim) => {
+                  const level = levels[dim];
+                  return {
+                    code: dim,
+                    label: td(dim),
+                    level,
+                    levelLabel: t(`level${level}`),
+                  };
+                })}
+              />
+            )}
             <ShareButtons
               url={shareUrl}
               title={`${code} — ${cn}`}
