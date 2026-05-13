@@ -3,37 +3,33 @@ import {LocaleSwitcher} from '@/components/locale-switcher';
 
 type Locale = 'zh' | 'en' | 'ja' | 'ko';
 
-const NAV: Record<Locale, {test: string; games: string; types: string; blog: string; tagline: string; cta: string}> = {
+const NAV: Record<Locale, {tests: string; catalog: string; types: string; faq: string; cta: string}> = {
   zh: {
-    test: 'SBTI 主测试',
-    games: '游戏玩家测试',
-    types: '全部 27 类型',
-    blog: '博客',
-    tagline: '荒诞 · 潮流 · 社交',
+    tests: '9 个测试',
+    catalog: '完整目录',
+    types: '27 人格',
+    faq: 'FAQ',
     cta: '开始 SBTI',
   },
   en: {
-    test: 'SBTI Test',
-    games: 'Game Quizzes',
-    types: 'All 27 Types',
-    blog: 'Blog',
-    tagline: 'Satirical · Behavior · Type · Indicator',
+    tests: '9 Tests',
+    catalog: 'Full Catalog',
+    types: '27 Types',
+    faq: 'FAQ',
     cta: 'Take SBTI',
   },
   ja: {
-    test: 'SBTI テスト',
-    games: 'ゲーム診断',
-    types: '全27タイプ',
-    blog: 'ブログ',
-    tagline: '風刺 × トレンド × ソーシャル',
+    tests: '9 種の診断',
+    catalog: '全カタログ',
+    types: '27 タイプ',
+    faq: 'FAQ',
     cta: '診断する',
   },
   ko: {
-    test: 'SBTI 테스트',
-    games: '게임 테스트',
+    tests: '9가지 테스트',
+    catalog: '전체 목록',
     types: '27가지 유형',
-    blog: '블로그',
-    tagline: '풍자 · 트렌드 · 소셜',
+    faq: 'FAQ',
     cta: 'SBTI 시작',
   },
 };
@@ -47,63 +43,54 @@ export function SiteHeader({locale}: SiteHeaderProps) {
   const t = NAV[l];
 
   const navItems = [
-    {href: '/test' as const, label: t.test},
-    {href: '/#game-wall' as const, label: t.games},
+    {href: '/#tests' as const, label: t.tests},
+    {href: '/#catalog' as const, label: t.catalog},
     {href: '/types' as const, label: t.types},
-    {href: '/blog' as const, label: t.blog},
+    {href: '/faq' as const, label: t.faq},
   ];
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border/40 bg-background/80 backdrop-blur-md">
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-3 md:gap-6 md:px-6 md:py-3.5">
-        {/* ─── Wordmark ──────────────────────────────────────────────────── */}
-        <Link href="/" className="group flex shrink-0 items-center gap-2.5" aria-label="SBTI">
-          {/* Sticker badge "S" — slightly rotated on hover */}
-          <span
-            className="relative inline-flex size-9 items-center justify-center rounded-xl bg-primary text-primary-foreground shadow-sm transition-transform group-hover:rotate-3 group-hover:scale-105"
-            aria-hidden="true"
-          >
-            <span className="font-heading text-base font-black leading-none">S</span>
-            {/* Tiny corner dot for sticker feel */}
-            <span className="absolute -right-0.5 -top-0.5 size-2 rounded-full bg-secondary" aria-hidden="true" />
+    <header className="sticky top-0 z-50 border-b border-border bg-background/85 backdrop-blur supports-[backdrop-filter]:bg-background/70">
+      <div className="mx-auto flex max-w-[1240px] items-center justify-between gap-4 px-5 py-3.5 md:px-8">
+        {/* ─── Wordmark ────────────────────────────────────────────── */}
+        <Link href="/" className="inline-flex items-baseline gap-2.5" aria-label="SBTI">
+          <span className="font-heading text-[22px] font-bold leading-none tracking-tight text-foreground">
+            SBTI
           </span>
-
-          {/* Wordmark + tagline */}
-          <div className="flex flex-col leading-none">
-            <span className="font-heading text-base font-black tracking-tight md:text-lg">
-              SBTI
-            </span>
-            <span className="hidden text-[10px] font-mono uppercase tracking-[0.18em] text-muted-foreground sm:mt-0.5 sm:inline">
-              {t.tagline}
-            </span>
-          </div>
+          <span className="hidden translate-y-[-3px] rounded-full border border-border bg-muted px-[7px] py-[3px] font-mono text-[9px] uppercase tracking-[0.16em] text-muted-foreground sm:inline-block">
+            Beta
+          </span>
         </Link>
 
-        {/* ─── Desktop nav ───────────────────────────────────────────────── */}
-        <nav
-          className="hidden flex-1 items-center justify-center gap-1 lg:flex"
-          aria-label="Primary"
-        >
+        {/* ─── Desktop nav ─────────────────────────────────────────── */}
+        <nav className="hidden flex-1 items-center justify-end gap-7 text-sm text-foreground/75 lg:flex" aria-label="Primary">
           {navItems.map(({href, label}) => (
             <Link
               key={href}
               href={href}
-              className="rounded-full px-3.5 py-1.5 text-sm font-medium text-foreground/75 transition-colors hover:bg-muted hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              className="relative py-1.5 transition-colors hover:text-foreground"
             >
               {label}
             </Link>
           ))}
-        </nav>
-
-        {/* ─── Right: CTA + Locale ───────────────────────────────────────── */}
-        <div className="flex shrink-0 items-center gap-2.5">
+          <LocaleSwitcher />
           <Link
             href="/test"
-            className="hidden h-9 items-center justify-center rounded-full bg-primary px-4 text-xs font-bold text-primary-foreground shadow-sm transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring md:inline-flex"
+            className="inline-flex h-9 items-center gap-1.5 rounded-full bg-foreground px-4 text-xs font-semibold text-background transition-colors hover:bg-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
           >
-            {t.cta}
+            {t.cta} →
           </Link>
+        </nav>
+
+        {/* ─── Mobile (compact) ────────────────────────────────────── */}
+        <div className="flex items-center gap-2 lg:hidden">
           <LocaleSwitcher />
+          <Link
+            href="/test"
+            className="inline-flex h-8 items-center gap-1 rounded-full bg-foreground px-3 text-[11px] font-semibold text-background"
+          >
+            {t.cta} →
+          </Link>
         </div>
       </div>
     </header>

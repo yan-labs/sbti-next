@@ -1,22 +1,14 @@
 'use client';
 
 import {useEffect, useState} from 'react';
-import Image from 'next/image';
 import {Link} from '@/i18n/navigation';
 import type {GameQuizV2, SiteLocale} from '@/lib/data/games/types';
 
-const CTA_COPY: Record<SiteLocale, (title: string) => string> = {
-  zh: (title) => `测 ${title}`,
+const COPY: Record<SiteLocale, (title: string) => string> = {
+  zh: (title) => `开始 ${title} 玩家测试`,
   en: (title) => `Take the ${title} quiz`,
-  ja: (title) => `${title} を診断`,
-  ko: (title) => `${title} 테스트`,
-};
-
-const BTN_COPY: Record<SiteLocale, string> = {
-  zh: '开始',
-  en: 'Start',
-  ja: 'スタート',
-  ko: '시작',
+  ja: (title) => `${title} プレイヤー診断を始める`,
+  ko: (title) => `${title} 플레이어 테스트 시작`,
 };
 
 interface StickyCTAProps {
@@ -25,6 +17,7 @@ interface StickyCTAProps {
   heroRef: React.RefObject<HTMLElement | null>;
 }
 
+/** Vermillion pill that slides in after the hero scrolls past. */
 export function StickyCTA({game, locale, heroRef}: StickyCTAProps) {
   const [visible, setVisible] = useState(false);
   const title = game.title[locale];
@@ -42,45 +35,27 @@ export function StickyCTA({game, locale, heroRef}: StickyCTAProps) {
 
   return (
     <div
-      className="fixed bottom-0 left-0 right-0 z-40 transition-transform duration-300"
-      style={{transform: visible ? 'translateY(0)' : 'translateY(100%)'}}
+      className="pointer-events-none fixed bottom-5 left-0 right-0 z-40 flex justify-center px-5 transition-[transform,opacity] duration-300"
+      style={{
+        transform: visible ? 'translateY(0)' : 'translateY(120%)',
+        opacity: visible ? 1 : 0,
+      }}
       aria-hidden={!visible}
     >
-      <div
-        className="flex items-center justify-between gap-4 px-5 py-3 shadow-xl md:mx-auto md:max-w-xl md:mb-4 md:rounded-full"
-        style={{
-          background: 'var(--game-surface, var(--card))',
-          borderTop: '1px solid var(--game-primary, var(--primary))',
-          color: 'var(--game-ink, var(--card-foreground))',
-        }}
+      <Link
+        href={`/games/${game.slug}/play`}
+        className="pointer-events-auto inline-flex items-center gap-2.5 rounded-full bg-[var(--vermillion)] px-6 py-3.5 text-[14px] font-semibold text-[var(--paper-soft)] shadow-[0_16px_40px_-10px_rgba(0,0,0,0.55),inset_0_0_0_1px_color-mix(in_oklab,var(--paper-soft)_25%,transparent)] transition-[background,transform] duration-200 hover:-translate-y-0.5 hover:bg-[var(--ink)]"
       >
-        <div className="flex items-center gap-3 min-w-0">
-          <div className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-background/20 p-1">
-            <Image
-              src={`/game-logos/${game.slug}.png`}
-              alt=""
-              width={22}
-              height={22}
-              className="object-contain"
-              unoptimized
-            />
-          </div>
-          <p className="truncate text-sm font-semibold" style={{color: 'var(--game-ink, inherit)'}}>
-            {CTA_COPY[locale](title)}
-          </p>
-        </div>
-
-        <Link
-          href={`/games/${game.slug}/play`}
-          className="shrink-0 rounded-full px-5 py-2 text-sm font-bold transition-opacity hover:opacity-90 focus-visible:outline-none"
-          style={{
-            background: 'var(--game-primary, var(--primary))',
-            color: 'var(--game-surface, var(--primary-foreground))',
-          }}
+        <span className="truncate max-w-[60vw]">{COPY[locale](title)}</span>
+        <span
+          className="inline-flex size-[22px] items-center justify-center rounded-full bg-[var(--paper-soft)] text-[var(--vermillion)]"
+          aria-hidden
         >
-          {BTN_COPY[locale]}
-        </Link>
-      </div>
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M5 12h14M13 5l7 7-7 7" />
+          </svg>
+        </span>
+      </Link>
     </div>
   );
 }

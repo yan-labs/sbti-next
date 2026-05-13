@@ -1,6 +1,5 @@
 import {buildFAQPageSchema} from '@/lib/json-ld';
 import {JsonLd} from '@/components/json-ld';
-import {Link} from '@/i18n/navigation';
 
 type Locale = 'zh' | 'en' | 'ja' | 'ko';
 
@@ -9,108 +8,151 @@ interface QA {
   a: string;
 }
 
-const COPY: Record<Locale, {heading: string; cta: string; faqs: [QA, QA, QA, QA, QA]}> = {
+const COPY: Record<
+  Locale,
+  {
+    kicker: string;
+    rightA: string;
+    rightB: string;
+    headLead: string;
+    headEm: string;
+    headTail: string;
+    faqs: QA[];
+  }
+> = {
   zh: {
-    heading: '常见问题',
-    cta: '开始测试',
+    kicker: '06 · 常见问题',
+    rightA: 'FAQ',
+    rightB: '关于 SBTI',
+    headLead: '关于 ',
+    headEm: 'SBTI',
+    headTail: '，一些被反复问到的',
     faqs: [
       {
-        q: '测试要多久？',
-        a: '30 道题，通常 3-5 分钟能答完。没有计时压力，选最直觉的就好。',
+        q: 'SBTI 是什么？和 MBTI 有什么区别？',
+        a: 'SBTI 全称是 Satirical Behavior Type Indicator（讽刺行为类型指标）。MBTI 把人分成 16 种，SBTI 把人分成 27 种——多出来的 11 种，都是 MBTI 装作没看到的那些（送钱者、屌丝、伪人、吗喽……）。它不严肃，但有时候比正经测试更准。',
       },
       {
-        q: '结果准不准？',
-        a: '这是基于心理学行为科学的六维双极模型，67 种组合。准不准这个问题本身就很有意思——很多人说"被说中了"，也有人说"这哪是我"。这正是它好玩的地方。',
+        q: '测试要花多少时间？',
+        a: '31 道题，凭直觉戳过去就行，1–3 分钟。比刷 30 秒抖音的"再来一个"还快。',
       },
       {
-        q: '支持哪些语言？',
-        a: '中文、英文、日文、韩文。每种语言的题目和原型描述都根据该地区玩家文化单独写的，不是直接机翻。',
+        q: '27 种人格类型都有哪些？',
+        a: 'CTRL 拿捏者、ATM-er 送钱者、Dior-s 屌丝、BOSS 领导者、THAN-K 感恩者、OH-NO 哦不人、GOGO 行者、SEXY 尤物、LOVE-R 多情者、MUM 妈妈、FAKE 伪人、OJBK 无所谓人、MALO 吗喽…… 完整 27 种可以在上面的"人格档案"区滑动查看。',
       },
       {
-        q: '结果怎么分享？',
-        a: '测完后有原型卡可以截图，也可以复制结果链接。6 字母的玩家身份码可以直接发给朋友对比。',
+        q: '游戏专属测试是什么意思？',
+        a: 'SBTI 主测试归类你这个人，游戏专属测试归类你在那款游戏里的玩家身份。比如英雄联盟版会测出你是"单杀型"还是"团战型"，不是 MBTI 的 16 型套到游戏里。每款游戏 8 种原型，独立设计。',
       },
       {
-        q: '会收集我的个人数据吗？',
-        a: '不会。测试结果只存在你的浏览器本地，不上传服务器，也不需要注册账号。关浏览器后记得截图，答案不会自动保存。',
+        q: '测试结果能分享到朋友圈吗？',
+        a: '能。每个结果页都自带一张 1080×1920 的可保存图卡，包含你的人格码、六轴画像、克星原型和最佳队友。截屏 / 长按保存都行。',
+      },
+      {
+        q: '测试结果会被保存或用作他用吗？',
+        a: '不会。SBTI 不需要登录、不收集邮箱、不种 cookie。所有题目和结果只存在你的浏览器里，刷新页面就消失了。',
       },
     ],
   },
   en: {
-    heading: 'Questions',
-    cta: 'Start a quiz',
+    kicker: '06 · FAQ',
+    rightA: 'FAQ',
+    rightB: 'About SBTI',
+    headLead: 'About ',
+    headEm: 'SBTI',
+    headTail: ', some questions we keep getting',
     faqs: [
       {
-        q: 'How long does it take?',
-        a: '30 questions, usually 3-5 minutes. No timer, no pressure — just pick whichever option feels most like you.',
+        q: 'What is SBTI? How is it different from MBTI?',
+        a: 'SBTI stands for Satirical Behavior Type Indicator. MBTI sorts people into 16 types; SBTI sorts you into 27 — the extra 11 are the ones MBTI politely pretends do not exist (The Cash Dispenser, The Underdog, The Faker, The Primate...). Not serious, occasionally more accurate than the serious ones.',
       },
       {
-        q: 'How accurate is it?',
-        a: 'It\'s built on a six-axis bipolar model drawn from behavioral science, with 67 possible combinations. Whether it\'s "accurate" partly depends on whether you\'ve ever been told you need to chill out in chat. Most people say it\'s closer than expected.',
+        q: 'How long does the test take?',
+        a: '31 questions, just trust your gut, 1–3 minutes. Faster than scrolling past three TikToks.',
       },
       {
-        q: 'Which languages are supported?',
-        a: 'Chinese, English, Japanese, and Korean. Each version is written for that region\'s player community, not machine-translated from another language.',
+        q: 'What are the 27 personality types?',
+        a: 'CTRL · The Control Freak, ATM-er · The Cash Dispenser, Dior-s · The Underdog, BOSS, THAN-K · The Grateful, OH-NO, GOGO, SEXY, LOVE-R, MUM, FAKE, OJBK · The Whatever, MALO · The Primate... full list is in the personality file grid above.',
       },
       {
-        q: 'How do I share my result?',
-        a: 'After finishing, you get an archetype card to screenshot, a link to copy, and a 6-letter player code to paste wherever. The card is designed to look good at screenshot size.',
+        q: 'What is a game-specific quiz?',
+        a: 'The main SBTI tells you who you are as a person; the game-specific quiz tells you who you are as a player of that game. The LoL version sorts you as "solo carry" or "teamfight anchor", not "ENTJ in a Yasuo skin". Each game has its own 8 archetypes, designed from scratch.',
       },
       {
-        q: 'Does it collect personal data?',
-        a: 'No. Results stay in your browser\'s local storage only. Nothing goes to a server, and there\'s no account to create. Screenshot your result before closing the tab — answers aren\'t saved automatically.',
+        q: 'Can I share results on social media?',
+        a: 'Yes. Every result page ships with a 1080×1920 saveable image card — your type code, six-axis chart, rival archetype, and best squad. Screenshot or long-press-save, either works.',
+      },
+      {
+        q: 'Do you store my results or personal data?',
+        a: 'No. No login, no email, no cookie. Questions and results live only in your browser; close the tab and they are gone.',
       },
     ],
   },
   ja: {
-    heading: 'よくある質問',
-    cta: '診断を始める',
+    kicker: '06 · よくある質問',
+    rightA: 'FAQ',
+    rightB: 'SBTIについて',
+    headLead: '',
+    headEm: 'SBTI',
+    headTail: 'について、よく聞かれること',
     faqs: [
       {
-        q: '何分かかりますか？',
-        a: '30問で、だいたい3〜5分。タイマーはないので、直感で一番近いものを選べばOK。',
+        q: 'SBTIって何？MBTIと何が違う？',
+        a: 'SBTIはSatirical Behavior Type Indicator（風刺行動タイプ指標）の略。MBTIは人を16タイプに分けるけど、SBTIは27タイプ —— 増えた11個は、MBTIが見て見ぬふりしてるやつ（送金者、負け犬、偽人、サル…）。真面目じゃないけど、たまに真面目な診断より当たる。',
       },
       {
-        q: '精度はどうですか？',
-        a: '行動科学に基づいた6軸双極モデルで、67種類の組み合わせがある。「当たってる」という人もいれば「これ私じゃない」という人もいる。そのリアクション自体が面白い部分でもある。',
+        q: '何分くらいかかる？',
+        a: '31問、直感でポチポチで1〜3分。TikTokを3本見るより早い。',
       },
       {
-        q: 'どの言語に対応していますか？',
-        a: '中国語・英語・日本語・韓国語。各言語は、その地域のプレイヤーコミュニティ向けに個別に書かれています。機械翻訳ではありません。',
+        q: '27タイプって具体的に？',
+        a: 'CTRL、ATM-er、Dior-s、BOSS、THAN-K、OH-NO、GOGO、SEXY、LOVE-R、MUM、FAKE、OJBK、MALO… 全27タイプは上の「人格ファイル」エリアで全部見られる。',
       },
       {
-        q: '結果はどうやってシェアしますか？',
-        a: '診断後にアーキタイプカードをスクリーンショットするか、結果リンクをコピーできます。6文字のプレイヤーコードを友達に送って比べることもできます。',
+        q: 'ゲーム別診断って何？',
+        a: 'SBTI本編は「あなたという人間」を分類、ゲーム別診断は「そのゲームでのあなた」を分類。LoL版なら「ソロキャリー型」か「集団戦アンカー型」みたいに出る。MBTIの16タイプをゲームに当てはめたものではない。各ゲーム8タイプ、独立設計。',
       },
       {
-        q: '個人データは収集されますか？',
-        a: 'されません。結果はブラウザのローカルストレージにのみ保存され、サーバーには送信されません。アカウント登録も不要。タブを閉じる前にスクリーンショットを忘れずに。',
+        q: '結果はSNSで共有できる？',
+        a: 'できる。各結果ページに1080×1920の保存用カードが付いてくる。タイプコード・6軸チャート・天敵タイプ・最高の相棒つき。スクショでも長押し保存でもどっちでも。',
+      },
+      {
+        q: 'データは保存される？',
+        a: 'されない。ログイン不要、メール収集なし、cookieなし。問題と結果はブラウザ内だけ。タブを閉じれば消える。',
       },
     ],
   },
   ko: {
-    heading: '자주 묻는 질문',
-    cta: '테스트 시작하기',
+    kicker: '06 · 자주 묻는 질문',
+    rightA: 'FAQ',
+    rightB: 'SBTI에 대해',
+    headLead: '',
+    headEm: 'SBTI',
+    headTail: '에 대해 자주 받는 질문들',
     faqs: [
       {
-        q: '얼마나 걸리나요?',
-        a: '30문항으로 보통 3~5분 걸린다. 타이머 없으니 느긋하게, 가장 나다운 선택지를 고르면 된다.',
+        q: 'SBTI가 뭔가요? MBTI랑 뭐가 다른가요?',
+        a: 'SBTI는 Satirical Behavior Type Indicator(풍자 행동 유형 지표)의 약자다. MBTI는 16가지로 나누고, SBTI는 27가지로 나눈다 —— 추가된 11개는 MBTI가 모르는 척하는 유형들(돈 셔틀, 찌질이, 가식인, 원숭이…). 진지하진 않은데, 가끔 진지한 테스트보다 잘 맞는다.',
       },
       {
-        q: '얼마나 정확한가요?',
-        a: '행동과학 기반의 6축 양극 모델, 67가지 조합으로 만들어졌다. "맞다"는 사람도 있고 "이게 나야?"하는 사람도 있다. 그 반응 자체가 이 테스트의 재미 포인트이기도 하다.',
+        q: '시간 얼마나 걸려요?',
+        a: '31문항, 직감으로 누르면 1~3분. 틱톡 3개 보는 것보다 빠르다.',
       },
       {
-        q: '어떤 언어를 지원하나요?',
-        a: '중국어·영어·일본어·한국어. 각 언어는 해당 지역 플레이어 문화에 맞게 별도로 작성됐다. 기계 번역이 아니다.',
+        q: '27가지 유형이 뭐예요?',
+        a: 'CTRL, ATM-er, Dior-s, BOSS, THAN-K, OH-NO, GOGO, SEXY, LOVE-R, MUM, FAKE, OJBK, MALO… 전체 27가지는 위의 "인격 파일" 영역에서 다 볼 수 있다.',
       },
       {
-        q: '결과는 어떻게 공유하나요?',
-        a: '테스트 완료 후 아키타입 카드를 스크린샷하거나 결과 링크를 복사할 수 있다. 6자리 플레이어 코드를 친구에게 보내 비교도 가능하다.',
+        q: '게임별 테스트는 뭔가요?',
+        a: 'SBTI 본편은 "사람으로서의 너"를 분류하고, 게임별 테스트는 "그 게임에서의 너"를 분류한다. LoL판은 "솔로 캐리형"인지 "한타 앵커형"인지 알려준다. MBTI 16가지를 게임에 끼워맞춘 게 아니다. 게임마다 8가지 유형, 처음부터 따로 만든다.',
       },
       {
-        q: '개인 데이터를 수집하나요?',
-        a: '아니다. 결과는 브라우저 로컬 스토리지에만 저장되고 서버로 전송되지 않는다. 계정 가입도 필요 없다. 탭을 닫기 전에 스크린샷해두자.',
+        q: '결과를 SNS에 공유할 수 있나요?',
+        a: '가능하다. 결과 페이지마다 1080×1920 저장용 카드가 자동 생성된다. 유형 코드, 6축 차트, 천적 유형, 최고의 동료 정보 포함. 스크린샷이든 길게 눌러 저장이든 자유.',
+      },
+      {
+        q: '데이터를 저장하나요?',
+        a: '아니다. 로그인 안 하고, 이메일 안 받고, 쿠키 안 심는다. 문제와 결과는 브라우저 안에만 있다. 탭 닫으면 사라진다.',
       },
     ],
   },
@@ -129,48 +171,86 @@ export function FAQ({locale}: FAQProps) {
   );
 
   return (
-    <section className="py-16 md:py-20">
+    <section id="faq" className="border-b border-border py-24">
       <JsonLd data={schemaData} />
-      <div className="mx-auto max-w-3xl px-6">
-        <h2 className="font-heading text-2xl font-bold text-center text-foreground mb-10 md:text-3xl">
-          {t.heading}
-        </h2>
-
-        <div className="flex flex-col gap-2">
-          {t.faqs.map(({q, a}, i) => (
-            <details
-              key={i}
-              className="group rounded-xl border border-border bg-card shadow-sm"
+      <div className="container mx-auto max-w-[1240px] px-5 md:px-8">
+        <header className="mb-12 grid items-baseline gap-6 md:grid-cols-[auto_1fr_auto]">
+          <div className="mono-label md:col-span-2">{t.kicker}</div>
+          <div className="font-mono text-[11px] uppercase tracking-[0.14em] text-muted-foreground leading-7 md:row-start-1 md:row-span-2 md:col-start-3 md:text-right self-end">
+            {t.rightA}
+            <br />
+            {t.rightB}
+          </div>
+          <h2
+            className="font-heading text-foreground m-0 md:col-span-2"
+            style={{
+              fontVariationSettings: '"opsz" 144, "SOFT" 30, "wght" 700',
+              fontSize: 'clamp(36px, 5vw, 64px)',
+              lineHeight: 0.96,
+              letterSpacing: '-0.02em',
+              maxWidth: '18ch',
+            }}
+          >
+            {t.headLead}
+            <em
+              className="not-italic"
+              style={{
+                fontStyle: 'italic',
+                fontVariationSettings: '"opsz" 144, "SOFT" 90, "wght" 700',
+                color: 'var(--vermillion)',
+                letterSpacing: '-0.025em',
+              }}
             >
-              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 text-sm font-semibold text-foreground select-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-xl">
-                <span>{q}</span>
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 16 16"
-                  fill="none"
+              {t.headEm}
+            </em>
+            {t.headTail}
+          </h2>
+        </header>
+
+        <div className="faq-list border-t border-border">
+          {t.faqs.map((qa, i) => (
+            <details key={i} className="faq-row border-b border-border py-6">
+              <summary
+                className="faq-summary text-foreground flex cursor-pointer list-none items-baseline justify-between gap-6"
+                style={{
+                  fontFamily: 'var(--font-heading)',
+                  fontVariationSettings: '"opsz" 144, "wght" 600',
+                  fontSize: 'clamp(20px, 2.2vw, 26px)',
+                  lineHeight: 1.25,
+                  letterSpacing: '-0.012em',
+                }}
+              >
+                <span>{qa.q}</span>
+                <span
+                  className="faq-marker font-heading shrink-0 transition-all duration-300"
                   aria-hidden
-                  className="shrink-0 transition-transform duration-200 group-open:rotate-180"
+                  style={{
+                    fontWeight: 300,
+                    fontSize: 30,
+                    lineHeight: 1,
+                    color: 'var(--ink-muted)',
+                  }}
                 >
-                  <path d="M3 6l5 5 5-5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
+                  +
+                </span>
               </summary>
-              <div className="px-5 pb-4 pt-1 text-sm leading-relaxed text-muted-foreground">
-                {a}
-              </div>
+              <p
+                className="mt-4 max-w-[65ch] text-[16px] leading-relaxed"
+                style={{color: 'var(--ink-soft)'}}
+              >
+                {qa.a}
+              </p>
             </details>
           ))}
         </div>
-
-        <div className="mt-10 text-center">
-          <Link
-            href="#game-wall"
-            className="inline-flex h-11 items-center justify-center rounded-xl bg-primary px-8 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-          >
-            {t.cta}
-          </Link>
-        </div>
       </div>
+      <style>{`
+        .faq-summary::-webkit-details-marker { display: none; }
+        details[open] > .faq-summary > .faq-marker {
+          transform: rotate(45deg);
+          color: var(--vermillion);
+        }
+      `}</style>
     </section>
   );
 }

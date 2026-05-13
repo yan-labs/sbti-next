@@ -49,28 +49,29 @@ interface SaveCompatImageButtonProps {
   }[];
 }
 
-// Brand colors (hex, for canvas use)
-const PRIMARY = '#10B981';   // emerald
-const ACCENT = '#8B5CF6';    // violet
-const SECONDARY = '#F59E0B'; // amber
-const SURFACE = '#FFFFFF';
-const FOREGROUND = '#1A2E24';
-const FOREGROUND_MUTED = '#5F6B66';
-const CHART_4 = '#3B82F6';
-const DESTRUCTIVE = '#EF4444';
+// Brand colors (hex, for canvas use) — v2 editorial palette
+const PRIMARY = '#E04E2B';     // vermillion — single hot accent
+const ACCENT = '#1B3CFF';      // print-error blue (data viz only)
+const SECONDARY = '#161513';   // ink (used as secondary fill)
+const SURFACE = '#FAF7EF';     // paper-soft
+const FOREGROUND = '#161513';  // ink
+const FOREGROUND_MUTED = '#6B655A';
+const CHART_4 = '#1B3CFF';
+const DESTRUCTIVE = '#C8362A';
 const EXPORT_SCALE = 2;
 
 function getTypeImageSrc(code: string) {
   return TYPE_IMAGES[code] ?? `/types/${code}.webp`;
 }
 
+// Compat archetype tones — same 6 archetypes, retuned to vermillion-warm system.
 const COMPAT_TONES: Record<CompatArchetype, {surface: string; accent: string; soft: string}> = {
-  fated: {surface: '#EDE9FE', accent: ACCENT, soft: '#F5F3FF'},
-  sync: {surface: '#D1FAE5', accent: PRIMARY, soft: '#ECFDF5'},
-  spicy: {surface: '#FEF3C7', accent: SECONDARY, soft: '#FFFBEB'},
-  plastic: {surface: '#DBEAFE', accent: CHART_4, soft: '#EFF6FF'},
-  awkward: {surface: '#FEF3C7', accent: SECONDARY, soft: '#FFFBEB'},
-  disaster: {surface: '#FEE2E2', accent: DESTRUCTIVE, soft: '#FEF2F2'},
+  fated:    {surface: '#F4DBD0', accent: PRIMARY,     soft: '#FBEFE9'}, // vermillion warm
+  sync:     {surface: '#EBE5D3', accent: FOREGROUND,  soft: '#F2EEE3'}, // bone — ink
+  spicy:    {surface: '#F4DBD0', accent: PRIMARY,     soft: '#FBEFE9'}, // warm vermillion
+  plastic:  {surface: '#DDE3F0', accent: CHART_4,     soft: '#EFF2F8'}, // cool blue
+  awkward:  {surface: '#EBE5D3', accent: FOREGROUND_MUTED, soft: '#F2EEE3'}, // muted
+  disaster: {surface: '#F4DBD0', accent: DESTRUCTIVE, soft: '#FBEFE9'}, // hot
 };
 
 // Wraps text onto canvas, returns number of lines drawn
@@ -330,13 +331,13 @@ async function generateImage({
   ctx.fillStyle = FOREGROUND_MUTED;
   drawFittedText(ctx, name, 592, 366, 340, 42, 28, 800);
 
-  drawRoundRect(ctx, 588, 430, 180, 54, 27, '#D1FAE5');
+  drawRoundRect(ctx, 588, 430, 180, 54, 27, '#F4DBD0');
   ctx.fillStyle = PRIMARY;
   ctx.font = '800 23px -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif';
   ctx.fillText(matchLabel, 616, 445);
 
-  drawRoundRect(ctx, 784, 430, 166, 54, 27, '#FEF3C7');
-  ctx.fillStyle = '#B45309';
+  drawRoundRect(ctx, 784, 430, 166, 54, 27, '#EBE5D3');
+  ctx.fillStyle = FOREGROUND;
   ctx.font = '800 23px -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif';
   ctx.fillText(exactHitsLabel, 808, 445);
 

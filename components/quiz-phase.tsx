@@ -2,8 +2,6 @@
 
 import {useTranslations} from 'next-intl';
 import {useQuizStore} from '@/lib/store';
-import {Progress} from '@/components/ui/progress';
-import {Card, CardContent} from '@/components/ui/card';
 
 export function QuizPhase() {
   const t = useTranslations('quiz');
@@ -25,42 +23,67 @@ export function QuizPhase() {
     options = question.options.map(o => o.label);
   }
 
+  const total = queue.length;
+  const totalStr = String(total).padStart(2, '0');
+  const currentStr = String(current + 1).padStart(2, '0');
+
   return (
-    <div className="flex min-h-[80vh] flex-col items-center justify-center px-4">
-      <div className="w-full max-w-lg space-y-6">
-        {/* Progress */}
-        <div className="space-y-2">
-          <div className="flex items-center justify-between text-sm text-muted-foreground">
-            <span>{t('question', {num: current + 1})}</span>
-            <span>{t('progress', {current: current + 1, total: queue.length})}</span>
+    <main className="mx-auto flex min-h-[85vh] w-full max-w-[1240px] flex-col items-center justify-center px-5 py-12 md:px-8">
+      <div className="w-full max-w-2xl">
+        {/* Progress strip: mono numeric counter + thin hair-rule bar */}
+        <div className="mb-10 flex items-end justify-between">
+          <div className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
+            {t('question', {num: current + 1})}
           </div>
-          <Progress value={progress} className="h-1.5" />
+          <div className="flex items-baseline gap-1.5 font-mono text-xs uppercase tracking-[0.18em] text-foreground/70">
+            <span className="font-heading text-2xl font-bold leading-none text-foreground" style={{fontVariationSettings: '"opsz" 144, "wght" 700'}}>
+              {currentStr}
+            </span>
+            <span className="text-muted-foreground">/ {totalStr}</span>
+          </div>
         </div>
 
-        {/* Question */}
-        <Card className="border-0 bg-card/80 shadow-sm backdrop-blur">
-          <CardContent className="space-y-5 pt-6">
-            <h2 className="font-heading text-xl font-semibold leading-relaxed">
-              {questionText}
-            </h2>
+        <div className="mb-12 h-px bg-border">
+          <div
+            className="h-px bg-foreground transition-all duration-300 ease-out"
+            style={{width: `${progress}%`}}
+          />
+        </div>
 
-            <div className="space-y-2.5">
-              {question.options.map((opt, i) => (
-                <button
-                  key={i}
-                  onClick={() => answer(question.id, opt.value)}
-                  className="group w-full rounded-xl border border-border/50 bg-background/60 px-4 py-3.5 text-left text-base transition-all hover:border-primary/30 hover:bg-primary/5 active:scale-[0.98]"
-                >
-                  <span className="mr-3 inline-flex h-6 w-6 items-center justify-center rounded-md bg-muted text-xs font-semibold text-muted-foreground transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
-                    {String.fromCharCode(65 + i)}
-                  </span>
-                  {options[i]}
-                </button>
-              ))}
-            </div>
-          </CardContent>
-        </Card>
+        {/* Question — large Fraunces serif, generous line-height */}
+        <h2
+          className="font-heading text-[clamp(28px,3.4vw,44px)] font-bold leading-[1.25] tracking-tight text-foreground"
+          style={{fontVariationSettings: '"opsz" 144, "SOFT" 30, "wght" 700'}}
+        >
+          {questionText}
+        </h2>
+
+        {/* Options — minimalist editorial buttons, large hit-zones */}
+        <div className="mt-10 space-y-3">
+          {question.options.map((opt, i) => (
+            <button
+              key={i}
+              onClick={() => answer(question.id, opt.value)}
+              className="group flex w-full items-start gap-5 border border-border bg-card px-6 py-5 text-left transition-all hover:border-foreground hover:bg-muted active:translate-y-[1px]"
+            >
+              <span className="font-mono text-[11px] uppercase tracking-[0.18em] leading-[1.5] text-muted-foreground transition-colors group-hover:text-primary">
+                {String.fromCharCode(65 + i)}
+              </span>
+              <span className="flex-1 font-sans text-base leading-[1.55] text-foreground md:text-[17px]">
+                {options[i]}
+              </span>
+              <span className="-mr-1 mt-0.5 inline-flex size-6 shrink-0 items-center justify-center text-muted-foreground opacity-0 transition-all group-hover:translate-x-1 group-hover:text-primary group-hover:opacity-100">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" className="size-4" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+              </span>
+            </button>
+          ))}
+        </div>
+
+        {/* Footer hint */}
+        <div className="mt-10 text-center font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground/70">
+          {t('progress', {current: current + 1, total: queue.length})}
+        </div>
       </div>
-    </div>
+    </main>
   );
 }

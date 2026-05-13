@@ -6,104 +6,130 @@ interface Reason {
   desc: string;
 }
 
-const COPY: Record<Locale, {heading: string; reasons: [Reason, Reason, Reason, Reason]}> = {
+const COPY: Record<
+  Locale,
+  {
+    kicker: string;
+    right: string;
+    headLead: string;
+    headEm: string;
+    headTail: string;
+    reasons: [Reason, Reason, Reason, Reason];
+  }
+> = {
   zh: {
-    heading: '为什么不一样',
+    kicker: '05 · 为什么不一样',
+    right: '不是另一个 MBTI 克隆',
+    headLead: '和那 100 个 MBTI 测试，',
+    headEm: '有点不一样',
+    headTail: '',
     reasons: [
       {
         num: '01',
-        title: '游戏文化深度',
-        desc: '每款游戏的题目都是针对该游戏圈内梗单独写的，不是通用心理学题换皮。CS2 玩家不会看到"你怎么处理压力"这种问题。',
+        title: '不装作很科学',
+        desc: 'SBTI 是讽刺，不是心理学。我们不会引用任何论文，但你大概率会觉得"这真的就是我"。',
       },
       {
         num: '02',
-        title: '6 维心理学结构',
-        desc: '双极六轴模型，67 种组合，不是 BuzzFeed 的三道题猜你最像哪个明星。每个轴都是玩家行为科学里的独立变量。',
+        title: '每款游戏单独建模',
+        desc: 'LOL 的 8 个玩家原型不会出现在 Valorant 里。每款游戏 31 道题、6 个轴、8 种原型，独立设计。',
       },
       {
         num: '03',
-        title: '截图友好设计',
-        desc: '每个结果都为社交分享做过优化：6 字母玩家身份码、雷达图、原型卡，截图发出去就有人问"我也要测"。',
+        title: '结果即截图',
+        desc: '测试结果页面就是一张可保存的卡片。无需手动整理，1080×1920 直接发朋友圈。',
       },
       {
         num: '04',
-        title: '四语种真本地化',
-        desc: '中文、英文、日文、韩文，每种语言的题目和原型描述都根据该地区玩家文化单独写，不是直接机翻。',
+        title: '四种语言，真本地化',
+        desc: '中文 / English / 日本語 / 한국어 —— 不是 Google Translate，每一句都是人写的。',
       },
     ],
   },
   en: {
-    heading: 'What makes this different',
+    kicker: '05 · What makes this different',
+    right: 'Not another MBTI clone',
+    headLead: 'A bit ',
+    headEm: 'different',
+    headTail: ' from the 100 other MBTI quizzes',
     reasons: [
       {
         num: '01',
-        title: 'Game-specific questions',
-        desc: 'Every question is written for that game\'s community. CS2 players get CS2 situations. No generic psychology prompts in disguise.',
+        title: 'Not pretending to be science',
+        desc: 'SBTI is satire, not psychology. We do not cite a single paper. But you will probably still say "this is actually me".',
       },
       {
         num: '02',
-        title: '6-axis psychological model',
-        desc: 'Bipolar six-axis system, 67 combinations. Not a three-question "which celebrity are you" thing. Each axis is an independent variable in gamer behavior.',
+        title: 'Each game modeled separately',
+        desc: 'The 8 LoL archetypes do not show up in Valorant. 31 questions, 6 axes, 8 archetypes per game — built from scratch each time.',
       },
       {
         num: '03',
-        title: 'Built for screenshots',
-        desc: 'Every result ships with a 6-letter player code, a radar chart, and an archetype card. The kind of thing people actually post.',
+        title: 'The result IS the screenshot',
+        desc: 'Your result page is already a saveable card. No manual layout work. 1080×1920, ready for the group chat.',
       },
       {
         num: '04',
-        title: 'Four languages, actually localized',
-        desc: 'Chinese, English, Japanese, Korean — each with game-culture references specific to that region\'s player community. Not a translation.',
+        title: 'Four languages, actually written',
+        desc: 'Chinese / English / 日本語 / 한국어 — not Google Translate. Every line was written by a human in that language.',
       },
     ],
   },
   ja: {
-    heading: '何が違うのか',
+    kicker: '05 · 何が違うのか',
+    right: 'MBTIクローンではない',
+    headLead: '世にあふれる100個のMBTI診断と、',
+    headEm: 'ちょっと違う',
+    headTail: '',
     reasons: [
       {
         num: '01',
-        title: 'ゲームごとの専用問題',
-        desc: '各ゲームのコミュニティ向けに問題を個別に作成。CS2プレイヤーはCS2の状況に答える。汎用心理学問題の使い回しはない。',
+        title: '科学のフリをしない',
+        desc: 'SBTIは風刺、心理学ではない。論文は一切引用しない。それでも「これ自分だ」と思う確率はかなり高い。',
       },
       {
         num: '02',
-        title: '6軸心理学モデル',
-        desc: '双極6軸システム、67の組み合わせ。「あなたは芸能人の誰に似てる？」系の問題ではない。各軸はゲーマー行動の独立変数だ。',
+        title: 'ゲームごとに別モデル',
+        desc: 'LoLの8タイプはValorantには出てこない。各ゲーム31問・6軸・8タイプ、毎回ゼロから設計。',
       },
       {
         num: '03',
-        title: 'スクショ前提の設計',
-        desc: 'すべての結果に6文字プレイヤーコード・レーダーチャート・アーキタイプカードが付く。実際にシェアしたくなるやつ。',
+        title: '結果＝スクショ',
+        desc: '結果ページがそのまま保存用カード。レイアウト作業は要らない。1080×1920、グループチャット直行。',
       },
       {
         num: '04',
-        title: '4言語、ちゃんとローカライズ',
-        desc: '中国語・英語・日本語・韓国語。各地域のプレイヤー文化に合わせて個別に書かれている。機械翻訳ではない。',
+        title: '4言語、ちゃんと書いた',
+        desc: '中文 / English / 日本語 / 한국어 —— Google翻訳ではない。一行ずつ、その言語で書いてる。',
       },
     ],
   },
   ko: {
-    heading: '무엇이 다른가',
+    kicker: '05 · 무엇이 다른가',
+    right: '또 하나의 MBTI 클론은 아니다',
+    headLead: '세상에 널린 100개의 MBTI 테스트랑, ',
+    headEm: '좀 다르다',
+    headTail: '',
     reasons: [
       {
         num: '01',
-        title: '게임 전용 문제',
-        desc: '각 게임 커뮤니티를 위해 문제를 따로 작성했다. CS2 플레이어는 CS2 상황에 답한다. 범용 심리학 문제 재활용 없음.',
+        title: '과학인 척하지 않는다',
+        desc: 'SBTI는 풍자다, 심리학이 아니다. 논문 인용 없음. 그래도 "이거 진짜 나야"라고 느낄 확률은 꽤 높다.',
       },
       {
         num: '02',
-        title: '6축 심리학 모델',
-        desc: '양극 6축 시스템, 67가지 조합. "당신은 어떤 연예인을 닮았나요?" 류의 테스트가 아니다. 각 축은 게이머 행동의 독립 변수다.',
+        title: '게임마다 따로 만든다',
+        desc: 'LoL의 8개 유형이 발로란트에 나오지 않는다. 게임마다 31문항·6축·8유형, 매번 처음부터 설계.',
       },
       {
         num: '03',
-        title: '스크린샷 친화적 설계',
-        desc: '모든 결과에 6자리 플레이어 코드·레이더 차트·아키타입 카드가 포함된다. 실제로 공유하고 싶어지는 디자인.',
+        title: '결과 = 스크린샷',
+        desc: '결과 페이지가 이미 저장용 카드다. 따로 레이아웃 작업할 필요 없다. 1080×1920, 단톡방 직행.',
       },
       {
         num: '04',
-        title: '4개 언어, 제대로 된 현지화',
-        desc: '중국어·영어·일본어·한국어. 각 지역 플레이어 문화에 맞게 별도로 작성됐다. 기계 번역이 아니다.',
+        title: '4개 언어, 진짜 사람이 썼다',
+        desc: '中文 / English / 日本語 / 한국어 —— 구글 번역 아니다. 한 줄 한 줄 그 언어로 직접 썼다.',
       },
     ],
   },
@@ -118,25 +144,85 @@ export function WhyDifferent({locale}: WhyDifferentProps) {
   const t = COPY[l];
 
   return (
-    <section className="bg-muted/40 py-16 md:py-20">
-      <div className="mx-auto max-w-4xl px-6">
-        <h2 className="font-heading text-2xl font-bold text-center text-foreground mb-10 md:text-3xl">
-          {t.heading}
-        </h2>
-
-        <div className="grid gap-4 sm:grid-cols-2">
-          {t.reasons.map((r) => (
-            <div
-              key={r.num}
-              className="rounded-2xl border border-border bg-card p-6 shadow-sm"
+    <section
+      className="border-b border-border py-24"
+      style={{background: 'var(--paper-deep)'}}
+    >
+      <div className="container mx-auto max-w-[1240px] px-5 md:px-8">
+        <header className="mb-12 grid items-baseline gap-6 md:grid-cols-[auto_1fr_auto]">
+          <div className="mono-label md:col-span-2">{t.kicker}</div>
+          <div className="font-mono text-[11px] uppercase tracking-[0.14em] text-muted-foreground leading-7 md:row-start-1 md:row-span-2 md:col-start-3 md:text-right self-end">
+            {t.right}
+          </div>
+          <h2
+            className="font-heading text-foreground m-0 md:col-span-2"
+            style={{
+              fontVariationSettings: '"opsz" 144, "SOFT" 30, "wght" 700',
+              fontSize: 'clamp(36px, 5vw, 64px)',
+              lineHeight: 0.96,
+              letterSpacing: '-0.02em',
+              maxWidth: '18ch',
+            }}
+          >
+            {t.headLead}
+            <em
+              className="not-italic"
+              style={{
+                fontStyle: 'italic',
+                fontVariationSettings: '"opsz" 144, "SOFT" 90, "wght" 700',
+                color: 'var(--vermillion)',
+                letterSpacing: '-0.025em',
+              }}
             >
-              <div className="mb-3 flex items-center gap-3">
-                <span className="font-mono text-2xl font-bold text-primary/30">{r.num}</span>
-                <h3 className="font-heading text-base font-semibold text-foreground">{r.title}</h3>
+              {t.headEm}
+            </em>
+            {t.headTail}
+          </h2>
+        </header>
+
+        <div className="border grid grid-cols-1 sm:grid-cols-2" style={{borderColor: 'var(--border)'}}>
+          {t.reasons.map((r, i) => {
+            const isLastRow = i >= t.reasons.length - 2;
+            const isRightCol = i % 2 === 1;
+            return (
+              <div
+                key={r.num}
+                className="p-8"
+                style={{
+                  borderRight: isRightCol ? '0' : '1px solid var(--border)',
+                  borderBottom: isLastRow ? '0' : '1px solid var(--border)',
+                }}
+              >
+                <div
+                  className="font-mono mb-3.5"
+                  style={{
+                    fontSize: 10,
+                    letterSpacing: '0.18em',
+                    color: 'var(--vermillion)',
+                  }}
+                >
+                  {r.num}
+                </div>
+                <h3
+                  className="font-heading text-foreground m-0 mb-2.5"
+                  style={{
+                    fontVariationSettings: '"opsz" 144, "wght" 700',
+                    fontSize: 22,
+                    lineHeight: 1.2,
+                    letterSpacing: '-0.01em',
+                  }}
+                >
+                  {r.title}
+                </h3>
+                <p
+                  className="m-0 text-[15px] leading-relaxed"
+                  style={{color: 'var(--ink-soft)'}}
+                >
+                  {r.desc}
+                </p>
               </div>
-              <p className="text-sm leading-relaxed text-muted-foreground">{r.desc}</p>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

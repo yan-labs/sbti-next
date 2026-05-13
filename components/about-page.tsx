@@ -2,19 +2,10 @@
 
 import {useTranslations, useLocale} from 'next-intl';
 import {Link} from '@/i18n/navigation';
-import {Card, CardContent} from '@/components/ui/card';
-import {Button} from '@/components/ui/button';
-import {Separator} from '@/components/ui/separator';
 import {ChevronRight} from 'lucide-react';
 import {getLocaleUrl, getPageSeo} from '@/lib/metadata';
 
-const DIMENSION_MODELS = [
-  {key: 'S', color: 'bg-primary/10 text-primary'},
-  {key: 'E', color: 'bg-secondary/10 text-secondary'},
-  {key: 'A', color: 'bg-accent/10 text-accent-foreground'},
-  {key: 'Ac', color: 'bg-secondary/10 text-secondary'},
-  {key: 'So', color: 'bg-primary/10 text-primary'},
-] as const;
+const DIMENSION_MODELS = ['S', 'E', 'A', 'Ac', 'So'] as const;
 
 export function AboutPage() {
   const t = useTranslations('about');
@@ -25,74 +16,109 @@ export function AboutPage() {
   const pageUrl = getLocaleUrl(locale, '/about');
 
   return (
-    <div className="mx-auto max-w-2xl px-4 py-12">
-      <nav aria-label="Breadcrumb" className="mb-6 flex items-center gap-1 text-sm text-muted-foreground">
-        <Link href="/" className="hover:text-foreground transition-colors">{tb('home')}</Link>
-        <ChevronRight className="h-3.5 w-3.5" />
-        <span className="text-foreground font-medium">{t('pageTitle')}</span>
-      </nav>
+    <div className="bg-background">
+      <div className="mx-auto max-w-[1240px] px-5 md:px-8 py-20 md:py-24">
+        {/* Breadcrumb */}
+        <nav aria-label="Breadcrumb" className="mb-12 flex items-center gap-2 text-xs font-mono uppercase tracking-[0.18em] text-muted-foreground">
+          <Link href="/" className="hover:text-foreground transition-colors">{tb('home')}</Link>
+          <ChevronRight className="h-3 w-3" />
+          <span className="text-foreground">{t('pageTitle')}</span>
+        </nav>
 
-      <h1 className="font-heading text-4xl font-bold tracking-tight">{t('pageTitle')}</h1>
+        <div className="grid grid-cols-1 gap-12 md:grid-cols-[minmax(0,1.3fr)_minmax(0,2fr)] md:gap-20 mb-20">
+          <header>
+            <span className="editorial-kicker-line mb-6">{t('pageTitle')}</span>
+            <h1 className="editorial-h1">
+              About <em>SBTI</em>
+            </h1>
+          </header>
 
-      <Separator className="my-8" />
-
-      {/* What is SBTI */}
-      <section className="space-y-4">
-        <h2 className="font-heading text-2xl font-bold">{t('whatIsSbti')}</h2>
-        <p className="text-base leading-relaxed text-foreground/85">{t('whatIsSbtiP1')}</p>
-        <p className="text-base leading-relaxed text-foreground/85">{t('whatIsSbtiP2')}</p>
-      </section>
-
-      <Separator className="my-8" />
-
-      {/* How It Works */}
-      <section className="space-y-6">
-        <h2 className="font-heading text-2xl font-bold">{t('howItWorks')}</h2>
-        <div className="grid gap-4 sm:grid-cols-3">
-          {(['howStep1', 'howStep2', 'howStep3'] as const).map((step, i) => (
-            <Card key={step} className="border-0 shadow-sm">
-              <CardContent className="pt-6">
-                <div className="mb-3 flex h-8 w-8 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground">
-                  {i + 1}
-                </div>
-                <h3 className="font-heading text-lg font-semibold">{t(`${step}Title`)}</h3>
-                <p className="mt-2 text-base leading-relaxed text-muted-foreground">{t(`${step}Desc`)}</p>
-              </CardContent>
-            </Card>
-          ))}
+          {/* Intro / Pull-quote area */}
+          <div className="md:pt-2">
+            <p className="editorial-dek mb-6 max-w-[40ch]">
+              {t('whatIsSbtiP1')}
+            </p>
+            <p className="editorial-dek max-w-[40ch]">
+              {t('whatIsSbtiP2')}
+            </p>
+          </div>
         </div>
-      </section>
 
-      <Separator className="my-8" />
+        {/* What is SBTI section */}
+        <section className="border-t border-border pt-20 mb-20">
+          <div className="grid grid-cols-1 gap-12 md:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] md:gap-20">
+            <div>
+              <span className="editorial-kicker block mb-3">01 / Premise</span>
+              <h2 className="editorial-h2">
+                What is <em>SBTI</em>?
+              </h2>
+            </div>
+            <div className="prose-custom">
+              <p>{t('whatIsSbtiP1')}</p>
+              <p>{t('whatIsSbtiP2')}</p>
+            </div>
+          </div>
+        </section>
 
-      {/* 5 Dimension Models */}
-      <section className="space-y-6">
-        <h2 className="font-heading text-2xl font-bold">{t('dimensionsTitle')}</h2>
-        <p className="text-base leading-relaxed text-foreground/85">{t('dimensionsIntro')}</p>
-        <div className="space-y-3">
-          {DIMENSION_MODELS.map(({key, color}) => (
-            <Card key={key} className="border-0 shadow-sm">
-              <CardContent className="flex items-start gap-4 pt-6">
-                <div className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-lg font-mono text-sm font-bold ${color}`}>
-                  {key}
-                </div>
-                <div>
-                  <h3 className="font-heading text-lg font-semibold">{t(`dim${key}`)}</h3>
-                  <p className="mt-1 text-base leading-relaxed text-muted-foreground">{t(`dim${key}Desc`)}</p>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      </section>
+        {/* How it works */}
+        <section className="border-t border-border pt-20 mb-20">
+          <div className="mb-12">
+            <span className="editorial-kicker block mb-3">02 / Method</span>
+            <h2 className="editorial-h2">{t('howItWorks')}</h2>
+          </div>
+          <div className="grid gap-px bg-border border border-border md:grid-cols-3">
+            {(['howStep1', 'howStep2', 'howStep3'] as const).map((step, i) => (
+              <div key={step} className="bg-card p-7">
+                <span className="editorial-kicker block mb-4">
+                  Step {String(i + 1).padStart(2, '0')}
+                </span>
+                <h3 className="font-heading text-xl font-semibold tracking-tight mb-3">
+                  {t(`${step}Title`)}
+                </h3>
+                <p className="text-[15px] leading-relaxed text-muted-foreground">
+                  {t(`${step}Desc`)}
+                </p>
+              </div>
+            ))}
+          </div>
+        </section>
 
-      {/* CTA */}
-      <div className="mt-12 text-center">
-        <Link href="/test">
-          <Button size="lg" className="rounded-full px-10">
+        {/* 5 Dimensions */}
+        <section className="border-t border-border pt-20 mb-20">
+          <div className="grid grid-cols-1 gap-12 md:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] md:gap-20 mb-12">
+            <div>
+              <span className="editorial-kicker block mb-3">03 / Dimensions</span>
+              <h2 className="editorial-h2">
+                <em>Five</em> axes,<br />fifteen poles.
+              </h2>
+            </div>
+            <div>
+              <p className="editorial-dek max-w-[44ch]">{t('dimensionsIntro')}</p>
+            </div>
+          </div>
+
+          <div className="grid gap-px bg-border border border-border md:grid-cols-2 lg:grid-cols-3">
+            {DIMENSION_MODELS.map((key) => (
+              <div key={key} className="bg-card p-6 flex flex-col gap-3">
+                <span className="font-mono text-xs tracking-[0.2em] text-primary">{key}</span>
+                <h3 className="font-heading text-lg font-semibold tracking-tight">
+                  {t(`dim${key}`)}
+                </h3>
+                <p className="text-sm leading-relaxed text-muted-foreground">
+                  {t(`dim${key}Desc`)}
+                </p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* CTA */}
+        <div className="border-t border-border pt-20 flex flex-col items-start gap-6">
+          <span className="editorial-kicker">Ready when you are</span>
+          <Link href="/test" className="btn-editorial">
             {ti('start')}
-          </Button>
-        </Link>
+          </Link>
+        </div>
       </div>
 
       {/* Schema.org */}

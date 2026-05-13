@@ -2,8 +2,6 @@
 
 import {useTranslations} from 'next-intl';
 import {Link} from '@/i18n/navigation';
-import {Card, CardContent} from '@/components/ui/card';
-import {Separator} from '@/components/ui/separator';
 import {ChevronRight} from 'lucide-react';
 
 const SECTIONS = ['section1', 'section2', 'section3', 'section4', 'section5'] as const;
@@ -13,32 +11,44 @@ export function PrivacyPolicyPage() {
   const tb = useTranslations('breadcrumb');
 
   return (
-    <div className="mx-auto max-w-2xl px-4 py-12">
-      <nav aria-label="Breadcrumb" className="mb-6 flex items-center gap-1 text-sm text-muted-foreground">
-        <Link href="/" className="hover:text-foreground transition-colors">{tb('home')}</Link>
-        <ChevronRight className="h-3.5 w-3.5" />
-        <span className="text-foreground font-medium">{t('pageTitle')}</span>
-      </nav>
+    <div className="bg-background">
+      <div className="mx-auto max-w-[1240px] px-5 md:px-8 py-20 md:py-24">
+        {/* Breadcrumb */}
+        <nav aria-label="Breadcrumb" className="mb-12 flex items-center gap-2 text-xs font-mono uppercase tracking-[0.18em] text-muted-foreground">
+          <Link href="/" className="hover:text-foreground transition-colors">{tb('home')}</Link>
+          <ChevronRight className="h-3 w-3" />
+          <span className="text-foreground">{t('pageTitle')}</span>
+        </nav>
 
-      <h1 className="font-heading text-4xl font-bold tracking-tight">{t('pageTitle')}</h1>
-      <p className="mt-2 text-sm text-muted-foreground">{t('lastUpdated')}</p>
+        {/* Section head */}
+        <header className="grid grid-cols-1 gap-8 md:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] md:gap-16 mb-16 md:mb-20">
+          <div className="flex flex-col gap-3">
+            <span className="editorial-kicker text-primary">Legal</span>
+            <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-muted-foreground">
+              {t('lastUpdated')}
+            </span>
+          </div>
+          <h1 className="editorial-h1 max-w-[18ch]">
+            {t('pageTitle')}
+          </h1>
+        </header>
 
-      <Separator className="my-8" />
+        {/* Body */}
+        <div className="mx-auto max-w-[68ch]">
+          <div className="prose-custom">
+            <p className="text-xl leading-relaxed text-foreground">{t('introText')}</p>
 
-      <div className="space-y-2">
-        <h2 className="font-heading text-xl font-bold">{t('introTitle')}</h2>
-        <p className="text-base leading-relaxed text-foreground/85">{t('introText')}</p>
-      </div>
-
-      <div className="mt-8 space-y-6">
-        {SECTIONS.map(id => (
-          <Card key={id} className="border-0 shadow-sm">
-            <CardContent className="pt-6">
-              <h2 className="font-heading text-lg font-semibold">{t(`${id}Title`)}</h2>
-              <p className="mt-2 text-base leading-relaxed text-muted-foreground">{t(`${id}Text`)}</p>
-            </CardContent>
-          </Card>
-        ))}
+            {SECTIONS.map((id, i) => (
+              <section key={id} className="mt-12">
+                <span className="block font-mono text-[11px] uppercase tracking-[0.2em] text-primary mb-3">
+                  {String(i + 1).padStart(2, '0')} · {t(`${id}Title`)}
+                </span>
+                <h2 className="!mt-0">{t(`${id}Title`)}</h2>
+                <p>{t(`${id}Text`)}</p>
+              </section>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );

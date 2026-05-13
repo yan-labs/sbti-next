@@ -1,6 +1,6 @@
 import {
-  Space_Grotesk,
-  DM_Sans,
+  Fraunces,
+  Manrope,
   JetBrains_Mono,
   Cinzel,
   Bebas_Neue,
@@ -20,8 +20,23 @@ import {SiteFooter} from '@/components/site-footer';
 import {SiteHeader} from '@/components/site-header';
 import {cn} from '@/lib/utils';
 
-const fontDisplay = Space_Grotesk({subsets: ['latin'], variable: '--font-display', weight: ['400', '500', '600', '700'], display: 'swap'});
-const fontSans = DM_Sans({subsets: ['latin'], variable: '--font-dm', display: 'swap'});
+// Display: Fraunces — variable serif with optical-size + softness axes. Italic
+// state with high SOFT produces our editorial "accent italic" vermillion runs.
+// Variable fonts: do not pass `weight` (the entire weight range is loaded).
+const fontDisplay = Fraunces({
+  subsets: ['latin'],
+  variable: '--font-display',
+  axes: ['SOFT', 'opsz'],
+  style: ['normal', 'italic'],
+  display: 'swap',
+});
+// Body: Manrope — warm geometric grotesk, distinct from Inter/DM-Sans defaults.
+const fontBody = Manrope({
+  subsets: ['latin'],
+  variable: '--font-body',
+  weight: ['300', '400', '500', '600', '700', '800'],
+  display: 'swap',
+});
 const fontMono = JetBrains_Mono({subsets: ['latin'], variable: '--font-mono', display: 'swap'});
 
 // Per-game display fonts (Phase 5)
@@ -63,7 +78,7 @@ export default async function LocaleLayout({
       className={cn(
         'antialiased',
         fontDisplay.variable,
-        fontSans.variable,
+        fontBody.variable,
         fontMono.variable,
         fontKR.variable,
         fontLol.variable,

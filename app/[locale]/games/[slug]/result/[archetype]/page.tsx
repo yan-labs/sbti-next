@@ -26,7 +26,10 @@ import {
   buildWebSiteSchema,
   buildArchetypeDefinedTermSchema,
 } from '@/lib/json-ld';
+import {ShareButtons} from '@/components/share-buttons';
+import {SaveGameArchetypeImageButton} from '@/components/games/save-archetype-image';
 import {ALL_GAMES_V2, getGameV2} from '@/lib/data/games/index';
+import {getArchetypeArt} from '@/lib/data/games/archetype-art';
 import {AXES, AXIS_ORDER, polarityFromScore} from '@/lib/data/games/dimensions';
 import {derivePolarityCode} from '@/lib/data/games/scoring';
 import type {Axis, ArchetypeV2, SiteLocale} from '@/lib/data/games/types';
@@ -84,6 +87,9 @@ const COPY: Record<SiteLocale, {
   axisProfile: string;
   backToGame: string;
   viewAllTypes: string;
+  shareLabel: string;
+  shareTitle: (game: string, archetype: string) => string;
+  shareDescription: (game: string, archetype: string, oneLiner: string) => string;
   faqQ1: (game: string) => string;
   faqA1: (name: string, oneLiner: string) => string;
   faqQ2: (game: string) => string;
@@ -99,6 +105,9 @@ const COPY: Record<SiteLocale, {
     axisProfile: '六维画像',
     backToGame: '返回测试',
     viewAllTypes: '查看所有类型',
+    shareLabel: '分享你的结果',
+    shareTitle: (g, a) => `我在 ${g} 里是「${a}」 — SBTI 玩家测试`,
+    shareDescription: (g, a, o) => `${g} 玩家类型：${a}。${o}`,
     faqQ1: (game) => `${game}有哪些玩家类型？`,
     faqA1: (name, oneLiner) => `这是"${name}"：${oneLiner}。共有 8 种玩家类型，完成测试即可获取你的类型。`,
     faqQ2: (game) => `${game}玩家身份码是什么意思？`,
@@ -114,6 +123,9 @@ const COPY: Record<SiteLocale, {
     axisProfile: '6-Axis Profile',
     backToGame: 'Back to Quiz',
     viewAllTypes: 'All Archetypes',
+    shareLabel: 'Share your result',
+    shareTitle: (g, a) => `I'm "${a}" in ${g} — SBTI Player Quiz`,
+    shareDescription: (g, a, o) => `${g} player archetype: ${a}. ${o}`,
     faqQ1: (game) => `What are the player types in ${game}?`,
     faqA1: (name, oneLiner) => `This is "${name}": ${oneLiner}. There are 8 archetypes total — take the quiz to find yours.`,
     faqQ2: (game) => `What does the ${game} player code mean?`,
@@ -129,6 +141,9 @@ const COPY: Record<SiteLocale, {
     axisProfile: '6軸プロフィール',
     backToGame: '診断に戻る',
     viewAllTypes: '全タイプ',
+    shareLabel: '結果をシェア',
+    shareTitle: (g, a) => `${g} の私は「${a}」 — SBTI プレイヤー診断`,
+    shareDescription: (g, a, o) => `${g} プレイヤータイプ：${a}。${o}`,
     faqQ1: (game) => `${game}のプレイヤータイプは何種類？`,
     faqA1: (name, oneLiner) => `これは「${name}」：${oneLiner}。全8タイプあります。診断してあなたのタイプを見つけよう。`,
     faqQ2: (game) => `${game}のプレイヤーコードとは？`,
@@ -144,6 +159,9 @@ const COPY: Record<SiteLocale, {
     axisProfile: '6축 프로필',
     backToGame: '테스트로 돌아가기',
     viewAllTypes: '전체 유형',
+    shareLabel: '결과 공유',
+    shareTitle: (g, a) => `${g}에서 나는 "${a}" — SBTI 플레이어 테스트`,
+    shareDescription: (g, a, o) => `${g} 플레이어 유형: ${a}. ${o}`,
     faqQ1: (game) => `${game}에는 플레이어 유형이 몇 가지인가요?`,
     faqA1: (name, oneLiner) => `이것은 "${name}": ${oneLiner}. 총 8가지 유형이 있습니다. 테스트로 내 유형을 찾아보세요.`,
     faqQ2: (game) => `${game} 플레이어 코드는 무엇인가요?`,
@@ -188,7 +206,14 @@ export async function generateMetadata({
 
   const title = fitSeoTitle(locale, titleMap[loc]);
   const description = fitSeoDescription(locale, descMap[loc]);
-  const imageUrl = archetype.image ? `${BASE_URL}${archetype.image.src}` : DEFAULT_OG_IMAGE.url;
+  // Per-archetype OG image: prefer the dedicated .webp shipped per archetype,
+  // fall back to legacy `archetype.image.src` if set, then SBTI default.
+  const artPath = getArchetypeArt(slug, archetypeSlug);
+  const imageUrl = artPath
+    ? `${BASE_URL}${artPath}`
+    : archetype.image
+      ? `${BASE_URL}${archetype.image.src}`
+      : DEFAULT_OG_IMAGE.url;
 
   return {
     title,
@@ -200,7 +225,7 @@ export async function generateMetadata({
       url: getLocaleUrl(locale, path),
       siteName: 'SBTI',
       type: 'website',
-      images: [{url: imageUrl, width: 720, height: 720}],
+      images: [{url: imageUrl, width: 1024, height: 1024}],
       locale: getOgLocale(locale),
       alternateLocale: getAlternateOgLocales(locale),
     },
@@ -237,13 +262,22 @@ export default async function ArchetypeResultPage({
 
   const path = `/games/${slug}/result/${archetypeSlug}`;
   const pageUrl = getLocaleUrl(locale, path);
-  const imageUrl = archetype.image ? `${BASE_URL}${archetype.image.src}` : undefined;
+
+  // Look up archetype artwork: per-archetype WebP if shipped, else bucket fallback.
+  const archetypeArt = archetype.image?.src ?? getArchetypeArt(slug, archetypeSlug);
+  const imageUrl = archetypeArt ? `${BASE_URL}${archetypeArt}` : undefined;
 
   const rivalArchetype = archetype.rivalSlug
     ? game.archetypes.find((a) => a.slug === archetype.rivalSlug)
     : undefined;
   const bestSquadArchetype = archetype.bestSquadSlug
     ? game.archetypes.find((a) => a.slug === archetype.bestSquadSlug)
+    : undefined;
+  const rivalArt = rivalArchetype
+    ? (rivalArchetype.image?.src ?? getArchetypeArt(slug, rivalArchetype.slug))
+    : undefined;
+  const bestSquadArt = bestSquadArchetype
+    ? (bestSquadArchetype.image?.src ?? getArchetypeArt(slug, bestSquadArchetype.slug))
     : undefined;
 
   const faqPairs = [
@@ -282,92 +316,199 @@ export default async function ArchetypeResultPage({
       <JsonLd data={buildFAQPageSchema(faqPairs)} />
 
       <main
-        className="min-h-screen bg-gradient-to-b from-background via-background to-muted/40 px-4 py-16"
+        className="min-h-screen bg-background px-4 py-12 md:py-16"
         data-game={slug}
       >
-        <article className="mx-auto w-full max-w-3xl space-y-6">
+        <article className="mx-auto w-full max-w-[1100px]">
           {/* Header */}
-          <div className="space-y-2 text-center">
-            <Badge variant="outline" className="rounded-full border-primary/20 bg-primary/10 px-3 py-1 text-primary">
-              {gameTitle}
-            </Badge>
-            <p className="text-xs font-bold uppercase tracking-[0.18em] text-muted-foreground">
-              {copy.kicker}
-            </p>
+          <div className="mb-6 flex items-center justify-center gap-3 font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
+            <span>{gameTitle}</span>
+            <span className="text-muted-foreground/40">·</span>
+            <span className="text-primary">{copy.kicker}</span>
           </div>
 
-          {/* Hero */}
-          <Card className="overflow-hidden border-0 shadow-sm">
-            <CardContent className="p-5 sm:p-7">
-              <div className="grid gap-5 sm:grid-cols-[auto_1fr] sm:items-start sm:gap-7">
-                {archetype.image && (
-                  <div className="mx-auto w-40 shrink-0 sm:mx-0 sm:w-48">
-                    <Image
-                      src={archetype.image.src}
-                      alt={archetype.image.alt[loc]}
-                      width={320}
-                      height={320}
-                      className="w-full rounded-2xl border border-border/60 object-contain shadow-sm"
-                      priority
-                      unoptimized
-                    />
-                  </div>
-                )}
-                <div className="space-y-3 text-center sm:text-left">
-                  <div className="space-y-1">
-                    <h1 className="font-heading text-4xl font-black leading-tight tracking-tight">
-                      {archetypeName}
-                    </h1>
-                    <p className="text-base font-medium text-foreground/75 sm:text-lg">
-                      {oneLiner}
-                    </p>
-                  </div>
-                  <div className="flex flex-wrap items-center justify-center gap-2 sm:justify-start">
-                    <Badge
-                      variant="secondary"
-                      className="rounded-full px-3 py-1 font-mono text-base font-bold tracking-widest"
-                    >
-                      {polarityCode}
-                    </Badge>
-                    <span className="text-xs text-muted-foreground">{copy.polarityCode}</span>
-                  </div>
-                  <div className="pt-1">
-                    <Link href={`/games/${slug}`}>
-                      <Button variant="outline" size="sm" className="rounded-full gap-1.5">
-                        <RotateCcw className="size-3.5" aria-hidden="true" />
-                        {copy.retake}
-                      </Button>
-                    </Link>
+          {/* ──────────────────────────────────────────────────────────────
+              TOP ROW — Hero (left, wide) + Rival/Squad (right, narrow)
+              On mobile both stack: Hero → Rival → Squad. Same 320px right
+              column width as the bottom grid below, so the rail aligns.
+              ────────────────────────────────────────────────────────────── */}
+          <div className="mb-6 grid gap-6 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-start">
+            {/* Hero */}
+            <Card className="overflow-hidden border border-border bg-card shadow-none">
+              <CardContent className="p-5 sm:p-7">
+                <div className="grid gap-5 sm:grid-cols-[auto_1fr] sm:items-start sm:gap-7">
+                  {archetypeArt && (
+                    <div className="mx-auto w-40 shrink-0 sm:mx-0 sm:w-44 lg:w-40">
+                      <Image
+                        src={archetypeArt}
+                        alt={archetype.image?.alt?.[loc] ?? archetypeName}
+                        width={320}
+                        height={320}
+                        className="w-full border border-border bg-muted object-contain"
+                        priority
+                        unoptimized
+                      />
+                    </div>
+                  )}
+                  <div className="space-y-3 text-center sm:text-left">
+                    <div className="space-y-1">
+                      <h1
+                        className="font-heading text-4xl font-bold leading-[1.05] tracking-tight text-foreground sm:text-[44px] lg:text-[40px] xl:text-5xl"
+                        style={{fontVariationSettings: '"opsz" 144, "wght" 800'}}
+                      >
+                        {archetypeName}
+                        <span className="text-primary">.</span>
+                      </h1>
+                      <p
+                        className="font-heading text-base italic leading-snug text-foreground/75 sm:text-lg"
+                        style={{fontVariationSettings: '"opsz" 144, "SOFT" 95, "wght" 500'}}
+                      >
+                        &ldquo;{oneLiner}&rdquo;
+                      </p>
+                    </div>
+                    <div className="flex flex-wrap items-center justify-center gap-2 sm:justify-start">
+                      <Badge
+                        variant="secondary"
+                        className="rounded-full px-3 py-1 font-mono text-base font-bold tracking-widest"
+                      >
+                        {polarityCode}
+                      </Badge>
+                      <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-muted-foreground">
+                        {copy.polarityCode}
+                      </span>
+                    </div>
+                    <div className="pt-1">
+                      <Link href={`/games/${slug}`}>
+                        <Button variant="outline" size="sm" className="rounded-full gap-1.5">
+                          <RotateCcw className="size-3.5" aria-hidden="true" />
+                          {copy.retake}
+                        </Button>
+                      </Link>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Description + Radar */}
-          <div className="grid gap-5 lg:grid-cols-[1fr_auto]">
-            {description && (
-              <Card className="border-0 shadow-sm">
-                <CardContent className="p-5 sm:p-6">
-                  <p className="text-base leading-7 text-foreground/80">{description}</p>
-                </CardContent>
-              </Card>
-            )}
-            <Card className="border-0 shadow-sm lg:w-72">
-              <CardContent className="p-4 sm:p-5">
-                <p className="mb-3 text-center text-sm font-bold text-foreground/70">
-                  {copy.axisProfile}
-                </p>
-                <RadarChartSixAxis scores={scores} locale={loc} size={240} />
               </CardContent>
             </Card>
+
+            {/* Top-right rail: Rival + Squad compact cards (fills the
+                whitespace next to the hero on lg+, stacks below on mobile). */}
+            <div className="space-y-4">
+              {rivalArchetype && (
+                <Link
+                  href={`/games/${slug}/result/${rivalArchetype.slug}`}
+                  className="group block"
+                >
+                  <article className="flex h-full flex-col border border-border bg-card p-4 transition-all duration-200 hover:-translate-y-0.5 hover:border-foreground hover:shadow-[0_14px_28px_-18px_rgba(0,0,0,0.45)] sm:p-5">
+                    <div className="mb-4 flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.18em]">
+                      <span className="text-primary">✕ {copy.rival}</span>
+                      <span className="text-muted-foreground">VS</span>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      {rivalArt && (
+                        <div className="shrink-0 border border-border bg-muted">
+                          <Image
+                            src={rivalArt}
+                            alt={rivalArchetype.image?.alt?.[loc] ?? rivalArchetype.name[loc]}
+                            width={160}
+                            height={160}
+                            className="size-16 object-contain"
+                            unoptimized
+                          />
+                        </div>
+                      )}
+                      <div className="min-w-0 flex-1">
+                        <h3
+                          className="font-heading text-[18px] font-bold leading-[1.1] tracking-tight text-foreground transition-colors group-hover:text-primary"
+                          style={{fontVariationSettings: '"opsz" 144, "wght" 700'}}
+                        >
+                          {rivalArchetype.name[loc]}
+                          <span className="text-primary">.</span>
+                        </h3>
+                        <p className="mt-1.5 font-mono text-[9px] uppercase tracking-[0.16em] text-muted-foreground">
+                          {rivalArchetype.slug.replace(/-/g, ' ')}
+                        </p>
+                      </div>
+                    </div>
+                    <p
+                      className="mt-4 border-t border-border pt-3 font-heading text-[13px] italic leading-[1.4] text-foreground/75"
+                      style={{fontVariationSettings: '"opsz" 144, "SOFT" 95, "wght" 500'}}
+                    >
+                      &ldquo;{rivalArchetype.oneLiner[loc]}&rdquo;
+                    </p>
+                  </article>
+                </Link>
+              )}
+              {bestSquadArchetype && (
+                <Link
+                  href={`/games/${slug}/result/${bestSquadArchetype.slug}`}
+                  className="group block"
+                >
+                  <article className="flex h-full flex-col border border-border bg-card p-4 transition-all duration-200 hover:-translate-y-0.5 hover:border-foreground hover:shadow-[0_14px_28px_-18px_rgba(0,0,0,0.45)] sm:p-5">
+                    <div className="mb-4 flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.18em]">
+                      <span className="text-primary">★ {copy.bestSquad}</span>
+                      <span className="text-muted-foreground">SQUAD</span>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      {bestSquadArt && (
+                        <div className="shrink-0 border border-border bg-muted">
+                          <Image
+                            src={bestSquadArt}
+                            alt={bestSquadArchetype.image?.alt?.[loc] ?? bestSquadArchetype.name[loc]}
+                            width={160}
+                            height={160}
+                            className="size-16 object-contain"
+                            unoptimized
+                          />
+                        </div>
+                      )}
+                      <div className="min-w-0 flex-1">
+                        <h3
+                          className="font-heading text-[18px] font-bold leading-[1.1] tracking-tight text-foreground transition-colors group-hover:text-primary"
+                          style={{fontVariationSettings: '"opsz" 144, "wght" 700'}}
+                        >
+                          {bestSquadArchetype.name[loc]}
+                          <span className="text-primary">.</span>
+                        </h3>
+                        <p className="mt-1.5 font-mono text-[9px] uppercase tracking-[0.16em] text-muted-foreground">
+                          {bestSquadArchetype.slug.replace(/-/g, ' ')}
+                        </p>
+                      </div>
+                    </div>
+                    <p
+                      className="mt-4 border-t border-border pt-3 font-heading text-[13px] italic leading-[1.4] text-foreground/75"
+                      style={{fontVariationSettings: '"opsz" 144, "SOFT" 95, "wght" 500'}}
+                    >
+                      &ldquo;{bestSquadArchetype.oneLiner[loc]}&rdquo;
+                    </p>
+                  </article>
+                </Link>
+              )}
+            </div>
           </div>
 
-          {/* 6-axis feedback */}
-          <Card className="border-0 shadow-sm">
-            <CardContent className="space-y-3 p-5 sm:p-6">
-              <div className="grid gap-2 sm:grid-cols-2">
-                {AXIS_ORDER.map((axis, i) => {
+          {/* ──────────────────────────────────────────────────────────────
+              BOTTOM ROW — Body (left) + Radar (right sticky)
+              ────────────────────────────────────────────────────────────── */}
+          <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-start">
+
+            {/* ── LEFT: Description + 6-axis + Symptoms + Back ─────────────── */}
+            <div className="space-y-6">
+
+              {description && (
+                <Card className="border border-border bg-card shadow-none">
+                  <CardContent className="p-5 sm:p-7">
+                    <p className="text-base leading-7 text-foreground/85 md:text-[17px] md:leading-[1.75]">
+                      {description}
+                    </p>
+                  </CardContent>
+                </Card>
+              )}
+
+              {/* 6-axis feedback */}
+              <Card className="border border-border bg-card shadow-none">
+                <CardContent className="space-y-3 p-5 sm:p-6">
+                  <div className="grid gap-2 sm:grid-cols-2">
+                    {AXIS_ORDER.map((axis, i) => {
                   const def = AXES[i]!;
                   const score = scores[axis];
                   const polarity = polarityFromScore(score);
@@ -379,18 +520,18 @@ export default async function ArchetypeResultPage({
                   const barWidth = Math.round(score);
 
                   return (
-                    <div key={axis} className="space-y-1.5 rounded-xl bg-muted/35 p-3">
+                    <div key={axis} className="border border-border bg-card p-4">
                       <div className="flex items-center justify-between gap-2">
-                        <span className="text-sm font-bold text-foreground">{label}</span>
-                        <span className="font-mono text-xs font-bold text-primary">{letter}</span>
+                        <span className="font-heading text-base font-bold text-foreground" style={{fontVariationSettings: '"opsz" 144, "wght" 700'}}>{label}</span>
+                        <span className="font-mono text-xs font-bold tracking-widest text-primary">{letter}</span>
                       </div>
-                      <div className="h-1 overflow-hidden rounded-full bg-muted">
+                      <div className="mt-2 h-[3px] overflow-hidden bg-border">
                         <div
-                          className="h-full rounded-full bg-primary/70 transition-all"
+                          className="h-full bg-primary transition-all"
                           style={{width: `${barWidth}%`}}
                         />
                       </div>
-                      <p className="text-sm leading-relaxed text-foreground/70">{feedback}</p>
+                      <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{feedback}</p>
                     </div>
                   );
                 })}
@@ -398,102 +539,82 @@ export default async function ArchetypeResultPage({
             </CardContent>
           </Card>
 
-          {/* Symptoms */}
-          {archetype.symptoms && archetype.symptoms.length > 0 && (
-            <Card className="border-0 shadow-sm">
-              <CardContent className="space-y-3 p-5 sm:p-6">
-                <h2 className="font-heading text-lg font-bold text-foreground">{copy.symptoms}</h2>
-                <ul className="space-y-2">
-                  {archetype.symptoms.map((symptom, idx) => (
-                    <li
-                      key={idx}
-                      className="flex gap-2 rounded-xl bg-muted/35 px-3 py-2 text-sm text-foreground/80"
-                    >
-                      <span className="shrink-0 text-primary">•</span>
-                      {symptom[loc]}
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
-            </Card>
-          )}
+              {/* Symptoms */}
+              {archetype.symptoms && archetype.symptoms.length > 0 && (
+                <Card className="border border-border bg-card shadow-none">
+                  <CardContent className="p-5 sm:p-6">
+                    <div className="mb-4 font-mono text-[11px] uppercase tracking-[0.18em] text-primary">
+                      {copy.symptoms}
+                    </div>
+                    <ul className="space-y-3">
+                      {archetype.symptoms.map((symptom, idx) => (
+                        <li
+                          key={idx}
+                          className="flex gap-3 border-t border-border pt-3 text-[15px] leading-[1.55] text-foreground/85 first:border-t-0 first:pt-0"
+                        >
+                          <span className="font-mono text-[11px] tracking-[0.16em] text-muted-foreground">
+                            {String(idx + 1).padStart(2, '0')}
+                          </span>
+                          <span className="flex-1">{symptom[loc]}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </CardContent>
+                </Card>
+              )}
 
-          {/* Rival + Best Squad */}
-          {(rivalArchetype || bestSquadArchetype) && (
-            <div className="grid gap-4 sm:grid-cols-2">
-              {rivalArchetype && (
-                <Card className="border-0 shadow-sm">
-                  <CardContent className="p-4">
-                    <p className="mb-1 text-xs font-bold uppercase tracking-wide text-muted-foreground">
-                      {copy.rival}
-                    </p>
-                    <Link href={`/games/${slug}/result/${rivalArchetype.slug}`}>
-                      <div className="group flex items-center gap-3 rounded-xl bg-muted/30 px-3 py-2.5 transition-colors hover:bg-muted/60">
-                        {rivalArchetype.image && (
-                          <Image
-                            src={rivalArchetype.image.src}
-                            alt={rivalArchetype.image.alt[loc]}
-                            width={40}
-                            height={40}
-                            className="size-10 rounded-lg object-contain"
-                            unoptimized
-                          />
-                        )}
-                        <div className="min-w-0">
-                          <p className="truncate font-heading text-sm font-bold group-hover:text-primary">
-                            {rivalArchetype.name[loc]}
-                          </p>
-                          <p className="truncate text-xs text-muted-foreground">
-                            {rivalArchetype.oneLiner[loc]}
-                          </p>
-                        </div>
-                      </div>
-                    </Link>
-                  </CardContent>
-                </Card>
-              )}
-              {bestSquadArchetype && (
-                <Card className="border-0 shadow-sm">
-                  <CardContent className="p-4">
-                    <p className="mb-1 text-xs font-bold uppercase tracking-wide text-muted-foreground">
-                      {copy.bestSquad}
-                    </p>
-                    <Link href={`/games/${slug}/result/${bestSquadArchetype.slug}`}>
-                      <div className="group flex items-center gap-3 rounded-xl bg-muted/30 px-3 py-2.5 transition-colors hover:bg-muted/60">
-                        {bestSquadArchetype.image && (
-                          <Image
-                            src={bestSquadArchetype.image.src}
-                            alt={bestSquadArchetype.image.alt[loc]}
-                            width={40}
-                            height={40}
-                            className="size-10 rounded-lg object-contain"
-                            unoptimized
-                          />
-                        )}
-                        <div className="min-w-0">
-                          <p className="truncate font-heading text-sm font-bold group-hover:text-primary">
-                            {bestSquadArchetype.name[loc]}
-                          </p>
-                          <p className="truncate text-xs text-muted-foreground">
-                            {bestSquadArchetype.oneLiner[loc]}
-                          </p>
-                        </div>
-                      </div>
-                    </Link>
-                  </CardContent>
-                </Card>
-              )}
+              {/* Share section — Save-as-PNG (vermillion primary) +
+                  copy link / X / LINE / Facebook (secondary). */}
+              <div className="border-t border-border pt-6">
+                <div className="mb-4 flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.18em] text-primary">
+                  <span>★ {copy.shareLabel}</span>
+                  <span className="text-muted-foreground">·</span>
+                  <span className="text-muted-foreground">SHARE</span>
+                </div>
+                <div className="flex flex-wrap items-center gap-3">
+                  <SaveGameArchetypeImageButton
+                    gameSlug={slug}
+                    gameTitle={gameTitle}
+                    archetypeName={archetypeName}
+                    archetypeSlug={archetypeSlug}
+                    polarityCode={polarityCode}
+                    oneLiner={oneLiner}
+                    scores={scores}
+                    artUrl={archetypeArt}
+                    locale={loc}
+                  />
+                  <ShareButtons
+                    url={path}
+                    title={copy.shareTitle(gameTitle, archetypeName)}
+                    description={copy.shareDescription(gameTitle, archetypeName, oneLiner)}
+                  />
+                </div>
+              </div>
+
+              {/* Back to game CTA — sits at end of left column */}
+              <div className="pt-2">
+                <Link
+                  href={`/games/${slug}`}
+                  className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-5 py-2.5 font-mono text-[11px] uppercase tracking-[0.18em] text-foreground transition-colors hover:border-foreground hover:bg-muted"
+                >
+                  <RotateCcw className="size-3.5" aria-hidden="true" />
+                  {copy.backToGame}
+                </Link>
+              </div>
             </div>
-          )}
 
-          {/* Back to game CTA */}
-          <div className="flex justify-center gap-3 pb-8">
-            <Link href={`/games/${slug}`}>
-              <Button variant="outline" className="rounded-full gap-1.5">
-                <RotateCcw className="size-4" aria-hidden="true" />
-                {copy.backToGame}
-              </Button>
-            </Link>
+            {/* ── RIGHT: sticky sidebar (radar + rival + squad) ────────────── */}
+            <aside className="lg:sticky lg:top-24 lg:self-start">
+              {/* Radar (Rival/Squad moved to top row alongside hero) */}
+              <div className="border border-border bg-card p-4 sm:p-5">
+                <div className="mb-3 flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
+                  <span className="text-primary">◆ {copy.axisProfile}</span>
+                  <span>6 AXES</span>
+                </div>
+                <RadarChartSixAxis scores={scores} locale={loc} size={240} gameAccent="var(--vermillion)" />
+              </div>
+            </aside>
+
           </div>
         </article>
       </main>

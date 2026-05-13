@@ -1,16 +1,13 @@
 import Image from 'next/image';
 import {Link} from '@/i18n/navigation';
-import {ChapterMark} from '@/components/ui/chapter-mark';
-import {PaperGrain} from '@/components/ui/paper-grain';
 import {getArchetypeArt} from '@/lib/data/games/archetype-art';
-import {AXES} from '@/lib/data/games/dimensions';
 import type {GameQuizV2, SiteLocale} from '@/lib/data/games/types';
 
-const COPY: Record<SiteLocale, {heading: string; kicker: string; viewResult: string}> = {
-  zh: {heading: '8 种玩家原型', kicker: '玩家类型', viewResult: '查看详情'},
-  en: {heading: '8 Player Archetypes', kicker: 'Player types', viewResult: 'View profile'},
-  ja: {heading: '8タイプのプレイヤーアーキタイプ', kicker: 'プレイヤータイプ', viewResult: '詳細を見る'},
-  ko: {heading: '8가지 플레이어 유형', kicker: '플레이어 유형', viewResult: '프로필 보기'},
+const COPY: Record<SiteLocale, {kicker: string; heading: string; headingItalic: string}> = {
+  zh: {kicker: '01 · 8 个玩家原型', heading: '8 种 ', headingItalic: '玩家原型档案'},
+  en: {kicker: '01 · 8 player archetypes', heading: '8 ', headingItalic: 'player archetypes'},
+  ja: {kicker: '01 · 8タイプのアーキタイプ', heading: '8タイプの', headingItalic: 'プレイヤーアーキタイプ'},
+  ko: {kicker: '01 · 8가지 아키타입', heading: '8가지 ', headingItalic: '플레이어 아키타입'},
 };
 
 interface ArchetypeGalleryProps {
@@ -18,102 +15,78 @@ interface ArchetypeGalleryProps {
   locale: SiteLocale;
 }
 
+/**
+ * 4-column grid of archetype mini-cards matching the design proposal `.arch`
+ * pattern. Portrait + Nº + Fraunces zh name + mono en slug.
+ */
 export function ArchetypeGallery({game, locale}: ArchetypeGalleryProps) {
   const copy = COPY[locale];
 
   return (
-    <section className="py-16 md:py-20" id="archetypes">
-      <div className="mx-auto max-w-6xl px-6">
-        <div className="mb-10">
-          <ChapterMark number="01" kicker={copy.kicker} className="mb-3" />
-          <h2 className="font-heading text-3xl font-black text-foreground md:text-4xl">
+    <section className="border-b border-border py-16 md:py-20" id="archetypes">
+      <div className="mx-auto max-w-[1240px] px-5 md:px-8">
+        <header className="mb-10 grid grid-cols-1 items-baseline gap-3 md:grid-cols-[auto_1fr]">
+          <div className="mono-label md:col-start-1">{copy.kicker}</div>
+          <h2 className="editorial-h2 md:col-span-2">
             {copy.heading}
+            <em>{copy.headingItalic}</em>
           </h2>
-        </div>
+        </header>
 
-        <div className="grid grid-cols-2 gap-4 sm:grid-cols-2 md:grid-cols-4 md:gap-5">
-          {game.archetypes.map((arch) => {
+        <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
+          {game.archetypes.map((arch, i) => {
+            const arcNo = String(i + 1).padStart(2, '0');
             const artPath = getArchetypeArt(game.slug, arch.slug);
             const name = arch.name[locale];
-            const oneLiner = arch.oneLiner[locale];
-
-            // Polarity badge using canonical axis letters per AXES (Tempo L/R,
-            // Nerve C/A, Bond S/T, Intel D/F, Flair U/H, Mental K/B). Brand-
-            // consistent with the 6-letter player identity code (e.g. SAB
-            // means Bond=low + Nerve=high + Mental=high for aram-comedian).
-            const badge = game.dominantAxes
-              .map((axis) => {
-                const def = AXES.find((a) => a.axis === axis)!;
-                return arch.polarityPattern[axis] === 'high' ? def.highLetter : def.lowLetter;
-              })
-              .join('');
-
             return (
               <Link
                 key={arch.slug}
                 href={`/games/${game.slug}/result/${arch.slug}`}
-                className="group relative flex flex-col overflow-hidden rounded-2xl border border-border/60 bg-card shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:rotate-1 hover:shadow-xl"
-                style={{
-                  boxShadow: '0 4px 16px rgba(0,0,0,0.08)',
-                }}
-                aria-label={`${name} — ${oneLiner}`}
+                aria-label={name}
+                className="group relative block border border-border bg-[var(--paper-soft)] p-2.5 pb-3 transition-[transform,border-color,box-shadow] duration-300 ease-[cubic-bezier(.22,.7,.27,1)] hover:-translate-y-0.5 hover:border-[var(--ink)] hover:shadow-[0_12px_26px_-16px_color-mix(in_oklab,var(--ink)_50%,transparent)]"
               >
-                {/* Art image */}
-                <div className="relative aspect-square w-full overflow-hidden bg-muted">
+                <span className="absolute right-3 top-3 z-[2] font-mono text-[9px] uppercase tracking-[0.14em] text-[var(--ink-subtle)]">
+                  № {arcNo}
+                </span>
+                <div
+                  className="relative mb-2.5 aspect-square overflow-hidden bg-[var(--paper-deep)]"
+                  style={
+                    !artPath
+                      ? {
+                          background:
+                            'radial-gradient(circle at 30% 30%, color-mix(in oklab, var(--vermillion) 14%, transparent) 0%, transparent 60%), var(--paper-deep)',
+                        }
+                      : undefined
+                  }
+                >
                   {artPath ? (
                     <Image
                       src={artPath}
-                      alt={name}
+                      alt=""
                       fill
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      sizes="(max-width: 720px) 50vw, 18vw"
+                      className="object-cover transition-[transform,filter] duration-500 ease-[cubic-bezier(.22,.7,.27,1)] group-hover:scale-[1.04]"
+                      style={{filter: 'saturate(0.78) contrast(1.02)'}}
                       loading="lazy"
                       unoptimized
                     />
                   ) : (
-                    <div
-                      className="flex h-full items-center justify-center text-3xl font-black opacity-20"
-                      style={{color: 'var(--game-primary, var(--primary))'}}
-                    >
-                      ?
+                    <div className="flex h-full items-center justify-center font-heading text-[40px] text-[var(--ink-subtle)]">
+                      —
                     </div>
                   )}
-                  {/* Paper grain on top of image */}
-                  <PaperGrain opacity={0.05} />
-                  {/* Gradient veil */}
-                  <div
-                    className="absolute inset-0"
-                    style={{background: 'linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 50%)'}}
-                    aria-hidden
-                  />
-                  {/* Polarity badge */}
-                  <div className="absolute left-2 top-2">
-                    <span
-                      className="font-mono text-[10px] font-black uppercase tracking-widest rounded px-1.5 py-0.5"
-                      style={{
-                        background: 'var(--game-primary, var(--primary))',
-                        color: 'var(--game-surface, var(--primary-foreground))',
-                      }}
-                    >
-                      {badge}
-                    </span>
-                  </div>
                 </div>
-
-                {/* Body */}
-                <div className="relative flex flex-1 flex-col gap-1.5 p-3">
-                  <PaperGrain opacity={0.04} />
-                  <p className="font-heading text-sm font-black leading-tight text-foreground">
-                    {name}
-                  </p>
-                  <p className="line-clamp-2 text-xs leading-relaxed text-muted-foreground">
-                    {oneLiner}
-                  </p>
-                  {/* Hover glow underline */}
-                  <div
-                    className="mt-auto h-0.5 w-0 rounded-full transition-all duration-300 group-hover:w-full"
-                    style={{background: 'var(--game-primary, var(--primary))'}}
-                    aria-hidden
-                  />
+                <div
+                  className="m-0 mb-0.5 font-heading text-[16px] leading-[1.15] text-foreground transition-colors group-hover:text-[var(--vermillion)]"
+                  style={{
+                    fontVariationSettings: '"opsz" 144, "wght" 700',
+                    letterSpacing: '-0.005em',
+                  }}
+                >
+                  {name}
+                </div>
+                <div className="font-mono text-[10px] uppercase tracking-[0.12em] text-[var(--ink-muted)]">
+                  {arch.slug.replace(/-/g, ' ')}
                 </div>
               </Link>
             );

@@ -2,134 +2,106 @@
 
 import {useTranslations} from 'next-intl';
 import {Link} from '@/i18n/navigation';
-import {Button} from '@/components/ui/button';
-import {ChevronRight, Clock, ArrowRight} from 'lucide-react';
+import {ChevronRight} from 'lucide-react';
 import {BLOG_POSTS} from '@/lib/data/blog';
-
-const CARD_THEMES = [
-  {
-    gradient: 'from-primary/12 via-primary/6 to-transparent',
-    border: 'border-primary/20 hover:border-primary/40',
-    badge: 'bg-primary/15 text-primary',
-    emoji: '⚔️',
-    tag: 'VS',
-  },
-  {
-    gradient: 'from-secondary/12 via-secondary/6 to-transparent',
-    border: 'border-secondary/20 hover:border-secondary/40',
-    badge: 'bg-secondary/15 text-secondary',
-    emoji: '🎭',
-    tag: 'GUIDE',
-  },
-  {
-    gradient: 'from-accent/12 via-accent/6 to-transparent',
-    border: 'border-accent/20 hover:border-accent/40',
-    badge: 'bg-accent/15 text-accent-foreground',
-    emoji: '🧬',
-    tag: 'DEEP DIVE',
-  },
-];
 
 export function BlogListPage() {
   const t = useTranslations('blog');
   const tb = useTranslations('breadcrumb');
 
-  const featured = BLOG_POSTS[0];
-  const rest = BLOG_POSTS.slice(1);
-  const featuredTheme = CARD_THEMES[0];
+  const [featured, ...rest] = BLOG_POSTS;
 
   return (
-    <div className="mx-auto max-w-3xl px-4 py-12">
-      {/* Breadcrumb */}
-      <nav aria-label="Breadcrumb" className="mb-8 flex items-center gap-1 text-sm text-muted-foreground">
-        <Link href="/" className="hover:text-foreground transition-colors">{tb('home')}</Link>
-        <ChevronRight className="h-3.5 w-3.5" />
-        <span className="text-foreground font-medium">{t('pageTitle')}</span>
-      </nav>
+    <div className="bg-background">
+      <div className="mx-auto max-w-[1240px] px-5 md:px-8 py-20 md:py-24">
+        {/* Breadcrumb */}
+        <nav aria-label="Breadcrumb" className="mb-12 flex items-center gap-2 text-xs font-mono uppercase tracking-[0.18em] text-muted-foreground">
+          <Link href="/" className="hover:text-foreground transition-colors">{tb('home')}</Link>
+          <ChevronRight className="h-3 w-3" />
+          <span className="text-foreground">{t('pageTitle')}</span>
+        </nav>
 
-      {/* Header */}
-      <div className="mb-10">
-        <h1 className="font-heading text-4xl font-bold tracking-tight sm:text-5xl">{t('pageTitle')}</h1>
-        <p className="mt-3 text-lg text-muted-foreground">{t('pageSubtitle')}</p>
-      </div>
+        {/* Section head */}
+        <header className="grid grid-cols-1 gap-8 md:grid-cols-[auto_1fr_auto] md:items-baseline mb-16 md:mb-20">
+          <span className="editorial-kicker">Journal</span>
+          <h1 className="editorial-h1 md:col-start-1 md:col-end-3 md:mt-2">
+            Notes from the <em>satire lab</em>.
+          </h1>
+          <p className="editorial-dek max-w-[40ch] md:col-start-1 md:col-end-3 md:mt-4">
+            {t('pageSubtitle')}
+          </p>
+          <span className="hidden md:block font-mono text-[11px] uppercase tracking-[0.14em] text-muted-foreground md:row-span-2 md:self-end text-right leading-[1.7]">
+            {BLOG_POSTS.length.toString().padStart(2, '0')} articles<br />
+            Updated weekly
+          </span>
+        </header>
 
-      {/* Featured / Hero Card */}
-      <Link href={`/blog/${featured.slug}`} className="group block">
-        <div className={`relative overflow-hidden rounded-2xl border bg-gradient-to-br p-6 sm:p-8 transition-all hover:-translate-y-1 hover:shadow-lg ${featuredTheme.gradient} ${featuredTheme.border}`}>
-          <div className="flex items-start gap-4">
-            <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary text-primary-foreground text-xl">
-              {featuredTheme.emoji}
-            </span>
-            <div className="min-w-0 flex-1">
-              <div className="mb-3 flex flex-wrap items-center gap-2">
-                <span className={`rounded-full px-2.5 py-0.5 text-xs font-bold ${featuredTheme.badge}`}>
-                  {featuredTheme.tag}
-                </span>
-                <span className="text-xs text-muted-foreground">{featured.date}</span>
-                <span className="flex items-center gap-1 text-xs text-muted-foreground">
-                  <Clock className="h-3 w-3" />
-                  {t('readTime', {minutes: featured.readTime})}
-                </span>
+        {/* Featured */}
+        <Link href={`/blog/${featured.slug}`} className="group block mb-16 md:mb-20">
+          <article className="grid grid-cols-1 gap-8 md:grid-cols-[minmax(0,1fr)_minmax(0,1.4fr)] md:gap-16 border-t border-ink/90 dark:border-foreground pt-8 transition-all">
+            <div className="flex flex-col gap-3">
+              <span className="editorial-kicker text-primary">Featured · 01</span>
+              <div className="flex items-center gap-4 font-mono text-[11px] uppercase tracking-[0.14em] text-muted-foreground">
+                <time dateTime={featured.date}>{featured.date}</time>
+                <span aria-hidden>·</span>
+                <span>{t('readTime', {minutes: featured.readTime})}</span>
               </div>
-              <h2 className="font-heading text-2xl font-bold tracking-tight group-hover:text-primary transition-colors sm:text-3xl">
+            </div>
+            <div>
+              <h2 className="font-heading text-3xl md:text-5xl font-bold leading-[1.04] tracking-[-0.02em] text-foreground group-hover:text-primary transition-colors">
                 {t(`posts.${featured.slug}.title`)}
               </h2>
-              <p className="mt-3 text-base leading-relaxed text-foreground/70">
+              <p className="mt-6 text-lg leading-relaxed text-muted-foreground max-w-[52ch]">
                 {t(`posts.${featured.slug}.excerpt`)}
               </p>
-              <span className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-primary">
+              <span className="mt-6 inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.18em] text-primary border-b border-primary/40 group-hover:border-primary pb-[2px]">
                 {t('readArticle')}
-                <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
+                <span className="font-heading not-italic">→</span>
               </span>
             </div>
-          </div>
-        </div>
-      </Link>
-
-      {/* Rest of Posts */}
-      <div className="mt-4 grid gap-4 sm:grid-cols-2">
-        {rest.map((post, i) => {
-          const theme = CARD_THEMES[(i + 1) % CARD_THEMES.length];
-          return (
-            <Link key={post.slug} href={`/blog/${post.slug}`} className="group block">
-              <div className={`relative h-full overflow-hidden rounded-xl border bg-gradient-to-br p-5 transition-all hover:-translate-y-0.5 hover:shadow-md ${theme.gradient} ${theme.border}`}>
-                <div className="flex items-start gap-3">
-                  <span className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-lg text-base ${theme.badge}`}>
-                    {theme.emoji}
-                  </span>
-                  <div className="min-w-0">
-                    <div className="mb-2 flex flex-wrap items-center gap-2">
-                      <span className={`rounded-full px-2 py-0.5 text-[10px] font-bold ${theme.badge}`}>
-                        {theme.tag}
-                      </span>
-                      <span className="flex items-center gap-1 text-xs text-muted-foreground">
-                        <Clock className="h-3 w-3" />
-                        {t('readTime', {minutes: post.readTime})}
-                      </span>
-                    </div>
-                    <h2 className="font-heading text-lg font-bold leading-snug group-hover:text-primary transition-colors">
-                      {t(`posts.${post.slug}.title`)}
-                    </h2>
-                    <p className="mt-2 text-sm leading-relaxed text-foreground/60 line-clamp-2">
-                      {t(`posts.${post.slug}.excerpt`)}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </Link>
-          );
-        })}
-      </div>
-
-      {/* CTA */}
-      <div className="mt-12 rounded-2xl bg-primary/5 border border-primary/20 p-8 text-center">
-        <h3 className="font-heading text-xl font-bold">{t('bottomCtaTitle')}</h3>
-        <p className="mt-2 text-sm text-muted-foreground">{t('bottomCtaDesc')}</p>
-        <Link href="/test">
-          <Button size="lg" className="mt-4 rounded-full px-10">{t('bottomCtaButton')}</Button>
+          </article>
         </Link>
-      </div>
 
+        {/* Rest of posts — editorial 2-col */}
+        <div className="grid grid-cols-1 gap-px bg-border border border-border md:grid-cols-2">
+          {rest.map((post, i) => (
+            <Link
+              key={post.slug}
+              href={`/blog/${post.slug}`}
+              className="group block bg-card p-8 md:p-10 transition-colors hover:bg-muted"
+            >
+              <div className="flex items-center gap-4 font-mono text-[11px] uppercase tracking-[0.14em] text-muted-foreground mb-5">
+                <span className="text-primary">{String(i + 2).padStart(2, '0')}</span>
+                <time dateTime={post.date}>{post.date}</time>
+                <span aria-hidden>·</span>
+                <span>{t('readTime', {minutes: post.readTime})}</span>
+              </div>
+              <h3 className="font-heading text-2xl md:text-[28px] font-bold leading-[1.15] tracking-[-0.015em] text-foreground group-hover:text-primary transition-colors">
+                {t(`posts.${post.slug}.title`)}
+              </h3>
+              <p className="mt-4 text-[15px] leading-relaxed text-muted-foreground line-clamp-3">
+                {t(`posts.${post.slug}.excerpt`)}
+              </p>
+              <span className="mt-5 inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.18em] text-foreground/70 group-hover:text-primary transition-colors">
+                {t('readArticle')}
+                <span className="font-heading not-italic transition-transform group-hover:translate-x-1">→</span>
+              </span>
+            </Link>
+          ))}
+        </div>
+
+        {/* CTA */}
+        <div className="mt-20 md:mt-24 border-t border-border pt-16 grid gap-8 md:grid-cols-[minmax(0,2fr)_minmax(0,1fr)] md:items-end">
+          <div>
+            <span className="editorial-kicker block mb-3">Take the test</span>
+            <h3 className="editorial-h2">{t('bottomCtaTitle')}</h3>
+            <p className="mt-4 text-muted-foreground max-w-[40ch]">{t('bottomCtaDesc')}</p>
+          </div>
+          <Link href="/test" className="btn-editorial justify-self-start md:justify-self-end">
+            {t('bottomCtaButton')}
+          </Link>
+        </div>
+      </div>
     </div>
   );
 }

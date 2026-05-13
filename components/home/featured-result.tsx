@@ -1,156 +1,233 @@
 import Image from 'next/image';
 import {Link} from '@/i18n/navigation';
-import {getGameV2, getArchetype} from '@/lib/data/games';
-import {PaperGrain} from '@/components/ui/paper-grain';
+import {TYPE_LIBRARY, TYPE_IMAGES} from '@/lib/data/personalities';
 
 type Locale = 'zh' | 'en' | 'ja' | 'ko';
-
-const COPY: Record<Locale, {heading: string; sub: string; pct: string; cta: string}> = {
-  zh: {
-    heading: '真实玩家档案',
-    sub: '来自三款游戏的高人气原型，看看别人测出了什么',
-    pct: '的玩家是这种类型',
-    cta: '查看完整结果库',
-  },
-  en: {
-    heading: 'Real Player Profiles',
-    sub: 'Top archetypes from three games — see what others got',
-    pct: 'of players are this type',
-    cta: 'Browse all results',
-  },
-  ja: {
-    heading: 'リアルなプレイヤーファイル',
-    sub: '3タイトルの人気アーキタイプ — 他のプレイヤーの結果を見てみよう',
-    pct: 'のプレイヤーがこのタイプ',
-    cta: '全タイプ一覧を見る',
-  },
-  ko: {
-    heading: '실제 플레이어 프로필',
-    sub: '세 게임의 인기 유형 — 다른 플레이어들의 결과 확인하기',
-    pct: '의 플레이어가 이 유형',
-    cta: '전체 결과 보기',
-  },
-};
-
-// Top SEO-priority games × signature archetypes (Phase 0 / 1 picks)
-const FEATURED = [
-  {gameSlug: 'league-of-legends', archetypeSlug: 'aram-comedian', pct: '12'},
-  {gameSlug: 'valorant', archetypeSlug: 'data-duelist', pct: '14'},
-  {gameSlug: 'counter-strike-2', archetypeSlug: 'arch-cleric', pct: '11'},
-] as const;
 
 interface FeaturedResultProps {
   locale: string;
 }
 
+const COPY: Record<
+  Locale,
+  {
+    kicker: string;
+    rightA: string;
+    rightB: string;
+    headLead: string;
+    headEm: string;
+    headTail: string;
+    badgePrefix: string;
+    rarityRare: string;
+    rarityCommon: string;
+    profileEnNames: Record<string, string>;
+  }
+> = {
+  zh: {
+    kicker: '04 · 真实测试结果',
+    rightA: 'SHAREABLE BY DESIGN',
+    rightB: '结果即截图',
+    headLead: '测完你拿到的，是 ',
+    headEm: '一份可截图的档案',
+    headTail: '',
+    badgePrefix: 'Nº',
+    rarityRare: '罕见',
+    rarityCommon: '常见',
+    profileEnNames: {
+      CTRL: 'The Control Freak',
+      MALO: 'The Primate',
+      'Dior-s': "Diogenes' Heir",
+    },
+  },
+  en: {
+    kicker: '04 · Real Test Results',
+    rightA: 'SHAREABLE BY DESIGN',
+    rightB: 'The result IS the screenshot',
+    headLead: 'What you actually walk away with: ',
+    headEm: 'a screenshot-ready file',
+    headTail: '.',
+    badgePrefix: 'Nº',
+    rarityRare: 'Rare',
+    rarityCommon: 'Common',
+    profileEnNames: {
+      CTRL: 'The Control Freak',
+      MALO: 'The Primate',
+      'Dior-s': "Diogenes' Heir",
+    },
+  },
+  ja: {
+    kicker: '04 · リアルな結果',
+    rightA: 'SHAREABLE BY DESIGN',
+    rightB: '結果＝スクショ',
+    headLead: '診断後に手に入るのは、',
+    headEm: 'スクショ前提のファイル',
+    headTail: '。',
+    badgePrefix: 'Nº',
+    rarityRare: 'レア',
+    rarityCommon: 'よく出る',
+    profileEnNames: {
+      CTRL: 'The Control Freak',
+      MALO: 'The Primate',
+      'Dior-s': "Diogenes' Heir",
+    },
+  },
+  ko: {
+    kicker: '04 · 실제 테스트 결과',
+    rightA: 'SHAREABLE BY DESIGN',
+    rightB: '결과 = 스크린샷',
+    headLead: '테스트 끝나면 받는 건 ',
+    headEm: '스크린샷용 파일 한 장',
+    headTail: '.',
+    badgePrefix: 'Nº',
+    rarityRare: '희귀',
+    rarityCommon: '흔함',
+    profileEnNames: {
+      CTRL: 'The Control Freak',
+      MALO: 'The Primate',
+      'Dior-s': "Diogenes' Heir",
+    },
+  },
+};
+
+const FEATURED = [
+  {code: 'CTRL', no: '001', rare: true, quote: {
+    zh: '"Ctrl+S 一键存档，把你混乱的人生硬核备份。"',
+    en: '"One Ctrl+S and your chaotic life gets a hard backup."',
+    ja: '"Ctrl+Sひとつで、君の混沌な人生をハードに保存する。"',
+    ko: '"Ctrl+S 한 번이면, 너의 혼란스러운 인생도 하드 백업된다."',
+  }},
+  {code: 'MALO', no: '015', rare: false, quote: {
+    zh: '"人生是个副本，而我只是一只吗喽。"',
+    en: '"Life is just a side quest, and I\'m a monkey side character."',
+    ja: '"人生はサイドクエスト。俺はサルのモブキャラだ。"',
+    ko: '"인생은 부캐릭의 부캐 퀘스트. 나는 그냥 원숭이다."',
+  }},
+  {code: 'Dior-s', no: '003', rare: false, quote: {
+    zh: '"等着我屌丝逆袭。"',
+    en: '"Watch this loser comeback arc."',
+    ja: '"負け犬の逆襲、これから見せる。"',
+    ko: '"찌질이 역전 드라마 곧 시작한다."',
+  }},
+] as const;
+
 export function FeaturedResult({locale}: FeaturedResultProps) {
   const l = (locale as Locale) in COPY ? (locale as Locale) : 'en';
   const t = COPY[l];
 
-  const cards = FEATURED.map(({gameSlug, archetypeSlug, pct}) => {
-    const game = getGameV2(gameSlug);
-    if (!game) return null;
-    const arch = getArchetype(game, archetypeSlug);
-    if (!arch) return null;
-    return {game, arch, pct};
-  }).filter(Boolean) as {
-    game: NonNullable<ReturnType<typeof getGameV2>>;
-    arch: NonNullable<ReturnType<typeof getArchetype>>;
-    pct: string;
-  }[];
-
   return (
-    <section id="featured-result" className="bg-muted/40 py-16 md:py-20">
-      <div className="mx-auto max-w-5xl px-6">
-        <div className="mb-10 text-center">
-          <h2 className="font-heading text-2xl font-bold text-foreground md:text-3xl">
-            {t.heading}
+    <section className="border-b border-border py-24">
+      <div className="container mx-auto max-w-[1240px] px-5 md:px-8">
+        <header className="mb-12 grid items-baseline gap-6 md:grid-cols-[auto_1fr_auto]">
+          <div className="mono-label md:col-span-2">{t.kicker}</div>
+          <div className="font-mono text-[11px] uppercase tracking-[0.14em] text-muted-foreground leading-7 md:row-start-1 md:row-span-2 md:col-start-3 md:text-right self-end">
+            {t.rightA}
+            <br />
+            {t.rightB}
+          </div>
+          <h2
+            className="font-heading text-foreground m-0 md:col-span-2"
+            style={{
+              fontVariationSettings: '"opsz" 144, "SOFT" 30, "wght" 700',
+              fontSize: 'clamp(36px, 5vw, 64px)',
+              lineHeight: 0.96,
+              letterSpacing: '-0.02em',
+              maxWidth: '18ch',
+            }}
+          >
+            {t.headLead}
+            <em
+              className="not-italic"
+              style={{
+                fontStyle: 'italic',
+                fontVariationSettings: '"opsz" 144, "SOFT" 90, "wght" 700',
+                color: 'var(--vermillion)',
+                letterSpacing: '-0.025em',
+              }}
+            >
+              {t.headEm}
+            </em>
+            {t.headTail}
           </h2>
-          <p className="mt-2 text-sm text-muted-foreground md:text-base">{t.sub}</p>
-        </div>
+        </header>
 
-        <div
-          className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory md:grid md:grid-cols-3 md:overflow-visible md:pb-0"
-          style={{scrollbarWidth: 'none'}}
-        >
-          {cards.map(({game, arch, pct}) => {
-            const gameTitle = game.title[l] ?? game.title.en;
-            const archName = arch.name[l] ?? arch.name.en;
-            const oneLiner = arch.oneLiner[l] ?? arch.oneLiner.en;
-
+        <div className="grid gap-5 md:grid-cols-3">
+          {FEATURED.map((p) => {
+            const data = TYPE_LIBRARY[p.code];
+            const img = TYPE_IMAGES[p.code];
+            const cn = data?.cn ?? '';
+            const enName = t.profileEnNames[p.code] ?? p.code;
+            const quote = p.quote[l] ?? p.quote.en;
             return (
               <Link
-                key={arch.slug}
-                data-game={game.slug}
-                href={`/games/${game.slug}/result/${arch.slug}`}
-                className="group relative flex shrink-0 w-72 snap-center flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md md:w-auto"
+                key={p.code}
+                href={`/type/${encodeURIComponent(p.code)}`}
+                className="group grid grid-cols-[120px_1fr] items-stretch gap-5 border p-5 transition-all duration-300 hover:-translate-y-1"
+                style={{
+                  background: 'var(--paper-soft)',
+                  borderColor: 'var(--border)',
+                }}
               >
-                <PaperGrain opacity={0.04} />
-
-                {/* Cover image — full bleed with scale on hover */}
-                <div className="relative h-40 w-full overflow-hidden">
-                  <Image
-                    src={`/game-quizzes/${game.slug}/cover.png`}
-                    alt={gameTitle}
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                    loading="lazy"
-                    unoptimized
-                  />
-                  {/* Dark gradient + game label */}
-                  <div
-                    className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"
-                    aria-hidden
-                  />
-                  <div className="absolute bottom-2 left-3 flex items-center gap-2">
+                <div
+                  className="relative aspect-square overflow-hidden"
+                  style={{background: 'var(--paper-deep)'}}
+                >
+                  {img && (
                     <Image
-                      src={`/game-logos/${game.slug}.png`}
+                      src={img}
                       alt=""
-                      width={20}
-                      height={20}
-                      className="rounded bg-white/90 p-0.5 object-contain"
+                      fill
+                      sizes="120px"
+                      className="object-cover"
+                      style={{filter: 'saturate(0.85)'}}
                       loading="lazy"
+                      unoptimized
                     />
-                    <p className="font-mono text-xs font-medium text-white/95">{gameTitle}</p>
-                  </div>
+                  )}
                 </div>
-
-                {/* Body */}
-                <div className="relative flex flex-1 flex-col gap-2 p-4">
-                  {/* Archetype name with game-color underline on hover */}
-                  <div className="relative inline-block">
-                    <p
-                      className="font-heading text-lg font-bold leading-tight text-foreground"
-                      style={{color: 'var(--game-primary, inherit)'}}
-                    >
-                      {archName}
-                    </p>
+                <div className="flex flex-col justify-between gap-2">
+                  <div>
                     <div
-                      className="absolute -bottom-0.5 left-0 h-0.5 w-0 rounded-full transition-all duration-300 group-hover:w-full"
-                      style={{background: 'var(--game-primary, var(--primary))'}}
-                      aria-hidden
-                    />
+                      className="font-mono uppercase"
+                      style={{
+                        fontSize: 9,
+                        letterSpacing: '0.16em',
+                        color: 'var(--vermillion)',
+                      }}
+                    >
+                      {t.badgePrefix} {p.no} ·{' '}
+                      {p.rare ? `0.04% ${t.rarityRare}` : t.rarityCommon}
+                    </div>
+                    <h3
+                      className="font-heading text-foreground mt-1 mb-0.5"
+                      style={{
+                        fontVariationSettings: '"opsz" 144, "wght" 700',
+                        fontSize: 30,
+                        lineHeight: 0.95,
+                        letterSpacing: '-0.015em',
+                      }}
+                    >
+                      {p.code}.
+                    </h3>
+                    <div className="text-[13px] font-medium text-muted-foreground">
+                      {cn} · {enName}
+                    </div>
                   </div>
-                  <p className="text-sm leading-relaxed text-muted-foreground line-clamp-2">
-                    {oneLiner}
+                  <p
+                    className="font-heading m-0 border-t border-border pt-2.5"
+                    style={{
+                      fontStyle: 'italic',
+                      fontVariationSettings: '"opsz" 144, "SOFT" 90, "wght" 500',
+                      fontSize: 15,
+                      lineHeight: 1.4,
+                      color: 'var(--ink-soft)',
+                    }}
+                  >
+                    {quote}
                   </p>
-                  <div className="mt-auto flex items-center gap-2 pt-2">
-                    <span className="font-mono text-xs font-semibold text-primary">{pct}%</span>
-                    <span className="text-xs text-muted-foreground">{t.pct}</span>
-                  </div>
                 </div>
               </Link>
             );
           })}
-        </div>
-
-        <div className="mt-8 text-center">
-          <Link
-            href="/types"
-            className="inline-flex h-10 items-center justify-center rounded-xl border border-border bg-background px-6 text-sm font-medium text-foreground transition-colors hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-          >
-            {t.cta}
-          </Link>
         </div>
       </div>
     </section>

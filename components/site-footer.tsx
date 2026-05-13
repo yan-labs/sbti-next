@@ -25,46 +25,61 @@ export function SiteFooter() {
   ];
 
   return (
-    <footer className="border-t border-border/50 bg-muted/30">
-      <div className="mx-auto max-w-4xl px-4 py-8">
-        <nav className="flex flex-wrap justify-center gap-x-6 gap-y-2">
-          {links.map(({href, label}) => (
-            <Link
-              key={href}
-              href={href}
-              className="text-sm text-muted-foreground transition-colors hover:text-foreground"
-            >
-              {label}
-            </Link>
-          ))}
-        </nav>
-        <div className="mt-5 flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
+    <footer className="border-t border-border bg-muted/60">
+      <div className="mx-auto max-w-[1240px] px-5 py-12 md:px-8">
+        {/* ── Top row: brand wordmark + nav columns ─────────────────────── */}
+        <div className="grid grid-cols-1 items-end gap-8 md:grid-cols-[auto_1fr]">
+          <div className="flex flex-col">
+            <span className="font-heading text-3xl font-bold leading-none tracking-tight text-foreground">
+              SBTI
+            </span>
+            <span className="mt-2 font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
+              Satirical Behavior Type Indicator
+            </span>
+          </div>
+          <nav className="flex flex-wrap justify-start gap-x-6 gap-y-3 md:justify-end" aria-label="Footer">
+            {links.map(({href, label}) => (
+              <Link
+                key={href}
+                href={href}
+                className="font-mono text-[11px] uppercase tracking-[0.14em] text-muted-foreground transition-colors hover:text-foreground hover:underline hover:underline-offset-4"
+              >
+                {label}
+              </Link>
+            ))}
+          </nav>
+        </div>
+
+        {/* ── Contact row ──────────────────────────────────────────────── */}
+        <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-border pt-6">
           {CONTACT_LINKS.map(({href, labelKey}) => (
             <a
               key={href}
               href={href}
               target="_blank"
               rel="nofollow noreferrer"
-              className="inline-flex items-center gap-1.5 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+              className="inline-flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-[0.14em] text-muted-foreground transition-colors hover:text-foreground"
             >
-              <span className="text-xs font-bold" aria-hidden="true">X</span>
+              <span className="font-bold" aria-hidden="true">X</span>
               <span>{t(labelKey)}</span>
             </a>
           ))}
           <button
             type="button"
-            className="inline-flex items-center gap-1.5 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+            className="inline-flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-[0.14em] text-muted-foreground transition-colors hover:text-foreground"
             onClick={() => {
               window.location.href = `mailto:${EMAIL_USER}@${EMAIL_DOMAIN}`;
             }}
           >
-            <Mail className="size-3.5" aria-hidden="true" />
+            <Mail className="size-3" aria-hidden="true" />
             <span>{t('email')}</span>
           </button>
         </div>
-        <div className="mt-6 text-center">
-          <p className="text-sm font-medium text-foreground/70">{t('copyright')}</p>
-          <p className="mt-1 text-xs text-muted-foreground">{t('tagline')}</p>
+
+        {/* ── Colophon ─────────────────────────────────────────────────── */}
+        <div className="mt-6 flex flex-col items-start justify-between gap-2 font-mono text-[10px] uppercase tracking-[0.14em] text-foreground/55 md:flex-row md:items-center">
+          <span>{t('copyright')}</span>
+          <span className="text-foreground/40">{t('tagline')}</span>
         </div>
       </div>
     </footer>

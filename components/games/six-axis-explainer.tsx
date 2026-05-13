@@ -1,136 +1,98 @@
-import {ChapterMark} from '@/components/ui/chapter-mark';
 import {AXES} from '@/lib/data/games/dimensions';
-import type {SiteLocale} from '@/lib/data/games/types';
+import type {Axis, GameQuizV2, SiteLocale} from '@/lib/data/games/types';
 
-const COPY: Record<SiteLocale, {kicker: string; heading: string; vs: string}> = {
-  zh: {kicker: '测量维度', heading: '六维模型测量什么', vs: 'vs'},
-  en: {kicker: 'Measurement', heading: 'What the 6 axes measure', vs: 'vs'},
-  ja: {kicker: '測定軸', heading: '6軸モデルが測定するもの', vs: 'vs'},
-  ko: {kicker: '측정 기준', heading: '6축이 측정하는 것', vs: 'vs'},
-};
-
-// Short axis descriptions per locale
-const AXIS_DESC: Record<string, Record<SiteLocale, string>> = {
-  Tempo: {
-    zh: '你倾向于先蓄力磨资源，还是立刻开打快攻？',
-    en: 'Do you farm and scale, or push the tempo from minute one?',
-    ja: 'じっくり資源を積むか、すぐに仕掛けるか。',
-    ko: '자원을 쌓을 것인가, 지금 당장 치고 들어갈 것인가.',
+const COPY: Record<SiteLocale, {kicker: string; headingLead: string; headingItalic: string; dek: string; dominantBadge: string}> = {
+  zh: {
+    kicker: '03 · 六维评估体系',
+    headingLead: '所有测试共享的 ',
+    headingItalic: '六维体系',
+    dek: '每款游戏 31 道题，最终都映射到这 6 个轴上。本款游戏的 3 个主导轴用 vermillion 标记。',
+    dominantBadge: '主导轴',
   },
-  Nerve: {
-    zh: '面对高风险博弈，你是算完再冲还是直接梭哈？',
-    en: 'When the stakes spike, do you calculate or go all-in?',
-    ja: 'リスクが高まったとき、計算するか全賭けするか。',
-    ko: '위험이 커질 때 계산하는가, 바로 올인하는가.',
+  en: {
+    kicker: '03 · The 6-axis framework',
+    headingLead: 'The shared ',
+    headingItalic: '6-axis framework',
+    dek: 'Every quiz is 31 questions mapped to these 6 axes. The 3 dominant axes for this game are flagged in vermillion.',
+    dominantBadge: 'Dominant',
   },
-  Bond: {
-    zh: '你靠自己单打独斗，还是为了团队放弃最优解？',
-    en: 'Do you play for yourself or reshape your game around the squad?',
-    ja: '自分のプレイに徹するか、チームに合わせるか。',
-    ko: '혼자 치고 나가는가, 팀을 위해 게임을 바꾸는가.',
+  ja: {
+    kicker: '03 · 6軸モデル',
+    headingLead: 'すべての診断で共通の',
+    headingItalic: '6軸モデル',
+    dek: '各診断は31問、最終的にこの6軸にマッピングされる。このゲームの主導軸3つはvermillionで表示。',
+    dominantBadge: '主導',
   },
-  Intel: {
-    zh: '你信赖数据和 timer，还是凭手感和直觉走？',
-    en: 'Stats and cooldown timers, or raw feel and instinct?',
-    ja: 'データとタイマーを信じるか、感覚と直感で動くか。',
-    ko: '데이터와 타이머를 믿는가, 감각과 직감으로 움직이는가.',
-  },
-  Flair: {
-    zh: '你要求赢得好看，还是只要赢了就够？',
-    en: 'Must the win look good, or does any W count?',
-    ja: '勝ち方にこだわるか、とにかく勝てばいいか。',
-    ko: '이기는 방식이 중요한가, 아니면 이기기만 하면 되는가.',
-  },
-  Mental: {
-    zh: '队友 int 或游戏出岔子，你钝感如山还是红温即燃？',
-    en: 'When teammates feed or things go sideways, do you hold or tilt?',
-    ja: 'チームが崩れても動じないか、すぐ傾くか。',
-    ko: '팀이 무너져도 버티는가, 바로 기울어지는가.',
+  ko: {
+    kicker: '03 · 6축 모델',
+    headingLead: '모든 테스트가 공유하는 ',
+    headingItalic: '6축 모델',
+    dek: '각 테스트는 31문항으로 같은 6축에 매핑된다. 이 게임의 주요 축 3개는 vermillion으로 표시된다.',
+    dominantBadge: '주요',
   },
 };
-
-// Axis icon — simple geometric SVG per axis
-function AxisIcon({axis}: {axis: string}) {
-  const icons: Record<string, string> = {
-    Tempo: 'M3 8h10M9 4l4 4-4 4',
-    Nerve: 'M8 2v12M2 8h12',
-    Bond: 'M5 8a3 3 0 106 0 3 3 0 00-6 0M11 8h4M1 8h4',
-    Intel: 'M8 2l2 4 4 1-3 3 1 4-4-2-4 2 1-4-3-3 4-1 2-4z',
-    Flair: 'M4 12l2-4 2 2 3-6 2 4',
-    Mental: 'M4 10a4 4 0 008 0M8 6v4',
-  };
-  return (
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden>
-      <path d={icons[axis] ?? 'M2 8h12'} stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
 
 interface SixAxisExplainerProps {
+  game: GameQuizV2;
   locale: SiteLocale;
 }
 
-export function SixAxisExplainer({locale}: SixAxisExplainerProps) {
+export function SixAxisExplainer({game, locale}: SixAxisExplainerProps) {
   const copy = COPY[locale];
+  const dominantSet = new Set<Axis>(game.dominantAxes);
 
   return (
-    <section className="py-16 md:py-20" id="six-axes">
-      <div className="mx-auto max-w-6xl px-6">
-        <div className="mb-10">
-          <ChapterMark number="03" kicker={copy.kicker} className="mb-3" />
-          <h2 className="font-heading text-3xl font-black text-foreground md:text-4xl">
-            {copy.heading}
+    <section className="border-b border-border bg-[var(--paper-deep)] py-16 md:py-20" id="six-axes">
+      <div className="mx-auto max-w-[1240px] px-5 md:px-8">
+        <header className="mb-10 grid grid-cols-1 items-baseline gap-3 md:grid-cols-[auto_1fr]">
+          <div className="mono-label md:col-start-1">{copy.kicker}</div>
+          <h2 className="editorial-h2 md:col-span-2">
+            {copy.headingLead}
+            <em>{copy.headingItalic}</em>
           </h2>
-        </div>
+          <p className="mt-3 max-w-[58ch] text-[15px] leading-[1.6] text-[var(--ink-soft)] md:col-span-2 md:col-start-1">
+            {copy.dek}
+          </p>
+        </header>
 
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {AXES.map((axDef) => {
-            const desc = AXIS_DESC[axDef.axis]?.[locale] ?? '';
+        <div className="grid gap-[1px] border border-border bg-border sm:grid-cols-2 md:grid-cols-3">
+          {AXES.map((ax) => {
+            const isDominant = dominantSet.has(ax.axis);
             return (
               <div
-                key={axDef.axis}
-                className="rounded-2xl border border-border/60 bg-card p-5 shadow-sm"
+                key={ax.axis}
+                className="relative flex flex-col gap-2 p-5 md:p-6"
+                style={{
+                  background: isDominant
+                    ? 'color-mix(in oklab, var(--vermillion-soft) 70%, var(--paper-soft))'
+                    : 'var(--paper-soft)',
+                  borderLeft: isDominant ? '3px solid var(--vermillion)' : '3px solid transparent',
+                }}
               >
-                {/* Axis name + icon */}
-                <div className="mb-3 flex items-center gap-2">
+                <div className="flex items-center justify-between gap-2">
                   <span
-                    className="flex size-7 items-center justify-center rounded-lg"
-                    style={{
-                      background: 'color-mix(in srgb, var(--game-primary, var(--primary)) 15%, transparent)',
-                      color: 'var(--game-primary, var(--primary))',
-                    }}
+                    className="font-mono text-[11px] uppercase tracking-[0.2em]"
+                    style={{color: isDominant ? 'var(--vermillion)' : 'var(--ink-muted)'}}
                   >
-                    <AxisIcon axis={axDef.axis} />
+                    {ax.lowLetter} ↔ {ax.highLetter}
                   </span>
-                  <span className="font-mono text-xs font-bold uppercase tracking-wider text-muted-foreground">
-                    {axDef.axis}
-                  </span>
+                  {isDominant && (
+                    <span className="rounded-full bg-[var(--vermillion)] px-2 py-0.5 font-mono text-[9px] uppercase tracking-[0.16em] text-[var(--paper-soft)]">
+                      {copy.dominantBadge}
+                    </span>
+                  )}
                 </div>
-
-                {/* Pole labels */}
-                <div className="mb-3 flex items-center gap-2 text-xs">
-                  <span
-                    className="rounded px-2 py-0.5 font-mono font-bold"
-                    style={{
-                      background: 'color-mix(in srgb, var(--game-primary, var(--primary)) 10%, transparent)',
-                      color: 'var(--game-primary, var(--primary))',
-                    }}
-                  >
-                    {axDef.lowLetter} {axDef.lowLabel[locale]}
-                  </span>
-                  <span className="opacity-40">{copy.vs}</span>
-                  <span
-                    className="rounded px-2 py-0.5 font-mono font-bold"
-                    style={{
-                      background: 'color-mix(in srgb, var(--game-primary, var(--primary)) 10%, transparent)',
-                      color: 'var(--game-primary, var(--primary))',
-                    }}
-                  >
-                    {axDef.highLetter} {axDef.highLabel[locale]}
-                  </span>
+                <div
+                  className="font-heading text-[22px] text-foreground"
+                  style={{fontVariationSettings: '"opsz" 144, "wght" 700', letterSpacing: '-0.012em'}}
+                >
+                  {ax.axis}
                 </div>
-
-                <p className="text-sm leading-relaxed text-muted-foreground">{desc}</p>
+                <div className="text-[13px] leading-[1.45] text-[var(--ink-muted)]">
+                  <span>{ax.lowLabel[locale]}</span>
+                  <span className="mx-1 text-[var(--ink-subtle)]">↔</span>
+                  <span>{ax.highLabel[locale]}</span>
+                </div>
               </div>
             );
           })}

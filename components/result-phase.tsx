@@ -19,6 +19,7 @@ import type {ArchetypeV2, GameQuizV2, Axis, SiteLocale} from '@/lib/data/games/t
 import {AXES, AXIS_ORDER, polarityFromScore} from '@/lib/data/games/dimensions';
 import {derivePolarityCode} from '@/lib/data/games/scoring';
 import {getArchetype} from '@/lib/data/games/index';
+import {getArchetypeArt} from '@/lib/data/games/archetype-art';
 import {RotateCcw, Share2} from 'lucide-react';
 
 // ── V2 game quiz result props ─────────────────────────────────────────────────
@@ -98,17 +99,27 @@ export function GameV2Result({game, archetype, scores, locale, onRetake}: GameV2
     ? getArchetype(game, archetype.bestSquadSlug)
     : undefined;
 
+  // Look up illustration: per-archetype WebP if available, else bucket fallback.
+  // (Same lookup the catalog + per-game pages use, so result matches the rest.)
+  const archetypeArt = archetype.image?.src ?? getArchetypeArt(game.slug, archetype.slug);
+  const rivalArt = rivalArchetype
+    ? (rivalArchetype.image?.src ?? getArchetypeArt(game.slug, rivalArchetype.slug))
+    : undefined;
+  const bestSquadArt = bestSquadArchetype
+    ? (bestSquadArchetype.image?.src ?? getArchetypeArt(game.slug, bestSquadArchetype.slug))
+    : undefined;
+
   return (
     <div className="space-y-5">
       {/* Hero Card */}
       <Card className="overflow-hidden border-0 shadow-sm">
         <CardContent className="p-5 sm:p-7">
           <div className="grid gap-5 sm:grid-cols-[auto_1fr] sm:items-start sm:gap-7">
-            {archetype.image && (
+            {archetypeArt && (
               <div className="mx-auto w-40 shrink-0 sm:mx-0 sm:w-48">
                 <Image
-                  src={archetype.image.src}
-                  alt={archetype.image.alt[locale]}
+                  src={archetypeArt}
+                  alt={archetype.image?.alt?.[locale] ?? archetypeName}
                   width={320}
                   height={320}
                   className="w-full rounded-2xl border border-border/60 object-contain shadow-sm"
@@ -173,7 +184,7 @@ export function GameV2Result({game, archetype, scores, locale, onRetake}: GameV2
         <Card className="border-0 shadow-sm lg:w-72">
           <CardContent className="p-4 sm:p-5">
             <p className="mb-3 text-center text-sm font-bold text-foreground/70">{copy.axisProfile}</p>
-            <RadarChartSixAxis scores={scores} locale={locale} size={240} />
+            <RadarChartSixAxis scores={scores} locale={locale} size={240} gameAccent="var(--vermillion)" />
           </CardContent>
         </Card>
       </div>
@@ -232,70 +243,98 @@ export function GameV2Result({game, archetype, scores, locale, onRetake}: GameV2
         </Card>
       )}
 
-      {/* Rival + Best Squad */}
+      {/* Rival + Best Squad — editorial relation cards (mirror static archetype page) */}
       {(rivalArchetype || bestSquadArchetype) && (
-        <div className="grid gap-4 sm:grid-cols-2">
+        <div className="grid gap-5 sm:grid-cols-2">
           {rivalArchetype && (
-            <Card className="border-0 shadow-sm">
-              <CardContent className="p-4">
-                <p className="mb-1 text-xs font-bold uppercase tracking-wide text-muted-foreground">
-                  {copy.rival}
-                </p>
-                <Link href={`/games/${game.slug}/result/${rivalArchetype.slug}`}>
-                  <div className="group flex items-center gap-3 rounded-xl bg-muted/30 px-3 py-2.5 transition-colors hover:bg-muted/60">
-                    {rivalArchetype.image && (
+            <Link
+              href={`/games/${game.slug}/result/${rivalArchetype.slug}`}
+              className="group block"
+            >
+              <article className="flex h-full flex-col border border-border bg-card p-5 transition-all duration-200 hover:-translate-y-0.5 hover:border-foreground hover:shadow-[0_14px_28px_-18px_rgba(0,0,0,0.45)] sm:p-6">
+                <div className="mb-5 flex items-center justify-between font-mono text-[11px] uppercase tracking-[0.18em]">
+                  <span className="text-primary">✕ {copy.rival}</span>
+                  <span className="text-muted-foreground">VS · 克 星</span>
+                </div>
+                <div className="flex items-start gap-4">
+                  {rivalArt && (
+                    <div className="shrink-0 border border-border bg-muted">
                       <Image
-                        src={rivalArchetype.image.src}
-                        alt={rivalArchetype.image.alt[locale]}
-                        width={40}
-                        height={40}
-                        className="size-10 rounded-lg object-contain"
+                        src={rivalArt}
+                        alt={rivalArchetype.image?.alt?.[locale] ?? rivalArchetype.name[locale]}
+                        width={200}
+                        height={200}
+                        className="size-20 object-contain sm:size-24"
                         unoptimized
                       />
-                    )}
-                    <div className="min-w-0">
-                      <p className="truncate font-heading text-sm font-bold group-hover:text-primary">
-                        {rivalArchetype.name[locale]}
-                      </p>
-                      <p className="truncate text-xs text-muted-foreground">
-                        {rivalArchetype.oneLiner[locale]}
-                      </p>
                     </div>
+                  )}
+                  <div className="min-w-0 flex-1">
+                    <h3
+                      className="font-heading text-[26px] font-bold leading-[1.05] tracking-tight text-foreground transition-colors group-hover:text-primary sm:text-[30px]"
+                      style={{fontVariationSettings: '"opsz" 144, "wght" 700'}}
+                    >
+                      {rivalArchetype.name[locale]}
+                      <span className="text-primary">.</span>
+                    </h3>
+                    <p className="mt-2 font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
+                      {rivalArchetype.slug.replace(/-/g, ' ')}
+                    </p>
                   </div>
-                </Link>
-              </CardContent>
-            </Card>
+                </div>
+                <p
+                  className="mt-5 border-t border-border pt-5 font-heading text-[15px] italic leading-[1.45] text-foreground/85 sm:text-base"
+                  style={{fontVariationSettings: '"opsz" 144, "SOFT" 95, "wght" 500'}}
+                >
+                  &ldquo;{rivalArchetype.oneLiner[locale]}&rdquo;
+                </p>
+              </article>
+            </Link>
           )}
           {bestSquadArchetype && (
-            <Card className="border-0 shadow-sm">
-              <CardContent className="p-4">
-                <p className="mb-1 text-xs font-bold uppercase tracking-wide text-muted-foreground">
-                  {copy.bestSquad}
-                </p>
-                <Link href={`/games/${game.slug}/result/${bestSquadArchetype.slug}`}>
-                  <div className="group flex items-center gap-3 rounded-xl bg-muted/30 px-3 py-2.5 transition-colors hover:bg-muted/60">
-                    {bestSquadArchetype.image && (
+            <Link
+              href={`/games/${game.slug}/result/${bestSquadArchetype.slug}`}
+              className="group block"
+            >
+              <article className="flex h-full flex-col border border-border bg-card p-5 transition-all duration-200 hover:-translate-y-0.5 hover:border-foreground hover:shadow-[0_14px_28px_-18px_rgba(0,0,0,0.45)] sm:p-6">
+                <div className="mb-5 flex items-center justify-between font-mono text-[11px] uppercase tracking-[0.18em]">
+                  <span className="text-primary">★ {copy.bestSquad}</span>
+                  <span className="text-muted-foreground">SQUAD · 搭 档</span>
+                </div>
+                <div className="flex items-start gap-4">
+                  {bestSquadArt && (
+                    <div className="shrink-0 border border-border bg-muted">
                       <Image
-                        src={bestSquadArchetype.image.src}
-                        alt={bestSquadArchetype.image.alt[locale]}
-                        width={40}
-                        height={40}
-                        className="size-10 rounded-lg object-contain"
+                        src={bestSquadArt}
+                        alt={bestSquadArchetype.image?.alt?.[locale] ?? bestSquadArchetype.name[locale]}
+                        width={200}
+                        height={200}
+                        className="size-20 object-contain sm:size-24"
                         unoptimized
                       />
-                    )}
-                    <div className="min-w-0">
-                      <p className="truncate font-heading text-sm font-bold group-hover:text-primary">
-                        {bestSquadArchetype.name[locale]}
-                      </p>
-                      <p className="truncate text-xs text-muted-foreground">
-                        {bestSquadArchetype.oneLiner[locale]}
-                      </p>
                     </div>
+                  )}
+                  <div className="min-w-0 flex-1">
+                    <h3
+                      className="font-heading text-[26px] font-bold leading-[1.05] tracking-tight text-foreground transition-colors group-hover:text-primary sm:text-[30px]"
+                      style={{fontVariationSettings: '"opsz" 144, "wght" 700'}}
+                    >
+                      {bestSquadArchetype.name[locale]}
+                      <span className="text-primary">.</span>
+                    </h3>
+                    <p className="mt-2 font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
+                      {bestSquadArchetype.slug.replace(/-/g, ' ')}
+                    </p>
                   </div>
-                </Link>
-              </CardContent>
-            </Card>
+                </div>
+                <p
+                  className="mt-5 border-t border-border pt-5 font-heading text-[15px] italic leading-[1.45] text-foreground/85 sm:text-base"
+                  style={{fontVariationSettings: '"opsz" 144, "SOFT" 95, "wght" 500'}}
+                >
+                  &ldquo;{bestSquadArchetype.oneLiner[locale]}&rdquo;
+                </p>
+              </article>
+            </Link>
           )}
         </div>
       )}

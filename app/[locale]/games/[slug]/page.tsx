@@ -2,7 +2,7 @@ import {notFound} from 'next/navigation';
 import {setRequestLocale} from 'next-intl/server';
 import {routing} from '@/i18n/routing';
 import {JsonLd} from '@/components/json-ld';
-import {GameHubPage} from '@/components/games/game-hub-page';
+import {PerGamePage} from '@/components/games/per-game-page';
 import {
   BASE_URL,
   buildAlternates,
@@ -182,7 +182,7 @@ export default async function GameHubRoute({
           howToSteps[safeLocale],
         )}
       />
-      <GameHubPage game={game} locale={safeLocale} />
+      <PerGamePage game={game} locale={safeLocale} />
     </>
   );
 }

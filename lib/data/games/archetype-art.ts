@@ -1,53 +1,84 @@
 import { ALL_GAMES_V2 } from './index';
 import type { GameQuizV2, ArchetypeV2 } from './types';
 
-type NodeBuiltins = {
-  fs: {existsSync(path: string): boolean};
-  path: {join(...paths: string[]): string};
-};
-
-function loadBuiltin<T>(id: string): T | undefined {
-  if (typeof process !== 'undefined' && typeof process.getBuiltinModule === 'function') {
-    return process.getBuiltinModule(id) as T | undefined;
-  }
-
-  try {
-    const nodeRequire = (0, eval)('typeof require === "function" ? require : undefined') as
-      | ((moduleId: string) => unknown)
-      | undefined;
-    return nodeRequire?.(id) as T | undefined;
-  } catch {
-    return undefined;
-  }
-}
-
-function loadNodeBuiltins(): NodeBuiltins | undefined {
-  const fs = loadBuiltin<NodeBuiltins['fs']>('fs');
-  const path = loadBuiltin<NodeBuiltins['path']>('path');
-  if (!fs?.existsSync || !path?.join) return undefined;
-
-  return {fs, path};
-}
-
-const nodeBuiltins = loadNodeBuiltins();
-const EXISTING_ARCHETYPE_ART = new Set<string>();
-
-if (nodeBuiltins) {
-  const archetypeArtRoot = nodeBuiltins.path.join(process.cwd(), 'public', 'game-quizzes');
-  for (const game of ALL_GAMES_V2) {
-    for (const archetype of game.archetypes) {
-      const artPath = nodeBuiltins.path.join(
-        archetypeArtRoot,
-        game.slug,
-        'archetypes',
-        `${archetype.slug}.webp`,
-      );
-      if (nodeBuiltins.fs.existsSync(artPath)) {
-        EXISTING_ARCHETYPE_ART.add(`${game.slug}/${archetype.slug}`);
-      }
-    }
-  }
-}
+/**
+ * Static manifest of which `game/archetype` slug pairs have a per-archetype
+ * WebP shipped under `/public/game-quizzes/<game>/archetypes/<archetype>.webp`.
+ *
+ * This MUST be a compile-time constant, not a runtime fs.existsSync() check,
+ * because the lookup runs in both server components (Node + fs available)
+ * and client components (no fs). A runtime check would resolve to different
+ * paths on each side and trigger a React hydration mismatch.
+ *
+ * Sync this list with `find public/game-quizzes -name "*.webp"` whenever new
+ * archetype illustrations land.
+ */
+const EXISTING_ARCHETYPE_ART = new Set<string>([
+  'apex-legends/loot-hermit',
+  'apex-legends/pinging-poet',
+  'apex-legends/rotation-cartographer',
+  'apex-legends/shield-influencer',
+  'apex-legends/slide-jump-evangelist',
+  'apex-legends/solo-octane',
+  'apex-legends/third-party-strategist',
+  'apex-legends/wraith-portal-clown',
+  'counter-strike-2/arch-cleric',
+  'counter-strike-2/awp-cowboy',
+  'counter-strike-2/clutch-saint',
+  'counter-strike-2/default-igl',
+  'counter-strike-2/eco-cfo',
+  'counter-strike-2/flash-entry',
+  'counter-strike-2/lineup-priest',
+  'counter-strike-2/silent-anchor',
+  'delta-force/armored-showoff',
+  'delta-force/boss-contractor',
+  'delta-force/crate-philosopher',
+  'delta-force/extract-actuary',
+  'delta-force/kit-merchant',
+  'delta-force/loadout-romantic',
+  'delta-force/recon-foreman',
+  'delta-force/whisper-runner',
+  'honor-of-kings/bm-ping-mayor',
+  'honor-of-kings/defeat-grief-counselor',
+  'honor-of-kings/family-host',
+  'honor-of-kings/jungle-auditor',
+  'honor-of-kings/lane-pressure-artist',
+  'honor-of-kings/skin-collector',
+  'honor-of-kings/solo-curse',
+  'honor-of-kings/teamfight-festival',
+  'league-of-legends/aram-comedian',
+  'league-of-legends/clutch-evangelist',
+  'league-of-legends/flame-conductor',
+  'league-of-legends/lane-tyrant',
+  'league-of-legends/mute-strategist',
+  'league-of-legends/rift-cfo',
+  'league-of-legends/solo-victim',
+  'league-of-legends/tilt-shepherd',
+  'overwatch-2/c9-trauma-curator',
+  'overwatch-2/dps-victim',
+  'overwatch-2/flanker-monk',
+  'overwatch-2/killcam-headliner',
+  'overwatch-2/payload-parent',
+  'overwatch-2/solo-tank-philosopher',
+  'overwatch-2/ult-economist',
+  'overwatch-2/voice-line-saboteur',
+  'pubg-battlegrounds/circle-aesthete',
+  'pubg-battlegrounds/final-pose',
+  'pubg-battlegrounds/hot-drop-cfo',
+  'pubg-battlegrounds/hot-drop-comedian',
+  'pubg-battlegrounds/loot-accountant',
+  'pubg-battlegrounds/prone-philosopher',
+  'pubg-battlegrounds/ridge-sniper',
+  'pubg-battlegrounds/safezone-ferry',
+  'valorant/caffeinated-igl',
+  'valorant/clutch-narrator',
+  'valorant/data-duelist',
+  'valorant/instalock-spectator',
+  'valorant/lineup-librarian',
+  'valorant/sentinel-guardian',
+  'valorant/sheriff-economist',
+  'valorant/sheriff-mystic',
+]);
 
 /**
  * Maps a V2 archetype to one of the four V1 result PNG buckets based on

@@ -40,11 +40,11 @@ export function RadarChart({levels, size = 300}: RadarChartProps) {
     const isDark = style.colorScheme === 'dark' || document.documentElement.classList.contains('dark');
     const lineColor = isDark ? 'rgba(160,160,184,0.15)' : 'rgba(26,26,46,0.1)';
     const fillColors = isDark
-      ? ['rgba(52,211,153,0.04)', 'rgba(52,211,153,0.06)', 'rgba(52,211,153,0.09)']
-      : ['rgba(16,185,129,0.03)', 'rgba(16,185,129,0.05)', 'rgba(16,185,129,0.08)'];
-    const dataFill = isDark ? 'rgba(52,211,153,0.25)' : 'rgba(16,185,129,0.2)';
-    const dataStroke = isDark ? '#34D399' : '#10B981';
-    const dotColor = isDark ? '#34D399' : '#10B981';
+      ? ['rgba(243,99,68,0.04)', 'rgba(243,99,68,0.07)', 'rgba(243,99,68,0.10)']
+      : ['rgba(224,78,43,0.04)', 'rgba(224,78,43,0.07)', 'rgba(224,78,43,0.10)'];
+    const dataFill = isDark ? 'rgba(243,99,68,0.22)' : 'rgba(224,78,43,0.18)';
+    const dataStroke = isDark ? '#F36344' : '#E04E2B';
+    const dotColor = isDark ? '#F36344' : '#E04E2B';
     const labelColor = isDark ? '#A0A0B8' : '#6B6B80';
 
     ctx.clearRect(0, 0, size, size);

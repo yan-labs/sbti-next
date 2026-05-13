@@ -8,7 +8,7 @@ import {Button} from '@/components/ui/button';
 import {Card, CardContent} from '@/components/ui/card';
 import {Progress} from '@/components/ui/progress';
 import {GameV2Result} from '@/components/result-phase';
-import {Link} from '@/i18n/navigation';
+import {Link, useRouter} from '@/i18n/navigation';
 import {computeScores, normalize, derivePolarityCode, mapToArchetype} from '@/lib/data/games/scoring';
 import type {GameQuizV2, SiteLocale, Axis} from '@/lib/data/games/types';
 
@@ -70,6 +70,7 @@ export function GameQuizApp({
   const [current, setCurrent] = useState(0);
   const [answers, setAnswers] = useState<Answer[]>([]);
   const [resultState, setResultState] = useState<ResultState | null>(null);
+  const router = useRouter();
 
   const questions = game.questions;
   const currentQuestion = questions[current];
@@ -83,8 +84,9 @@ export function GameQuizApp({
       const code = derivePolarityCode(normalized);
       const archetype = mapToArchetype(code, game);
       setAnswers(newAnswers);
-      setResultState({scores: normalized, archetypeSlug: archetype.slug});
-      setPhase('result');
+      // Navigate to canonical archetype result URL so refresh / share both work.
+      // The standalone page renders the full editorial result layout.
+      router.push(`/games/${game.slug}/result/${archetype.slug}`);
     } else {
       setAnswers(newAnswers);
       setCurrent((n) => n + 1);
@@ -102,7 +104,7 @@ export function GameQuizApp({
     const archetype = game.archetypes.find((a) => a.slug === resultState.archetypeSlug);
     if (!archetype) return null;
     return (
-      <main className="min-h-screen bg-gradient-to-b from-background via-background to-muted/40 px-4 py-16">
+      <main className="min-h-screen bg-background px-5 py-16 md:px-8">
         <section className="mx-auto w-full max-w-3xl space-y-6">
           <GameV2Result
             game={game}
@@ -112,11 +114,9 @@ export function GameQuizApp({
             onRetake={handleRetake}
           />
           <div className="flex justify-center">
-            <Link href="/">
-              <Button variant="ghost" className="rounded-full">
-                SBTI
-                <ArrowRight className="size-4" aria-hidden="true" />
-              </Button>
+            <Link href="/" className="inline-flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground transition-colors hover:text-foreground">
+              Back to SBTI
+              <ArrowRight className="size-3.5" aria-hidden="true" />
             </Link>
           </div>
         </section>
@@ -124,85 +124,107 @@ export function GameQuizApp({
     );
   }
 
+  const currentStr = String(current + 1).padStart(2, '0');
+  const totalStr = String(questions.length).padStart(2, '0');
+
   return (
-    <main className="min-h-screen bg-gradient-to-b from-background via-background to-muted/40 px-4 py-16">
-      <section className="mx-auto w-full max-w-3xl space-y-6">
-        {/* Game header */}
-        <div className="space-y-3 text-center">
-          <Badge variant="outline" className="rounded-full border-primary/20 bg-primary/10 px-3 py-1 text-primary">
-            <Sparkles className="size-3.5" aria-hidden="true" />
-            {game.deck[locale]}
-          </Badge>
-          <h1 className="font-heading text-4xl font-black tracking-tight sm:text-5xl">
-            {game.title[locale]}
-          </h1>
-          <p className="mx-auto max-w-2xl text-base leading-relaxed text-muted-foreground">
-            {game.description[locale]}
-          </p>
-        </div>
-
-        {/* Cover image (intro only) */}
-        {phase === 'intro' && game.cover && (
-          <div className="overflow-hidden rounded-2xl border border-border/60 bg-card shadow-sm">
-            <Image
-              src={game.cover.src}
-              alt={game.cover.alt[locale]}
-              width={720}
-              height={960}
-              className="mx-auto h-auto max-h-[40rem] max-w-full"
-              priority
-              unoptimized
-            />
-          </div>
-        )}
-
-        {/* Intro CTA */}
+    <main className="min-h-screen bg-background px-5 py-16 md:px-8">
+      <section className="mx-auto w-full max-w-2xl">
+        {/* Editorial game header — only on intro */}
         {phase === 'intro' && (
-          <div className="flex justify-center pt-2">
-            <Button
-              size="lg"
-              className="rounded-full px-10 text-base shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30"
-              onClick={() => setPhase('quiz')}
-            >
-              {copy.start}
-            </Button>
-          </div>
-        )}
-
-        {/* Quiz phase */}
-        {phase === 'quiz' && currentQuestion && (
           <>
-            <div className="space-y-2">
-              <div className="flex items-center justify-between text-sm font-medium text-muted-foreground">
-                <span>{copy.questionLabel(current + 1, questions.length)}</span>
-                <span>{copy.progress(current + 1, questions.length)}</span>
-              </div>
-              <Progress value={progress} className="h-1.5" />
+            <div className="mb-7 flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
+              <span className="h-px w-7 bg-muted-foreground" />
+              <span className="text-primary">★</span>
+              {game.deck[locale]}
             </div>
 
-            <Card className="border-0 bg-card/85 shadow-sm">
-              <CardContent className="space-y-5 p-5 sm:p-6">
-                <h2 className="font-heading text-2xl font-black leading-snug">
-                  {currentQuestion.text[locale]}
-                </h2>
-                <div className="space-y-3">
-                  {currentQuestion.options.map((option, idx) => (
-                    <button
-                      key={`${currentQuestion.id}-${idx}`}
-                      type="button"
-                      data-quiz-option={idx}
-                      onClick={() => handleAnswer(idx)}
-                      className="group flex w-full items-center gap-3 rounded-xl border border-border/60 bg-background/70 px-4 py-3.5 text-left text-base transition-all hover:border-primary/30 hover:bg-primary/5 active:scale-[0.99]"
-                    >
-                      <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-muted text-xs font-bold text-muted-foreground transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
-                        {String.fromCharCode(65 + idx)}
-                      </span>
-                      <span className="leading-relaxed">{option.label[locale]}</span>
-                    </button>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
+            <h1 className="font-heading text-[clamp(40px,6vw,72px)] font-bold leading-[0.95] tracking-tight text-foreground">
+              {game.title[locale]}
+            </h1>
+
+            <p className="mt-6 max-w-[44ch] font-heading text-lg italic text-muted-foreground md:text-xl"
+              style={{fontVariationSettings: '"opsz" 144, "SOFT" 95, "wght" 500'}}
+            >
+              {game.description[locale]}
+            </p>
+
+            {game.cover && (
+              <div className="mt-10 overflow-hidden border border-border">
+                <Image
+                  src={game.cover.src}
+                  alt={game.cover.alt[locale]}
+                  width={720}
+                  height={960}
+                  className="mx-auto h-auto max-h-[40rem] max-w-full object-cover"
+                  priority
+                  unoptimized
+                />
+              </div>
+            )}
+
+            <div className="mt-10">
+              <button
+                type="button"
+                onClick={() => setPhase('quiz')}
+                className="group inline-flex items-center gap-3 rounded-full bg-primary px-7 py-4 font-sans text-base font-semibold text-primary-foreground shadow-[0_16px_40px_-10px_rgba(0,0,0,0.4)] transition-transform hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              >
+                {copy.start}
+                <span className="inline-flex size-7 items-center justify-center rounded-full bg-background text-primary transition-transform group-hover:translate-x-1">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" className="size-4" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                </span>
+              </button>
+            </div>
+          </>
+        )}
+
+        {/* Quiz phase — same minimalist editorial pattern as SBTI quiz-phase */}
+        {phase === 'quiz' && currentQuestion && (
+          <>
+            <div className="mb-10 flex items-end justify-between">
+              <div className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
+                {copy.questionLabel(current + 1, questions.length)}
+              </div>
+              <div className="flex items-baseline gap-1.5 font-mono text-xs uppercase tracking-[0.18em] text-foreground/70">
+                <span className="font-heading text-2xl font-bold leading-none text-foreground" style={{fontVariationSettings: '"opsz" 144, "wght" 700'}}>
+                  {currentStr}
+                </span>
+                <span className="text-muted-foreground">/ {totalStr}</span>
+              </div>
+            </div>
+
+            <div className="mb-12 h-px bg-border">
+              <div className="h-px bg-foreground transition-all duration-300 ease-out" style={{width: `${progress}%`}} />
+            </div>
+
+            <h2
+              className="font-heading text-[clamp(26px,3.2vw,40px)] font-bold leading-[1.25] tracking-tight text-foreground"
+              style={{fontVariationSettings: '"opsz" 144, "SOFT" 30, "wght" 700'}}
+            >
+              {currentQuestion.text[locale]}
+            </h2>
+
+            <div className="mt-10 space-y-3">
+              {currentQuestion.options.map((option, idx) => (
+                <button
+                  key={`${currentQuestion.id}-${idx}`}
+                  type="button"
+                  data-quiz-option={idx}
+                  onClick={() => handleAnswer(idx)}
+                  className="group flex w-full items-start gap-5 border border-border bg-card px-6 py-5 text-left transition-all hover:border-foreground hover:bg-muted active:translate-y-[1px]"
+                >
+                  <span className="font-mono text-[11px] uppercase tracking-[0.18em] leading-[1.5] text-muted-foreground transition-colors group-hover:text-primary">
+                    {String.fromCharCode(65 + idx)}
+                  </span>
+                  <span className="flex-1 font-sans text-base leading-[1.55] text-foreground md:text-[17px]">
+                    {option.label[locale]}
+                  </span>
+                  <span className="-mr-1 mt-0.5 inline-flex size-6 shrink-0 items-center justify-center text-muted-foreground opacity-0 transition-all group-hover:translate-x-1 group-hover:text-primary group-hover:opacity-100">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" className="size-4" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                  </span>
+                </button>
+              ))}
+            </div>
           </>
         )}
       </section>

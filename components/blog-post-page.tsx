@@ -2,36 +2,41 @@
 
 import {useTranslations} from 'next-intl';
 import {Link} from '@/i18n/navigation';
-import {Button} from '@/components/ui/button';
-import {Separator} from '@/components/ui/separator';
-import {ChevronRight, Clock, ArrowLeft} from 'lucide-react';
-import {getBlogPost} from '@/lib/data/blog';
+import {ChevronRight, ArrowLeft, ArrowRight} from 'lucide-react';
+import {BLOG_POSTS, getBlogPost} from '@/lib/data/blog';
 import {NORMAL_TYPES, TYPE_IMAGES} from '@/lib/data/personalities';
-import {Card, CardContent} from '@/components/ui/card';
 import Image from 'next/image';
 
 function InlineCta() {
   const t = useTranslations('blog');
   return (
-    <div className="not-prose my-8 rounded-xl border border-primary/20 bg-primary/5 p-5 text-center">
-      <p className="text-sm font-medium text-foreground/80">{t('inlineCta')}</p>
-      <Link href="/test">
-        <Button size="sm" className="mt-3 rounded-full px-6">{t('inlineCtaButton')}</Button>
+    <aside className="not-prose my-12 border-y border-border py-8 grid gap-4 md:grid-cols-[minmax(0,2fr)_auto] md:items-center">
+      <p className="font-heading italic text-xl md:text-2xl leading-snug text-foreground max-w-[36ch]"
+         style={{fontVariationSettings: '"opsz" 144, "SOFT" 95, "wght" 500'}}>
+        {t('inlineCta')}
+      </p>
+      <Link href="/test" className="btn-editorial justify-self-start md:justify-self-end">
+        {t('inlineCtaButton')}
       </Link>
-    </div>
+    </aside>
   );
 }
 
 function BottomCta() {
   const t = useTranslations('blog');
   return (
-    <div className="not-prose mt-10 rounded-2xl bg-primary/5 border border-primary/20 p-8 text-center">
-      <h3 className="font-heading text-xl font-bold">{t('bottomCtaTitle')}</h3>
-      <p className="mt-2 text-sm text-muted-foreground">{t('bottomCtaDesc')}</p>
-      <Link href="/test">
-        <Button size="lg" className="mt-4 rounded-full px-10">{t('bottomCtaButton')}</Button>
-      </Link>
-    </div>
+    <aside className="not-prose mt-16 border-t border-border pt-12">
+      <span className="editorial-kicker block mb-3">Take the test</span>
+      <div className="grid gap-6 md:grid-cols-[minmax(0,2fr)_auto] md:items-end">
+        <div>
+          <h3 className="editorial-h2">{t('bottomCtaTitle')}</h3>
+          <p className="mt-3 text-muted-foreground max-w-[42ch]">{t('bottomCtaDesc')}</p>
+        </div>
+        <Link href="/test" className="btn-editorial justify-self-start md:justify-self-end">
+          {t('bottomCtaButton')}
+        </Link>
+      </div>
+    </aside>
   );
 }
 
@@ -40,8 +45,8 @@ function SbtiVsMbtiArticle() {
 
   return (
     <article className="prose-custom">
-      <p className="text-lg leading-relaxed text-foreground/85">{t('p1')}</p>
-      <p className="text-base leading-relaxed text-foreground/85">{t('p2')}</p>
+      <p className="text-xl leading-relaxed text-foreground">{t('p1')}</p>
+      <p>{t('p2')}</p>
 
       <h2>{t('h2_origin')}</h2>
       <p>{t('origin_p1')}</p>
@@ -50,22 +55,22 @@ function SbtiVsMbtiArticle() {
       <h2>{t('h2_dimensions')}</h2>
       <p>{t('dim_p1')}</p>
 
-      <div className="not-prose my-6 overflow-x-auto">
-        <table className="w-full text-sm">
+      <div className="not-prose my-8 overflow-x-auto border border-border">
+        <table className="prose-custom w-full text-sm">
           <thead>
-            <tr className="border-b text-left">
-              <th className="p-3 font-semibold"></th>
-              <th className="p-3 font-semibold">MBTI</th>
-              <th className="p-3 font-semibold">SBTI</th>
+            <tr>
+              <th></th>
+              <th>MBTI</th>
+              <th>SBTI</th>
             </tr>
           </thead>
-          <tbody className="divide-y">
-            <tr><td className="p-3 font-medium">{t('table_dimensions')}</td><td className="p-3">4</td><td className="p-3">5 × 3 = 15</td></tr>
-            <tr><td className="p-3 font-medium">{t('table_types')}</td><td className="p-3">16</td><td className="p-3">27</td></tr>
-            <tr><td className="p-3 font-medium">{t('table_questions')}</td><td className="p-3">93</td><td className="p-3">31</td></tr>
-            <tr><td className="p-3 font-medium">{t('table_time')}</td><td className="p-3">20-30 min</td><td className="p-3">1-3 min</td></tr>
-            <tr><td className="p-3 font-medium">{t('table_tone')}</td><td className="p-3">{t('table_tone_mbti')}</td><td className="p-3">{t('table_tone_sbti')}</td></tr>
-            <tr><td className="p-3 font-medium">{t('table_purpose')}</td><td className="p-3">{t('table_purpose_mbti')}</td><td className="p-3">{t('table_purpose_sbti')}</td></tr>
+          <tbody>
+            <tr><td className="font-medium text-foreground">{t('table_dimensions')}</td><td>4</td><td>5 × 3 = 15</td></tr>
+            <tr><td className="font-medium text-foreground">{t('table_types')}</td><td>16</td><td>27</td></tr>
+            <tr><td className="font-medium text-foreground">{t('table_questions')}</td><td>93</td><td>31</td></tr>
+            <tr><td className="font-medium text-foreground">{t('table_time')}</td><td>20-30 min</td><td>1-3 min</td></tr>
+            <tr><td className="font-medium text-foreground">{t('table_tone')}</td><td>{t('table_tone_mbti')}</td><td>{t('table_tone_sbti')}</td></tr>
+            <tr><td className="font-medium text-foreground">{t('table_purpose')}</td><td>{t('table_purpose_mbti')}</td><td>{t('table_purpose_sbti')}</td></tr>
           </tbody>
         </table>
       </div>
@@ -100,32 +105,28 @@ function TypesGuideArticle() {
 
   return (
     <article className="prose-custom">
-      <p className="text-lg leading-relaxed text-foreground/85">{t('p1')}</p>
-      <p className="text-base leading-relaxed text-foreground/85">{t('p2')}</p>
+      <p className="text-xl leading-relaxed text-foreground">{t('p1')}</p>
+      <p>{t('p2')}</p>
 
-      <div className="not-prose my-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
+      <div className="not-prose my-10 grid grid-cols-1 gap-px bg-border border border-border sm:grid-cols-2">
         {NORMAL_TYPES.map(({code}) => {
           const name = s(tp, `${code}.name`, code);
           const intro = s(tp, `${code}.intro`, '');
           const img = TYPE_IMAGES[code];
           return (
-            <Link key={code} href={`/type/${code}`} className="no-underline">
-              <Card className="group h-full border-0 shadow-sm transition-all hover:shadow-md hover:-translate-y-0.5">
-                <CardContent className="flex items-start gap-4 p-4">
-                  {img && (
-                    <div className="w-16 shrink-0 overflow-hidden rounded-lg">
-                      <Image src={img} alt={`${code} ${name}`} width={64} height={64} className="h-auto w-full" />
-                    </div>
-                  )}
-                  <div className="min-w-0">
-                    <h3 className="font-heading text-base font-bold group-hover:text-primary transition-colors">
-                      {code}
-                      <span className="ml-1.5 text-sm font-normal text-muted-foreground">{name}</span>
-                    </h3>
-                    <p className="mt-1 text-sm text-muted-foreground line-clamp-2">{intro}</p>
-                  </div>
-                </CardContent>
-              </Card>
+            <Link key={code} href={`/type/${code}`} className="group bg-card p-5 flex items-start gap-4 transition-colors hover:bg-muted">
+              {img && (
+                <div className="w-16 shrink-0 border border-border overflow-hidden">
+                  <Image src={img} alt={`${code} ${name}`} width={64} height={64} className="h-auto w-full" style={{filter: 'saturate(0.92)'}} />
+                </div>
+              )}
+              <div className="min-w-0">
+                <div className="font-mono text-[11px] tracking-[0.18em] text-primary mb-1">{code}</div>
+                <h3 className="font-heading text-base font-semibold tracking-tight text-foreground group-hover:text-primary transition-colors">
+                  {name}
+                </h3>
+                <p className="mt-1 text-sm leading-relaxed text-muted-foreground line-clamp-2">{intro}</p>
+              </div>
             </Link>
           );
         })}
@@ -142,25 +143,25 @@ function FiveDimensionsArticle() {
   const t = useTranslations('blog.articles.five-dimensions');
 
   const DIMS = [
-    {key: 'S', subs: ['S1', 'S2', 'S3'], color: 'bg-primary/10 text-primary'},
-    {key: 'E', subs: ['E1', 'E2', 'E3'], color: 'bg-secondary/10 text-secondary'},
-    {key: 'A', subs: ['A1', 'A2', 'A3'], color: 'bg-accent/10 text-accent-foreground'},
-    {key: 'Ac', subs: ['Ac1', 'Ac2', 'Ac3'], color: 'bg-secondary/10 text-secondary'},
-    {key: 'So', subs: ['So1', 'So2', 'So3'], color: 'bg-primary/10 text-primary'},
+    {key: 'S', subs: ['S1', 'S2', 'S3']},
+    {key: 'E', subs: ['E1', 'E2', 'E3']},
+    {key: 'A', subs: ['A1', 'A2', 'A3']},
+    {key: 'Ac', subs: ['Ac1', 'Ac2', 'Ac3']},
+    {key: 'So', subs: ['So1', 'So2', 'So3']},
   ];
 
   return (
     <article className="prose-custom">
-      <p className="text-lg leading-relaxed text-foreground/85">{t('p1')}</p>
-      <p className="text-base leading-relaxed text-foreground/85">{t('p2')}</p>
+      <p className="text-xl leading-relaxed text-foreground">{t('p1')}</p>
+      <p>{t('p2')}</p>
 
       <h2>{t('h2_overview')}</h2>
       <p>{t('overview_p1')}</p>
 
-      {DIMS.map(({key, subs, color}, i) => (
+      {DIMS.map(({key, subs}, i) => (
         <section key={key}>
           <h2>
-            <span className={`mr-2 inline-flex h-7 w-7 items-center justify-center rounded text-xs font-bold ${color}`}>{key}</span>
+            <span className="font-mono text-sm tracking-[0.2em] text-primary mr-3 align-middle">{key}</span>
             {t(`dim_${key}_title`)}
           </h2>
           <p>{t(`dim_${key}_intro`)}</p>
@@ -193,6 +194,35 @@ const ARTICLE_COMPONENTS: Record<string, React.ComponentType> = {
   'five-dimensions': FiveDimensionsArticle,
 };
 
+function ContinueReading({currentSlug}: {currentSlug: string}) {
+  const t = useTranslations('blog');
+  const others = BLOG_POSTS.filter(p => p.slug !== currentSlug).slice(0, 2);
+  if (others.length === 0) return null;
+  return (
+    <section className="not-prose mt-20 border-t border-border pt-12">
+      <span className="editorial-kicker block mb-6">Continue reading</span>
+      <div className="grid grid-cols-1 gap-px bg-border border border-border md:grid-cols-2">
+        {others.map((post) => (
+          <Link key={post.slug} href={`/blog/${post.slug}`} className="group bg-card p-7 transition-colors hover:bg-muted">
+            <div className="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.14em] text-muted-foreground mb-3">
+              <time dateTime={post.date}>{post.date}</time>
+              <span aria-hidden>·</span>
+              <span>{t('readTime', {minutes: post.readTime})}</span>
+            </div>
+            <h3 className="font-heading text-xl md:text-2xl font-bold leading-[1.15] tracking-tight text-foreground group-hover:text-primary transition-colors">
+              {t(`posts.${post.slug}.title`)}
+            </h3>
+            <span className="mt-4 inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.18em] text-foreground/70 group-hover:text-primary transition-colors">
+              {t('readArticle')}
+              <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-1" />
+            </span>
+          </Link>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 export function BlogPostPage({slug}: {slug: string}) {
   const t = useTranslations('blog');
   const tb = useTranslations('breadcrumb');
@@ -202,43 +232,47 @@ export function BlogPostPage({slug}: {slug: string}) {
   if (!post || !ArticleComponent) return null;
 
   return (
-    <div className="mx-auto max-w-2xl px-4 py-12">
-      <nav aria-label="Breadcrumb" className="mb-6 flex items-center gap-1 text-sm text-muted-foreground">
-        <Link href="/" className="hover:text-foreground transition-colors">{tb('home')}</Link>
-        <ChevronRight className="h-3.5 w-3.5" />
-        <Link href="/blog" className="hover:text-foreground transition-colors">{t('pageTitle')}</Link>
-        <ChevronRight className="h-3.5 w-3.5" />
-        <span className="text-foreground font-medium line-clamp-1">{t(`posts.${slug}.title`)}</span>
-      </nav>
+    <div className="bg-background">
+      <div className="mx-auto max-w-[1240px] px-5 md:px-8 py-16 md:py-20">
+        {/* Breadcrumb */}
+        <nav aria-label="Breadcrumb" className="mb-12 flex items-center gap-2 text-xs font-mono uppercase tracking-[0.18em] text-muted-foreground">
+          <Link href="/" className="hover:text-foreground transition-colors">{tb('home')}</Link>
+          <ChevronRight className="h-3 w-3" />
+          <Link href="/blog" className="hover:text-foreground transition-colors">{t('pageTitle')}</Link>
+          <ChevronRight className="h-3 w-3" />
+          <span className="text-foreground line-clamp-1 max-w-[40ch]">{t(`posts.${slug}.title`)}</span>
+        </nav>
 
-      <header className="mb-8">
-        <h1 className="font-heading text-3xl font-bold tracking-tight sm:text-4xl">
-          {t(`posts.${slug}.title`)}
-        </h1>
-        <div className="mt-3 flex items-center gap-3 text-sm text-muted-foreground">
-          <time dateTime={post.date}>{post.date}</time>
-          <span className="flex items-center gap-1">
-            <Clock className="h-3.5 w-3.5" />
-            {t('readTime', {minutes: post.readTime})}
-          </span>
+        {/* Article header */}
+        <header className="grid grid-cols-1 md:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] gap-8 md:gap-16 mb-14 md:mb-20">
+          <div className="flex flex-col gap-3">
+            <span className="editorial-kicker text-primary">Article</span>
+            <div className="font-mono text-[11px] uppercase tracking-[0.14em] text-muted-foreground leading-[1.7]">
+              <time dateTime={post.date}>{post.date}</time><br />
+              {t('readTime', {minutes: post.readTime})}
+            </div>
+          </div>
+          <h1 className="editorial-h1 max-w-[20ch]">
+            {t(`posts.${slug}.title`)}
+          </h1>
+        </header>
+
+        {/* Article body — constrained width for readability */}
+        <div className="mx-auto max-w-[68ch]">
+          <ArticleComponent />
         </div>
-      </header>
 
-      <Separator className="my-8" />
+        <div className="mx-auto max-w-[68ch]">
+          <ContinueReading currentSlug={slug} />
 
-      <ArticleComponent />
-
-      <Separator className="my-8" />
-
-      <div className="flex justify-start">
-        <Link href="/blog">
-          <Button variant="ghost" className="gap-2">
-            <ArrowLeft className="h-4 w-4" />
-            {t('backToList')}
-          </Button>
-        </Link>
+          <div className="mt-12 flex justify-start">
+            <Link href="/blog" className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.18em] text-foreground/70 border-b border-foreground/30 pb-[2px] hover:text-primary hover:border-primary transition-colors">
+              <ArrowLeft className="h-3 w-3" />
+              {t('backToList')}
+            </Link>
+          </div>
+        </div>
       </div>
-
     </div>
   );
 }
