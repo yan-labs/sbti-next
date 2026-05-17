@@ -108,6 +108,11 @@ gtag('config', 'G-0182BSNWVS');`}
     y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
 })(window, document, "clarity", "script", "witvk1k8y5");`}
         </Script>
+        <Script
+          src="https://analytics.ahrefs.com/analytics.js"
+          data-key="A39juAuX0uhVShAmH7rl9Q"
+          strategy="afterInteractive"
+        />
       </head>
       <body>
         <NextIntlClientProvider messages={messages}>
