@@ -18,8 +18,8 @@
  * acceptable for SBTI (a static content + share site) and gets us well under
  * the file limit (~5,400 files post-strip).
  */
-import {readdir, stat, unlink} from 'node:fs/promises';
-import {join, basename} from 'node:path';
+import {readdir, unlink} from 'node:fs/promises';
+import {join} from 'node:path';
 
 const OUT_DIR = new URL('../out', import.meta.url).pathname;
 

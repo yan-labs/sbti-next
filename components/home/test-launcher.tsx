@@ -120,7 +120,7 @@ export function TestLauncher({locale}: TestLauncherProps) {
             <div key={code} className="relative overflow-hidden">
               <Image
                 src={`/types/${code}.webp`}
-                alt=""
+                alt={`SBTI ${code} type portrait`}
                 fill
                 sizes="(max-width: 980px) 50vw, 25vw"
                 className="object-cover transition-all duration-500 group-hover:scale-[1.03]"
@@ -247,8 +247,8 @@ export function TestLauncher({locale}: TestLauncherProps) {
             >
               {/* Cover image */}
               <Image
-                src={`/game-quizzes/${game.slug}/cover.png`}
-                alt=""
+                src={`/game-quizzes/${game.slug}/cover.webp`}
+                alt={`${title} player quiz cover`}
                 fill
                 sizes="(max-width: 720px) 50vw, (max-width: 980px) 33vw, 25vw"
                 className="object-cover transition-all duration-500 group-hover:scale-[1.03]"

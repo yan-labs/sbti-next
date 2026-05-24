@@ -56,7 +56,7 @@ export async function generateMetadata({
     },
     twitter: buildTwitter(title, description, image),
     robots: {
-      index: false,
+      index: true,
       follow: true,
     },
   };

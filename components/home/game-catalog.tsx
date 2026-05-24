@@ -314,7 +314,7 @@ export function GameCatalog({locale}: GameCatalogProps) {
                     style={{borderColor: 'var(--border)'}}
                   >
                     <Image
-                      src={`/game-quizzes/${game.slug}/cover.png`}
+                      src={`/game-quizzes/${game.slug}/cover.webp`}
                       alt={title}
                       fill
                       sizes="(max-width: 980px) 100vw, 33vw"
@@ -458,7 +458,7 @@ export function GameCatalog({locale}: GameCatalogProps) {
                         >
                           <Image
                             src={`/game-quizzes/${game.slug}/archetypes/${arch.slug}.webp`}
-                            alt=""
+                            alt={`${archName} player archetype`}
                             fill
                             sizes="(max-width: 720px) 50vw, 20vw"
                             className="object-cover transition-all duration-500 group-hover:scale-[1.04]"

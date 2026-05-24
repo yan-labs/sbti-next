@@ -2,11 +2,7 @@
 
 import {useState} from 'react';
 import Image from 'next/image';
-import {ArrowRight, Sparkles} from 'lucide-react';
-import {Badge} from '@/components/ui/badge';
-import {Button} from '@/components/ui/button';
-import {Card, CardContent} from '@/components/ui/card';
-import {Progress} from '@/components/ui/progress';
+import {ArrowRight} from 'lucide-react';
 import {GameV2Result} from '@/components/result-phase';
 import {Link, useRouter} from '@/i18n/navigation';
 import {computeScores, normalize, derivePolarityCode, mapToArchetype} from '@/lib/data/games/scoring';

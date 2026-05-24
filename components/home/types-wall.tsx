@@ -141,7 +141,7 @@ export function TypesWall({locale}: TypesWallProps) {
                   {img && (
                     <Image
                       src={img}
-                      alt=""
+                      alt={`${code} ${cn} SBTI personality type`}
                       fill
                       sizes="(max-width: 720px) 50vw, (max-width: 1100px) 25vw, 16vw"
                       className="object-cover transition-all duration-500 group-hover:scale-[1.04]"

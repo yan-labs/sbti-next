@@ -62,8 +62,8 @@ export function GameHero({game, locale}: GameHeroProps) {
       {/* Cover bg + dark overlay */}
       <div className="absolute inset-0 z-0">
         <Image
-          src={`/game-quizzes/${game.slug}/cover.png`}
-          alt=""
+          src={`/game-quizzes/${game.slug}/cover.webp`}
+          alt={`${title} player quiz cover`}
           fill
           priority
           unoptimized

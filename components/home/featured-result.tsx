@@ -174,7 +174,7 @@ export function FeaturedResult({locale}: FeaturedResultProps) {
                   {img && (
                     <Image
                       src={img}
-                      alt=""
+                      alt={`${p.code} ${cn} SBTI personality type`}
                       fill
                       sizes="120px"
                       className="object-cover"

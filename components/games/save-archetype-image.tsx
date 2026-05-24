@@ -17,7 +17,6 @@ const PAPER = '#FAF7EF';
 const PAPER_DEEP = '#EBE5D3';
 const INK = '#161513';
 const INK_MUTED = '#6B655A';
-const INK_SUBTLE = '#A39B8C';
 const VERMILLION = '#E04E2B';
 const BORDER = '#DDD7C7';
 
@@ -44,7 +43,6 @@ const CODE_LABEL: Record<SiteLocale, string> = {
   ko: '플레이어 코드',
 };
 
-const FONT_SANS = '"Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif';
 const FONT_SERIF = '"Fraunces", "Songti SC", "Noto Serif SC", Georgia, serif';
 const FONT_MONO = '"JetBrains Mono", ui-monospace, "SF Mono", monospace';
 
@@ -148,7 +146,7 @@ async function generateArchetypeImage({
   ctx.textAlign = 'left';
   ctx.font = `800 ${titleFontSize}px ${FONT_SERIF}`;
   const maxTitleWidth = W - PAD * 2 - 28;
-  let titleText = archetypeName;
+  const titleText = archetypeName;
   while (ctx.measureText(titleText).width > maxTitleWidth && titleFontSize > 56) {
     titleFontSize -= 4;
     ctx.font = `800 ${titleFontSize}px ${FONT_SERIF}`;
@@ -346,7 +344,6 @@ export function SaveGameArchetypeImageButton(props: SaveGameArchetypeImageButton
       document.body.removeChild(a);
       URL.revokeObjectURL(url);
     } catch (err) {
-      // eslint-disable-next-line no-console
       console.error('Image generation failed:', err);
     } finally {
       setSaving(false);

@@ -61,8 +61,8 @@ export function RelatedGames({game, locale}: RelatedGamesProps) {
                 className="group relative block aspect-[4/5] overflow-hidden border border-border bg-[var(--ink)] transition-[transform,border-color] duration-300 ease-[cubic-bezier(.22,.7,.27,1)] hover:-translate-y-1 hover:border-[var(--ink)]"
               >
                 <Image
-                  src={`/game-quizzes/${relGame.slug}/cover.png`}
-                  alt=""
+                  src={`/game-quizzes/${relGame.slug}/cover.webp`}
+                  alt={`${title} player quiz cover`}
                   fill
                   sizes="(max-width: 720px) 100vw, 33vw"
                   className="absolute inset-0 z-[1] object-cover transition-[transform,filter] duration-500 ease-[cubic-bezier(.22,.7,.27,1)] group-hover:scale-[1.04]"

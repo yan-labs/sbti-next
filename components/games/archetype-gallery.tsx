@@ -62,7 +62,7 @@ export function ArchetypeGallery({game, locale}: ArchetypeGalleryProps) {
                   {artPath ? (
                     <Image
                       src={artPath}
-                      alt=""
+                      alt={`${name} player archetype`}
                       fill
                       sizes="(max-width: 720px) 50vw, 18vw"
                       className="object-cover transition-[transform,filter] duration-500 ease-[cubic-bezier(.22,.7,.27,1)] group-hover:scale-[1.04]"

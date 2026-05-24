@@ -233,8 +233,8 @@ export function GameHubPage({locale}: GameHubPageProps) {
                 >
                   {/* Cover */}
                   <Image
-                    src={`/game-quizzes/${game.slug}/cover.png`}
-                    alt=""
+                    src={`/game-quizzes/${game.slug}/cover.webp`}
+                    alt={`${title} player quiz cover`}
                     fill
                     sizes="(max-width: 720px) 50vw, 25vw"
                     className="absolute inset-0 z-[1] object-cover transition-[transform,filter] duration-500 ease-[cubic-bezier(.22,.7,.27,1)] group-hover:scale-[1.02]"
@@ -387,7 +387,7 @@ export function GameHubPage({locale}: GameHubPageProps) {
                     </div>
                     <div className="relative mb-4 aspect-[16/9] overflow-hidden border border-border">
                       <Image
-                        src={`/game-quizzes/${game.slug}/cover.png`}
+                        src={`/game-quizzes/${game.slug}/cover.webp`}
                         alt={title}
                         fill
                         sizes="(max-width: 980px) 100vw, 35vw"
@@ -482,7 +482,7 @@ export function GameHubPage({locale}: GameHubPageProps) {
                             {artPath ? (
                               <Image
                                 src={artPath}
-                                alt=""
+                                alt={`${arch.name[locale]} player archetype`}
                                 fill
                                 sizes="(max-width: 720px) 50vw, 18vw"
                                 className="object-cover transition-[transform,filter] duration-500 ease-[cubic-bezier(.22,.7,.27,1)] group-hover:scale-[1.04]"

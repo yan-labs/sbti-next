@@ -6,11 +6,14 @@ import {Link} from '@/i18n/navigation';
 
 const EMAIL_USER = 'kanchaishaoxia';
 const EMAIL_DOMAIN = 'gmail.com';
-const EMAIL = `${EMAIL_USER}@${EMAIL_DOMAIN}`;
 
 const CONTACT_LINKS = [
   {href: 'https://x.com/yan_ai_labs/', labelKey: 'x'},
 ] as const;
+
+function buildEmailAddress() {
+  return `${EMAIL_USER}@${EMAIL_DOMAIN}`;
+}
 
 /** X (formerly Twitter) brand glyph. */
 function XLogo({className}: {className?: string}) {
@@ -79,13 +82,19 @@ export function SiteFooter() {
               <span>{t(labelKey)}</span>
             </a>
           ))}
-          <a
-            href={`mailto:${EMAIL}`}
-            className="inline-flex items-center gap-1.5 font-mono text-[11px] tracking-[0.06em] lowercase text-muted-foreground transition-colors hover:text-foreground"
+          <button
+            type="button"
+            onClick={() => {
+              window.location.href = `mailto:${buildEmailAddress()}`;
+            }}
+            className="inline-flex cursor-pointer items-center gap-1.5 border-0 bg-transparent p-0 font-mono text-[11px] tracking-[0.06em] lowercase text-muted-foreground transition-colors hover:text-foreground"
+            aria-label="Email SBTI"
           >
             <Mail className="size-3" aria-hidden="true" />
-            <span>{EMAIL}</span>
-          </a>
+            <span>{EMAIL_USER}</span>
+            <span aria-hidden="true">@</span>
+            <span>{EMAIL_DOMAIN}</span>
+          </button>
         </div>
 
         {/* ── Colophon ─────────────────────────────────────────────────── */}
