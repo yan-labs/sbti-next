@@ -1385,7 +1385,7 @@ const game: GameQuizV2 = {
         },
         {
           label: {
-            zh: '先漁一下他的死亡盒，装备到手再救，反正倒地又不会立刻死',
+            zh: '先渔一下他的死亡盒，装备到手再救，反正倒地又不会立刻死',
             en: 'Loot the box first, then revive. They\'re downed, not dead — there\'s time.',
             ja: '先にデスボを漁ってから蘇生する。ダウンしてるだけでまだ死んでない、時間はある。',
             ko: '먼저 데스박스 뒤지고 나서 살린다. 다운된 거지 죽은 거 아니다, 시간 있다.',
