@@ -17,7 +17,7 @@ const game: GameQuizV2 = {
   description: {
     zh: '30 道题，测出你的 Apex 英雄玩家风格。8 种原型、6 维雷达、专属玩家身份码——从转点制图师到恶灵传送门小丑，总有一型说中你。',
     en: '30 questions to profile your Apex Legends play style. 8 archetypes, 6-axis radar, a player code — from rotation cartographer to wraith portal clown. Find out which one fits.',
-    ja: '30問でエーペックスのプレイスタイルを診断。8タイプ・6軸レーダー・6文字コード付き。ローテーション制図師からワープポータル道化師まで、あなたのタイプを見つけよう。',
+    ja: '30問でエーペックスのプレイスタイルを診断。8タイプ・6軸レーダー・6文字コード付き。圏読み職人からワープポータル道化師まで、あなたのタイプを見つけよう。',
     ko: '30문항으로 에이펙스 플레이 스타일 진단. 8가지 유형·6축 레이더·플레이어 코드 포함. 로테이션 지도 제작자부터 워프 포탈 광대까지, 당신의 유형을 찾아보세요.',
   },
   dominantAxes: ['Tempo', 'Flair', 'Bond'] as const,
@@ -36,19 +36,19 @@ const game: GameQuizV2 = {
       name: {
         zh: '转点制图师',
         en: 'Rotation Cartographer',
-        ja: 'ローテーション制図師',
+        ja: '圏読み職人',
         ko: '로테이션 지도 제작자',
       },
       oneLiner: {
         zh: '圈在那边，别打了，转点',
         en: 'Already called the rotation before anyone opened the map',
-        ja: 'みんながマップを開く前にローテーションを指示している',
+        ja: '銃声が鳴る前から、頭の中の圏読みはもう終わっている',
         ko: '팀원이 지도 열기도 전에 이동 방향 잡아놓은 사람',
       },
       description: {
         zh: '小地图永远开着，声音比队友快三秒。枪声一响，你不在乎那场打架谁赢，你在想："圈收在哪，我们是不是已经在错误的方向上了？"你不是风险厌恶者，你只是不信任当下这场交火能带来的回报。你的口头禅是"先转点"；你的死亡原因，九成是队友没跟上。',
         en: 'The minimap is always open, always current. While your team watches the fight, you\'re checking where the ring is closing and mapping two paths out. You\'re not scared of a fight — you\'re skeptical about whether this particular fight has a positive expected value. "Rotate early" is a complete sentence for you. Most of your deaths involve a teammate who decided to push instead.',
-        ja: 'ミニマップは常に開いている。チームが戦闘を見ている間、あなたはリングの縮小先と2本の脱出ルートを確認している。戦闘が怖いのではなく、この戦闘がプラスのリターンをもたらすか疑っているんだ。「早めにローテーション」は完結した文章だ。死因のほとんどは、突っ込むことを選んだチームメイトだ。',
+        ja: 'ミニマップは常に開いている。チームが銃声に向かって走り出す前に、あなたはもう圏読みを終えて撤退ルートを2本引いている。戦闘が怖いんじゃない。この一戦が割に合うかどうか、いつも計算が先に立つだけだ。「早めにローテーション」はあなたにとって説教じゃなく事実。死因の九割は、詰めることを選んだチームメイトの方だ。',
         ko: '미니맵은 항상 켜져 있다. 팀원들이 교전 구경할 때 당신은 자기장이 어디로 좁혀지는지, 탈출 루트 두 개를 계산하고 있다. 전투가 무서운 게 아니라, 이 교전이 플러스 기대값인지 의심하는 거다. "로테이션 먼저"는 당신에게 완전한 문장이다. 대부분의 죽음은 돌격을 택한 팀원 때문이다.',
       },
       symptoms: [
@@ -101,7 +101,7 @@ const game: GameQuizV2 = {
       name: {
         zh: '物资苦行僧',
         en: 'Loot Hermit',
-        ja: '物資苦行僧',
+        ja: '物資漁り師',
         ko: '루팅 은둔자',
       },
       oneLiner: {
@@ -219,19 +219,19 @@ const game: GameQuizV2 = {
       name: {
         zh: '换甲表演家',
         en: 'Shield Influencer',
-        ja: 'シールドパフォーマー',
+        ja: '赤甲切り抜き師',
         ko: '방어구 퍼포머',
       },
       oneLiner: {
         zh: '红甲合成必须录屏，没拍到等于白合成',
         en: 'Found a red shield, popped armor swap animations on, rolled a clip — all before the next fight',
-        ja: '赤シールドを見つけてアーマースワップアニメを起動してクリップ録画。次の戦闘前に全部終わる',
+        ja: '赤シールドを見つけたら、まずアーマースワップアニメを起動して切り抜き用に録画。次の戦闘前に全部終わる',
         ko: '빨간 방어구 발견하고 스왑 애니메이션 켜고 클립 녹화까지 다음 전투 전에 끝낸다',
       },
       description: {
         zh: '你不只是在玩 Apex，你在制作内容。每次换甲都是一个镜头，每次滑铲都是一个剪辑素材，每次压血线合成红甲都是一段传说级操作回放。你不在乎这把有没有吃鸡，你在乎的是那段换甲的截图传出去够不够好看。你的朋友圈有一半是 Apex 片段，另一半是"让我们看看我刚才做了什么"的截图配文。',
         en: 'You\'re playing a game and producing content at the same time. Armor swaps are transition shots. Slide jumps are B-roll. Red armor crafted at low HP is the main event. Whether the round ends in a win or a wipe, the question is whether the clip was worth sharing. Half your friends have seen your shield swap compilations. The other half are about to.',
-        ja: 'ゲームをプレイしながらコンテンツを作っている。アーマースワップはトランジションショット。スライドジャンプはBロール。低HPで赤アーマーを合成するのがメインイベントだ。試合が勝利で終わろうと全滅で終わろうと、問題はそのクリップがシェアする価値があるかだ。友達の半分はシールドスワップコンピレーションを見た。残り半分はこれから見る。',
+        ja: 'ゲームをプレイしながら切り抜き素材も作っている。アーマースワップはトランジションショット。スライドジャンプはBロール。低HPで赤アーマーを合成するのがメインイベントだ。試合が勝利で終わろうと全滅で終わろうと、問題はその瞬間が切り抜きに値するかだ。友達の半分はシールドスワップの切り抜きを見た。残り半分はこれから見る。',
         ko: '게임 플레이하면서 콘텐츠도 만들고 있다. 방어구 스왑은 트랜지션 샷. 슬라이드 점프는 B롤. 낮은 체력에서 빨간 방어구 합성이 메인 이벤트다. 판이 승리로 끝나든 전멸로 끝나든, 그 클립이 공유할 가치 있는지가 문제다. 친구 절반은 방어구 스왑 모음집 봤다. 나머지 절반은 곧 보게 된다.',
       },
       symptoms: [
@@ -336,20 +336,20 @@ const game: GameQuizV2 = {
       },
       name: {
         zh: '独狼奔跑者',
-        en: 'Solo Octane',
-        ja: 'ソロランナー',
+        en: 'Jump Pad Yeeter',
+        ja: '抜け駆けオクタン',
         ko: '솔로 달리기꾼',
       },
       oneLiner: {
         zh: '跳板比队友先到，地图另一头见',
         en: 'The jump pad went off; teammates will figure out the direction',
-        ja: 'ジャンプパッドは起動した。方向はチームメイトが考える',
+        ja: 'ジャンプパッドは起動した。抜け駆けはもう始まっている、方向はチームメイトが考える',
         ko: '점프 패드 발동했다. 방향은 팀원들이 파악하면 된다',
       },
       description: {
         zh: '你喜欢 Octane 不是因为他的技能设计，是因为他和你有同一套处世哲学：快、再快、不等人。弹射板一放，你已经在飞了，队友在哪你没时间想。你不是故意无视团队，你只是处于一种"先去探路，问题反正能解决"的持续信念中。你死亡的位置，通常和你的队友相距两栋楼以上。',
         en: 'Octane\'s jump pad is the perfect tool for you: it launches the team forward whether they\'re ready or not. You don\'t wait for green-light calls. You see an angle and you take it, and the team can follow or not — they usually find you downed behind a supply bin thirty meters ahead. You\'re not ignoring them. You just process speed as safety and assume everyone else does too.',
-        ja: 'オクタンのジャンプパッドはあなたにとって完璧なツールだ。準備ができていようとなかろうと、チームを前に送り出せる。ゴーサインを待たない。角度を見つけたら取る。チームはついてくるかどうか自由だ。たいていサプライボックスの後ろで30メートル先でダウンしているあなたを見つける。無視しているわけではない。スピードを安全と感じていて、みんなも同じだと思っているだけだ。',
+        ja: 'オクタンのジャンプパッドはあなたにとって完璧な抜け駆け道具だ。準備ができていようとなかろうと、自分だけ先に前へ飛び出せる。ゴーサインを待たない。角度を見つけたら取る。チームはついてくるかどうか自由だ。たいていサプライボックスの後ろで30メートル先でダウンしているあなたを見つける。無視しているわけではない。スピードを安全と感じていて、みんなも同じだと思っているだけだ。',
         ko: '옥테인 점프 패드는 당신에게 완벽한 도구다. 준비됐든 안 됐든 팀을 앞으로 보낸다. 출발 신호 기다리지 않는다. 각도 보이면 잡고, 팀은 따라오든 말든 자유다. 대부분 서플라이 박스 뒤에서 30미터 앞에 쓰러진 당신을 발견한다. 무시하는 게 아니다. 속도가 안전이라고 느끼고, 다들 그렇다고 생각하는 거다.',
       },
       symptoms: [
@@ -402,19 +402,19 @@ const game: GameQuizV2 = {
       name: {
         zh: '滑铲布道者',
         en: 'Slide-Jump Evangelist',
-        ja: 'スライドジャンプ伝道師',
+        ja: 'バニホ布教師',
         ko: '슬라이드 점프 전도사',
       },
       oneLiner: {
         zh: '场上最好看的移动是我的，这条路你们学一下',
         en: 'Taught two teammates the bunny hop this session; a third is already watching',
-        ja: 'このセッションで2人にバニーホップを教えた。3人目はもう見ている',
+        ja: 'このセッションで2人にバニホを布教した。3人目はもう見ている',
         ko: '이번 판에 두 명한테 버니합 가르쳤다. 세 번째는 이미 보고 있다',
       },
       description: {
         zh: '你把 Apex 当一门移动艺术来练。滑铲接跳跃、兔跳保速、贴墙弹射——这些不是技巧，是你对这个游戏的基本态度。你觉得一个不会移动技术的玩家就像一个不会跑位的球员：会打，但不算真的懂。Season 29 Axle 的新滑铲路线你当天就研究完了，你的队友还没搞清楚那张新地图在哪个方向。你不强求他们跟上，但你会默默把自己的移动片段发到群里，"学一下。"',
         en: 'Movement tech is your religion. Slide jump into a strafe, maintain velocity through a door, wall-bounce to clear a gap — these aren\'t tricks, they\'re the vocabulary of the game as it was meant to be played. Season 29 Axle\'s Nitro Gates gave you new material the day the patch dropped, and you had routes mapped before most players finished reading the patch notes. You don\'t preach loudly. You clip and share, and let the footage do the work.',
-        ja: '移動テクは信仰だ。スライドジャンプからストレーフ、ドアを通り抜けながら速度維持、隙間を越えるウォールバウンス——これらはトリックではなく、このゲームが本来意図した語彙だ。Season 29AxleのNitroゲートはパッチ当日に新素材をくれた。ほとんどのプレイヤーがパッチノートを読み終える前にルートを完成させていた。大声で説教しない。クリップしてシェアする。映像が語る。',
+        ja: '移動テクは信仰だ。スライドジャンプからストレーフ、ドアを通り抜けながら速度維持、隙間を越えるウォールバウンス——これらはトリックではなく、このゲームが本来意図した語彙だ。Season 29AxleのNitroゲートはパッチ当日に新素材をくれた。ほとんどのプレイヤーがパッチノートを読み終える前にルートを完成させていた。大声で布教しない。バニホを見せて、勝手に信者が増えるのを待つだけだ。',
         ko: '움직임 기술은 신앙이다. 슬라이드 점프에서 스트레이프, 문 통과하면서 속도 유지, 틈새 넘는 월바운스 — 이건 트릭이 아니라 이 게임이 원래 의도한 어휘다. Season 29 Axle의 Nitro 게이트는 패치 당일 새 소재를 줬고, 대부분 플레이어가 패치 노트 다 읽기 전에 루트 완성했다. 크게 설교 안 한다. 클립하고 공유한다. 영상이 말한다.',
       },
       symptoms: [
@@ -587,7 +587,7 @@ const game: GameQuizV2 = {
           label: {
             zh: '等一等，听一听，算一算双方打了多久再决定',
             en: 'Wait, listen, estimate how long both squads have been fighting before deciding.',
-            ja: '待って、聞いて、両チームがどれだけ戦っているか推定してから決める。',
+            ja: '待って、索敵して、両チームがどれだけ戦っているか見極めてから動く。',
             ko: '기다리고, 듣고, 양 팀이 얼마나 싸웠는지 추정하고 결정한다.',
           },
           scoring: [{ axis: 'Tempo', delta: -1 }],
@@ -887,7 +887,7 @@ const game: GameQuizV2 = {
           label: {
             zh: '先观察一轮再说，搞不好对面有埋伏',
             en: 'Observe one cycle. Could be bait. Better to confirm before committing.',
-            ja: '1サイクル観察してから。罠かもしれない。確認してから動く方がいい。',
+            ja: '芋って一旦様子見。罠かもしれない。確認してから動く方がいい。',
             ko: '한 사이클 관찰 먼저. 함정일 수도 있다. 확인하고 움직이는 게 낫다.',
           },
           scoring: [{ axis: 'Nerve', delta: -1 }],
@@ -1063,50 +1063,50 @@ const game: GameQuizV2 = {
       ],
     },
 
-    // ── ANCHOR Q12: Mental ───────────────────────────────────────────────────
+    // ── ANCHOR Q12: Mental (queueing "one more" while hot — 盛る) ─────────────
     {
       id: 'apex-a12',
       kind: 'anchor',
       text: {
-        zh: '你已经输了三把了。现在开第四把。',
-        en: 'Three losses in a row. You\'re queuing for the fourth.',
-        ja: '3連敗中。4回目のキューを入れている。',
-        ko: '3연패 중이다. 네 번째 큐 넣고 있다.',
+        zh: '今天手感火热，段位已经涨了好几级。你会怎么处理这个"热手"状态？',
+        en: 'Today\'s been hot. You\'ve climbed several ranks already. What do you do with that heat?',
+        ja: '今日は絶好調。ランクがもう何段も上がっている。この「盛れてる」状態、どうする？',
+        ko: '오늘 컨디션 최고. 랭크가 벌써 몇 단계 올랐다. 이 "물오른" 상태, 어떻게 하나?',
       },
       options: [
         {
           label: {
-            zh: '没感觉，输赢都正常，下把专注就行',
-            en: 'Fine with it. Losses happen. Focus on the next one.',
-            ja: '別に気にしない。負けは普通。次に集中するだけ。',
-            ko: '괜찮다. 패배는 원래 있는 거다. 다음 판에 집중하면 된다.',
+            zh: '直接下线，赢的时候收手是基本常识',
+            en: 'Log off right there. Quitting while ahead isn\'t hard math.',
+            ja: 'そこでログアウト。勝ってるうちにやめるのは基本的な常識だ。',
+            ko: '바로 로그아웃. 이길 때 그만두는 건 기본 상식이다.',
           },
           scoring: [{ axis: 'Mental', delta: -1 }],
         },
         {
           label: {
-            zh: '有点烦，但再来一把的想法比烦躁更强',
-            en: 'Annoyed, but the urge to queue again is stronger than the annoyance.',
-            ja: 'イライラしているが、もう一回やりたい気持ちの方が強い。',
-            ko: '짜증나는데 다시 큐 넣고 싶은 마음이 짜증보다 크다.',
+            zh: '知道该停了，但"再来一把"的念头已经在按确认键了',
+            en: 'I know I should stop. My hand is already clicking queue again before my brain catches up.',
+            ja: 'やめるべきだとは分かってる。でも「もう一回」の指がもうキューを押してる。',
+            ko: '그만해야 하는 건 안다. 근데 "한 판 더" 하는 손가락이 이미 큐를 누르고 있다.',
           },
           scoring: [{ axis: 'Mental', delta: 1 }],
         },
         {
           label: {
-            zh: '第三把之后我就知道今天手感不对，但我还是开了',
-            en: 'I knew after the third loss that today\'s aim is off. Queued anyway.',
-            ja: '3敗目の後、今日は調子が悪いと分かった。それでもキューした。',
-            ko: '세 번째 패배 후 오늘 컨디션 안 좋은 거 알았다. 그래도 큐 넣었다.',
+            zh: '心里清楚"这就是最后一把"这句话我今晚已经骗了自己三次了，但还是会说',
+            en: 'I\'ve told myself "this is the last one" three times tonight already. I know it\'s a lie. I say it anyway.',
+            ja: '「これで最後」って今夜もう3回自分に言い聞かせた。嘘だって分かってる。それでも言う。',
+            ko: '"이게 마지막"이라고 오늘 밤 벌써 세 번 스스로에게 말했다. 거짓말인 거 안다. 그래도 말한다.',
           },
           scoring: [{ axis: 'Mental', delta: 1 }],
         },
         {
           label: {
-            zh: '我就是会输三把，然后赢两把，然后又输，这很正常',
-            en: 'I always lose three, win two, lose again. Standard cycle. Don\'t think about it.',
-            ja: '自分はいつも3敗してから2勝して、また負ける。標準サイクル。気にしない。',
-            ko: '항상 세 번 지고 두 번 이기고 또 진다. 표준 사이클. 신경 안 쓴다.',
+            zh: '没数过自己涨了几个段，赢了就继续玩，纯粹图开心',
+            en: 'Never tracked how many ranks I climbed. Win or lose, I just keep playing because it\'s fun.',
+            ja: '何ランク上がったかなんて数えてない。勝っても続ける。ただ楽しいから。',
+            ko: '몇 랭크 올랐는지 세지도 않았다. 이겨도 계속한다. 그냥 재밌어서.',
           },
           scoring: [{ axis: 'Mental', delta: -1 }],
         },
@@ -1263,50 +1263,50 @@ const game: GameQuizV2 = {
       ],
     },
 
-    // ── COMPOUND Q16: Tempo + Nerve ──────────────────────────────────────────
+    // ── COMPOUND Q16: Tempo + Nerve (Fragment hot-drop chaos) ────────────────
     {
       id: 'apex-c04',
       kind: 'compound',
       text: {
-        zh: '你站在一栋楼的二楼，一楼有敌人在活动，楼道很窄。',
-        en: 'You\'re on the second floor of a building. Enemy is on the ground floor. Stairway is tight.',
-        ja: '建物の2階にいる。1階に敵がいる。階段が狭い。',
-        ko: '건물 2층에 있다. 1층에 적이 있다. 계단이 좁다.',
+        zh: '掉落线上能看到，大厅里一半的队伍全冲着 Fragment 去了，那是每把必堵车的老地方。',
+        en: 'You can see it from the dropship line: half the lobby is committing to Fragment, the map\'s one guaranteed pileup every match.',
+        ja: '降下ラインから丸見えだ。ロビーの半分がフラグメントへ直行してる。毎回渋滞するあの場所。',
+        ko: '낙하 라인에서 다 보인다. 로비 절반이 프래그먼트로 직행 중이다. 매판 정체되는 그 자리다.',
       },
       options: [
         {
           label: {
-            zh: '现在就跳下去，用落差拉扯',
-            en: 'Drop down immediately. Use the height gap to confuse their tracking.',
-            ja: '今すぐ飛び降りる。高さの差で追跡を惑わす。',
-            ko: '지금 바로 내려간다. 높이 차이로 추적 교란시킨다.',
+            zh: '跟着冲，就冲最中间，人越多越有意思',
+            en: 'Commit. Dive dead center. More squads means more chances, not fewer.',
+            ja: '便乗して突っ込む。それも真ん中に。人が多いほど面白い。',
+            ko: '편승해서 돌진. 그것도 한가운데로. 사람 많을수록 재밌다.',
           },
           scoring: [{ axis: 'Tempo', delta: 1 }, { axis: 'Nerve', delta: 1 }],
         },
         {
           label: {
-            zh: '守楼梯，让他们上来',
-            en: 'Hold the stairway. Make them come to me.',
-            ja: '階段を守る。向こうを上らせる。',
-            ko: '계단 지킨다. 올라오게 만든다.',
+            zh: '中途改航线，躲开这坨人，图省心',
+            en: 'Redirect mid-flight. Skip the whole mess. Peace of mind wins.',
+            ja: '途中で降下先を変える。あの団子を避ける。平穏第一。',
+            ko: '도중에 항로 바꾼다. 저 무리 피한다. 마음 편한 게 최고다.',
           },
           scoring: [{ axis: 'Tempo', delta: -1 }, { axis: 'Nerve', delta: -1 }],
         },
         {
           label: {
-            zh: '跳窗跑路，找更好的角度再打',
-            en: 'Jump out the window. Find a better angle before engaging.',
-            ja: '窓から脱出。交戦前にいいアングルを見つける。',
-            ko: '창문으로 탈출. 교전 전에 더 좋은 각도 찾는다.',
+            zh: '照样快速降落，但落在外圈捡边角料，正面撞车之前先跑',
+            en: 'Still dive fast, but land on the edge. Grab what\'s there, leave before the main pile starts shooting.',
+            ja: '速く降りるのは変わらないけど、外周に着地する。物資だけ拾って本格的な乱戦の前に離脱。',
+            ko: '빠르게 내려가는 건 똑같은데 외곽에 착지한다. 물자만 챙기고 본격적인 난전 전에 이탈.',
           },
           scoring: [{ axis: 'Tempo', delta: 1 }, { axis: 'Nerve', delta: -1 }],
         },
         {
           label: {
-            zh: '扔手雷下去，等反应再说',
-            en: 'Throw a grenade down first. See how they react before committing.',
-            ja: '先に手榴弾を投げる。動く前に反応を見る。',
-            ko: '먼저 수류탄 던진다. 교전 전에 반응 본다.',
+            zh: '先在空中多绕一圈，看清楚有几队真下去了，专挑打剩的捡漏',
+            en: 'Circle a little longer in the air. See who actually commits, then drop late and pick off whoever\'s left standing.',
+            ja: '空中でもう少し旋回して、実際に何チーム降りたか見てから、遅れて降下して残り物を狙う。',
+            ko: '공중에서 좀 더 선회하며 실제로 몇 팀이 내려갔는지 보고, 늦게 내려가 남은 걸 노린다.',
           },
           scoring: [{ axis: 'Tempo', delta: -1 }, { axis: 'Nerve', delta: 1 }],
         },
@@ -1363,50 +1363,50 @@ const game: GameQuizV2 = {
       ],
     },
 
-    // ── COMPOUND Q18: Bond + Mental ──────────────────────────────────────────
+    // ── COMPOUND Q18: Bond + Mental (downed teammate's death box) ────────────
     {
       id: 'apex-c06',
       kind: 'compound',
       text: {
-        zh: '队友连续两次走错路把你带进了不利位置。你接下来怎么做？',
-        en: 'Teammate led you into bad position twice in a row. What now?',
-        ja: 'チームメイトが2回連続で悪いポジションに引き込んだ。次はどうする？',
-        ko: '팀원이 연속 두 번 당신을 불리한 위치로 끌어들였다. 이제 어떻게 하나?',
+        zh: '队友倒地还没死透，你还在交火中。他的死亡盒就在眼前，装备比你的好。',
+        en: 'Teammate\'s down, not dead. You\'re still in the fight. Their death box is sitting right there — better armor than what you\'re wearing.',
+        ja: '味方がダウンした、まだ息はある。自分はまだ交戦中。目の前にデスボがある。今の防具よりずっといい。',
+        ko: '팀원이 다운됐다, 아직 죽지는 않았다. 당신은 아직 교전 중이다. 눈앞에 데스박스가 있다. 지금 당신 방어구보다 훨씬 좋다.',
       },
       options: [
         {
           label: {
-            zh: '提醒一次，然后继续跟，可能他有我看不到的判断',
-            en: 'Mention it once, then keep following. Maybe they have information I don\'t.',
-            ja: '一度指摘して、それでもついていく。自分が知らない情報があるかもしれない。',
-            ko: '한 번 말하고 계속 따라간다. 내가 모르는 정보가 있을 수도 있다.',
+            zh: '先救人，装备的事等打完再说，没什么好纠结的',
+            en: 'Revive first. Gear can wait until the fight\'s over. Not a hard call.',
+            ja: 'まず蘇生する。装備の話は戦闘が終わってから。別に迷うことでもない。',
+            ko: '먼저 살린다. 장비는 교전 끝나고 나서. 딱히 고민할 일도 아니다.',
           },
           scoring: [{ axis: 'Bond', delta: 1 }, { axis: 'Mental', delta: -1 }],
         },
         {
           label: {
-            zh: '之后的路线我自己决定，不跟了',
-            en: 'I\'m making my own rotation calls from here. Done following.',
-            ja: 'これ以降は自分でローテーションを決める。ついていくのは終わり。',
-            ko: '앞으로 로테이션은 내가 결정한다. 따라가기 끝.',
+            zh: '先漁一下他的死亡盒，装备到手再救，反正倒地又不会立刻死',
+            en: 'Loot the box first, then revive. They\'re downed, not dead — there\'s time.',
+            ja: '先にデスボを漁ってから蘇生する。ダウンしてるだけでまだ死んでない、時間はある。',
+            ko: '먼저 데스박스 뒤지고 나서 살린다. 다운된 거지 죽은 거 아니다, 시간 있다.',
           },
           scoring: [{ axis: 'Bond', delta: -1 }, { axis: 'Mental', delta: -1 }],
         },
         {
           label: {
-            zh: '语音里说清楚我的不满，然后继续配合',
-            en: 'Say clearly in voice chat that this isn\'t working. Keep cooperating after.',
-            ja: 'ボイスチャットでうまくいっていないと伝える。その後は引き続き協力する。',
-            ko: '보이스에서 이게 안 된다고 분명히 말한다. 그 다음은 계속 협력한다.',
+            zh: '先救人，但眼睛一直瞟着那个盒子，救完立刻回去抢，生怕被别人捡了',
+            en: 'Revive first, but I keep glancing at that box the whole time. The second they\'re up, I\'m grabbing it before anyone else does.',
+            ja: '先に蘇生するけど、その間ずっとデスボが気になって仕方ない。蘇生した瞬間、誰かに取られる前に回収する。',
+            ko: '먼저 살리는데 그 사이 계속 데스박스가 신경 쓰인다. 살리자마자 남이 채가기 전에 바로 회수한다.',
           },
           scoring: [{ axis: 'Bond', delta: 1 }, { axis: 'Mental', delta: 1 }],
         },
         {
           label: {
-            zh: '我现在已经有点红温了，但不会说，只是会走得离他们稍微远一点',
-            en: 'Irritated but silent. I\'ll just naturally drift a little further from them.',
-            ja: 'イライラしているが黙っている。自然に少し距離を置くようになる。',
-            ko: '짜증나지만 말 안 한다. 자연스럽게 조금 더 거리를 둔다.',
+            zh: '先捡了再说，队友要是不爽，我这套说辞已经想好了',
+            en: 'Loot first, deal with the complaints after. I\'ve already got my defense ready if they\'re mad.',
+            ja: '先に漁る。文句を言われても、言い訳はもう用意してある。',
+            ko: '먼저 줍는다. 팀원이 뭐라 하면 이미 준비해둔 변명이 있다.',
           },
           scoring: [{ axis: 'Bond', delta: -1 }, { axis: 'Mental', delta: 1 }],
         },
@@ -1763,50 +1763,50 @@ const game: GameQuizV2 = {
       ],
     },
 
-    // ── COMPOUND Q26: Bond + Flair ───────────────────────────────────────────
+    // ── COMPOUND Q26: Bond + Flair (matched with a known streamer) ───────────
     {
       id: 'apex-c14',
       kind: 'compound',
       text: {
-        zh: '比赛结束了，你们赢了。队友想截图留念，你的第一反应？',
-        en: 'Match over, your squad wins. Teammates want a screenshot. Your first move?',
-        ja: '試合終了、チームが勝った。チームメイトがスクリーンショットを撮りたがっている。最初の行動は？',
-        ko: '경기 끝나고 팀이 이겼다. 팀원들이 스크린샷 찍고 싶어 한다. 첫 번째 행동은?',
+        zh: '队伍加载画面里，你认出了一个粉丝几十万的知名主播的 ID——可能是队友，也可能是等下要打的对面。',
+        en: 'Squad screen loads. One name you recognize: a streamer with a few hundred thousand followers. Could be your teammate. Could be someone you\'re about to fight.',
+        ja: 'スカッド画面で見覚えのある名前を見つけた。フォロワー数十万の配信者だ。味方かもしれないし、これから戦う相手かもしれない。',
+        ko: '스쿼드 화면에 낯익은 이름이 보인다. 팔로워 수십만 명의 스트리머다. 팀원일 수도, 곧 싸울 상대일 수도 있다.',
       },
       options: [
         {
           label: {
-            zh: '我已经在调好看的姿势了，等我',
-            en: 'Already adjusting my position for the shot. Hold on.',
-            ja: 'すでにショット用にポジションを整えている。待って。',
-            ko: '이미 샷을 위한 자세 잡는 중이다. 기다려.',
+            zh: '马上艾特队友："这把打好，回头发出去"，这是全队的高光时刻',
+            en: 'Ping the squad immediately: "Let\'s make this one count — this clip is going out." A team highlight, not just mine.',
+            ja: 'すぐチームに連絡「この試合決めよう、後で流すから」。これはチーム全体のハイライトだ。',
+            ko: '바로 팀한테 알림: "이번 판 제대로 하자, 나중에 올릴 거니까." 팀 전체의 하이라이트다.',
           },
           scoring: [{ axis: 'Bond', delta: 1 }, { axis: 'Flair', delta: 1 }],
         },
         {
           label: {
-            zh: '截就截，随便站，我不在乎好不好看',
-            en: 'Fine with a screenshot, wherever I\'m standing is fine.',
-            ja: 'スクリーンショットはいいが、どこに立っていてもいい。見た目は気にしない。',
-            ko: '스크린샷 좋아, 내가 서 있는 데서 찍으면 된다.',
+            zh: '小声提醒队友一句，然后专心打好每个细节，不想让人看出我们是野队',
+            en: 'Quietly give the team a heads-up, then just focus on playing clean. Don\'t want us looking like randoms on someone\'s VOD.',
+            ja: 'チームにそっと伝えて、あとは丁寧なプレイに集中する。誰かのVODで雑に見られたくない。',
+            ko: '팀한테 조용히 알려주고 이후엔 깔끔한 플레이에 집중한다. 누군가의 VOD에서 엉성해 보이긴 싫다.',
           },
           scoring: [{ axis: 'Bond', delta: 1 }, { axis: 'Flair', delta: -1 }],
         },
         {
           label: {
-            zh: '我自己截了一张，发到群里',
-            en: 'I\'ll take my own solo screenshot and drop it in the group chat.',
-            ja: '自分で単独スクリーンショットを撮ってグループチャットに投稿する。',
-            ko: '나 혼자 스크린샷 찍어서 단톡에 올린다.',
+            zh: '谁在乎队友，我只想在他的镜头或者我的录屏里留下一个漂亮击杀',
+            en: 'Don\'t care who\'s watching me play. I want a kill on record — his stream or mine, doesn\'t matter.',
+            ja: 'チームなんて気にしない。あの人の配信でも自分の録画でもいいから、いいキルを残したい。',
+            ko: '팀은 신경 안 쓴다. 저 사람 방송이든 내 녹화든 상관없이 멋진 킬 하나 남기고 싶다.',
           },
           scoring: [{ axis: 'Bond', delta: -1 }, { axis: 'Flair', delta: 1 }],
         },
         {
           label: {
-            zh: '已经在选下一把了，截图随你们',
-            en: 'Already in queue for the next match. Screenshot without me.',
-            ja: 'もう次の試合のキューに入っている。スクリーンショットは自分なしで。',
-            ko: '이미 다음 판 큐 넣는 중이다. 스크린샷은 없이 해.',
+            zh: '该干嘛干嘛，打完才想起来点进主页看看是谁',
+            en: 'Play like normal. Only check who it was after the match ends.',
+            ja: 'いつも通りプレイする。誰だったか確認するのは試合が終わってから。',
+            ko: '평소처럼 플레이한다. 누구였는지는 경기 끝나고 나서 확인한다.',
           },
           scoring: [{ axis: 'Bond', delta: -1 }, { axis: 'Flair', delta: -1 }],
         },
@@ -1913,50 +1913,50 @@ const game: GameQuizV2 = {
       ],
     },
 
-    // ── COMPOUND Q29: Bond + Intel ───────────────────────────────────────────
+    // ── COMPOUND Q29: Bond + Intel (teammate-gacha first read) ───────────────
     {
       id: 'apex-c17',
       kind: 'compound',
       text: {
-        zh: '你的队伍在排位赛里已经进了前五。队友说全力押注打这场架。你怎么看？',
-        en: 'Ranked match, you\'re in the final five squads. Teammate calls to go all-in on a fight. Your read?',
-        ja: 'ランク戦で最終5チームまで残った。チームメイトが全力で交戦するよう呼びかけている。どう見る？',
-        ko: '랭크전에서 최종 5팀까지 살아남았다. 팀원이 교전에 올인하자고 부른다. 어떻게 보나?',
+        zh: '野排落地前，队伍加载画面刚出来，一个字都还没人说。',
+        en: 'Solo-queue squad just loaded in. Nobody\'s said a word yet.',
+        ja: '野良スクワッドがロードを終えた直後。まだ誰も一言も発していない。',
+        ko: '솔로 큐 스쿼드 로딩 완료 직후. 아직 아무도 말 안 했다.',
       },
       options: [
         {
           label: {
-            zh: '我支持，胜点要打出来',
-            en: 'Agree. LP comes from kills, not from hiding.',
-            ja: '同意。LPはキルから来る。隠れてても増えない。',
-            ko: '동의. LP는 킬에서 온다. 숨어있으면 안 오른다.',
+            zh: '不看，直接开麦打招呼，队伍气氛好比什么徽章都管用',
+            en: 'Don\'t check. Just say hi on mic. A good vibe matters more than any badge.',
+            ja: '見ない。とりあえずマイクで挨拶する。バッジより雰囲気の方が大事。',
+            ko: '안 본다. 일단 마이크로 인사한다. 배지보다 분위기가 중요하다.',
           },
           scoring: [{ axis: 'Bond', delta: 1 }, { axis: 'Intel', delta: 1 }],
         },
         {
           label: {
-            zh: '我反对，放置分比打架分值，保位才是正确 RP 路线',
-            en: 'Disagree. Placement points beat kill points at this stage. Hold position.',
-            ja: '反対。このステージでは順位ポイントがキルポイントを上回る。ポジションを維持する。',
-            ko: '반대. 이 단계에서 순위 점수가 킬 점수 이긴다. 위치 유지해야 한다.',
+            zh: '先看等级和徽章，心里有数以后打法自动调整，该多扛的多扛',
+            en: 'Check their level and badges first. Once I know what I\'m working with, I adjust — carry more if I need to.',
+            ja: 'まずレベルとバッジを確認する。だいたい把握したらプレイを調整する。必要なら多めに拾う。',
+            ko: '먼저 레벨과 배지 확인한다. 대충 파악되면 플레이 조정한다. 필요하면 더 많이 짊어진다.',
           },
           scoring: [{ axis: 'Bond', delta: 1 }, { axis: 'Intel', delta: -1 }],
         },
         {
           label: {
-            zh: '随便，打不打都行，感觉赢就赢',
-            en: 'Either way. Fight or don\'t fight. It\'ll work out.',
-            ja: 'どちらでもいい。戦っても戦わなくてもいい。何とかなる。',
-            ko: '뭐든. 교전하든 안 하든. 어떻게든 된다.',
+            zh: '不看，但默认这把要靠自己，野排嘛，习惯了',
+            en: 'Don\'t check. Just assume I\'m carrying. It\'s solo queue — you get used to it.',
+            ja: '見ない。でも最初から「今回も自分でやるしかない」と思っておく。野良だから慣れてる。',
+            ko: '안 본다. 그래도 처음부터 "이번에도 혼자 해야지" 생각해둔다. 야생 큐니까 익숙하다.',
           },
           scoring: [{ axis: 'Bond', delta: -1 }, { axis: 'Intel', delta: 1 }],
         },
         {
           label: {
-            zh: '我已经在找包抄路线了，队友的意见我后来才看到',
-            en: 'Already flanking. Saw the teammate\'s callout five seconds later.',
-            ja: 'すでにフランクしている。チームメイトのコールは5秒後に気づいた。',
-            ko: '이미 플랭크 중이다. 팀원 콜아웃은 5초 뒤에 봤다.',
+            zh: '看等级徽章，纯粹是想知道等下要 carry 到什么程度',
+            en: 'Check level and badges — purely to calculate how hard I\'m about to carry.',
+            ja: 'レベルとバッジは見る。でも純粋に「今回どれだけ運ばなきゃいけないか」を計算するためだけ。',
+            ko: '레벨과 배지는 본다. 근데 순전히 "이번엔 얼마나 캐리해야 하나" 계산하려고.',
           },
           scoring: [{ axis: 'Bond', delta: -1 }, { axis: 'Intel', delta: -1 }],
         },
