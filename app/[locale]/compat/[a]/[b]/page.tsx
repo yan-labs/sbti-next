@@ -78,7 +78,11 @@ export async function generateMetadata({params}: {params: Promise<{locale: strin
       seo.description,
       imageA ? {url: `${BASE_URL}${imageA}`, width: 1024, height: 1024} : undefined,
     ),
-    robots: {index: true, follow: true},
+    // Deliberately noindex: 2,808 pair pages sat in GSC "Crawled - currently
+    // not indexed" and dragged sitewide quality signals (2026-07 audit). The
+    // hub page carries the 궁합/compat search demand; pairs stay usable and
+    // followable so link equity still flows.
+    robots: {index: false, follow: true},
   };
 }
 

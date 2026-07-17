@@ -57,7 +57,11 @@ export async function generateMetadata({params}: {params: Promise<{locale: strin
       alternateLocale: getAlternateOgLocales(locale),
     },
     twitter: buildTwitter(seo.title, seo.description, image),
-    robots: {index: true, follow: true},
+    // Deliberately noindex: these are share landing pages that duplicate
+    // /type/* content (the page that actually ranks for type queries) and
+    // had almost no internal links — 108 URLs of index dilution. Social
+    // shares keep working; search demand is served by /type/*.
+    robots: {index: false, follow: true},
   };
 }
 

@@ -58,6 +58,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Game personality tests
   for (const slug of GAME_SLUGS) {
     addLocalized(`/games/${slug}`, 0.82, '2026-05-11');
+    addLocalized(`/games/${slug}/compat`, 0.6, '2026-05-12');
   }
 
   // Game archetype result pages (8 games × 8 archetypes = 64 routes)
@@ -72,11 +73,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     addLocalized(`/type/${encodeURIComponent(code)}`, 0.8, '2026-04-10');
   }
 
-  // Shareable result pages. Personal result state lives in a short query
-  // parameter, while these clean URLs are the canonical indexable targets.
-  for (const code of TYPE_CODES) {
-    addLocalized(`/result/${encodeURIComponent(code)}`, 0.75, '2026-04-29');
-  }
+  // /result/* share landing pages are noindexed (they duplicate /type/*,
+  // which is what actually ranks) and therefore stay out of the sitemap.
 
   // Static pages
   addLocalized('/about', 0.5, '2026-04-10');

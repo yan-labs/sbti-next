@@ -53,14 +53,8 @@ export function buildWebSiteSchema(locale: string) {
     publisher: {
       '@id': `${BASE_URL}/#org`,
     },
-    potentialAction: {
-      '@type': 'SearchAction',
-      target: {
-        '@type': 'EntryPoint',
-        urlTemplate: `${BASE_URL}/types?q={search_term_string}`,
-      },
-      'query-input': 'required name=search_term_string',
-    },
+    // No potentialAction/SearchAction: the site has no real search endpoint,
+    // and fabricated SearchAction markup risks manual-action territory.
   };
 }
 
@@ -90,7 +84,6 @@ export function buildQuizSchema(locale: string) {
     name: QUIZ_NAME[locale] ?? QUIZ_NAME.en,
     description: QUIZ_DESCRIPTION[locale] ?? QUIZ_DESCRIPTION.en,
     url: getLocaleUrl(locale, '/test'),
-    numberOfQuestions: 30,
     educationalLevel: 'casual',
     inLanguage: inLanguage(locale),
     isPartOf: {
@@ -123,7 +116,6 @@ export function buildGameQuizSchema(
     name: string;
     description: string;
     url: string;
-    numberOfQuestions: number;
     about: string[];
     imageUrl?: string;
   },
@@ -141,7 +133,6 @@ export function buildGameQuizSchema(
           url: input.imageUrl,
         }
       : undefined,
-    numberOfQuestions: input.numberOfQuestions,
     educationalLevel: 'casual',
     inLanguage: inLanguage(locale),
     isPartOf: {
@@ -275,10 +266,6 @@ export function buildDefinedTermSchema(
           url: imageUrl,
         }
       : undefined,
-    inLanguage: inLanguage(locale),
-    isPartOf: {
-      '@id': `${BASE_URL}/#quiz`,
-    },
   };
 }
 
@@ -322,12 +309,18 @@ export function buildCollectionPageSchema(
     isPartOf: {
       '@id': `${BASE_URL}/#website`,
     },
-    hasPart: typeCodes.map(code => ({
-      '@type': 'DefinedTerm',
-      '@id': `${getLocaleUrl(locale, `/type/${code}`)}#type`,
-      name: code,
-      url: getLocaleUrl(locale, `/type/${code}`),
-    })),
+    // schema.org: CollectionPage.hasPart expects CreativeWork, so the type
+    // gallery is expressed as mainEntity ItemList/ListItem instead.
+    mainEntity: {
+      '@type': 'ItemList',
+      numberOfItems: typeCodes.length,
+      itemListElement: typeCodes.map((code, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        name: code,
+        url: getLocaleUrl(locale, `/type/${code}`),
+      })),
+    },
   };
 }
 
@@ -370,10 +363,6 @@ export function buildArchetypeDefinedTermSchema(
     image: input.imageUrl
       ? {'@type': 'ImageObject', url: input.imageUrl}
       : undefined,
-    inLanguage: inLanguage(locale),
-    isPartOf: {
-      '@id': `${BASE_URL}/#website`,
-    },
   };
 }
 
@@ -392,7 +381,6 @@ export function buildItemListSchema(
     '@type': 'ItemList',
     name,
     description,
-    inLanguage: inLanguage(locale),
     numberOfItems: items.length,
     itemListElement: items.map((item, i) => ({
       '@type': 'ListItem',

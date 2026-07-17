@@ -55,8 +55,10 @@ export async function generateMetadata({
       alternateLocale: getAlternateOgLocales(locale),
     },
     twitter: buildTwitter(title, description, image),
+    // Quiz-in-progress screens have no standalone content worth indexing;
+    // the game hub page is the indexable entry point.
     robots: {
-      index: true,
+      index: false,
       follow: true,
     },
   };

@@ -154,7 +154,6 @@ export default async function GameHubRoute({
           name: title,
           description,
           url: pageUrl,
-          numberOfQuestions: game.questions.length,
           about: [title, 'game personality quiz', 'player type quiz'],
           imageUrl,
         })}

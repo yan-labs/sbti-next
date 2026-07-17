@@ -111,7 +111,10 @@ export async function generateMetadata({
       alternateLocale: getAlternateOgLocales(locale),
     },
     twitter: buildTwitter(title, description, {url: ogImage.url}),
-    robots: {index: true, follow: true},
+    // Deliberately noindex, same rationale as /compat/[a]/[b]: 1,792
+    // programmatic pair pages dilute crawl budget and sitewide quality;
+    // the game compat hub carries the search intent.
+    robots: {index: false, follow: true},
   };
 }
 
