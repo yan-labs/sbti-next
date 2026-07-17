@@ -85,15 +85,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
   addLocalized('/privacy-policy', 0.3, '2026-04-10');
   addLocalized('/terms', 0.3, '2026-04-10');
 
-  // Compatibility page
+  // Compatibility hub only. The 27×26 pair pages stay reachable through
+  // in-page links but are deliberately kept out of the sitemap: GSC showed
+  // ~890 of them stuck in "Crawled - currently not indexed", dragging down
+  // sitewide quality signals (2026-07 audit).
   addLocalized('/compat', 0.6, '2026-04-28');
-  for (const codeA of TYPE_CODES) {
-    for (const codeB of TYPE_CODES) {
-      if (codeA !== codeB) {
-        addLocalized(`/compat/${encodeURIComponent(codeA)}/${encodeURIComponent(codeB)}`, 0.45, '2026-04-29');
-      }
-    }
-  }
 
   // Blog list
   addLocalized('/blog', 0.7);

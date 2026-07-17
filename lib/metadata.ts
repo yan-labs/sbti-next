@@ -13,43 +13,45 @@ type StaticSeoPage = 'home' | 'test' | 'about' | 'faq' | 'types' | 'blog';
 const PAGE_KEYWORDS: Record<StaticSeoPage, Record<Locale, string[]>> = {
   home: {
     zh: [
-      '人格测试',
-      '免费人格测试',
       '搞笑人格测试',
-      '游戏人格测试',
-      '玩家类型测试',
+      '搞笑心理测验',
+      'MBTI恶搞',
+      'MBTI恶搞版',
       'SBTI测试',
-      '英雄联盟人格测试',
-      '王者荣耀人格测试',
-      '三角洲行动人格测试',
+      'SBTI搞笑人格测试',
+      '免费人格测试',
+      '游戏人格测试',
     ],
     en: [
-      'personality test',
-      'free personality test',
-      'game personality quiz',
-      'gamer personality test',
-      'player type quiz',
+      'funny personality test',
+      'free funny personality test',
+      'sarcastic personality test',
+      'personality test meme',
+      'MBTI parody',
       'SBTI personality test',
-      'League of Legends personality quiz',
-      'VALORANT personality quiz',
-      'CS2 personality quiz',
+      'SBTI test',
+      'gamer personality quiz',
     ],
     ja: [
-      '性格診断',
-      '無料性格テスト',
-      'ゲーム 性格診断',
-      'プレイヤータイプ診断',
+      '面白い性格診断',
+      '面白い性格診断テスト',
+      'おもしろ心理テスト',
+      'MBTIパロディ',
+      'SBTI診断',
       'SBTI 性格テスト',
-      'LoL 性格診断',
+      '無料性格診断',
+      'ゲーム 性格診断',
     ],
     ko: [
-      '성격 테스트',
+      '웃긴 성격 테스트',
+      '웃긴 심리 테스트',
+      '웃긴 mbti 테스트',
+      '병맛 테스트',
+      'MBTI 패러디',
+      'SBTI 테스트',
+      'SBTI 검사',
       '무료 성격 테스트',
       '게임 성격 테스트',
-      '플레이어 유형 테스트',
-      'SBTI 성격 테스트',
-      '롤 성격 테스트',
-      '발로란트 성격 테스트',
     ],
   },
   test: {
@@ -127,46 +129,46 @@ const PAGE_SEO_COPY: Record<
 > = {
   home: {
     zh: {
-      title: '免费人格测试与游戏玩家类型测试 | SBTI 测试站',
+      title: 'SBTI 搞笑人格测试 | 免费 MBTI 恶搞版・27 种结果',
       description:
-        'SBTI 测试站收录免费人格测试和热门游戏玩家类型测试。先测 SBTI，再体验英雄联盟、三角洲行动、王者荣耀、CS2、无畏契约、守望先锋、PUBG 和 Apex 等游戏测试，适合截图分享和多语言访问，并会持续扩展新的游戏独立测试入口。',
+        'MBTI 恶搞版人格测试 SBTI 来了：30 道沙雕题目，1 分钟测出你是拿捏者、思考者还是死者。27 种爆笑人格自带梗图体质，截图就能发到群里对线，还能测两个人格的相性配对。搞笑心理测验这一挂的，完全免费、无需注册。',
     },
     en: {
-      title: 'Free Personality Tests & Gamer Type Quizzes | SBTI',
+      title: 'SBTI – Funny Personality Test | Free MBTI Parody, 27 Types',
       description:
-        'SBTI is a free quiz hub for satirical personality tests and gamer type quizzes across LoL, CS2, VALORANT, Delta Force, Honor of Kings, and more.',
+        'The funny personality test that roasts you back: 30 questions, 27 sarcastic types, no sign-up. A free MBTI parody, plus gamer type quizzes.',
     },
     ja: {
-      title: '無料性格テストとゲーム診断 | SBTI',
+      title: 'SBTI | 面白い性格診断テスト・無料MBTIパロディ',
       description:
-        'SBTIは無料の性格テストハブです。SBTI診断に加え、LoL、Delta Force、Honor of Kings、CS2、VALORANT、Overwatch、PUBG、Apexなどのゲーム診断を多言語で楽しめます。',
+        'MBTIパロディの面白い性格診断テストSBTI。30問に答えるだけで、支配者・思考家・死者など27種類のネタ性格タイプから本当のあなたを暴きます。相性チェックも完全無料・登録不要、おもしろ心理テスト感覚で1〜3分で遊べます。',
     },
     ko: {
-      title: '무료 성격 테스트와 게임 유저 유형 테스트 | SBTI',
+      title: 'SBTI 테스트 | 웃긴 성격 유형 검사, 무료 MBTI 패러디',
       description:
-        'SBTI는 무료 성격 테스트 허브입니다. SBTI와 함께 롤, 델타포스, 왕자영요, CS2, 발로란트, 오버워치, PUBG, Apex 등 게임 유저 유형 테스트를 다국어로 제공하며, 새 게임별 독립 테스트 입구를 계속 확장합니다.',
+        'MBTI 패러디 성격 테스트 SBTI! 30문항으로 27가지 병맛 유형 중 당신의 진짜 모습을 확인하세요. 조종자·생각러·사망자 같은 웃긴 심리 테스트 결과에 유형 궁합까지, 완전 무료·가입 불필요·1분 만에 결과 확인.',
     },
   },
   test: {
     zh: {
-      title: 'SBTI测试 | 免费在线人格测试，测你的搞笑人格类型',
+      title: 'SBTI 测试官网入口 | 免费在线测试，1-3 分钟出结果',
       description:
-        'SBTI 是爆火的搞笑人格测试，也是 MBTI 恶搞版人格测试。30 道题，1-3 分钟测出你的 SBTI 人格类型，查看 27 种结果和详细解析。',
+        'SBTI 是爆火的搞笑人格测试，也是 MBTI 恶搞版。30 道沙雕题目，1-3 分钟测出你的人格类型，27 种结果各配专属梗图和详细解析，测完就能分享到群里。免费、无需注册、不用留邮箱。',
     },
     en: {
-      title: 'SBTI Personality Test | Free Viral Satirical Personality Quiz',
+      title: 'SBTI Personality Test | Free 30-Question Quiz, 27 Types',
       description:
-        'Take the free SBTI personality test, a viral satirical MBTI parody with 27 absurd personality types. Answer 30 questions, get your result in minutes, and compare all SBTI types.',
+        'Take the free SBTI personality test, a viral MBTI parody with 27 absurd types. Answer 30 questions and get your shareable result in minutes.',
     },
     ja: {
       title: 'SBTI 性格テスト | 無料でできる話題の診断・27タイプ',
       description:
-        'SBTIはMBTIをパロディした話題の性格テスト。30問であなたのSBTIタイプを無料診断し、27種類の性格タイプと詳細プロフィールを確認できます。',
+        'SBTIはMBTIをパロディした話題の性格テスト。30問に答えると27種類からあなたのSBTIタイプを無料診断。相性チェックや共有リンク、詳しい解説まで登録不要で確認でき、所要時間は1〜3分です。',
     },
     ko: {
-      title: 'SBTI 성격 테스트 | 무료 밈 성격 유형 테스트·27가지 결과',
+      title: 'SBTI 성격 테스트 | 무료 30문항, 27가지 유형 결과',
       description:
-        'SBTI는 MBTI를 패러디한 화제의 성격 테스트입니다. 30문항으로 무료 진단하고, 27가지 SBTI 유형과 자세한 결과 해석을 확인하세요.',
+        'SBTI는 MBTI를 패러디한 화제의 성격 테스트입니다. 30문항에 답하면 27가지 유형 중 당신의 SBTI가 나오고, 자세한 해석과 궁합·공유 링크까지 무료로 확인할 수 있습니다. 가입 없이 1~3분이면 충분합니다.',
     },
   },
   about: {
@@ -290,10 +292,10 @@ const TITLE_SUFFIX: Record<Locale, string> = {
 };
 
 const DESCRIPTION_SUFFIX: Record<Locale, string> = {
-  zh: '页面包含 SBTI 人格测试背景、类型说明、结果分享入口和相关导航，帮助你理解这个讽刺人格测试网站。',
-  en: 'It includes SBTI context, personality-test navigation, shareable result links, and clear page details for readers and search engines.',
-  ja: 'SBTIの性格テスト背景、タイプ説明、結果共有リンク、関連ナビゲーションを含み、ページ内容を理解しやすくしています。',
-  ko: 'SBTI 성격 테스트 배경, 유형 설명, 결과 공유 링크, 관련 탐색 정보를 포함해 페이지 내용을 이해하기 쉽게 합니다.',
+  zh: 'SBTI 是免费的搞笑人格测试：30 道题测出 27 种人格之一，测完直接截图分享。',
+  en: 'SBTI is a free, funny personality test — 30 questions, 27 types, instant shareable results.',
+  ja: 'SBTIは無料の面白い性格診断。30問で27タイプのどれかが判明し、結果はすぐ共有できます。',
+  ko: 'SBTI는 무료 웃긴 성격 테스트입니다. 30문항으로 27가지 유형 중 하나가 나오며 결과는 바로 공유할 수 있습니다.',
 };
 
 export function fitSeoTitle(locale: string, title: string) {
@@ -537,8 +539,8 @@ export function getCompatSeo(
   const baseTitle: Record<Locale, string> = {
     zh: 'SBTI 相性测试 | 两个人格碰在一起会怎样？',
     en: 'SBTI Compatibility Check | How Do Your Types Match Up?',
-    ja: 'SBTI 相性チェック | 2つのタイプの相性は？',
-    ko: 'SBTI 궁합 테스트 | 두 유형의 궁합은?',
+    ja: 'SBTI 相性チェック | 27タイプの組み合わせを無料診断',
+    ko: 'SBTI 궁합 테스트 | 27가지 유형 궁합표 무료 확인',
   };
 
   const baseDesc: Record<Locale, string> = {
