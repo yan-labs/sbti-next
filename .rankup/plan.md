@@ -21,6 +21,6 @@
 - [ ] **2-4 周后回看基线**（baseline.md 下一笔）：通用词曝光、compat "crawled-not-indexed" 数值。
 
 ## P2 — 观察 / 条件触发
-- [ ] compat 组合页 4-6 周后仍滞留 "已抓取-尚未编入索引" → 升级 noindex（decisions.md 有裁决记录）
+- [x] ~~compat 组合页 4-6 周后仍滞留 → 升级 noindex~~ **已于 2026-07-18 晚直接执行完毕**（代码核实：两处 compat `[a]/[b]` 页面均 `robots: {index:false, follow:true}`）。剩余观察项改为：4-6 周后看 GSC "已抓取-尚未编入索引" 是否从 890 回落
 - [ ] games 页有任何游戏词曝光信号 → 再评估投入
 - [ ] 传播侧（非 SEO）：韩国社区（theqoo/instiz/X）再引爆是流量根源；SEO 只是承接器——meme 站流量 = 社交脉冲 × 品牌词承接 × 通用词长尾三层

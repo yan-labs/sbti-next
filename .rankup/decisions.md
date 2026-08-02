@@ -6,7 +6,7 @@
 - **[2026-07-18 晚] OG cover.png 保留大文件**：8 张 2.4-3MB 的 OG 图 pngquant 也只能压到 ~1MB 且质量降到 60-69，而 OG 图是爬虫单次抓取非页面权重 → 保留原质量（Shareable First 原则）。cover.webp 是全幅 hero（fill 渲染）不可缩尺寸，仅 q78 重编码。
 
 - **[2026-07-18] 流量归零 ≠ 惩罚**：GSC 人工处置措施/安全问题双绿；曝光与点击同步归零 + 查询表 100% 品牌词 → 判定为 4 月韩国病毒热潮（社交传播 → 用户回搜类型名）的自然退潮。结论：站没有病，需求退了。挽回方向 = 通用词布局 + 再传播，不是"修复惩罚"。
-- **[2026-07-18] compat 组合页：撤 sitemap，不 noindex**：890/2808 页 "已抓取-尚未编入索引"，拖累全站质量信号。先撤出 sitemap（保守可逆，保留 index,follow 和用户功能），4-6 周后复查——若仍大量滞留则升级为组合页 noindex。hub 页保留（궁합 需求真实存在）。
+- **[2026-07-18] compat 组合页：撤 sitemap，不 noindex** — **已被同日晚的 noindex 矩阵终态取代（superseded），不要按本条执行**。原判断：先撤出 sitemap 保留 `index,follow`，4-6 周后再看是否升级 noindex。实际当晚就直接升级了；代码现状为 `app/[locale]/compat/[a]/[b]/page.tsx:85` 与 `app/[locale]/games/[slug]/compat/[a]/[b]/page.tsx:117` 均 `robots: {index: false, follow: true}`，sitemap 只留 hub（`app/sitemap.ts:61,90`）。hub 页保留的部分仍然有效（궁합 需求真实存在）。
 - **[2026-07-18] 首页主词从大词换验证长尾**：원래 "Free Personality Tests & Gamer Type Quizzes"（KD 天文数字 + 游戏词零需求）→ funny personality test / 웃긴 성격 테스트 / 面白い性格診断テスト / 搞笑人格测试 + MBTI parody 系。
 - **[2026-07-18] Ahrefs MCP 复验：仍不可用**（全接口 "Insufficient plan"，含 gsc-* 系列）。GSC 数据通道 = claude-in-chrome 直读 Search Console。
 - **[2026-07-18] games 方向不加码**：8 游戏 × 8 原型页已建，但 GSC 无任何游戏词流量（排名 58-59 的曝光各 1 次）。保留观察，不新增游戏内容投入，等有曝光信号再说。
