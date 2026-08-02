@@ -5,3 +5,4 @@
 - `decisions.md` — 已裁决事项（做/不做/原因），防止重复调研
 - `audit.md` — 技术体检结果
 - `plan.md` — 行动计划（P0-P2，含预期影响与完成判定）
+- [experience.md](experience.md) — 从 rankup Skill 迁出的本站经验(带证据出处与数字的完整原文)
