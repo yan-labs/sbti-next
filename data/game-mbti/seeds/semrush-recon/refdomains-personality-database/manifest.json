@@ -1,0 +1,14 @@
+{
+  "seed": "semrush-recon",
+  "kind": "refdomains-personality-database",
+  "entries": [
+    {
+      "file": "semrush-recon__refdomains-personality-database__page1__20260819.tsv",
+      "slice": "page1",
+      "bytes": 7106,
+      "dataRows": 76,
+      "harvestedAt": "2026-08-19",
+      "via": "receiver"
+    }
+  ]
+}

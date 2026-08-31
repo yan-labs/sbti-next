@@ -1,0 +1,14 @@
+{
+  "seed": "semrush-recon",
+  "kind": "backlinks-op-gg",
+  "entries": [
+    {
+      "file": "semrush-recon__backlinks-op-gg__page1__20260819.tsv",
+      "slice": "page1",
+      "bytes": 10599,
+      "dataRows": 79,
+      "harvestedAt": "2026-08-19",
+      "via": "receiver"
+    }
+  ]
+}

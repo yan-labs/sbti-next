@@ -1,0 +1,14 @@
+{
+  "seed": "semrush-recon",
+  "kind": "refdomains-sbti-support",
+  "entries": [
+    {
+      "file": "semrush-recon__refdomains-sbti-support__page1__20260819.tsv",
+      "slice": "page1",
+      "bytes": 2688,
+      "dataRows": 22,
+      "harvestedAt": "2026-08-19",
+      "via": "receiver"
+    }
+  ]
+}

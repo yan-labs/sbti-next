@@ -1,0 +1,104 @@
+[
+ {
+  "i": 0,
+  "y": 199,
+  "side": "(no sidebar)",
+  "hash": "#/digitalsuite/websiteanalysis/home"
+ },
+ {
+  "i": 1,
+  "y": 231,
+  "side": "(no sidebar)",
+  "hash": "#/digitalsuite/markets/webmarketanalysis/home"
+ },
+ {
+  "i": 2,
+  "y": 263,
+  "side": "(no sidebar)",
+  "hash": "#/digitalsuite/segments/home?tab=0"
+ },
+ {
+  "i": 3,
+  "y": 335,
+  "side": "(no sidebar)",
+  "hash": "#/digitalsuite/segments/home?tab=0"
+ },
+ {
+  "i": 4,
+  "y": 367,
+  "side": "(no sidebar)",
+  "hash": "#/digitalsuite/rank-tracker/home"
+ },
+ {
+  "i": 5,
+  "y": 399,
+  "side": "(no sidebar)",
+  "hash": "#/digitalsuite/acquisition/backlinks/overview/999/?duration=365d"
+ },
+ {
+  "i": 6,
+  "y": 431,
+  "side": "(no sidebar)",
+  "hash": "#/digitalsuite/acquisition/backlinks/overview/999/?duration=365d"
+ },
+ {
+  "i": 7,
+  "y": 503,
+  "side": "(no sidebar)",
+  "hash": "#/digitalsuite/ai-brand-visibility/home"
+ },
+ {
+  "i": 8,
+  "y": 535,
+  "side": "(no sidebar)",
+  "hash": "#/digitalsuite/ai-brand-visibility/home"
+ },
+ {
+  "i": 9,
+  "y": 567,
+  "side": "(no sidebar)",
+  "hash": "#/digitalsuite/acquisition/site-audit"
+ },
+ {
+  "i": 10,
+  "y": 599,
+  "side": "(no sidebar)",
+  "hash": "#/digitalsuite/ai-research/home"
+ },
+ {
+  "i": 11,
+  "y": 671,
+  "side": "(no sidebar)",
+  "hash": "#/digitalsuite/ai-research/home"
+ },
+ {
+  "i": 12,
+  "y": 703,
+  "side": "(no sidebar)",
+  "hash": "#/digitalsuite/ai-traffic/overview/*/999/6m?webSource=Total"
+ },
+ {
+  "i": 13,
+  "y": 735,
+  "side": "(no sidebar)",
+  "hash": "#/digitalsuite/recommendations/report/?campaignId=7bcf96ee-86c4-43ef-a850-10730b12ae30&mod"
+ },
+ {
+  "i": 14,
+  "y": 807,
+  "side": "(no sidebar)",
+  "hash": "#/digitalsuite/webmarketResearch/home"
+ },
+ {
+  "i": 15,
+  "y": 839,
+  "side": "(no sidebar)",
+  "hash": "#/digitalsuite/marketresearch/keywordmarketresearch/home"
+ },
+ {
+  "i": 16,
+  "y": 871,
+  "side": "(no sidebar)",
+  "hash": "#/publisheranalysis/home"
+ }
+]

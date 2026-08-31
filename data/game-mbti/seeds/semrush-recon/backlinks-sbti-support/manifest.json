@@ -1,0 +1,14 @@
+{
+  "seed": "semrush-recon",
+  "kind": "backlinks-sbti-support",
+  "entries": [
+    {
+      "file": "semrush-recon__backlinks-sbti-support__page1__20260819.tsv",
+      "slice": "page1",
+      "bytes": 2588,
+      "dataRows": 18,
+      "harvestedAt": "2026-08-19",
+      "via": "receiver"
+    }
+  ]
+}

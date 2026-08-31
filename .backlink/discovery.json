@@ -1,0 +1,1620 @@
+{
+  "version": 1,
+  "nodes": [
+    {
+      "domain": "character-seikaku.memo.wiki",
+      "depth": 0,
+      "status": "pending",
+      "sources": [
+        "refdomain-export"
+      ],
+      "createdAt": "2026-08-19T13:29:04.957Z"
+    },
+    {
+      "domain": "note.com",
+      "depth": 1,
+      "status": "pending",
+      "sources": [
+        "refdomains:character-seikaku.memo.wiki"
+      ],
+      "createdAt": "2026-08-19T13:29:04.958Z"
+    },
+    {
+      "domain": "narukinhonda.com",
+      "depth": 1,
+      "status": "pending",
+      "sources": [
+        "refdomains:character-seikaku.memo.wiki"
+      ],
+      "createdAt": "2026-08-19T13:29:04.958Z"
+    },
+    {
+      "domain": "animanch.com",
+      "depth": 1,
+      "status": "pending",
+      "sources": [
+        "refdomains:character-seikaku.memo.wiki"
+      ],
+      "createdAt": "2026-08-19T13:29:04.958Z"
+    },
+    {
+      "domain": "yutoributa.com",
+      "depth": 1,
+      "status": "pending",
+      "sources": [
+        "refdomains:character-seikaku.memo.wiki"
+      ],
+      "createdAt": "2026-08-19T13:29:04.958Z"
+    },
+    {
+      "domain": "n2ch.net",
+      "depth": 1,
+      "status": "pending",
+      "sources": [
+        "refdomains:character-seikaku.memo.wiki"
+      ],
+      "createdAt": "2026-08-19T13:29:04.958Z"
+    },
+    {
+      "domain": "elinkdesign.com",
+      "depth": 1,
+      "status": "pending",
+      "sources": [
+        "refdomains:character-seikaku.memo.wiki"
+      ],
+      "createdAt": "2026-08-19T13:29:04.958Z"
+    },
+    {
+      "domain": "livedoor.blog",
+      "depth": 1,
+      "status": "pending",
+      "sources": [
+        "refdomains:character-seikaku.memo.wiki"
+      ],
+      "createdAt": "2026-08-19T13:29:04.958Z"
+    },
+    {
+      "domain": "shaddoll.com",
+      "depth": 1,
+      "status": "pending",
+      "sources": [
+        "refdomains:character-seikaku.memo.wiki"
+      ],
+      "createdAt": "2026-08-19T13:29:04.958Z"
+    },
+    {
+      "domain": "girlschannel.net",
+      "depth": 1,
+      "status": "pending",
+      "sources": [
+        "refdomains:character-seikaku.memo.wiki"
+      ],
+      "createdAt": "2026-08-19T13:29:04.958Z"
+    },
+    {
+      "domain": "ilapaj.com",
+      "depth": 1,
+      "status": "pending",
+      "sources": [
+        "refdomains:character-seikaku.memo.wiki"
+      ],
+      "createdAt": "2026-08-19T13:29:04.958Z"
+    },
+    {
+      "domain": "hatenablog-parts.com",
+      "depth": 1,
+      "status": "pending",
+      "sources": [
+        "refdomains:character-seikaku.memo.wiki"
+      ],
+      "createdAt": "2026-08-19T13:29:04.958Z"
+    },
+    {
+      "domain": "seikaku-type.com",
+      "depth": 1,
+      "status": "pending",
+      "sources": [
+        "refdomains:character-seikaku.memo.wiki"
+      ],
+      "createdAt": "2026-08-19T13:29:04.958Z"
+    },
+    {
+      "domain": "scrapbox.io",
+      "depth": 1,
+      "status": "pending",
+      "sources": [
+        "refdomains:character-seikaku.memo.wiki"
+      ],
+      "createdAt": "2026-08-19T13:29:04.958Z"
+    },
+    {
+      "domain": "seesaa.jp",
+      "depth": 1,
+      "status": "pending",
+      "sources": [
+        "refdomains:character-seikaku.memo.wiki"
+      ],
+      "createdAt": "2026-08-19T13:29:04.958Z"
+    },
+    {
+      "domain": "seesaawiki.jp",
+      "depth": 1,
+      "status": "pending",
+      "sources": [
+        "refdomains:character-seikaku.memo.wiki"
+      ],
+      "createdAt": "2026-08-19T13:29:04.958Z"
+    },
+    {
+      "domain": "yahoo.com",
+      "depth": 1,
+      "status": "pending",
+      "sources": [
+        "refdomains:character-seikaku.memo.wiki"
+      ],
+      "createdAt": "2026-08-19T13:29:04.958Z"
+    },
+    {
+      "domain": "2chblog.jp",
+      "depth": 1,
+      "status": "pending",
+      "sources": [
+        "refdomains:character-seikaku.memo.wiki"
+      ],
+      "createdAt": "2026-08-19T13:29:04.958Z"
+    },
+    {
+      "domain": "jump-to.link",
+      "depth": 1,
+      "status": "pending",
+      "sources": [
+        "refdomains:character-seikaku.memo.wiki"
+      ],
+      "createdAt": "2026-08-19T13:29:04.958Z"
+    },
+    {
+      "domain": "ldblog.jp",
+      "depth": 1,
+      "status": "pending",
+      "sources": [
+        "refdomains:character-seikaku.memo.wiki"
+      ],
+      "createdAt": "2026-08-19T13:29:04.958Z"
+    },
+    {
+      "domain": "lovelive-petitsoku.com",
+      "depth": 1,
+      "status": "pending",
+      "sources": [
+        "refdomains:character-seikaku.memo.wiki"
+      ],
+      "createdAt": "2026-08-19T13:29:04.958Z"
+    },
+    {
+      "domain": "shitaraba.net",
+      "depth": 1,
+      "status": "pending",
+      "sources": [
+        "refdomains:character-seikaku.memo.wiki"
+      ],
+      "createdAt": "2026-08-19T13:29:04.958Z"
+    },
+    {
+      "domain": "tawakemonoga.com",
+      "depth": 1,
+      "status": "pending",
+      "sources": [
+        "refdomains:character-seikaku.memo.wiki"
+      ],
+      "createdAt": "2026-08-19T13:29:04.958Z"
+    },
+    {
+      "domain": "tell-personality.com",
+      "depth": 1,
+      "status": "pending",
+      "sources": [
+        "refdomains:character-seikaku.memo.wiki"
+      ],
+      "createdAt": "2026-08-19T13:29:04.958Z"
+    },
+    {
+      "domain": "wikiwiki.jp",
+      "depth": 1,
+      "status": "pending",
+      "sources": [
+        "refdomains:character-seikaku.memo.wiki"
+      ],
+      "createdAt": "2026-08-19T13:29:04.958Z"
+    },
+    {
+      "domain": "33press.com",
+      "depth": 1,
+      "status": "pending",
+      "sources": [
+        "refdomains:character-seikaku.memo.wiki"
+      ],
+      "createdAt": "2026-08-19T13:29:04.958Z"
+    },
+    {
+      "domain": "7gogo.jp",
+      "depth": 1,
+      "status": "pending",
+      "sources": [
+        "refdomains:character-seikaku.memo.wiki"
+      ],
+      "createdAt": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "domain": "aigc5048.com",
+      "depth": 1,
+      "status": "pending",
+      "sources": [
+        "refdomains:character-seikaku.memo.wiki"
+      ],
+      "createdAt": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "domain": "bushdrum.com",
+      "depth": 1,
+      "status": "pending",
+      "sources": [
+        "refdomains:character-seikaku.memo.wiki"
+      ],
+      "createdAt": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "domain": "defserver.com",
+      "depth": 1,
+      "status": "pending",
+      "sources": [
+        "refdomains:character-seikaku.memo.wiki"
+      ],
+      "createdAt": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "domain": "doorblog.jp",
+      "depth": 1,
+      "status": "pending",
+      "sources": [
+        "refdomains:character-seikaku.memo.wiki"
+      ],
+      "createdAt": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "domain": "es-citron.hatenablog.com",
+      "depth": 1,
+      "status": "pending",
+      "sources": [
+        "refdomains:character-seikaku.memo.wiki"
+      ],
+      "createdAt": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "domain": "fm-p.jp",
+      "depth": 1,
+      "status": "pending",
+      "sources": [
+        "refdomains:character-seikaku.memo.wiki"
+      ],
+      "createdAt": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "domain": "gger.jp",
+      "depth": 1,
+      "status": "pending",
+      "sources": [
+        "refdomains:character-seikaku.memo.wiki"
+      ],
+      "createdAt": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "domain": "kyodemo.net",
+      "depth": 1,
+      "status": "pending",
+      "sources": [
+        "refdomains:character-seikaku.memo.wiki"
+      ],
+      "createdAt": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "domain": "lightnews.app",
+      "depth": 1,
+      "status": "pending",
+      "sources": [
+        "refdomains:character-seikaku.memo.wiki"
+      ],
+      "createdAt": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "domain": "manami77.com",
+      "depth": 1,
+      "status": "pending",
+      "sources": [
+        "refdomains:character-seikaku.memo.wiki"
+      ],
+      "createdAt": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "domain": "narasinorz.hatenablog.com",
+      "depth": 1,
+      "status": "pending",
+      "sources": [
+        "refdomains:character-seikaku.memo.wiki"
+      ],
+      "createdAt": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "domain": "pytho.hatenablog.com",
+      "depth": 1,
+      "status": "pending",
+      "sources": [
+        "refdomains:character-seikaku.memo.wiki"
+      ],
+      "createdAt": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "domain": "umabbs.com",
+      "depth": 1,
+      "status": "pending",
+      "sources": [
+        "refdomains:character-seikaku.memo.wiki"
+      ],
+      "createdAt": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "domain": "yyt-meroo.hatenadiary.jp",
+      "depth": 1,
+      "status": "pending",
+      "sources": [
+        "refdomains:character-seikaku.memo.wiki"
+      ],
+      "createdAt": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "domain": "2ch.io",
+      "depth": 1,
+      "status": "pending",
+      "sources": [
+        "refdomains:character-seikaku.memo.wiki"
+      ],
+      "createdAt": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "domain": "absentinthewinter.blog.jp",
+      "depth": 1,
+      "status": "pending",
+      "sources": [
+        "refdomains:character-seikaku.memo.wiki"
+      ],
+      "createdAt": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "domain": "au79.hatenablog.com",
+      "depth": 1,
+      "status": "pending",
+      "sources": [
+        "refdomains:character-seikaku.memo.wiki"
+      ],
+      "createdAt": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "domain": "blogsys.jp",
+      "depth": 1,
+      "status": "pending",
+      "sources": [
+        "refdomains:character-seikaku.memo.wiki"
+      ],
+      "createdAt": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "domain": "blue3mind.com",
+      "depth": 1,
+      "status": "pending",
+      "sources": [
+        "refdomains:character-seikaku.memo.wiki"
+      ],
+      "createdAt": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "domain": "chargemanbrog.com",
+      "depth": 1,
+      "status": "pending",
+      "sources": [
+        "refdomains:character-seikaku.memo.wiki"
+      ],
+      "createdAt": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "domain": "createday.hatenablog.com",
+      "depth": 1,
+      "status": "pending",
+      "sources": [
+        "refdomains:character-seikaku.memo.wiki"
+      ],
+      "createdAt": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "domain": "dcard.tw",
+      "depth": 1,
+      "status": "pending",
+      "sources": [
+        "refdomains:character-seikaku.memo.wiki"
+      ],
+      "createdAt": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "domain": "demonition.com",
+      "depth": 1,
+      "status": "pending",
+      "sources": [
+        "refdomains:character-seikaku.memo.wiki"
+      ],
+      "createdAt": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "domain": "fake-garden.com",
+      "depth": 1,
+      "status": "pending",
+      "sources": [
+        "refdomains:character-seikaku.memo.wiki"
+      ],
+      "createdAt": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "domain": "getpersonality.com",
+      "depth": 1,
+      "status": "pending",
+      "sources": [
+        "refdomains:character-seikaku.memo.wiki"
+      ],
+      "createdAt": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "domain": "hattatsu-decoboco.com",
+      "depth": 1,
+      "status": "pending",
+      "sources": [
+        "refdomains:character-seikaku.memo.wiki"
+      ],
+      "createdAt": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "domain": "intptan.hatenablog.com",
+      "depth": 1,
+      "status": "pending",
+      "sources": [
+        "refdomains:character-seikaku.memo.wiki"
+      ],
+      "createdAt": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "domain": "itsuhanina.com",
+      "depth": 1,
+      "status": "pending",
+      "sources": [
+        "refdomains:character-seikaku.memo.wiki"
+      ],
+      "createdAt": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "domain": "jahlwl.hatenablog.com",
+      "depth": 1,
+      "status": "pending",
+      "sources": [
+        "refdomains:character-seikaku.memo.wiki"
+      ],
+      "createdAt": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "domain": "khirio.github.io",
+      "depth": 1,
+      "status": "pending",
+      "sources": [
+        "refdomains:character-seikaku.memo.wiki"
+      ],
+      "createdAt": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "domain": "liz.hatenadiary.jp",
+      "depth": 1,
+      "status": "pending",
+      "sources": [
+        "refdomains:character-seikaku.memo.wiki"
+      ],
+      "createdAt": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "domain": "m8a0y1u.hatenablog.com",
+      "depth": 1,
+      "status": "pending",
+      "sources": [
+        "refdomains:character-seikaku.memo.wiki"
+      ],
+      "createdAt": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "domain": "mahorabar.hatenablog.com",
+      "depth": 1,
+      "status": "pending",
+      "sources": [
+        "refdomains:character-seikaku.memo.wiki"
+      ],
+      "createdAt": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "domain": "manashin.hatenablog.com",
+      "depth": 1,
+      "status": "pending",
+      "sources": [
+        "refdomains:character-seikaku.memo.wiki"
+      ],
+      "createdAt": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "domain": "mbti-lifestyle.com",
+      "depth": 1,
+      "status": "pending",
+      "sources": [
+        "refdomains:character-seikaku.memo.wiki"
+      ],
+      "createdAt": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "domain": "megalodon.jp",
+      "depth": 1,
+      "status": "pending",
+      "sources": [
+        "refdomains:character-seikaku.memo.wiki"
+      ],
+      "createdAt": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "domain": "midorikaze-9375.hatenablog.com",
+      "depth": 1,
+      "status": "pending",
+      "sources": [
+        "refdomains:character-seikaku.memo.wiki"
+      ],
+      "createdAt": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "domain": "mtrktnh.net",
+      "depth": 1,
+      "status": "pending",
+      "sources": [
+        "refdomains:character-seikaku.memo.wiki"
+      ],
+      "createdAt": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "domain": "nanjgod.com",
+      "depth": 1,
+      "status": "pending",
+      "sources": [
+        "refdomains:character-seikaku.memo.wiki"
+      ],
+      "createdAt": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "domain": "newsblogsports.site",
+      "depth": 1,
+      "status": "pending",
+      "sources": [
+        "refdomains:character-seikaku.memo.wiki"
+      ],
+      "createdAt": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "domain": "penana.com",
+      "depth": 1,
+      "status": "pending",
+      "sources": [
+        "refdomains:character-seikaku.memo.wiki"
+      ],
+      "createdAt": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "domain": "privatter.net",
+      "depth": 1,
+      "status": "pending",
+      "sources": [
+        "refdomains:character-seikaku.memo.wiki"
+      ],
+      "createdAt": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "domain": "prlog.ru",
+      "depth": 1,
+      "status": "pending",
+      "sources": [
+        "refdomains:character-seikaku.memo.wiki"
+      ],
+      "createdAt": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "domain": "rect29.com",
+      "depth": 1,
+      "status": "pending",
+      "sources": [
+        "refdomains:character-seikaku.memo.wiki"
+      ],
+      "createdAt": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "domain": "sasayomi.com",
+      "depth": 1,
+      "status": "pending",
+      "sources": [
+        "refdomains:character-seikaku.memo.wiki"
+      ],
+      "createdAt": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "domain": "sato-fujiiro.com",
+      "depth": 1,
+      "status": "pending",
+      "sources": [
+        "refdomains:character-seikaku.memo.wiki"
+      ],
+      "createdAt": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "domain": "sophiacreeks.com",
+      "depth": 1,
+      "status": "pending",
+      "sources": [
+        "refdomains:character-seikaku.memo.wiki"
+      ],
+      "createdAt": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "domain": "stage1st.com",
+      "depth": 1,
+      "status": "pending",
+      "sources": [
+        "refdomains:character-seikaku.memo.wiki"
+      ],
+      "createdAt": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "domain": "tochterdeskino.hatenablog.com",
+      "depth": 1,
+      "status": "pending",
+      "sources": [
+        "refdomains:character-seikaku.memo.wiki"
+      ],
+      "createdAt": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "domain": "x.gd",
+      "depth": 1,
+      "status": "pending",
+      "sources": [
+        "refdomains:character-seikaku.memo.wiki"
+      ],
+      "createdAt": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "domain": "yahoo.co.jp",
+      "depth": 1,
+      "status": "pending",
+      "sources": [
+        "refdomains:character-seikaku.memo.wiki"
+      ],
+      "createdAt": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "domain": "yea.tokyo",
+      "depth": 1,
+      "status": "pending",
+      "sources": [
+        "refdomains:character-seikaku.memo.wiki"
+      ],
+      "createdAt": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "domain": "futari-no-torisetsu.com",
+      "depth": 0,
+      "status": "pending",
+      "sources": [
+        "refdomain-export"
+      ],
+      "createdAt": "2026-08-19T15:34:46.683Z"
+    },
+    {
+      "domain": "minkachi.com",
+      "depth": 1,
+      "status": "pending",
+      "sources": [
+        "refdomains:futari-no-torisetsu.com"
+      ],
+      "createdAt": "2026-08-19T15:34:46.685Z"
+    },
+    {
+      "domain": "cognisant.io",
+      "depth": 1,
+      "status": "pending",
+      "sources": [
+        "refdomains:futari-no-torisetsu.com"
+      ],
+      "createdAt": "2026-08-19T15:34:46.685Z"
+    },
+    {
+      "domain": "lawyerinjeddah.com",
+      "depth": 1,
+      "status": "pending",
+      "sources": [
+        "refdomains:futari-no-torisetsu.com"
+      ],
+      "createdAt": "2026-08-19T15:34:46.685Z"
+    },
+    {
+      "domain": "lydiaroyrealestate.com",
+      "depth": 1,
+      "status": "rejected",
+      "sources": [
+        "refdomains:futari-no-torisetsu.com"
+      ],
+      "createdAt": "2026-08-19T15:34:46.685Z",
+      "note": "垃圾外链包供应商指纹：两个无关站共享、与合法竞品零重合"
+    },
+    {
+      "domain": "8coint.com",
+      "depth": 1,
+      "status": "pending",
+      "sources": [
+        "refdomains:futari-no-torisetsu.com"
+      ],
+      "createdAt": "2026-08-19T15:34:46.685Z"
+    },
+    {
+      "domain": "anchorurl.cloud",
+      "depth": 1,
+      "status": "rejected",
+      "sources": [
+        "refdomains:futari-no-torisetsu.com"
+      ],
+      "createdAt": "2026-08-19T15:34:46.685Z",
+      "note": "垃圾外链包供应商指纹：两个无关站共享、与合法竞品零重合"
+    },
+    {
+      "domain": "backlinks-checker.com",
+      "depth": 1,
+      "status": "rejected",
+      "sources": [
+        "refdomains:futari-no-torisetsu.com"
+      ],
+      "createdAt": "2026-08-19T15:34:46.685Z",
+      "note": "垃圾外链包供应商指纹：两个无关站共享、与合法竞品零重合"
+    },
+    {
+      "domain": "blogsphere.top",
+      "depth": 1,
+      "status": "rejected",
+      "sources": [
+        "refdomains:futari-no-torisetsu.com"
+      ],
+      "createdAt": "2026-08-19T15:34:46.685Z",
+      "note": "垃圾外链包供应商指纹：两个无关站共享、与合法竞品零重合"
+    },
+    {
+      "domain": "dailymusings.top",
+      "depth": 1,
+      "status": "rejected",
+      "sources": [
+        "refdomains:futari-no-torisetsu.com"
+      ],
+      "createdAt": "2026-08-19T15:34:46.685Z",
+      "note": "垃圾外链包供应商指纹：两个无关站共享、与合法竞品零重合"
+    },
+    {
+      "domain": "libyanatravel.com",
+      "depth": 1,
+      "status": "pending",
+      "sources": [
+        "refdomains:futari-no-torisetsu.com"
+      ],
+      "createdAt": "2026-08-19T15:34:46.685Z"
+    },
+    {
+      "domain": "metamagic.top",
+      "depth": 1,
+      "status": "rejected",
+      "sources": [
+        "refdomains:futari-no-torisetsu.com"
+      ],
+      "createdAt": "2026-08-19T15:34:46.685Z",
+      "note": "垃圾外链包供应商指纹：两个无关站共享、与合法竞品零重合"
+    },
+    {
+      "domain": "optimizeflow.top",
+      "depth": 1,
+      "status": "rejected",
+      "sources": [
+        "refdomains:futari-no-torisetsu.com"
+      ],
+      "createdAt": "2026-08-19T15:34:46.685Z",
+      "note": "垃圾外链包供应商指纹：两个无关站共享、与合法竞品零重合"
+    },
+    {
+      "domain": "plumeriamarketing.com",
+      "depth": 1,
+      "status": "rejected",
+      "sources": [
+        "refdomains:futari-no-torisetsu.com"
+      ],
+      "createdAt": "2026-08-19T15:34:46.685Z",
+      "note": "垃圾外链包供应商指纹：两个无关站共享、与合法竞品零重合"
+    },
+    {
+      "domain": "toplikevideo.com",
+      "depth": 1,
+      "status": "rejected",
+      "sources": [
+        "refdomains:futari-no-torisetsu.com"
+      ],
+      "createdAt": "2026-08-19T15:34:46.685Z",
+      "note": "垃圾外链包供应商指纹：两个无关站共享、与合法竞品零重合"
+    },
+    {
+      "domain": "analyticshaven.top",
+      "depth": 1,
+      "status": "rejected",
+      "sources": [
+        "refdomains:futari-no-torisetsu.com"
+      ],
+      "createdAt": "2026-08-19T15:34:46.685Z",
+      "note": "垃圾外链包供应商指纹：两个无关站共享、与合法竞品零重合"
+    },
+    {
+      "domain": "atomizelink.icu",
+      "depth": 1,
+      "status": "rejected",
+      "sources": [
+        "refdomains:futari-no-torisetsu.com"
+      ],
+      "createdAt": "2026-08-19T15:34:46.685Z",
+      "note": "垃圾外链包供应商指纹：两个无关站共享、与合法竞品零重合"
+    },
+    {
+      "domain": "buzzshrink.website",
+      "depth": 1,
+      "status": "rejected",
+      "sources": [
+        "refdomains:futari-no-torisetsu.com"
+      ],
+      "createdAt": "2026-08-19T15:34:46.685Z",
+      "note": "垃圾外链包供应商指纹：两个无关站共享、与合法竞品零重合"
+    },
+    {
+      "domain": "bye.fyi",
+      "depth": 1,
+      "status": "rejected",
+      "sources": [
+        "refdomains:futari-no-torisetsu.com"
+      ],
+      "createdAt": "2026-08-19T15:34:46.685Z",
+      "note": "垃圾外链包供应商指纹：两个无关站共享、与合法竞品零重合"
+    },
+    {
+      "domain": "creativeposts.top",
+      "depth": 1,
+      "status": "rejected",
+      "sources": [
+        "refdomains:futari-no-torisetsu.com"
+      ],
+      "createdAt": "2026-08-19T15:34:46.685Z",
+      "note": "垃圾外链包供应商指纹：两个无关站共享、与合法竞品零重合"
+    },
+    {
+      "domain": "domaindexer.com",
+      "depth": 1,
+      "status": "rejected",
+      "sources": [
+        "refdomains:futari-no-torisetsu.com"
+      ],
+      "createdAt": "2026-08-19T15:34:46.685Z",
+      "note": "垃圾外链包供应商指纹：两个无关站共享、与合法竞品零重合"
+    },
+    {
+      "domain": "domraider.eu.com",
+      "depth": 1,
+      "status": "rejected",
+      "sources": [
+        "refdomains:futari-no-torisetsu.com"
+      ],
+      "createdAt": "2026-08-19T15:34:46.685Z",
+      "note": "垃圾外链包供应商指纹：两个无关站共享、与合法竞品零重合"
+    },
+    {
+      "domain": "domraider.gb.net",
+      "depth": 1,
+      "status": "rejected",
+      "sources": [
+        "refdomains:futari-no-torisetsu.com"
+      ],
+      "createdAt": "2026-08-19T15:34:46.685Z",
+      "note": "垃圾外链包供应商指纹：两个无关站共享、与合法竞品零重合"
+    },
+    {
+      "domain": "drjack.world",
+      "depth": 1,
+      "status": "pending",
+      "sources": [
+        "refdomains:futari-no-torisetsu.com"
+      ],
+      "createdAt": "2026-08-19T15:34:46.685Z"
+    },
+    {
+      "domain": "fiverr-cost-effective-seo.site",
+      "depth": 1,
+      "status": "rejected",
+      "sources": [
+        "refdomains:futari-no-torisetsu.com"
+      ],
+      "createdAt": "2026-08-19T15:34:46.685Z",
+      "note": "垃圾外链包供应商指纹：两个无关站共享、与合法竞品零重合"
+    },
+    {
+      "domain": "m98ufa.com",
+      "depth": 1,
+      "status": "pending",
+      "sources": [
+        "refdomains:futari-no-torisetsu.com"
+      ],
+      "createdAt": "2026-08-19T15:34:46.685Z"
+    },
+    {
+      "domain": "shortenurls.eu",
+      "depth": 1,
+      "status": "rejected",
+      "sources": [
+        "refdomains:futari-no-torisetsu.com"
+      ],
+      "createdAt": "2026-08-19T15:34:46.685Z",
+      "note": "垃圾外链包供应商指纹：两个无关站共享、与合法竞品零重合"
+    },
+    {
+      "domain": "urls-shortener.eu",
+      "depth": 1,
+      "status": "rejected",
+      "sources": [
+        "refdomains:futari-no-torisetsu.com"
+      ],
+      "createdAt": "2026-08-19T15:34:46.685Z",
+      "note": "垃圾外链包供应商指纹：两个无关站共享、与合法竞品零重合"
+    }
+  ],
+  "edges": [
+    {
+      "from": "character-seikaku.memo.wiki",
+      "to": "note.com",
+      "type": "refdomain",
+      "at": "2026-08-19T13:29:04.958Z"
+    },
+    {
+      "from": "character-seikaku.memo.wiki",
+      "to": "narukinhonda.com",
+      "type": "refdomain",
+      "at": "2026-08-19T13:29:04.958Z"
+    },
+    {
+      "from": "character-seikaku.memo.wiki",
+      "to": "animanch.com",
+      "type": "refdomain",
+      "at": "2026-08-19T13:29:04.958Z"
+    },
+    {
+      "from": "character-seikaku.memo.wiki",
+      "to": "yutoributa.com",
+      "type": "refdomain",
+      "at": "2026-08-19T13:29:04.958Z"
+    },
+    {
+      "from": "character-seikaku.memo.wiki",
+      "to": "n2ch.net",
+      "type": "refdomain",
+      "at": "2026-08-19T13:29:04.958Z"
+    },
+    {
+      "from": "character-seikaku.memo.wiki",
+      "to": "elinkdesign.com",
+      "type": "refdomain",
+      "at": "2026-08-19T13:29:04.958Z"
+    },
+    {
+      "from": "character-seikaku.memo.wiki",
+      "to": "livedoor.blog",
+      "type": "refdomain",
+      "at": "2026-08-19T13:29:04.958Z"
+    },
+    {
+      "from": "character-seikaku.memo.wiki",
+      "to": "shaddoll.com",
+      "type": "refdomain",
+      "at": "2026-08-19T13:29:04.958Z"
+    },
+    {
+      "from": "character-seikaku.memo.wiki",
+      "to": "girlschannel.net",
+      "type": "refdomain",
+      "at": "2026-08-19T13:29:04.958Z"
+    },
+    {
+      "from": "character-seikaku.memo.wiki",
+      "to": "ilapaj.com",
+      "type": "refdomain",
+      "at": "2026-08-19T13:29:04.958Z"
+    },
+    {
+      "from": "character-seikaku.memo.wiki",
+      "to": "hatenablog-parts.com",
+      "type": "refdomain",
+      "at": "2026-08-19T13:29:04.958Z"
+    },
+    {
+      "from": "character-seikaku.memo.wiki",
+      "to": "seikaku-type.com",
+      "type": "refdomain",
+      "at": "2026-08-19T13:29:04.958Z"
+    },
+    {
+      "from": "character-seikaku.memo.wiki",
+      "to": "scrapbox.io",
+      "type": "refdomain",
+      "at": "2026-08-19T13:29:04.958Z"
+    },
+    {
+      "from": "character-seikaku.memo.wiki",
+      "to": "seesaa.jp",
+      "type": "refdomain",
+      "at": "2026-08-19T13:29:04.958Z"
+    },
+    {
+      "from": "character-seikaku.memo.wiki",
+      "to": "seesaawiki.jp",
+      "type": "refdomain",
+      "at": "2026-08-19T13:29:04.958Z"
+    },
+    {
+      "from": "character-seikaku.memo.wiki",
+      "to": "yahoo.com",
+      "type": "refdomain",
+      "at": "2026-08-19T13:29:04.958Z"
+    },
+    {
+      "from": "character-seikaku.memo.wiki",
+      "to": "2chblog.jp",
+      "type": "refdomain",
+      "at": "2026-08-19T13:29:04.958Z"
+    },
+    {
+      "from": "character-seikaku.memo.wiki",
+      "to": "jump-to.link",
+      "type": "refdomain",
+      "at": "2026-08-19T13:29:04.958Z"
+    },
+    {
+      "from": "character-seikaku.memo.wiki",
+      "to": "ldblog.jp",
+      "type": "refdomain",
+      "at": "2026-08-19T13:29:04.958Z"
+    },
+    {
+      "from": "character-seikaku.memo.wiki",
+      "to": "lovelive-petitsoku.com",
+      "type": "refdomain",
+      "at": "2026-08-19T13:29:04.958Z"
+    },
+    {
+      "from": "character-seikaku.memo.wiki",
+      "to": "shitaraba.net",
+      "type": "refdomain",
+      "at": "2026-08-19T13:29:04.958Z"
+    },
+    {
+      "from": "character-seikaku.memo.wiki",
+      "to": "tawakemonoga.com",
+      "type": "refdomain",
+      "at": "2026-08-19T13:29:04.958Z"
+    },
+    {
+      "from": "character-seikaku.memo.wiki",
+      "to": "tell-personality.com",
+      "type": "refdomain",
+      "at": "2026-08-19T13:29:04.958Z"
+    },
+    {
+      "from": "character-seikaku.memo.wiki",
+      "to": "wikiwiki.jp",
+      "type": "refdomain",
+      "at": "2026-08-19T13:29:04.958Z"
+    },
+    {
+      "from": "character-seikaku.memo.wiki",
+      "to": "33press.com",
+      "type": "refdomain",
+      "at": "2026-08-19T13:29:04.958Z"
+    },
+    {
+      "from": "character-seikaku.memo.wiki",
+      "to": "7gogo.jp",
+      "type": "refdomain",
+      "at": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "from": "character-seikaku.memo.wiki",
+      "to": "aigc5048.com",
+      "type": "refdomain",
+      "at": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "from": "character-seikaku.memo.wiki",
+      "to": "bushdrum.com",
+      "type": "refdomain",
+      "at": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "from": "character-seikaku.memo.wiki",
+      "to": "defserver.com",
+      "type": "refdomain",
+      "at": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "from": "character-seikaku.memo.wiki",
+      "to": "doorblog.jp",
+      "type": "refdomain",
+      "at": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "from": "character-seikaku.memo.wiki",
+      "to": "es-citron.hatenablog.com",
+      "type": "refdomain",
+      "at": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "from": "character-seikaku.memo.wiki",
+      "to": "fm-p.jp",
+      "type": "refdomain",
+      "at": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "from": "character-seikaku.memo.wiki",
+      "to": "gger.jp",
+      "type": "refdomain",
+      "at": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "from": "character-seikaku.memo.wiki",
+      "to": "kyodemo.net",
+      "type": "refdomain",
+      "at": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "from": "character-seikaku.memo.wiki",
+      "to": "lightnews.app",
+      "type": "refdomain",
+      "at": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "from": "character-seikaku.memo.wiki",
+      "to": "manami77.com",
+      "type": "refdomain",
+      "at": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "from": "character-seikaku.memo.wiki",
+      "to": "narasinorz.hatenablog.com",
+      "type": "refdomain",
+      "at": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "from": "character-seikaku.memo.wiki",
+      "to": "pytho.hatenablog.com",
+      "type": "refdomain",
+      "at": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "from": "character-seikaku.memo.wiki",
+      "to": "umabbs.com",
+      "type": "refdomain",
+      "at": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "from": "character-seikaku.memo.wiki",
+      "to": "yyt-meroo.hatenadiary.jp",
+      "type": "refdomain",
+      "at": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "from": "character-seikaku.memo.wiki",
+      "to": "2ch.io",
+      "type": "refdomain",
+      "at": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "from": "character-seikaku.memo.wiki",
+      "to": "absentinthewinter.blog.jp",
+      "type": "refdomain",
+      "at": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "from": "character-seikaku.memo.wiki",
+      "to": "au79.hatenablog.com",
+      "type": "refdomain",
+      "at": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "from": "character-seikaku.memo.wiki",
+      "to": "blogsys.jp",
+      "type": "refdomain",
+      "at": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "from": "character-seikaku.memo.wiki",
+      "to": "blue3mind.com",
+      "type": "refdomain",
+      "at": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "from": "character-seikaku.memo.wiki",
+      "to": "chargemanbrog.com",
+      "type": "refdomain",
+      "at": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "from": "character-seikaku.memo.wiki",
+      "to": "createday.hatenablog.com",
+      "type": "refdomain",
+      "at": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "from": "character-seikaku.memo.wiki",
+      "to": "dcard.tw",
+      "type": "refdomain",
+      "at": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "from": "character-seikaku.memo.wiki",
+      "to": "demonition.com",
+      "type": "refdomain",
+      "at": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "from": "character-seikaku.memo.wiki",
+      "to": "fake-garden.com",
+      "type": "refdomain",
+      "at": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "from": "character-seikaku.memo.wiki",
+      "to": "getpersonality.com",
+      "type": "refdomain",
+      "at": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "from": "character-seikaku.memo.wiki",
+      "to": "hattatsu-decoboco.com",
+      "type": "refdomain",
+      "at": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "from": "character-seikaku.memo.wiki",
+      "to": "intptan.hatenablog.com",
+      "type": "refdomain",
+      "at": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "from": "character-seikaku.memo.wiki",
+      "to": "itsuhanina.com",
+      "type": "refdomain",
+      "at": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "from": "character-seikaku.memo.wiki",
+      "to": "jahlwl.hatenablog.com",
+      "type": "refdomain",
+      "at": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "from": "character-seikaku.memo.wiki",
+      "to": "khirio.github.io",
+      "type": "refdomain",
+      "at": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "from": "character-seikaku.memo.wiki",
+      "to": "liz.hatenadiary.jp",
+      "type": "refdomain",
+      "at": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "from": "character-seikaku.memo.wiki",
+      "to": "m8a0y1u.hatenablog.com",
+      "type": "refdomain",
+      "at": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "from": "character-seikaku.memo.wiki",
+      "to": "mahorabar.hatenablog.com",
+      "type": "refdomain",
+      "at": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "from": "character-seikaku.memo.wiki",
+      "to": "manashin.hatenablog.com",
+      "type": "refdomain",
+      "at": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "from": "character-seikaku.memo.wiki",
+      "to": "mbti-lifestyle.com",
+      "type": "refdomain",
+      "at": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "from": "character-seikaku.memo.wiki",
+      "to": "megalodon.jp",
+      "type": "refdomain",
+      "at": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "from": "character-seikaku.memo.wiki",
+      "to": "midorikaze-9375.hatenablog.com",
+      "type": "refdomain",
+      "at": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "from": "character-seikaku.memo.wiki",
+      "to": "mtrktnh.net",
+      "type": "refdomain",
+      "at": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "from": "character-seikaku.memo.wiki",
+      "to": "nanjgod.com",
+      "type": "refdomain",
+      "at": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "from": "character-seikaku.memo.wiki",
+      "to": "newsblogsports.site",
+      "type": "refdomain",
+      "at": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "from": "character-seikaku.memo.wiki",
+      "to": "penana.com",
+      "type": "refdomain",
+      "at": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "from": "character-seikaku.memo.wiki",
+      "to": "privatter.net",
+      "type": "refdomain",
+      "at": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "from": "character-seikaku.memo.wiki",
+      "to": "prlog.ru",
+      "type": "refdomain",
+      "at": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "from": "character-seikaku.memo.wiki",
+      "to": "rect29.com",
+      "type": "refdomain",
+      "at": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "from": "character-seikaku.memo.wiki",
+      "to": "sasayomi.com",
+      "type": "refdomain",
+      "at": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "from": "character-seikaku.memo.wiki",
+      "to": "sato-fujiiro.com",
+      "type": "refdomain",
+      "at": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "from": "character-seikaku.memo.wiki",
+      "to": "sophiacreeks.com",
+      "type": "refdomain",
+      "at": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "from": "character-seikaku.memo.wiki",
+      "to": "stage1st.com",
+      "type": "refdomain",
+      "at": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "from": "character-seikaku.memo.wiki",
+      "to": "tochterdeskino.hatenablog.com",
+      "type": "refdomain",
+      "at": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "from": "character-seikaku.memo.wiki",
+      "to": "x.gd",
+      "type": "refdomain",
+      "at": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "from": "character-seikaku.memo.wiki",
+      "to": "yahoo.co.jp",
+      "type": "refdomain",
+      "at": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "from": "character-seikaku.memo.wiki",
+      "to": "yea.tokyo",
+      "type": "refdomain",
+      "at": "2026-08-19T13:29:04.959Z"
+    },
+    {
+      "from": "futari-no-torisetsu.com",
+      "to": "minkachi.com",
+      "type": "refdomain",
+      "at": "2026-08-19T15:34:46.685Z"
+    },
+    {
+      "from": "futari-no-torisetsu.com",
+      "to": "cognisant.io",
+      "type": "refdomain",
+      "at": "2026-08-19T15:34:46.685Z"
+    },
+    {
+      "from": "futari-no-torisetsu.com",
+      "to": "lawyerinjeddah.com",
+      "type": "refdomain",
+      "at": "2026-08-19T15:34:46.685Z"
+    },
+    {
+      "from": "futari-no-torisetsu.com",
+      "to": "lydiaroyrealestate.com",
+      "type": "refdomain",
+      "at": "2026-08-19T15:34:46.685Z"
+    },
+    {
+      "from": "futari-no-torisetsu.com",
+      "to": "8coint.com",
+      "type": "refdomain",
+      "at": "2026-08-19T15:34:46.685Z"
+    },
+    {
+      "from": "futari-no-torisetsu.com",
+      "to": "anchorurl.cloud",
+      "type": "refdomain",
+      "at": "2026-08-19T15:34:46.685Z"
+    },
+    {
+      "from": "futari-no-torisetsu.com",
+      "to": "backlinks-checker.com",
+      "type": "refdomain",
+      "at": "2026-08-19T15:34:46.685Z"
+    },
+    {
+      "from": "futari-no-torisetsu.com",
+      "to": "blogsphere.top",
+      "type": "refdomain",
+      "at": "2026-08-19T15:34:46.685Z"
+    },
+    {
+      "from": "futari-no-torisetsu.com",
+      "to": "dailymusings.top",
+      "type": "refdomain",
+      "at": "2026-08-19T15:34:46.685Z"
+    },
+    {
+      "from": "futari-no-torisetsu.com",
+      "to": "libyanatravel.com",
+      "type": "refdomain",
+      "at": "2026-08-19T15:34:46.685Z"
+    },
+    {
+      "from": "futari-no-torisetsu.com",
+      "to": "metamagic.top",
+      "type": "refdomain",
+      "at": "2026-08-19T15:34:46.685Z"
+    },
+    {
+      "from": "futari-no-torisetsu.com",
+      "to": "optimizeflow.top",
+      "type": "refdomain",
+      "at": "2026-08-19T15:34:46.685Z"
+    },
+    {
+      "from": "futari-no-torisetsu.com",
+      "to": "plumeriamarketing.com",
+      "type": "refdomain",
+      "at": "2026-08-19T15:34:46.685Z"
+    },
+    {
+      "from": "futari-no-torisetsu.com",
+      "to": "toplikevideo.com",
+      "type": "refdomain",
+      "at": "2026-08-19T15:34:46.685Z"
+    },
+    {
+      "from": "futari-no-torisetsu.com",
+      "to": "analyticshaven.top",
+      "type": "refdomain",
+      "at": "2026-08-19T15:34:46.685Z"
+    },
+    {
+      "from": "futari-no-torisetsu.com",
+      "to": "atomizelink.icu",
+      "type": "refdomain",
+      "at": "2026-08-19T15:34:46.685Z"
+    },
+    {
+      "from": "futari-no-torisetsu.com",
+      "to": "buzzshrink.website",
+      "type": "refdomain",
+      "at": "2026-08-19T15:34:46.685Z"
+    },
+    {
+      "from": "futari-no-torisetsu.com",
+      "to": "bye.fyi",
+      "type": "refdomain",
+      "at": "2026-08-19T15:34:46.685Z"
+    },
+    {
+      "from": "futari-no-torisetsu.com",
+      "to": "creativeposts.top",
+      "type": "refdomain",
+      "at": "2026-08-19T15:34:46.685Z"
+    },
+    {
+      "from": "futari-no-torisetsu.com",
+      "to": "domaindexer.com",
+      "type": "refdomain",
+      "at": "2026-08-19T15:34:46.685Z"
+    },
+    {
+      "from": "futari-no-torisetsu.com",
+      "to": "domraider.eu.com",
+      "type": "refdomain",
+      "at": "2026-08-19T15:34:46.685Z"
+    },
+    {
+      "from": "futari-no-torisetsu.com",
+      "to": "domraider.gb.net",
+      "type": "refdomain",
+      "at": "2026-08-19T15:34:46.685Z"
+    },
+    {
+      "from": "futari-no-torisetsu.com",
+      "to": "drjack.world",
+      "type": "refdomain",
+      "at": "2026-08-19T15:34:46.685Z"
+    },
+    {
+      "from": "futari-no-torisetsu.com",
+      "to": "fiverr-cost-effective-seo.site",
+      "type": "refdomain",
+      "at": "2026-08-19T15:34:46.685Z"
+    },
+    {
+      "from": "futari-no-torisetsu.com",
+      "to": "m98ufa.com",
+      "type": "refdomain",
+      "at": "2026-08-19T15:34:46.685Z"
+    },
+    {
+      "from": "futari-no-torisetsu.com",
+      "to": "shortenurls.eu",
+      "type": "refdomain",
+      "at": "2026-08-19T15:34:46.685Z"
+    },
+    {
+      "from": "futari-no-torisetsu.com",
+      "to": "urls-shortener.eu",
+      "type": "refdomain",
+      "at": "2026-08-19T15:34:46.685Z"
+    }
+  ]
+}

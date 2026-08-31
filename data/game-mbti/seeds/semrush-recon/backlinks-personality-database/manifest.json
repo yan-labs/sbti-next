@@ -1,0 +1,14 @@
+{
+  "seed": "semrush-recon",
+  "kind": "backlinks-personality-database",
+  "entries": [
+    {
+      "file": "semrush-recon__backlinks-personality-database__page1__20260819.tsv",
+      "slice": "page1",
+      "bytes": 7264,
+      "dataRows": 82,
+      "harvestedAt": "2026-08-19",
+      "via": "receiver"
+    }
+  ]
+}

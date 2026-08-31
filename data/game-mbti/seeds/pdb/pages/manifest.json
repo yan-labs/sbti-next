@@ -1,0 +1,14 @@
+{
+  "seed": "pdb",
+  "kind": "pages",
+  "entries": [
+    {
+      "file": "pdb__pages__organic-p1__20260819.tsv",
+      "slice": "organic-p1",
+      "bytes": 10302,
+      "dataRows": 69,
+      "harvestedAt": "2026-08-19",
+      "via": "receiver"
+    }
+  ]
+}

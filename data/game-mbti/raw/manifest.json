@@ -1,0 +1,58 @@
+{
+  "op.gg__refdomains__p01__20260819.csv": {
+    "target": "op.gg",
+    "report": "refdomains",
+    "page": 1,
+    "rows": 100,
+    "bytes": 7543,
+    "collectedAt": "2026-08-19"
+  },
+  "op.gg__refdomains__p02__20260819.csv": {
+    "target": "op.gg",
+    "report": "refdomains",
+    "page": 2,
+    "rows": 100,
+    "bytes": 7527,
+    "collectedAt": "2026-08-19"
+  },
+  "op.gg__refdomains__p03__20260819.csv": {
+    "target": "op.gg",
+    "report": "refdomains",
+    "page": 3,
+    "rows": 100,
+    "bytes": 7575,
+    "collectedAt": "2026-08-19"
+  },
+  "op.gg__refdomains__p04__20260819.csv": {
+    "target": "op.gg",
+    "report": "refdomains",
+    "page": 4,
+    "rows": 100,
+    "bytes": 7529,
+    "collectedAt": "2026-08-19"
+  },
+  "character-seikaku__refdomains__p01__20260819.csv": {
+    "target": "character-seikaku",
+    "report": "refdomains",
+    "page": 1,
+    "rows": 78,
+    "bytes": 6173,
+    "collectedAt": "2026-08-19"
+  },
+  "mbtitypeguide__refdomains__p01__20260819.csv": {
+    "target": "mbtitypeguide",
+    "report": "refdomains",
+    "page": 1,
+    "rows": 77,
+    "bytes": 5970,
+    "collectedAt": "2026-08-19"
+  },
+  "futari-no-torisetsu__refdomains__p01__20260819.csv": {
+    "target": "futari-no-torisetsu",
+    "report": "refdomains",
+    "page": 1,
+    "rows": 27,
+    "bytes": 2104,
+    "collectedAt": "2026-08-19"
+  }
+}

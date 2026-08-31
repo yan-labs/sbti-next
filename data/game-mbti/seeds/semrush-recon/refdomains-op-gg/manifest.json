@@ -1,0 +1,14 @@
+{
+  "seed": "semrush-recon",
+  "kind": "refdomains-op-gg",
+  "entries": [
+    {
+      "file": "semrush-recon__refdomains-op-gg__page1__20260819.tsv",
+      "slice": "page1",
+      "bytes": 8095,
+      "dataRows": 100,
+      "harvestedAt": "2026-08-19",
+      "via": "receiver"
+    }
+  ]
+}

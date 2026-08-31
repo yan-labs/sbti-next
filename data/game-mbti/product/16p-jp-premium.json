@@ -1,0 +1,306 @@
+{
+  "version": 1,
+  "source": "Rendered public page via OpenCLI browser session",
+  "retrievedAt": "2026-08-19T18:54:12.249Z",
+  "requestedUrl": "https://www.16personalities.com/ja/%E3%83%97%E3%83%AC%E3%83%9F%E3%82%A2%E3%83%A0%E3%82%AD%E3%83%A3%E3%83%AA%E3%82%A2%E3%82%AD%E3%83%83%E3%83%88",
+  "session": "prod-recon-a",
+  "finalUrl": "https://www.16personalities.com/ja/%E3%83%97%E3%83%AC%E3%83%9F%E3%82%A2%E3%83%A0%E3%82%AD%E3%83%A3%E3%83%AA%E3%82%A2%E3%82%AD%E3%83%83%E3%83%88",
+  "title": "プレミアムキャリアキット | 16Personalities",
+  "description": "プレミアムキャリアキットは、自分に最適な仕事を見つけ、どんな職種でも自分の特性を活かし、これまで思い描いてきた人生を築くのに役立ちます。",
+  "textLength": 1597,
+  "truncated": false,
+  "prices": {
+    "JPY": [
+      "￥3,990"
+    ]
+  },
+  "paywallShape": {
+    "oneTime": false,
+    "subscription": false,
+    "freeTrial": false,
+    "refund": true
+  },
+  "links": [
+    {
+      "href": "#introduction",
+      "text": "メインコンテンツにスキップ"
+    },
+    {
+      "href": "#access-a11y",
+      "text": "アクセシビリティオプションへスキップ"
+    },
+    {
+      "href": "/ja",
+      "text": ""
+    },
+    {
+      "href": "/ja/%E6%80%A7%E6%A0%BC%E8%A8%BA%E6%96%AD%E3%83%86%E3%82%B9%E3%83%88",
+      "text": "性格診断テスト"
+    },
+    {
+      "href": "/ja/%E6%80%A7%E6%A0%BC%E3%82%BF%E3%82%A4%E3%83%97",
+      "text": "性格タイプ"
+    },
+    {
+      "href": "/ja/%E3%83%97%E3%83%AC%E3%83%9F%E3%82%A2%E3%83%A0%E3%82%AD%E3%83%A3%E3%83%AA%E3%82%A2%E3%82%AD%E3%83%83%E3%83%88",
+      "text": "キャリアキット"
+    },
+    {
+      "href": "/ja/%E3%83%81%E3%83%BC%E3%83%A0%E8%A9%95%E4%BE%A1",
+      "text": "ビジネス"
+    },
+    {
+      "href": "/ja/%E8%A8%98%E4%BA%8B?category=list",
+      "text": "記事"
+    },
+    {
+      "href": "/ja/%E6%80%A7%E6%A0%BC%E8%A8%BA%E6%96%AD%E3%83%86%E3%82%B9%E3%83%88",
+      "text": "性格診断テスト"
+    },
+    {
+      "href": "/ja/%E6%80%A7%E6%A0%BC%E3%82%BF%E3%82%A4%E3%83%97",
+      "text": "性格タイプ"
+    },
+    {
+      "href": "/ja/性格タイプ",
+      "text": ""
+    },
+    {
+      "href": "/ja/intj型の性格",
+      "text": ""
+    },
+    {
+      "href": "/ja/intp型の性格",
+      "text": ""
+    },
+    {
+      "href": "/ja/entj型の性格",
+      "text": ""
+    },
+    {
+      "href": "/ja/entp型の性格",
+      "text": ""
+    },
+    {
+      "href": "/ja/性格タイプ",
+      "text": ""
+    },
+    {
+      "href": "/ja/infj型の性格",
+      "text": ""
+    },
+    {
+      "href": "/ja/infp型の性格",
+      "text": ""
+    },
+    {
+      "href": "/ja/enfj型の性格",
+      "text": ""
+    },
+    {
+      "href": "/ja/enfp型の性格",
+      "text": ""
+    },
+    {
+      "href": "/ja/性格タイプ",
+      "text": ""
+    },
+    {
+      "href": "/ja/istj型の性格",
+      "text": ""
+    },
+    {
+      "href": "/ja/isfj型の性格",
+      "text": ""
+    },
+    {
+      "href": "/ja/estj型の性格",
+      "text": ""
+    },
+    {
+      "href": "/ja/esfj型の性格",
+      "text": ""
+    },
+    {
+      "href": "/ja/性格タイプ",
+      "text": ""
+    },
+    {
+      "href": "/ja/istp型の性格",
+      "text": ""
+    },
+    {
+      "href": "/ja/isfp型の性格",
+      "text": ""
+    },
+    {
+      "href": "/ja/estp型の性格",
+      "text": ""
+    },
+    {
+      "href": "/ja/esfp型の性格",
+      "text": ""
+    },
+    {
+      "href": "/ja/%E3%83%97%E3%83%AC%E3%83%9F%E3%82%A2%E3%83%A0%E3%82%AD%E3%83%A3%E3%83%AA%E3%82%A2%E3%82%AD%E3%83%83%E3%83%88",
+      "text": "キャリアキット"
+    },
+    {
+      "href": "/ja/%E3%83%81%E3%83%BC%E3%83%A0%E8%A9%95%E4%BE%A1",
+      "text": "ビジネス"
+    },
+    {
+      "href": "/ja/%E3%83%81%E3%83%BC%E3%83%A0%E8%A9%95%E4%BE%A1",
+      "text": ""
+    },
+    {
+      "href": "/ja/%E5%B0%82%E9%96%80%E5%AE%B6",
+      "text": ""
+    },
+    {
+      "href": "/ja/%E8%A8%98%E4%BA%8B?category=list",
+      "text": "記事"
+    },
+    {
+      "href": "/profile",
+      "text": "ログイン"
+    },
+    {
+      "href": "https://www.16personalities.com/languages",
+      "text": "日本語"
+    },
+    {
+      "href": "/ja/ログイン",
+      "text": "ログイン"
+    },
+    {
+      "href": "/languages",
+      "text": "日本語"
+    },
+    {
+      "href": "https://www.16personalities.com/ja/%E8%A8%98%E4%BA%8B/reliability-and-validity",
+      "text": "妥当性に対するオープンなアプローチ"
+    },
+    {
+      "href": "mailto:support@16personalities.com",
+      "text": "support@16personalities.com"
+    },
+    {
+      "href": "https://x.com/intent/tweet?post=“”&url=https://www.16personalities.com/ja/%E3%83%97%E3%83%AC%E3%83%9F%E3%82%A2%E3%83%A0%E3%82%AD%E3%83%A3%E3%83%AA%E3%82%A2%E3%82%AD%E3%83%83%E3%83%88&via=16Personalities&hashtags=16Personalities",
+      "text": ""
+    },
+    {
+      "href": "mailto:?body=“”%0D%0A%0D%0Ahttps://www.16personalities.com/ja/%E3%83%97%E3%83%AC%E3%83%9F%E3%82%A2%E3%83%A0%E3%82%AD%E3%83%A3%E3%83%AA%E3%82%A2%E3%82%AD%E3%83%83%E3%83%88",
+      "text": ""
+    },
+    {
+      "href": "/premium",
+      "text": "Premium Career Suite"
+    },
+    {
+      "href": "/teams",
+      "text": "Team Assessments"
+    },
+    {
+      "href": "/professionals",
+      "text": "Reports for Professionals"
+    },
+    {
+      "href": "/orders/testimonials",
+      "text": "Testimonials"
+    },
+    {
+      "href": "/free-personality-test",
+      "text": "Personality Test"
+    },
+    {
+      "href": "/personality-types",
+      "text": "Personality Types"
+    },
+    {
+      "href": "/articles",
+      "text": "Articles"
+    },
+    {
+      "href": "/articles/our-theory",
+      "text": "Our Framework"
+    },
+    {
+      "href": "/country-profiles",
+      "text": "Country Profiles"
+    },
+    {
+      "href": "/contact-us",
+      "text": "Contact Us"
+    },
+    {
+      "href": "/contact-us#faq",
+      "text": "FAQ"
+    },
+    {
+      "href": "/contact-us",
+      "text": "Report an Issue"
+    },
+    {
+      "href": "/profile/order-history",
+      "text": "Your Orders"
+    },
+    {
+      "href": "/languages",
+      "text": "Change Language"
+    },
+    {
+      "href": "/site-map",
+      "text": "Site Map"
+    },
+    {
+      "href": "/for-ai",
+      "text": "AI Reference"
+    },
+    {
+      "href": "https://npqe.com",
+      "text": "NPQE®"
+    },
+    {
+      "href": "https://careerchange.mindtrackers.com",
+      "text": "MindTrackers®"
+    },
+    {
+      "href": "https://16personalities.substack.com",
+      "text": "Leadership by 16Personalities"
+    },
+    {
+      "href": "https://infjby16personalities.substack.com",
+      "text": "Grow with 16Personalities"
+    },
+    {
+      "href": "https://www.16personalities.com/terms",
+      "text": "Terms & Conditions"
+    },
+    {
+      "href": "https://www.16personalities.com/terms/privacy",
+      "text": "Privacy Policy"
+    },
+    {
+      "href": "https://www.16personalities.com/terms/accessibility",
+      "text": "Accessibility"
+    },
+    {
+      "href": "https://16personalities.substack.com/",
+      "text": ""
+    },
+    {
+      "href": "https://www.facebook.com/16Personalities/",
+      "text": ""
+    },
+    {
+      "href": "https://www.instagram.com/16personalitiesofficial/",
+      "text": ""
+    },
+    {
+      "href": "https://x.com/16Personalities",
+      "text": ""
+    }
+  ],
+  "text": "メインコンテンツにスキップ\nアクセシビリティオプションへスキップ\n性格診断テスト\n性格タイプ\nキャリアキット\nビジネス\n記事\nログイン\n日本語\nプレミアムキャリアキット\n\nご自身のユニークな性格に合ったキャリアを築きましょう。\n\n￥3,990\n\n続ける\n30日間の返金保証\n\n私たちのサポートをご紹介します。\n\n本当の自分を理解する\n\n40ページ超のキャリアガイドをお読みいただけば、なぜ従来型のアドバイスがあなたに合わなかったのかが分かるはずです。何からあなたは活力を得て、何があなたを疲弊させるか、自分の性格はどう価値を生み出しているか、さらに個性的な特徴がどうあなたの強み（スーパーパワー）になるかを学びましょう。\n\n際立つ存在になる\n\n24時間いつでもご利用いただける5つのAIキャリアメンターに今すぐアクセス。パーソナライズされたガイダンスをもとに自分らしさを大切にしながら面接を突破し、無理なく人脈を広げ、印象的な履歴書を作り、キャリアチェンジを成功させましょう。\n\n対人スキルを向上させる\n\n各性格タイプの動機づけが何かを読み解きましょう。説得力のあるコミュニケーション術を極め、苦手な同僚ともストレスなく接し、表面的なネットワーキングでは得られない偽りのない関係を仕事で築きましょう。\n\n勘ではなく、科学的手法を使う\n\n高度なアセスメントにより、これまで考えもしなかった数多くのキャリアパスが明らかになります。あなたに最適な職場環境、リーダーシップスタイル、燃え尽きの要因、キャリアにおける価値観などを発見しましょう。\n\nよくある質問\nプレミアムキャリアキットはどんなことに役立ちますか？\n自分に合った具体的な職種名を教えてもらえますか？\nAIキャリアメンターはどのように機能しますか？\nこれらの資料はダウンロード可能ですか？それともオンライン限定ですか？\n16Personalitiesを信頼すべき理由は？\nプレミアムキャリアキット\n\nご自身のユニークな性格に合ったキャリアを築きましょう。料金はわずか￥3,990です。\n\n続ける\nリスクなし、100%返金保証\n\n商品にご満足いただけなかった場合には、30日以内にsupport@16personalities.com までご連絡ください。理由を問わずにご返金いたします。\n\nEnglische Version\nProducts\nPremium Career Suite\nTeam Assessments\nReports for Professionals\nTestimonials\nResources\nPersonality Test\nPersonality Types\nArticles\nOur Framework\nCountry Profiles\nHelp\nContact Us\nFAQ\nReport an Issue\nYour Orders\nChange Language\nSite Map\nAI Reference\nOur Other Creations\nNPQE®\nMindTrackers®\nLeadership by 16Personalities\nGrow with 16Personalities\nTerms & Conditions\nPrivacy Policy\nAccessibility\n©2011-2026 NERIS Analytics Limited\nOur content is available in multiple languages through both human and AI-assisted translation. While we strive for accuracy, the English version remains the official text."
+}

@@ -46,3 +46,8 @@ backlink-pilot/
 task_plan.md
 docs/codex-image-gen-blockers.md
 docs/design-proposal/
+
+# receiver の実行時状態（派生ポート / pid / ログ）。マシンローカルで、
+# 起動のたびに変わる。共有すると他人の環境で誤ったポートを指す。
+.rankup/receiver.json
+.rankup/data/receiver.log

@@ -1,0 +1,39 @@
+# 日语型名与相性 (gl=jp, hl=ja) — 16型名实体页选题的 SERP 逐词盘面
+# A. 16型名 × mbti（两种语序都要，Semrush 显示两种都有量）
+領事館 mbti
+mbti 領事館
+エンターテイナー mbti
+mbti エンターテイナー
+主人公 mbti
+mbti 主人公
+冒険家 mbti
+運動家 mbti
+mbti 運動家
+仲介者 mbti
+擁護者 mbti
+建築家 mbti
+指揮官 mbti
+提唱者 mbti
+討論者 mbti
+巨匠 mbti
+mbti 巨匠
+論理学者 mbti
+起業家 mbti
+幹部 mbti
+mbti 幹部
+広報運動家 mbti
+管理者 mbti
+説得者 mbti
+# B. 相性簇
+mbti 相性
+mbti 診断 相性
+mbti 相性 一覧
+恋愛mbti 相性
+mbti 相性 恋愛
+mbti 冒険家 相性
+mbti 主人公 相性
+主人公 mbti相性
+# C. 对照组（已知硬词，校准难度尺度）
+mbti 診断
+性格診断
+16personalities

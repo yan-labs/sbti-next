@@ -1,0 +1,14 @@
+{
+  "seed": "pdb",
+  "kind": "kw",
+  "entries": [
+    {
+      "file": "pdb__kw__nonbrand-p1__20260819.tsv",
+      "slice": "nonbrand-p1",
+      "bytes": 12589,
+      "dataRows": 101,
+      "harvestedAt": "2026-08-19",
+      "via": "receiver"
+    }
+  ]
+}

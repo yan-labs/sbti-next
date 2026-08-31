@@ -1,0 +1,61 @@
+# 英文扩展批5 (gl=us, hl=en) — 九型人格全矩阵 / 应用长尾 / 对比句式 / 16型反查补全
+# 九型人格 instinctual variant 矩阵（sp4/sp5/sp9/so3/sx4/sx6 已在 kd-us2.json 跑过，此处跳过）
+sp1 enneagram
+sp2 enneagram
+sp3 enneagram
+sp6 enneagram
+sp7 enneagram
+sp8 enneagram
+so1 enneagram
+so2 enneagram
+so4 enneagram
+so5 enneagram
+so6 enneagram
+so7 enneagram
+sx1 enneagram
+sx2 enneagram
+sx3 enneagram
+sx5 enneagram
+sx7 enneagram
+sx8 enneagram
+# 九型人格 wing 写法（4w5/8w7 已跑过，此处跳过）
+1w9
+2w1
+2w3
+3w4
+4w3
+5w6
+6w7
+7w8
+8w9
+9w1
+# 九型人格应用型长尾
+enneagram 4 careers
+enneagram 5 relationships
+enneagram compatibility chart
+sp4 vs sx4
+enneagram type 9 careers
+enneagram 2 relationships
+enneagram 7 careers
+sp vs so vs sx
+enneagram subtypes explained
+# op.gg 式对比/克制句式
+infp vs infj
+intj vs intp
+enfp and infj compatibility
+worst mbti matches
+mbti best match
+entj vs intj
+isfj vs infj
+estj vs entj
+mbti soulmate pairs
+mbti worst matches
+# 16 型反查补全（infp/enfp/entp/intj/infj/intp/istp/esfp 已跑过，此处补剩 8 型）
+estj characters
+esfj characters
+entj characters
+istj characters
+isfp characters
+isfj characters
+estp characters
+enfj characters

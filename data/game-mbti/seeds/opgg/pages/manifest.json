@@ -1,0 +1,14 @@
+{
+  "seed": "opgg",
+  "kind": "pages",
+  "entries": [
+    {
+      "file": "opgg__pages__organic-p1__20260819.tsv",
+      "slice": "organic-p1",
+      "bytes": 18112,
+      "dataRows": 193,
+      "harvestedAt": "2026-08-19",
+      "via": "receiver"
+    }
+  ]
+}

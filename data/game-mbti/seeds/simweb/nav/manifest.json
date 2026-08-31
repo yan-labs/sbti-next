@@ -1,0 +1,14 @@
+{
+  "seed": "simweb",
+  "kind": "nav",
+  "entries": [
+    {
+      "file": "simweb__nav__railmap__20260819.tsv",
+      "slice": "railmap",
+      "bytes": 1916,
+      "dataRows": 0,
+      "harvestedAt": "2026-08-19",
+      "via": "receiver"
+    }
+  ]
+}

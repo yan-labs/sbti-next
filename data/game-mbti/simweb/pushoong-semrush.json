@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "source": "Semrush domain overview via authenticated Tools Share browser session",
+  "note": "organicTraffic 是自然搜索流量估算，与 Similarweb 的总访问量不是同一口径，不要并列比较。",
+  "retrievedAt": "2026-08-19T18:51:41.198Z",
+  "domain": "pushoong.com",
+  "db": "kr",
+  "searchType": "domain",
+  "session": "semrush-ovw-a",
+  "title": "pushoong.com：域名概览",
+  "subscription": {
+    "expiry": "2026-08-20 21:56",
+    "daysLeft": 1,
+    "quotas": [
+      "9%",
+      "2%"
+    ],
+    "warning": "Subscription expires in 1 day(s) — pull what you need now."
+  },
+  "metrics": {
+    "authorityScore": 34,
+    "organicTraffic": 56800,
+    "paidTraffic": 0,
+    "referringDomains": 758,
+    "organicKeywords": 795,
+    "backlinks": 16200,
+    "organicTrafficChange": "+54%",
+    "organicKeywordsChange": "+81%"
+  }
+}
