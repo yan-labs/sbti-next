@@ -1,0 +1,27 @@
+{
+  "script": "suggest",
+  "argv": [
+    "에임 연습",
+    "--engine",
+    "google",
+    "--hl",
+    "ko",
+    "--gl",
+    "kr",
+    "--json",
+    "--out",
+    "/tmp/sug-ko-aimpractice.json"
+  ],
+  "startedAt": "2026-09-13T11:26:30.948Z",
+  "sources": [
+    {
+      "at": "2026-09-13T11:26:32.074Z",
+      "source": "google",
+      "status": "ok",
+      "rawCount": 10,
+      "url": "https://suggestqueries.google.com/complete/search?client=firefox&q=%EC%97%90%EC%9E%84%20%EC%97%B0%EC%8A%B5&hl=ko&gl=kr&oe=utf-8&ie=utf-8"
+    }
+  ],
+  "stopReason": "completed",
+  "finishedAt": "2026-09-13T11:26:32.074Z"
+}

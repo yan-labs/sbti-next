@@ -130,21 +130,21 @@ describe('Overwatch 2 archetype reachability', () => {
     mental: Polarity;
   }> = [
     // Bond=T(high) Tempo=L(low) Mental=K(low)
-    { slug: 'ult-economist',        bond: 'high', tempo: 'low',  mental: 'low'  },
+    { slug: 'ana',        bond: 'high', tempo: 'low',  mental: 'low'  },
     // Bond=T(high) Tempo=L(low) Mental=B(high)
-    { slug: 'c9-trauma-curator',    bond: 'high', tempo: 'low',  mental: 'high' },
+    { slug: 'mercy',    bond: 'high', tempo: 'low',  mental: 'high' },
     // Bond=T(high) Tempo=R(high) Mental=K(low)
-    { slug: 'payload-parent',       bond: 'high', tempo: 'high', mental: 'low'  },
+    { slug: 'lucio',       bond: 'high', tempo: 'high', mental: 'low'  },
     // Bond=T(high) Tempo=R(high) Mental=B(high)
-    { slug: 'voice-line-saboteur',  bond: 'high', tempo: 'high', mental: 'high' },
+    { slug: 'reinhardt',  bond: 'high', tempo: 'high', mental: 'high' },
     // Bond=S(low)  Tempo=L(low) Mental=K(low)
-    { slug: 'solo-tank-philosopher', bond: 'low', tempo: 'low',  mental: 'low'  },
+    { slug: 'orisa', bond: 'low', tempo: 'low',  mental: 'low'  },
     // Bond=S(low)  Tempo=L(low) Mental=B(high)
-    { slug: 'dps-victim',           bond: 'low',  tempo: 'low',  mental: 'high' },
+    { slug: 'hanzo',           bond: 'low',  tempo: 'low',  mental: 'high' },
     // Bond=S(low)  Tempo=R(high) Mental=K(low)
-    { slug: 'flanker-monk',         bond: 'low',  tempo: 'high', mental: 'low'  },
+    { slug: 'dva',         bond: 'low',  tempo: 'high', mental: 'low'  },
     // Bond=S(low)  Tempo=R(high) Mental=B(high)
-    { slug: 'killcam-headliner',    bond: 'low',  tempo: 'high', mental: 'high' },
+    { slug: 'genji',    bond: 'low',  tempo: 'high', mental: 'high' },
   ];
 
   for (const { slug, bond, tempo, mental } of archetypeTargets) {

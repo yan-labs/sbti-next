@@ -1,0 +1,27 @@
+{
+  "script": "suggest",
+  "argv": [
+    "에이밍",
+    "--engine",
+    "google",
+    "--hl",
+    "ko",
+    "--gl",
+    "kr",
+    "--json",
+    "--out",
+    "/tmp/sug-ko-aiming.json"
+  ],
+  "startedAt": "2026-09-13T11:26:17.766Z",
+  "sources": [
+    {
+      "at": "2026-09-13T11:26:18.639Z",
+      "source": "google",
+      "status": "ok",
+      "rawCount": 10,
+      "url": "https://suggestqueries.google.com/complete/search?client=firefox&q=%EC%97%90%EC%9D%B4%EB%B0%8D&hl=ko&gl=kr&oe=utf-8&ie=utf-8"
+    }
+  ],
+  "stopReason": "completed",
+  "finishedAt": "2026-09-13T11:26:18.639Z"
+}

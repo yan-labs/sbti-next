@@ -1,0 +1,27 @@
+{
+  "script": "suggest",
+  "argv": [
+    "エイムトレーニング",
+    "--engine",
+    "google",
+    "--hl",
+    "ja",
+    "--gl",
+    "jp",
+    "--json",
+    "--out",
+    "/tmp/sug-ja-aimtrain.json"
+  ],
+  "startedAt": "2026-09-13T11:26:18.678Z",
+  "sources": [
+    {
+      "at": "2026-09-13T11:26:19.605Z",
+      "source": "google",
+      "status": "ok",
+      "rawCount": 10,
+      "url": "https://suggestqueries.google.com/complete/search?client=firefox&q=%E3%82%A8%E3%82%A4%E3%83%A0%E3%83%88%E3%83%AC%E3%83%BC%E3%83%8B%E3%83%B3%E3%82%B0&hl=ja&gl=jp&oe=utf-8&ie=utf-8"
+    }
+  ],
+  "stopReason": "completed",
+  "finishedAt": "2026-09-13T11:26:19.605Z"
+}

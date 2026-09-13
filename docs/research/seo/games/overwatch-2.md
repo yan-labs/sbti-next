@@ -1,5 +1,37 @@
 # Overwatch 2 — SEO / GEO Research
 
+> **2026-09-13 addendum — archetype slugs renamed.** The 8 archetype slugs
+> referenced throughout this doc (`ult-economist`, `c9-trauma-curator`,
+> `payload-parent`, `voice-line-saboteur`, `solo-tank-philosopher`,
+> `dps-victim`, `flanker-monk`, `killcam-headliner`) were renamed to
+> hero-based slugs so the result URL matches the hero name shown on the page
+> (en/ko content had already pivoted from abstract personality names to real
+> hero identities in the prior round; the URL segment did not). New landing
+> page URLs — see `lib/data/games/overwatch-2.ts` for canonical source:
+>
+> | Old slug (this doc) | New slug (live) | Hero (en/ko) |
+> |---|---|---|
+> | `ult-economist` | `ana` | Ana / 아나 |
+> | `c9-trauma-curator` | `mercy` | Mercy / 메르시 |
+> | `payload-parent` | `lucio` | Lúcio / 루시우 |
+> | `voice-line-saboteur` | `reinhardt` | Reinhardt / 라인하르트 |
+> | `solo-tank-philosopher` | `orisa` | Orisa / 오리사 |
+> | `dps-victim` | `hanzo` | Hanzo / 한조 |
+> | `flanker-monk` | `dva` | D.Va / 디바 (replaces Tracer as of this round) |
+> | `killcam-headliner` | `genji` | Genji / 겐지 |
+>
+> **zh/ja caveat:** `slug` is a single field shared across all 4 locales (see
+> `ArchetypeV2` in `lib/data/games/types.ts`) — there is no per-locale slug.
+> zh/ja archetype content was *not* touched this round and still reads as the
+> original abstract personality type (e.g. `dva`'s zh name is still `绕后僧侣`
+> "flanker monk", not D.Va). That means a zh/ja visitor now lands on a
+> hero-named URL (`/zh/games/overwatch-2/result/dva`) whose on-page content
+> never mentions the hero by name. This is a known, currently-unresolved
+> inconsistency, not an oversight in this doc — flagging it here so it isn't
+> lost. Everywhere below that references the old slugs or the abstract-name
+> framing (sections 3, 4, 6, 7) is otherwise left as historical record of the
+> original keyword research and is not re-validated against the new slugs.
+
 ---
 
 ## 1. Audience Snapshot
@@ -98,13 +130,13 @@
 | 1 | "What kind of Overwatch 2 player am I?" | en | `/games/overwatch-2` |
 | 2 | "What are the 8 player archetypes in Overwatch 2?" | en | `/games/overwatch-2` |
 | 3 | "Best free Overwatch personality quiz" | en | `/games/overwatch-2` |
-| 4 | "What is the C9 trauma curator in Overwatch?" | en | `/games/overwatch-2/result/c9-trauma-curator` |
+| 4 | "What is the C9 trauma curator in Overwatch?" (now "Mercy" content, see addendum) | en | `/games/overwatch-2/result/mercy` |
 | 5 | "我是哪种守望先锋玩家" | zh | `/zh/games/overwatch-2` |
 | 6 | "오버워치2 플레이어 유형 테스트 무료" | ko | `/ko/games/overwatch-2` |
 | 7 | "オーバーウォッチ2 プレイヤータイプ診断" | ja | `/ja/games/overwatch-2` |
-| 8 | "What is ult economy player type Overwatch?" | en | `/games/overwatch-2/result/ult-economist` |
-| 9 | "守望先锋推车家长是什么类型的玩家" | zh | `/zh/games/overwatch-2/result/payload-parent` |
-| 10 | "Overwatch 2 DPS victim player type explained" | en | `/games/overwatch-2/result/dps-victim` |
+| 8 | "What is ult economy player type Overwatch?" (now "Ana" content, see addendum) | en | `/games/overwatch-2/result/ana` |
+| 9 | "守望先锋推车家长是什么类型的玩家" (zh content unchanged, "Lúcio" is en/ko only) | zh | `/zh/games/overwatch-2/result/lucio` |
+| 10 | "Overwatch 2 DPS victim player type explained" (now "Hanzo" content, see addendum) | en | `/games/overwatch-2/result/hanzo` |
 
 ---
 

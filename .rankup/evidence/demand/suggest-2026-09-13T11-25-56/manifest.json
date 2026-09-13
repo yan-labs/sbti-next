@@ -1,0 +1,27 @@
+{
+  "script": "suggest",
+  "argv": [
+    "エイム",
+    "--engine",
+    "google",
+    "--hl",
+    "ja",
+    "--gl",
+    "jp",
+    "--json",
+    "--out",
+    "/tmp/sug-ja-aim.json"
+  ],
+  "startedAt": "2026-09-13T11:25:56.133Z",
+  "sources": [
+    {
+      "at": "2026-09-13T11:25:57.054Z",
+      "source": "google",
+      "status": "ok",
+      "rawCount": 10,
+      "url": "https://suggestqueries.google.com/complete/search?client=firefox&q=%E3%82%A8%E3%82%A4%E3%83%A0&hl=ja&gl=jp&oe=utf-8&ie=utf-8"
+    }
+  ],
+  "stopReason": "completed",
+  "finishedAt": "2026-09-13T11:25:57.054Z"
+}

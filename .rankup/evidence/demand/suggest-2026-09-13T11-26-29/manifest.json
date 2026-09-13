@@ -1,0 +1,27 @@
+{
+  "script": "suggest",
+  "argv": [
+    "에임 트레이너",
+    "--engine",
+    "google",
+    "--hl",
+    "ko",
+    "--gl",
+    "kr",
+    "--json",
+    "--out",
+    "/tmp/sug-ko-aimtrainer.json"
+  ],
+  "startedAt": "2026-09-13T11:26:29.891Z",
+  "sources": [
+    {
+      "at": "2026-09-13T11:26:30.904Z",
+      "source": "google",
+      "status": "ok",
+      "rawCount": 10,
+      "url": "https://suggestqueries.google.com/complete/search?client=firefox&q=%EC%97%90%EC%9E%84%20%ED%8A%B8%EB%A0%88%EC%9D%B4%EB%84%88&hl=ko&gl=kr&oe=utf-8&ie=utf-8"
+    }
+  ],
+  "stopReason": "completed",
+  "finishedAt": "2026-09-13T11:26:30.904Z"
+}

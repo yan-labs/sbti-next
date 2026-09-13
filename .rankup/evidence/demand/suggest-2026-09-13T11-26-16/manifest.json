@@ -1,0 +1,27 @@
+{
+  "script": "suggest",
+  "argv": [
+    "조준",
+    "--engine",
+    "google",
+    "--hl",
+    "ko",
+    "--gl",
+    "kr",
+    "--json",
+    "--out",
+    "/tmp/sug-ko-jojun.json"
+  ],
+  "startedAt": "2026-09-13T11:26:16.771Z",
+  "sources": [
+    {
+      "at": "2026-09-13T11:26:17.713Z",
+      "source": "google",
+      "status": "ok",
+      "rawCount": 10,
+      "url": "https://suggestqueries.google.com/complete/search?client=firefox&q=%EC%A1%B0%EC%A4%80&hl=ko&gl=kr&oe=utf-8&ie=utf-8"
+    }
+  ],
+  "stopReason": "completed",
+  "finishedAt": "2026-09-13T11:26:17.713Z"
+}

@@ -1,0 +1,27 @@
+{
+  "script": "suggest",
+  "argv": [
+    "瞄准",
+    "--engine",
+    "google",
+    "--hl",
+    "zh-CN",
+    "--gl",
+    "cn",
+    "--json",
+    "--out",
+    "/tmp/sug-zh-aim.json"
+  ],
+  "startedAt": "2026-09-13T11:25:58.120Z",
+  "sources": [
+    {
+      "at": "2026-09-13T11:25:59.165Z",
+      "source": "google",
+      "status": "ok",
+      "rawCount": 10,
+      "url": "https://suggestqueries.google.com/complete/search?client=firefox&q=%E7%9E%84%E5%87%86&hl=zh-cn&gl=cn&oe=utf-8&ie=utf-8"
+    }
+  ],
+  "stopReason": "completed",
+  "finishedAt": "2026-09-13T11:25:59.165Z"
+}
