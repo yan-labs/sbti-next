@@ -310,11 +310,41 @@ export function fitSeoTitle(locale: string, title: string) {
     : withSuffix;
 }
 
+/**
+ * Like fitSeoTitle, but for callers passing a *bare* name (e.g. a game
+ * title) rather than an already-composed SEO title.
+ *
+ * fitSeoTitle decides whether to append the brand suffix using the
+ * incoming string's length as a proxy for "is this already a complete,
+ * composed title" — every other caller in this file passes fully composed
+ * copy that's always well past that threshold, so the suffix is correctly
+ * skipped for them. Bare names break that proxy: a name like "League of
+ * Legends" or "PUBG: Battlegrounds" is long enough to look "composed" even
+ * though it still needs the suffix for context, so fitSeoTitle would drop
+ * the suffix entirely instead of truncating around it. This function
+ * guarantees the suffix is always present, truncating the name itself
+ * (never the suffix) if the combined string would exceed the length budget.
+ */
+export function fitGameTitle(locale: string, name: string) {
+  const currentLocale = getLocale(locale);
+  const normalized = normalizeDescription(name);
+  const suffix = ` | ${TITLE_SUFFIX[currentLocale]}`;
+  const maxLength = 70;
+
+  if (normalized.length + suffix.length <= maxLength) {
+    return `${normalized}${suffix}`;
+  }
+
+  const availableForName = Math.max(maxLength - suffix.length - 1, 0);
+  const truncatedName = `${normalized.slice(0, availableForName).trim()}…`;
+  return `${truncatedName}${suffix}`;
+}
+
 export function fitSeoDescription(locale: string, description: string) {
   const currentLocale = getLocale(locale);
   const normalized = normalizeDescription(description);
   let withSuffix = normalized;
-  while (withSuffix.length < 110) {
+  if (withSuffix.length < 110) {
     withSuffix = normalizeDescription(`${withSuffix} ${DESCRIPTION_SUFFIX[currentLocale]}`);
   }
 

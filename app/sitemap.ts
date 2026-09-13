@@ -15,6 +15,11 @@ const TYPE_CODES = [
   'SOLO', 'FUCK', 'DEAD', 'IMFW', 'HHHH', 'DRUNK',
 ];
 
+// Keep in sync with VALIDATED_KO_COMPAT_CODES in
+// app/[locale]/compat/[a]/[b]/page.tsx — these are the only compat pair
+// codes currently indexed (2026-09-13 small, reversible unblock).
+const VALIDATED_KO_COMPAT_CODES = ['CTRL', 'THIN-K', 'FUCK'];
+
 function localeUrl(locale: string, path: string = '') {
   return locale === 'en' ? `${BASE_URL}${path}` : `${BASE_URL}/${locale}${path}`;
 }
@@ -88,6 +93,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // ~890 of them stuck in "Crawled - currently not indexed", dragging down
   // sitewide quality signals (2026-07 audit).
   addLocalized('/compat', 0.6, '2026-04-28');
+
+  // 2026-09-13 small, reversible unblock: the 6 ko-locale pair pages among
+  // CTRL / THIN-K / FUCK now carry robots index:true (see
+  // app/[locale]/compat/[a]/[b]/page.tsx and the "[2026-09-13]" entry in
+  // .rankup/decisions.md), so list them here too —
+  // an indexable page missing from the sitemap just reads as another
+  // "discovered, not indexed" signal. Every other pair page (all other
+  // codes, all other locales) is intentionally still excluded above.
+  for (const a of VALIDATED_KO_COMPAT_CODES) {
+    for (const b of VALIDATED_KO_COMPAT_CODES) {
+      if (a === b) continue;
+      entries.push(entry(`/compat/${encodeURIComponent(a)}/${encodeURIComponent(b)}`, 0.55, '2026-09-13', 'ko'));
+    }
+  }
 
   // Blog list
   addLocalized('/blog', 0.7);

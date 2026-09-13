@@ -8,7 +8,7 @@ import {
   buildAlternates,
   buildTwitter,
   DEFAULT_OG_IMAGE,
-  fitSeoTitle,
+  fitGameTitle,
   fitSeoDescription,
   getAlternateOgLocales,
   getLocaleUrl,
@@ -43,7 +43,7 @@ export async function generateMetadata({
 
   const safeLocale: SiteLocale = isSiteLocale(locale) ? locale : 'en';
   const path = `/games/${game.slug}`;
-  const title = fitSeoTitle(locale, game.title[safeLocale]);
+  const title = fitGameTitle(locale, game.title[safeLocale]);
   const description = fitSeoDescription(locale, game.description[safeLocale]);
   const image = game.cover
     ? {url: `${BASE_URL}${game.cover.src}`, width: 1200, height: 675}

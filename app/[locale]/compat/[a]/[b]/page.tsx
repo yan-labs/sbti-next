@@ -24,6 +24,21 @@ function isValidPair(a: string, b: string) {
   return CODE_SET.has(a) && CODE_SET.has(b) && a !== b;
 }
 
+// 2026-09-13 small, reversible unblock (see the "[2026-09-13]" entry in
+// .rankup/decisions.md for full rationale + observation plan): CTRL /
+// THIN-K / FUCK are the three type codes with concrete, already-collected
+// GSC demand (조종자 150
+// clicks/475 impr, 생각러+thin-k 198 clicks/445 impr combined, 시발러 66
+// clicks/171 impr — all ko-locale, all from baseline.md's top-query table).
+// Only the ko-locale pair pages among these three codes get index:true.
+// Every other pair (all other codes, all other locales) stays noindex —
+// this is intentionally narrow, not a general loosening.
+const VALIDATED_KO_COMPAT_CODES = new Set(['CTRL', 'THIN-K', 'FUCK']);
+
+function isValidatedKoCompatPair(locale: string, a: string, b: string) {
+  return locale === 'ko' && VALIDATED_KO_COMPAT_CODES.has(a) && VALIDATED_KO_COMPAT_CODES.has(b);
+}
+
 export function generateStaticParams() {
   return routing.locales.flatMap(locale =>
     ALL_CODES.flatMap(a =>
@@ -81,8 +96,13 @@ export async function generateMetadata({params}: {params: Promise<{locale: strin
     // Deliberately noindex: 2,808 pair pages sat in GSC "Crawled - currently
     // not indexed" and dragged sitewide quality signals (2026-07 audit). The
     // hub page carries the 궁합/compat search demand; pairs stay usable and
-    // followable so link equity still flows.
-    robots: {index: false, follow: true},
+    // followable so link equity still flows. EXCEPTION (2026-09-13, small and
+    // reversible — see isValidatedKoCompatPair above): the 6 ko-locale pairs
+    // among CTRL/THIN-K/FUCK have real, already-collected GSC demand and are
+    // indexed instead.
+    robots: isValidatedKoCompatPair(locale, a, b)
+      ? {index: true, follow: true}
+      : {index: false, follow: true},
   };
 }
 
