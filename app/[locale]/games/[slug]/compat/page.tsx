@@ -14,6 +14,7 @@ import {
   getAlternateOgLocales,
   getLocaleUrl,
   getOgLocale,
+  bareGameName,
 } from '@/lib/metadata';
 import {buildBreadcrumbSchema, buildWebPageSchema} from '@/lib/json-ld';
 
@@ -24,10 +25,10 @@ export function generateStaticParams() {
 }
 
 const TITLE: Record<SiteLocale, (game: string) => string> = {
-  zh: (g) => `${g} 玩家相性测试 · 看你和队友合不合`,
-  en: (g) => `${g} Compatibility Check | SBTI`,
-  ja: (g) => `${g} プレイヤー相性診断`,
-  ko: (g) => `${g} 플레이어 궁합 테스트`,
+  zh: (g) => `${g} 玩家相性测试：看你和队友合不合、适不适合双排 | SBTI`,
+  en: (g) => `${g} Player Compatibility Check: Duo or Disaster? | SBTI`,
+  ja: (g) => `${g} プレイヤー相性診断：あなたと味方の相性は？ | SBTI`,
+  ko: (g) => `${g} 플레이어 궁합 테스트: 나와 팀원은 잘 맞을까? | SBTI`,
 };
 const DESC: Record<SiteLocale, (g: string) => string> = {
   zh: (g) => `选择 ${g} 8 个玩家原型中的两个，比较 6 个行为轴上的默契、冲突点和相性分数。页面会生成适合截图分享的队友匹配卡，帮你判断谁适合双排、谁更像灾难开黑。`,
@@ -37,7 +38,7 @@ const DESC: Record<SiteLocale, (g: string) => string> = {
 };
 
 function getCompatSeoGameTitle(gameTitle: string, locale: SiteLocale) {
-  return locale === 'en' ? gameTitle.replace(/\s+Player Quiz$/i, '') : gameTitle;
+  return bareGameName(locale, gameTitle);
 }
 
 export async function generateMetadata({

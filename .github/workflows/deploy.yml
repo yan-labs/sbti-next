@@ -32,6 +32,27 @@ jobs:
       - run: pnpm build
 
       - name: Trim static export payloads
-        run: find out -type f -name '*.txt' ! -name 'robots.txt' ! -name 'llms.txt' ! -name 'llms-full.txt' ! -name 'a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6.txt' -delete
+        # Keep robots/llms files and the 32-hex IndexNow key file at the root.
+        run: find out -type f -name '*.txt' ! -name 'robots.txt' ! -name 'llms.txt' ! -name 'llms-full.txt' -regextype posix-extended ! -regex 'out/[0-9a-f]{32}\.txt' -delete
+
+      - name: Snapshot live sitemap before deploy (IndexNow diff baseline)
+        run: curl -fsS https://sbti.support/sitemap.xml -o "$RUNNER_TEMP/sitemap-before.xml" || true
 
       - run: npx wrangler@latest pages deploy out --project-name=sbti-support
+
+      - name: Wait for the new deployment to serve the IndexNow key
+        run: |
+          KEY=$(node -e "import('./scripts/indexnow-push.mjs').then(m=>console.log(m.INDEXNOW_KEY))")
+          for i in $(seq 1 30); do
+            if [ "$(curl -fsS "https://sbti.support/$KEY.txt" 2>/dev/null)" = "$KEY" ]; then echo "key live"; exit 0; fi
+            sleep 10
+          done
+          echo "key file not live after 5 minutes"; exit 1
+
+      - name: IndexNow (Bing + api.indexnow.org)
+        run: |
+          if [ -s "$RUNNER_TEMP/sitemap-before.xml" ]; then
+            node scripts/indexnow-push.mjs --baseline "$RUNNER_TEMP/sitemap-before.xml"
+          else
+            node scripts/indexnow-push.mjs --all
+          fi

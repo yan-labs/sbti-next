@@ -18,6 +18,7 @@ import {
   getAlternateOgLocales,
   getLocaleUrl,
   getOgLocale,
+  bareGameName,
 } from '@/lib/metadata';
 import {
   buildBreadcrumbSchema,
@@ -183,7 +184,7 @@ export async function generateMetadata({
   if (!archetype) return {};
 
   const loc = safeLocale(locale);
-  const gameTitle = game.title[loc];
+  const gameTitle = bareGameName(loc, game.title[loc]);
   const archetypeName = archetype.name[loc];
   const oneLiner = archetype.oneLiner[loc];
   const path = `/games/${slug}/result/${archetypeSlug}`;
@@ -192,10 +193,10 @@ export async function generateMetadata({
   const code = derivePolarityCode(scores);
 
   const titleMap: Record<SiteLocale, string> = {
-    zh: `${archetypeName} | ${gameTitle} 玩家类型`,
-    en: `${archetypeName} | ${gameTitle} Player Type`,
-    ja: `${archetypeName} | ${gameTitle} プレイヤータイプ`,
-    ko: `${archetypeName} | ${gameTitle} 플레이어 유형`,
+    zh: `${archetypeName}：${gameTitle} 玩家类型解析与特点 | SBTI 游戏测试`,
+    en: `${archetypeName} | ${gameTitle} Player Type & Traits | SBTI`,
+    ja: `${archetypeName}：${gameTitle} プレイヤータイプの特徴と解説 | SBTI`,
+    ko: `${archetypeName}: ${gameTitle} 플레이어 유형 특징과 해석 | SBTI`,
   };
   const descMap: Record<SiteLocale, string> = {
     zh: `${archetypeName}：${oneLiner}。完成 ${gameTitle} 玩家类型测试，获取你的 6 维雷达和玩家身份码（${code}）。`,

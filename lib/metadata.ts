@@ -139,7 +139,7 @@ const PAGE_SEO_COPY: Record<
         'The funny personality test that roasts you back: 30 questions, 27 sarcastic types, no sign-up. A free MBTI parody, plus gamer type quizzes.',
     },
     ja: {
-      title: 'SBTI | 面白い性格診断テスト・無料MBTIパロディ',
+      title: 'SBTI 面白い性格診断テスト | 無料MBTIパロディ・全27タイプ',
       description:
         'MBTIパロディの面白い性格診断テストSBTI。30問に答えるだけで、支配者・思考家・死者など27種類のネタ性格タイプから本当のあなたを暴きます。相性チェックも完全無料・登録不要、おもしろ心理テスト感覚で1〜3分で遊べます。',
     },
@@ -217,7 +217,7 @@ const PAGE_SEO_COPY: Record<
   },
   types: {
     zh: {
-      title: 'SBTI 27 种人格类型 | 全部人格结果与名称列表',
+      title: 'SBTI 27 种人格类型大全 | 全部人格含义、名称与测试结果列表',
       description:
         '浏览 SBTI 27 种人格类型大全，查看每个结果的名称、标签和人格简介，找到你的 SBTI 测试结果并进入详细解析页。',
     },
@@ -227,7 +227,7 @@ const PAGE_SEO_COPY: Record<
         'Browse all 27 SBTI personality types, from CTRL to DEAD. Compare names, archetypes, and result pages, then open each type for traits, scores, and closest matches.',
     },
     ja: {
-      title: 'SBTI 27タイプ一覧 | 全性格タイプと結果ページ',
+      title: 'SBTI 全27タイプ一覧 | 性格タイプの意味と診断結果まとめ',
       description:
         'SBTIの全27タイプを一覧で確認。タイプ名、キャラ設定、結果ページを比較し、各タイプの詳細プロフィールへ進めます。',
     },
@@ -239,7 +239,7 @@ const PAGE_SEO_COPY: Record<
   },
   blog: {
     zh: {
-      title: 'SBTI 博客 | 人格测试深度解析与攻略',
+      title: 'SBTI 博客 | 搞笑人格测试深度解析、类型图鉴与玩法攻略',
       description:
         '阅读 SBTI 博客：SBTI 和 MBTI 的区别、27 种人格类型图鉴、五大维度解析，帮你更好地理解这个爆火的搞笑人格测试。',
     },
@@ -249,12 +249,12 @@ const PAGE_SEO_COPY: Record<
         'Read the SBTI blog: how SBTI compares to MBTI, a guide to all 27 personality types, and the five dimensions behind the viral satirical personality test.',
     },
     ja: {
-      title: 'SBTI ブログ | 性格テストの詳細解説とガイド',
+      title: 'SBTI ブログ | 面白い性格診断の詳細解説・タイプ図鑑・ガイド',
       description:
         'SBTIブログ：SBTIとMBTIの違い、27タイプ図鑑、5次元モデル解説など、話題の性格テストを深掘りします。',
     },
     ko: {
-      title: 'SBTI 블로그 | 성격 테스트 심층 분석과 가이드',
+      title: 'SBTI 블로그 | 웃긴 성격 테스트 심층 분석, 유형 도감과 가이드',
       description:
         'SBTI 블로그: SBTI와 MBTI 비교, 27가지 유형 도감, 5차원 모델 해설 등 화제의 성격 테스트를 깊이 알아봅니다.',
     },
@@ -284,13 +284,6 @@ function normalizeDescription(description: string) {
   return description.replace(/\s+/g, ' ').trim();
 }
 
-const TITLE_SUFFIX: Record<Locale, string> = {
-  zh: 'SBTI 人格测试',
-  en: 'SBTI Personality Test',
-  ja: 'SBTI 性格テスト',
-  ko: 'SBTI 성격 테스트',
-};
-
 const DESCRIPTION_SUFFIX: Record<Locale, string> = {
   zh: 'SBTI 是免费的搞笑人格测试：30 道题测出 27 种人格之一，测完直接截图分享。',
   en: 'SBTI is a free, funny personality test — 30 questions, 27 types, instant shareable results.',
@@ -298,59 +291,137 @@ const DESCRIPTION_SUFFIX: Record<Locale, string> = {
   ko: 'SBTI는 무료 웃긴 성격 테스트입니다. 30문항으로 27가지 유형 중 하나가 나오며 결과는 바로 공유할 수 있습니다.',
 };
 
+/**
+ * Bing Webmaster flags titles under ~30 characters as "too short" and counts
+ * characters, not display width — so CJK titles need the same character budget
+ * as English ones. Composed titles are expected to be 30–70 characters; this is
+ * the safety net for any caller that still produces something shorter.
+ */
+const MIN_TITLE_LENGTH = 30;
+const MAX_TITLE_LENGTH = 70;
+
+const TITLE_LONG_SUFFIX: Record<Locale, string> = {
+  zh: 'SBTI 免费搞笑人格测试',
+  en: 'SBTI Free Funny Personality Test',
+  ja: 'SBTI 無料の面白い性格診断',
+  ko: 'SBTI 무료 웃긴 성격 테스트',
+};
+
+const TITLE_TAIL: Record<Locale, string> = {
+  zh: '免费搞笑人格测试',
+  en: 'Free Funny Personality Test',
+  ja: '無料の面白い性格診断',
+  ko: '무료 웃긴 성격 테스트',
+};
+
+const charLength = (value: string) => [...value].length;
+
+function clampTitle(title: string) {
+  return charLength(title) > MAX_TITLE_LENGTH
+    ? `${[...title].slice(0, MAX_TITLE_LENGTH - 1).join('').trim()}…`
+    : title;
+}
+
+const DESCRIPTION_SHORT_SUFFIX: Record<Locale, string> = {
+  zh: 'SBTI 免费搞笑人格测试，结果可直接截图分享。',
+  en: 'Free SBTI quiz with instant, shareable results.',
+  ja: 'SBTIは無料の面白い性格診断。結果はすぐ共有できます。',
+  ko: 'SBTI 무료 웃긴 성격 테스트, 결과는 바로 공유할 수 있어요.',
+};
+
 export function fitSeoTitle(locale: string, title: string) {
   const currentLocale = getLocale(locale);
-  const normalized = normalizeDescription(title);
-  const withSuffix = normalized.length < 15
-    ? `${normalized} | ${TITLE_SUFFIX[currentLocale]}`
-    : normalized;
+  let result = normalizeDescription(title);
 
-  return withSuffix.length > 70
-    ? `${withSuffix.slice(0, 69).trim()}…`
-    : withSuffix;
+  if (charLength(result) < MIN_TITLE_LENGTH) {
+    result = result.includes('SBTI')
+      ? `${result} · ${TITLE_TAIL[currentLocale]}`
+      : `${result} | ${TITLE_LONG_SUFFIX[currentLocale]}`;
+  }
+
+  return clampTitle(result);
 }
 
 /**
- * Like fitSeoTitle, but for callers passing a *bare* name (e.g. a game
- * title) rather than an already-composed SEO title.
- *
- * fitSeoTitle decides whether to append the brand suffix using the
- * incoming string's length as a proxy for "is this already a complete,
- * composed title" — every other caller in this file passes fully composed
- * copy that's always well past that threshold, so the suffix is correctly
- * skipped for them. Bare names break that proxy: a name like "League of
- * Legends" or "PUBG: Battlegrounds" is long enough to look "composed" even
- * though it still needs the suffix for context, so fitSeoTitle would drop
- * the suffix entirely instead of truncating around it. This function
- * guarantees the suffix is always present, truncating the name itself
- * (never the suffix) if the combined string would exceed the length budget.
+ * Game landing pages receive a *bare* game name ("Apex Legends", "Apex 英雄"),
+ * which on its own is far too short and says nothing about the page. Compose a
+ * descriptive quiz title around it, keeping the brand at the end. Overwatch 2
+ * en/ko is a hero quiz rather than an archetype quiz, so it gets its own copy.
  */
-export function fitGameTitle(locale: string, name: string) {
-  const currentLocale = getLocale(locale);
-  const normalized = normalizeDescription(name);
-  const suffix = ` | ${TITLE_SUFFIX[currentLocale]}`;
-  const maxLength = 70;
+const GAME_TITLE_TEMPLATE: Record<Locale, (name: string) => string> = {
+  zh: (name) => `${name} 玩家人格测试：测测你在游戏里是哪种玩家 | SBTI`,
+  en: (name) => `${name} Player Quiz: Which Type Are You? | SBTI`,
+  ja: (name) => `${name} プレイヤー性格診断：あなたはどのタイプ？ | SBTI`,
+  ko: (name) => `${name} 플레이어 성격 테스트: 나는 어떤 유형일까? | SBTI`,
+};
 
-  if (normalized.length + suffix.length <= maxLength) {
-    return `${normalized}${suffix}`;
-  }
+const GAME_TITLE_OVERRIDES: Record<string, Partial<Record<Locale, string>>> = {
+  'overwatch-2': {
+    en: 'Which Overwatch 2 Hero Are You? Free Hero Personality Quiz | SBTI',
+    ko: '나는 어떤 오버워치 2 영웅일까? 무료 영웅 성격 테스트 | SBTI',
+  },
+};
 
-  const availableForName = Math.max(maxLength - suffix.length - 1, 0);
-  const truncatedName = `${normalized.slice(0, availableForName).trim()}…`;
-  return `${truncatedName}${suffix}`;
+// Some game data titles already carry a "player quiz" tail (e.g. CS2); strip it
+// so composed titles don't say "quiz" twice.
+const GAME_NAME_TAIL: Record<Locale, RegExp> = {
+  zh: /\s*玩家类型测试$/,
+  en: /\s+Player Quiz$/i,
+  ja: /\s*プレイヤータイプ診断$/,
+  ko: /\s*플레이어 유형 테스트$/,
+};
+
+export function bareGameName(locale: string, name: string) {
+  return normalizeDescription(name).replace(GAME_NAME_TAIL[getLocale(locale)], '');
 }
+
+export function fitGameTitle(locale: string, name: string, slug?: string) {
+  const currentLocale = getLocale(locale);
+  const override = slug ? GAME_TITLE_OVERRIDES[slug]?.[currentLocale] : undefined;
+  return fitSeoTitle(currentLocale, override ?? GAME_TITLE_TEMPLATE[currentLocale](bareGameName(currentLocale, name)));
+}
+
+/**
+ * Bing / Google show roughly 120–160 characters of a description. Short copy
+ * gets the brand sentence appended only when the result still fits; long copy
+ * is cut at the last sentence boundary inside the budget instead of mid-word.
+ */
+const MIN_DESCRIPTION_LENGTH = 120;
+const MAX_DESCRIPTION_LENGTH = 160;
 
 export function fitSeoDescription(locale: string, description: string) {
   const currentLocale = getLocale(locale);
-  const normalized = normalizeDescription(description);
-  let withSuffix = normalized;
-  if (withSuffix.length < 110) {
-    withSuffix = normalizeDescription(`${withSuffix} ${DESCRIPTION_SUFFIX[currentLocale]}`);
+  let result = normalizeDescription(description);
+
+  if (charLength(result) < MIN_DESCRIPTION_LENGTH) {
+    // Close the base sentence first so the brand sentence doesn't run into it.
+    const closed = /[.!?。！？…]$/.test(result)
+      ? result
+      : `${result}${currentLocale === 'zh' || currentLocale === 'ja' ? '。' : '.'}`;
+    for (const suffix of [DESCRIPTION_SUFFIX[currentLocale], DESCRIPTION_SHORT_SUFFIX[currentLocale]]) {
+      const withSuffix = normalizeDescription(`${closed} ${suffix}`);
+      if (charLength(withSuffix) <= MAX_DESCRIPTION_LENGTH) {
+        result = withSuffix;
+        break;
+      }
+    }
   }
 
-  return withSuffix.length > 145
-    ? `${withSuffix.slice(0, 144).trim()}…`
-    : withSuffix;
+  if (charLength(result) <= MAX_DESCRIPTION_LENGTH) return result;
+
+  const chars = [...result].slice(0, MAX_DESCRIPTION_LENGTH);
+  const window = chars.join('');
+  const boundary = Math.max(
+    ...['. ', '。', '！', '？', '! ', '? '].map((mark) => window.lastIndexOf(mark)),
+  );
+  if (boundary >= 90) {
+    return window.slice(0, boundary + 1).trim();
+  }
+  // No sentence end in range: cut at the last clause/word break instead of mid-word.
+  const head = chars.slice(0, MAX_DESCRIPTION_LENGTH - 1).join('');
+  const soft = Math.max(...[', ', '，', '、', ' '].map((mark) => head.lastIndexOf(mark)));
+  const cut = soft >= 90 ? head.slice(0, soft) : head;
+  return `${cut.replace(/[\s,，、;；:：]+$/, '')}…`;
 }
 
 export function buildTwitter(title: string, description: string, image?: {url: string; width?: number; height?: number}) {
@@ -410,10 +481,10 @@ export function getTypeSeo(locale: string, code: string, name: string, intro: st
   const introText = normalizeDescription(intro);
 
   const titleMap: Record<Locale, string> = {
-    zh: `${code}（${name}）人格解析 | SBTI 测试结果`,
+    zh: `${code}（${name}）是什么人格？性格特点与解析 | SBTI 人格测试`,
     en: `${code} (${name}) | SBTI Personality Type`,
-    ja: `${code}（${name}）性格タイプ | SBTI診断結果`,
-    ko: `${code} (${name}) 성격 유형 | SBTI 결과 해석`,
+    ja: `${code}（${name}）とは？性格タイプの特徴と解説 | SBTI診断`,
+    ko: `${code} (${name}) 성격 유형 특징과 해석 | SBTI 테스트 결과`,
   };
 
   const descriptionMap: Record<Locale, string> = {
@@ -492,7 +563,7 @@ export function getResultSeo(locale: string, code: string, name: string, intro: 
 const BLOG_SEO: Record<string, Record<Locale, {title: string; description: string; keywords: string[]}>> = {
   'sbti-vs-mbti': {
     zh: {
-      title: 'SBTI 和 MBTI 到底有什么区别？| SBTI 博客',
+      title: 'SBTI 和 MBTI 到底有什么区别？维度、类型数与玩法对比 | SBTI 博客',
       description: 'SBTI 和 MBTI 从维度模型、类型数量到测试目的都不一样。这篇文章拆开讲讲两者的核心差异，以及为什么 SBTI 能在社交媒体上病毒式传播。',
       keywords: ['SBTI vs MBTI', 'SBTI MBTI 区别', 'SBTI MBTI 对比', 'SBTI和MBTI有什么区别', 'MBTI恶搞版'],
     },
@@ -502,19 +573,19 @@ const BLOG_SEO: Record<string, Record<Locale, {title: string; description: strin
       keywords: ['SBTI vs MBTI', 'SBTI MBTI differences', 'SBTI MBTI comparison', 'MBTI parody', 'SBTI explained'],
     },
     ja: {
-      title: 'SBTIとMBTIの違いとは？ | SBTI ブログ',
+      title: 'SBTIとMBTIの違いとは？次元・タイプ数・目的を比較 | SBTI ブログ',
       description: 'SBTIとMBTIは次元モデル、タイプ数、テストの目的が異なります。この記事で両者の違いとSBTIがバズった理由を解説します。',
       keywords: ['SBTI MBTI 違い', 'SBTI MBTI 比較', 'MBTI パロディ', 'SBTI 解説'],
     },
     ko: {
-      title: 'SBTI와 MBTI의 차이점은? | SBTI 블로그',
+      title: 'SBTI와 MBTI의 차이점은? 차원·유형 수·목적 비교 | SBTI 블로그',
       description: 'SBTI와 MBTI는 차원 모델, 유형 수, 테스트 목적이 다릅니다. 이 글에서 핵심 차이점과 SBTI가 바이럴된 이유를 설명합니다.',
       keywords: ['SBTI MBTI 차이', 'SBTI MBTI 비교', 'MBTI 패러디', 'SBTI 설명'],
     },
   },
   '27-personality-types': {
     zh: {
-      title: 'SBTI 27 种人格类型完全图鉴 | SBTI 博客',
+      title: 'SBTI 27 种人格类型完全图鉴：名字、代号与性格特征 | SBTI 博客',
       description: '从拿捏者 CTRL 到死者 DEAD，一篇看完 SBTI 全部 27 种人格类型的名字、代号和性格特征，找到你的测试结果。',
       keywords: ['SBTI 27种人格', 'SBTI 人格类型', 'SBTI 全部类型', 'SBTI 图鉴', 'SBTI 类型大全', '吗喽', '死者', '拿捏者'],
     },
@@ -524,19 +595,19 @@ const BLOG_SEO: Record<string, Record<Locale, {title: string; description: strin
       keywords: ['SBTI 27 types', 'SBTI personality types', 'all SBTI types', 'SBTI type guide', 'SBTI type list'],
     },
     ja: {
-      title: 'SBTI 全27タイプ完全図鑑 | SBTI ブログ',
+      title: 'SBTI 全27タイプ完全図鑑：名前・コード・性格の特徴 | SBTI ブログ',
       description: 'CTRLからDEADまで、SBTIの全27タイプの名前、コード、性格特徴を一覧で紹介します。',
       keywords: ['SBTI 27タイプ', 'SBTI タイプ一覧', 'SBTI 全タイプ', 'SBTI 図鑑'],
     },
     ko: {
-      title: 'SBTI 27가지 유형 완전 도감 | SBTI 블로그',
+      title: 'SBTI 27가지 유형 완전 도감: 이름·코드·성격 특징 | SBTI 블로그',
       description: 'CTRL부터 DEAD까지, SBTI의 27가지 유형 이름, 코드, 성격 특징을 한눈에 정리했습니다.',
       keywords: ['SBTI 27 유형', 'SBTI 유형 목록', 'SBTI 전체 유형', 'SBTI 도감'],
     },
   },
   'five-dimensions': {
     zh: {
-      title: 'SBTI 五大维度模型：测试背后的逻辑 | SBTI 博客',
+      title: 'SBTI 五大维度模型：15 个维度如何决定你的人格 | SBTI 博客',
       description: '自我、情感、态度、行动、社交——SBTI 用 5 个切面 15 个维度给你画像。这篇文章拆解每个维度的含义和高低分代表什么。',
       keywords: ['SBTI 维度', 'SBTI 五大维度', 'SBTI 测试原理', 'SBTI 五大模型', 'SBTI 15维度', 'SBTI 算法'],
     },
@@ -546,12 +617,12 @@ const BLOG_SEO: Record<string, Record<Locale, {title: string; description: strin
       keywords: ['SBTI dimensions', 'SBTI five dimensions', 'SBTI how it works', 'SBTI model', 'SBTI 15 dimensions'],
     },
     ja: {
-      title: 'SBTI 5次元モデル：テストの仕組み | SBTI ブログ',
+      title: 'SBTI 5次元モデル：15の次元で性格が決まる仕組み | SBTI ブログ',
       description: '自己、感情、態度、行動、社交——SBTIは5つの切面と15の次元であなたをプロファイリングします。各次元の意味と高低スコアを解説。',
       keywords: ['SBTI 次元', 'SBTI 5次元', 'SBTI 仕組み', 'SBTI モデル', 'SBTI 15次元'],
     },
     ko: {
-      title: 'SBTI 5차원 모델: 테스트의 원리 | SBTI 블로그',
+      title: 'SBTI 5차원 모델: 15개 차원으로 성격을 보는 원리 | SBTI 블로그',
       description: '자아, 감정, 태도, 행동, 사회성 — SBTI는 5개 면과 15개 차원으로 프로파일링합니다. 각 차원의 의미와 점수 해석을 설명합니다.',
       keywords: ['SBTI 차원', 'SBTI 5차원', 'SBTI 원리', 'SBTI 모델', 'SBTI 15차원'],
     },
@@ -567,7 +638,7 @@ export function getCompatSeo(
   const currentLocale = getLocale(locale);
 
   const baseTitle: Record<Locale, string> = {
-    zh: 'SBTI 相性测试 | 两个人格碰在一起会怎样？',
+    zh: 'SBTI 人格相性测试 | 27 种人格两两配对，看看你们到底合不合得来',
     en: 'SBTI Compatibility Check | How Do Your Types Match Up?',
     ja: 'SBTI 相性チェック | 27タイプの組み合わせを無料診断',
     ko: 'SBTI 궁합 테스트 | 27가지 유형 궁합표 무료 확인',
@@ -597,10 +668,10 @@ export function getCompatSeo(
     const archetypeLabel = details?.archetypeLabel;
     const pairLabel = nameA && nameB ? `${codeA}（${nameA}）× ${codeB}（${nameB}）` : `${codeA} × ${codeB}`;
     const pairTitleMap: Record<Locale, string> = {
-      zh: `${codeA} × ${codeB} 相性测试 | SBTI 配对`,
+      zh: `${codeA} × ${codeB} 相性测试：这两种人格合得来吗？| SBTI`,
       en: `${codeA} × ${codeB} Compatibility | SBTI Check`,
-      ja: `${codeA} × ${codeB} 相性チェック | SBTI`,
-      ko: `${codeA} × ${codeB} 궁합 | SBTI 테스트`,
+      ja: `${codeA} × ${codeB} 相性チェック：2タイプは合う？合わない？| SBTI`,
+      ko: `${codeA} × ${codeB} 궁합 테스트: 두 유형은 잘 맞을까? | SBTI`,
     };
     title = pairTitleMap[currentLocale];
 

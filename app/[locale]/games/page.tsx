@@ -22,10 +22,10 @@ import {
 } from '@/lib/json-ld';
 
 const PAGE_TITLE: Record<SiteLocale, string> = {
-  zh: '8 款游戏 × 谁是哪种玩家 — SBTI 游戏专属测试',
+  zh: '游戏玩家人格测试合集 | 8 款游戏测你是哪种玩家 — SBTI',
   en: '8 games × which player are you — SBTI Game Quizzes',
-  ja: '8タイトル × どのプレイヤーか — SBTIゲーム別診断',
-  ko: '8개 게임 × 어떤 플레이어인가 — SBTI 게임 테스트',
+  ja: 'ゲーム別プレイヤー性格診断 | 8タイトルであなたのタイプを判定 — SBTI',
+  ko: '게임별 플레이어 성격 테스트 | 8개 게임으로 보는 내 유형 — SBTI',
 };
 
 const PAGE_DESCRIPTION: Record<SiteLocale, string> = {

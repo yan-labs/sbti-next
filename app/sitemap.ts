@@ -60,7 +60,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   addLocalized('', 1.0, '2026-04-10');
   addLocalized('/test', 0.9, '2026-04-29');
 
-  // Game personality tests
+  // Game personality tests (hub + per-game pages)
+  addLocalized('/games', 0.8, '2026-09-20');
   for (const slug of GAME_SLUGS) {
     addLocalized(`/games/${slug}`, 0.82, '2026-05-11');
     addLocalized(`/games/${slug}/compat`, 0.6, '2026-05-12');
