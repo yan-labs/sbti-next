@@ -26,7 +26,7 @@ export function generateStaticParams() {
 
 const TITLE: Record<SiteLocale, (game: string) => string> = {
   zh: (g) => `${g} 玩家相性测试：看你和队友合不合、适不适合双排 | SBTI`,
-  en: (g) => `${g} Player Compatibility Check: Duo or Disaster? | SBTI`,
+  en: (g) => `${g} Duo Compatibility Check | SBTI`,
   ja: (g) => `${g} プレイヤー相性診断：あなたと味方の相性は？ | SBTI`,
   ko: (g) => `${g} 플레이어 궁합 테스트: 나와 팀원은 잘 맞을까? | SBTI`,
 };

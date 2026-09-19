@@ -178,7 +178,7 @@ const PAGE_SEO_COPY: Record<
         '了解 SBTI 是什么：它为什么被称为 MBTI 恶搞版人格测试、27 种人格类型怎么来的，以及 30 道题和 15 维评分如何工作。',
     },
     en: {
-      title: 'What Is SBTI? | Satirical Personality Test, MBTI Parody, 15 Dimensions',
+      title: 'What Is SBTI? The Satirical MBTI Parody Test, 15 Dimensions',
       description:
         'Learn what SBTI means, how this satirical personality test works, why people compare it with MBTI, and how 30 questions map to 27 types across 15 dimensions.',
     },
@@ -357,7 +357,7 @@ const GAME_TITLE_TEMPLATE: Record<Locale, (name: string) => string> = {
 
 const GAME_TITLE_OVERRIDES: Record<string, Partial<Record<Locale, string>>> = {
   'overwatch-2': {
-    en: 'Which Overwatch 2 Hero Are You? Free Hero Personality Quiz | SBTI',
+    en: 'Which Overwatch 2 Hero Are You? Free Hero Quiz | SBTI',
     ko: '나는 어떤 오버워치 2 영웅일까? 무료 영웅 성격 테스트 | SBTI',
   },
 };

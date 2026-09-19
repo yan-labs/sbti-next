@@ -194,7 +194,7 @@ export async function generateMetadata({
 
   const titleMap: Record<SiteLocale, string> = {
     zh: `${archetypeName}：${gameTitle} 玩家类型解析与特点 | SBTI 游戏测试`,
-    en: `${archetypeName} | ${gameTitle} Player Type & Traits | SBTI`,
+    en: `${archetypeName} – ${gameTitle} Player Type | SBTI`,
     ja: `${archetypeName}：${gameTitle} プレイヤータイプの特徴と解説 | SBTI`,
     ko: `${archetypeName}: ${gameTitle} 플레이어 유형 특징과 해석 | SBTI`,
   };
@@ -418,13 +418,13 @@ export default async function ArchetypeResultPage({
                         </div>
                       )}
                       <div className="min-w-0 flex-1">
-                        <h3
+                        <h2
                           className="font-heading text-[18px] font-bold leading-[1.1] tracking-tight text-foreground transition-colors group-hover:text-primary"
                           style={{fontVariationSettings: '"opsz" 144, "wght" 700'}}
                         >
                           {rivalArchetype.name[loc]}
                           <span className="text-primary">.</span>
-                        </h3>
+                        </h2>
                         <p className="mt-1.5 font-mono text-[9px] uppercase tracking-[0.16em] text-muted-foreground">
                           {rivalArchetype.slug.replace(/-/g, ' ')}
                         </p>
@@ -463,13 +463,13 @@ export default async function ArchetypeResultPage({
                         </div>
                       )}
                       <div className="min-w-0 flex-1">
-                        <h3
+                        <h2
                           className="font-heading text-[18px] font-bold leading-[1.1] tracking-tight text-foreground transition-colors group-hover:text-primary"
                           style={{fontVariationSettings: '"opsz" 144, "wght" 700'}}
                         >
                           {bestSquadArchetype.name[loc]}
                           <span className="text-primary">.</span>
-                        </h3>
+                        </h2>
                         <p className="mt-1.5 font-mono text-[9px] uppercase tracking-[0.16em] text-muted-foreground">
                           {bestSquadArchetype.slug.replace(/-/g, ' ')}
                         </p>

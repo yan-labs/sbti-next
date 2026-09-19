@@ -122,9 +122,14 @@ function TypesGuideArticle() {
               )}
               <div className="min-w-0">
                 <div className="font-mono text-[11px] tracking-[0.18em] text-primary mb-1">{code}</div>
-                <h3 className="font-heading text-base font-semibold tracking-tight text-foreground group-hover:text-primary transition-colors">
+                {/* h2 (not h3): the article has no other h2 before this grid, and h1 -> h3
+                    is a heading-level skip. Inline style pins the previous .prose-custom h3 look. */}
+                <h2
+                  className="font-heading text-base font-semibold tracking-tight text-foreground group-hover:text-primary transition-colors"
+                  style={{fontVariationSettings: '"opsz" 144, "wght" 600', fontSize: 'clamp(20px, 2vw, 24px)', lineHeight: 1.25, letterSpacing: '-0.012em', margin: '36px 0 12px'}}
+                >
                   {name}
-                </h3>
+                </h2>
                 <p className="mt-1 text-sm leading-relaxed text-muted-foreground line-clamp-2">{intro}</p>
               </div>
             </Link>
