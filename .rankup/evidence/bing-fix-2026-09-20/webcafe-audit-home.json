@@ -1,0 +1,1352 @@
+{
+  "args": {
+    "guest": true,
+    "url": "https://sbti.support/",
+    "keyword": "funny personality test",
+    "out": "webcafe-audit-home.json"
+  },
+  "status": 200,
+  "data": {
+    "score": 45,
+    "grade": "D",
+    "label": "较差",
+    "topicFocus": {
+      "score": 32,
+      "cap": 45,
+      "note": "关键词聚焦度 32%，主题与关键词相关但不够聚焦，总分封顶 45 分——把关键词落进 Title/H1/正文，让页面主题对准它",
+      "isBrand": false,
+      "rawScore": 76
+    },
+    "wordCap": null,
+    "serpInsight": {
+      "keyword": "funny personality test",
+      "results": 10,
+      "withSitelinks": 0,
+      "ownPosition": null,
+      "ownSitelinks": 0,
+      "urlPosition": null,
+      "urlSitelinks": 0,
+      "firstDomain": "kids.nationalgeographic.com",
+      "firstIsOwn": false
+    },
+    "categories": [
+      {
+        "key": "meta",
+        "label": "Meta 元信息",
+        "earned": 25,
+        "max": 25,
+        "checks": [
+          {
+            "cat": "meta",
+            "key": "title",
+            "label": "Title 标题",
+            "max": 6,
+            "score": 6,
+            "status": "pass",
+            "note": "「SBTI – Funny Personality Test | Free MBTI Parody, 27 Types」长度 58（合理区间 15~60，中文按 2 计）"
+          },
+          {
+            "cat": "meta",
+            "key": "description",
+            "label": "Meta Description 描述",
+            "max": 5,
+            "score": 5,
+            "status": "pass",
+            "note": "长度 139（合理区间 70~160，中文按 2 计）"
+          },
+          {
+            "cat": "meta",
+            "key": "canonical",
+            "label": "Canonical 规范链接",
+            "max": 3,
+            "score": 3,
+            "status": "pass",
+            "note": "已自引用声明：https://sbti.support"
+          },
+          {
+            "cat": "meta",
+            "key": "robots",
+            "label": "Robots 收录指令",
+            "max": 3,
+            "score": 3,
+            "status": "pass",
+            "note": "robots=index, follow，允许收录"
+          },
+          {
+            "cat": "meta",
+            "key": "viewport",
+            "label": "Viewport 移动适配",
+            "max": 3,
+            "score": 3,
+            "status": "pass",
+            "note": "已声明 viewport，移动端可正常缩放渲染"
+          },
+          {
+            "cat": "meta",
+            "key": "charset",
+            "label": "字符编码声明",
+            "max": 2,
+            "score": 2,
+            "status": "pass",
+            "note": "已声明 charset"
+          },
+          {
+            "cat": "meta",
+            "key": "lang",
+            "label": "HTML lang 语言声明",
+            "max": 2,
+            "score": 2,
+            "status": "pass",
+            "note": "lang=en"
+          },
+          {
+            "cat": "meta",
+            "key": "favicon",
+            "label": "Favicon 站点图标",
+            "max": 1,
+            "score": 1,
+            "status": "pass",
+            "note": "已声明站点图标"
+          }
+        ]
+      },
+      {
+        "key": "content",
+        "label": "内容质量",
+        "earned": 19.5,
+        "max": 24,
+        "checks": [
+          {
+            "cat": "content",
+            "key": "h1",
+            "label": "H1 主标题",
+            "max": 5,
+            "score": 5,
+            "status": "pass",
+            "note": "唯一 H1「Which kind of human? Which kind of player?」，长度 42"
+          },
+          {
+            "cat": "content",
+            "key": "heading_structure",
+            "label": "标题层级结构",
+            "max": 3,
+            "score": 3,
+            "status": "pass",
+            "note": "层级递进正常：共 60 个标题，其中 H2 × 2"
+          },
+          {
+            "cat": "content",
+            "key": "word_count",
+            "label": "正文词数（1200~1800 为佳）",
+            "max": 5,
+            "score": 5,
+            "status": "pass",
+            "note": "全页 1479 个词（中文按字计），处于 1200~1800 最佳区间"
+          },
+          {
+            "cat": "content",
+            "key": "rendering",
+            "label": "渲染方式",
+            "max": 3,
+            "score": 3,
+            "status": "pass",
+            "note": "正文已随 HTML 直出，服务端渲染/静态页，搜索引擎首轮抓取即可拿到内容"
+          },
+          {
+            "cat": "content",
+            "key": "fulfillment",
+            "label": "需求承接（落地页=承接页）",
+            "max": 5,
+            "score": 0.5,
+            "status": "fail",
+            "note": "疑似纯跳转落地页：本页没有任何交互元素，却有 8 个跳转式入口（如「Start quiz →」「Start quiz →」「Start quiz →」）。工具/游戏页应把功能做进本页——用户点进来就能用，落地页与承接页是同一个页面，才能更好地拿到谷歌排名"
+          },
+          {
+            "cat": "content",
+            "key": "text_ratio",
+            "label": "文本/代码比",
+            "max": 3,
+            "score": 3,
+            "status": "pass",
+            "note": "可见文本占 HTML 的 1.5%（框架代码较重），但正文 1479 词已随 HTML 直出，抓取无碍；体积代价见「HTML 体积」项"
+          }
+        ]
+      },
+      {
+        "key": "keyword",
+        "label": "关键词优化",
+        "earned": 16,
+        "max": 40,
+        "checks": [
+          {
+            "cat": "keyword",
+            "key": "kw_focus",
+            "label": "主题聚焦度（页面是否围绕关键词展开）",
+            "max": 0,
+            "score": 0,
+            "status": "fail",
+            "note": "关键词聚焦度 32%，主题与关键词相关但不够聚焦，总分封顶 45 分——把关键词落进 Title/H1/正文，让页面主题对准它"
+          },
+          {
+            "cat": "keyword",
+            "key": "kw_title",
+            "label": "关键词出现在 Title",
+            "max": 8,
+            "score": 8,
+            "status": "pass",
+            "note": "关键词完整出现在 Title"
+          },
+          {
+            "cat": "keyword",
+            "key": "kw_description",
+            "label": "关键词出现在 Description",
+            "max": 4,
+            "score": 4,
+            "status": "pass",
+            "note": "关键词完整出现在描述中"
+          },
+          {
+            "cat": "keyword",
+            "key": "kw_h1",
+            "label": "关键词出现在 H1",
+            "max": 8,
+            "score": 0,
+            "status": "fail",
+            "note": "H1 中关键词单词命中 0%"
+          },
+          {
+            "cat": "keyword",
+            "key": "kw_subheading",
+            "label": "关键词出现在 H2/H3",
+            "max": 3,
+            "score": 1,
+            "status": "warn",
+            "note": "小标题中关键词单词命中 33%"
+          },
+          {
+            "cat": "keyword",
+            "key": "kw_url",
+            "label": "关键词出现在 URL（域名或路径）",
+            "max": 2,
+            "score": 0,
+            "status": "fail",
+            "note": "URL（域名+路径）中未包含关键词单词"
+          },
+          {
+            "cat": "keyword",
+            "key": "kw_first",
+            "label": "关键词出现在开头 100 词",
+            "max": 3,
+            "score": 2,
+            "status": "warn",
+            "note": "正文前 100 词关键词命中 67%，建议开篇即点题"
+          },
+          {
+            "cat": "keyword",
+            "key": "kw_density",
+            "label": "关键词密度（单词 3%~5% 为佳；多词看密度榜）",
+            "max": 2,
+            "score": 1,
+            "status": "warn",
+            "note": "正文未完整出现该词组。多词关键词以密度榜覆盖为主要判据（见下项），但建议至少自然出现几次完整词组"
+          },
+          {
+            "cat": "keyword",
+            "key": "kw_rank",
+            "label": "密度榜位置加权覆盖（1~5 词榜前 10，越靠前分越高）",
+            "max": 10,
+            "score": 0,
+            "status": "fail",
+            "note": "看密度就是看文案是否聚焦：词数达标 + 1~5 词密度榜前排都是目标词相关词 + TDH 覆盖 = 良好页面。1词:未上榜(0/8)；2词:未上榜(0/8)；3词:未上榜(0/8)；4词:未上榜(0/3)；5词:未上榜(0/3)。页面实际反复出现的词与目标关键词脱节（见下方密度榜）"
+          },
+          {
+            "cat": "keyword",
+            "key": "kw_serp",
+            "label": "SERP 竞争（Sitelinks 信号）",
+            "max": 0,
+            "score": 0,
+            "status": "info",
+            "note": "「funny personality test」谷歌前十中 0 个结果展示 Sitelinks/mini sitelinks；前十未见本站。带 Sitelinks 的结果越多，被谷歌认可的强势站越多，竞争越激烈"
+          }
+        ]
+      },
+      {
+        "key": "links",
+        "label": "链接",
+        "earned": 7,
+        "max": 7,
+        "checks": [
+          {
+            "cat": "links",
+            "key": "internal_links",
+            "label": "站内链接",
+            "max": 3,
+            "score": 3,
+            "status": "pass",
+            "note": "内链 126 条，有利于抓取与权重流动"
+          },
+          {
+            "cat": "links",
+            "key": "anchor_text",
+            "label": "锚文本质量",
+            "max": 3,
+            "score": 3,
+            "status": "pass",
+            "note": "共 127 条链接，均有描述性锚文本"
+          },
+          {
+            "cat": "links",
+            "key": "noopener",
+            "label": "外链 target=_blank 安全",
+            "max": 1,
+            "score": 1,
+            "status": "pass",
+            "note": "新窗口外链均带 noopener（或无此类链接）"
+          },
+          {
+            "cat": "links",
+            "key": "external_links",
+            "label": "站外链接",
+            "max": 0,
+            "score": 0,
+            "status": "info",
+            "note": "外链 1 条且全部 nofollow，不传递权重。对真正权威的引用来源，可考虑给正常 dofollow 链接"
+          }
+        ]
+      },
+      {
+        "key": "media",
+        "label": "图片与媒体",
+        "earned": 6.5,
+        "max": 8,
+        "checks": [
+          {
+            "cat": "media",
+            "key": "img_alt",
+            "label": "图片 Alt 属性",
+            "max": 5,
+            "score": 5,
+            "status": "pass",
+            "note": "122 张图片全部带 alt 属性"
+          },
+          {
+            "cat": "media",
+            "key": "img_size",
+            "label": "图片宽高声明（防布局抖动）",
+            "max": 2,
+            "score": 0.5,
+            "status": "warn",
+            "note": "114/122 张图片未声明 width/height，加载时会引起布局抖动（影响 CLS）"
+          },
+          {
+            "cat": "media",
+            "key": "img_lazy",
+            "label": "图片懒加载",
+            "max": 1,
+            "score": 1,
+            "status": "pass",
+            "note": "118 张图片使用 loading=lazy"
+          }
+        ]
+      },
+      {
+        "key": "social",
+        "label": "社交与结构化数据",
+        "earned": 10,
+        "max": 10,
+        "checks": [
+          {
+            "cat": "social",
+            "key": "og",
+            "label": "Open Graph 标签",
+            "max": 4,
+            "score": 4,
+            "status": "pass",
+            "note": "og:title / og:description / og:image 齐全，社交分享有完整卡片"
+          },
+          {
+            "cat": "social",
+            "key": "twitter",
+            "label": "Twitter/X 卡片",
+            "max": 2,
+            "score": 2,
+            "status": "pass",
+            "note": "twitter:card=summary_large_image"
+          },
+          {
+            "cat": "social",
+            "key": "jsonld",
+            "label": "结构化数据 JSON-LD",
+            "max": 4,
+            "score": 4,
+            "status": "pass",
+            "note": "检测到 5 个 JSON-LD 块，类型：WebSite, Organization, WebPage, FAQPage"
+          }
+        ]
+      },
+      {
+        "key": "tech",
+        "label": "技术与抓取",
+        "earned": 16,
+        "max": 17,
+        "checks": [
+          {
+            "cat": "tech",
+            "key": "raw_html_elements",
+            "label": "原始 HTML 直出情况",
+            "max": 0,
+            "score": 0,
+            "status": "info",
+            "note": "直出正文 8175 字符 / 响应 518KB　✓<title>　✕<h1>　✓meta description　✓canonical　✓og:title　✓JSON-LD 结构化数据"
+          },
+          {
+            "cat": "tech",
+            "key": "https",
+            "label": "HTTPS 加密",
+            "max": 3,
+            "score": 3,
+            "status": "pass",
+            "note": "已启用 HTTPS"
+          },
+          {
+            "cat": "tech",
+            "key": "status",
+            "label": "HTTP 状态与跳转",
+            "max": 3,
+            "score": 3,
+            "status": "pass",
+            "note": "直接返回 200，无跳转"
+          },
+          {
+            "cat": "tech",
+            "key": "speed",
+            "label": "响应速度",
+            "max": 3,
+            "score": 3,
+            "status": "pass",
+            "note": "HTML 下载完成耗时 297ms"
+          },
+          {
+            "cat": "tech",
+            "key": "size",
+            "label": "HTML 体积",
+            "max": 2,
+            "score": 1,
+            "status": "warn",
+            "note": "HTML 体积 520 KB，偏大，检查是否内联了大段 JSON/CSS"
+          },
+          {
+            "cat": "tech",
+            "key": "url_quality",
+            "label": "URL 规范性",
+            "max": 2,
+            "score": 2,
+            "status": "pass",
+            "note": "URL 简洁规范"
+          },
+          {
+            "cat": "tech",
+            "key": "hreflang",
+            "label": "多语言 hreflang",
+            "max": 0,
+            "score": 0,
+            "status": "info",
+            "note": "声明了 5 个语言版本（zh, en, ja, ko, x-default）"
+          },
+          {
+            "cat": "tech",
+            "key": "robots_txt",
+            "label": "robots.txt",
+            "max": 2,
+            "score": 2,
+            "status": "pass",
+            "note": "robots.txt 可访问"
+          },
+          {
+            "cat": "tech",
+            "key": "sitemap",
+            "label": "Sitemap 站点地图",
+            "max": 2,
+            "score": 2,
+            "status": "pass",
+            "note": "robots.txt 中已声明 Sitemap：https://sbti.support/sitemap.xml"
+          }
+        ]
+      }
+    ],
+    "page": {
+      "url": "https://sbti.support/",
+      "finalUrl": "https://sbti.support/",
+      "httpStatus": 200,
+      "redirects": [],
+      "elapsedMs": 297,
+      "bytes": 532944,
+      "truncated": false,
+      "title": "SBTI – Funny Personality Test | Free MBTI Parody, 27 Types",
+      "description": "The funny personality test that roasts you back: 30 questions, 27 sarcastic types, no sign-up. A free MBTI parody, plus gamer type quizzes.",
+      "lang": "en",
+      "headings": [
+        {
+          "tag": "h1",
+          "level": 1,
+          "text": "Which kind of human? Which kind of player?"
+        },
+        {
+          "tag": "h2",
+          "level": 2,
+          "text": "27 personality files , someone you know is in here"
+        },
+        {
+          "tag": "h3",
+          "level": 3,
+          "text": "CTRL ."
+        },
+        {
+          "tag": "h3",
+          "level": 3,
+          "text": "ATM-er ."
+        },
+        {
+          "tag": "h3",
+          "level": 3,
+          "text": "Dior-s ."
+        },
+        {
+          "tag": "h3",
+          "level": 3,
+          "text": "BOSS ."
+        },
+        {
+          "tag": "h3",
+          "level": 3,
+          "text": "THAN-K ."
+        },
+        {
+          "tag": "h3",
+          "level": 3,
+          "text": "OH-NO ."
+        },
+        {
+          "tag": "h3",
+          "level": 3,
+          "text": "GOGO ."
+        },
+        {
+          "tag": "h3",
+          "level": 3,
+          "text": "SEXY ."
+        },
+        {
+          "tag": "h3",
+          "level": 3,
+          "text": "LOVE-R ."
+        },
+        {
+          "tag": "h3",
+          "level": 3,
+          "text": "MUM ."
+        },
+        {
+          "tag": "h3",
+          "level": 3,
+          "text": "FAKE ."
+        },
+        {
+          "tag": "h3",
+          "level": 3,
+          "text": "OJBK ."
+        },
+        {
+          "tag": "h3",
+          "level": 3,
+          "text": "MALO ."
+        },
+        {
+          "tag": "h3",
+          "level": 3,
+          "text": "JOKE-R ."
+        },
+        {
+          "tag": "h3",
+          "level": 3,
+          "text": "WOC! ."
+        },
+        {
+          "tag": "h3",
+          "level": 3,
+          "text": "THIN-K ."
+        },
+        {
+          "tag": "h3",
+          "level": 3,
+          "text": "SHIT ."
+        },
+        {
+          "tag": "h3",
+          "level": 3,
+          "text": "ZZZZ ."
+        },
+        {
+          "tag": "h3",
+          "level": 3,
+          "text": "POOR ."
+        },
+        {
+          "tag": "h3",
+          "level": 3,
+          "text": "MONK ."
+        },
+        {
+          "tag": "h3",
+          "level": 3,
+          "text": "IMSB ."
+        },
+        {
+          "tag": "h3",
+          "level": 3,
+          "text": "SOLO ."
+        },
+        {
+          "tag": "h3",
+          "level": 3,
+          "text": "FUCK ."
+        },
+        {
+          "tag": "h3",
+          "level": 3,
+          "text": "DEAD ."
+        },
+        {
+          "tag": "h3",
+          "level": 3,
+          "text": "IMFW ."
+        },
+        {
+          "tag": "h3",
+          "level": 3,
+          "text": "HHHH ."
+        },
+        {
+          "tag": "h3",
+          "level": 3,
+          "text": "DRUNK ."
+        },
+        {
+          "tag": "h2",
+          "level": 2,
+          "text": "8 games × 8 archetypes 64 player files"
+        },
+        {
+          "tag": "h3",
+          "level": 3,
+          "text": "A shared six-axis framework"
+        },
+        {
+          "tag": "h3",
+          "level": 3,
+          "text": "League of Legends"
+        },
+        {
+          "tag": "h4",
+          "level": 4,
+          "text": "Macro Accountant"
+        },
+        {
+          "tag": "h4",
+          "level": 4,
+          "text": "Rift Babysitter"
+        },
+        {
+          "tag": "h4",
+          "level": 4,
+          "text": "Late-Game Messiah"
+        },
+        {
+          "tag": "h4",
+          "level": 4,
+          "text": "Flame Conductor"
+        },
+        {
+          "tag": "h4",
+          "level": 4,
+          "text": "Muted Veteran"
+        },
+        {
+          "tag": "h4",
+          "level": 4,
+          "text": "Solo Queue Martyr"
+        },
+        {
+          "tag": "h4",
+          "level": 4,
+          "text": "CS Vampire"
+        },
+        {
+          "tag": "h4",
+          "level": 4,
+          "text": "ARAM Comedian"
+        },
+        {
+          "tag": "h3",
+          "level": 3,
+          "text": "VALORANT"
+        },
+        {
+          "tag": "h4",
+          "level": 4,
+          "text": "Lineup Librarian"
+        },
+        {
+          "tag": "h4",
+          "level": 4,
+          "text": "Rapid-Call IGL"
+        },
+        {
+          "tag": "h4",
+          "level": 4,
+          "text": "Sentinel Guardian"
+        },
+        {
+          "tag": "h4",
+          "level": 4,
+          "text": "Clutch Narrator"
+        },
+        {
+          "tag": "h4",
+          "level": 4,
+          "text": "Safety-First Duelist"
+        },
+        {
+          "tag": "h4",
+          "level": 4,
+          "text": "Instalock Spectator"
+        },
+        {
+          "tag": "h4",
+          "level": 4,
+          "text": "Sheriff Economist"
+        },
+        {
+          "tag": "h4",
+          "level": 4,
+          "text": "Sheriff Mystic"
+        },
+        {
+          "tag": "h3",
+          "level": 3,
+          "text": "Counter-Strike 2 Player Quiz"
+        },
+        {
+          "tag": "h4",
+          "level": 4,
+          "text": "Eco CFO"
+        },
+        {
+          "tag": "h4",
+          "level": 4,
+          "text": "Lineup Priest"
+        },
+        {
+          "tag": "h4",
+          "level": 4,
+          "text": "Silent Anchor"
+        },
+        {
+          "tag": "h4",
+          "level": 4,
+          "text": "Clutch Saint"
+        },
+        {
+          "tag": "h4",
+          "level": 4,
+          "text": "Default IGL"
+        },
+        {
+          "tag": "h4",
+          "level": 4,
+          "text": "Flash Entry"
+        },
+        {
+          "tag": "h4",
+          "level": 4,
+          "text": "Pre-aim Prophet"
+        },
+        {
+          "tag": "h4",
+          "level": 4,
+          "text": "AWP Cowboy"
+        },
+        {
+          "tag": "h3",
+          "level": 3,
+          "text": "Honor of Kings"
+        },
+        {
+          "tag": "h4",
+          "level": 4,
+          "text": "Jungle Auditor"
+        }
+      ],
+      "wordCount": 1479,
+      "imageCount": 122,
+      "linkInternal": 126,
+      "linkExternal": 1,
+      "jsonLdTypes": [
+        "WebSite",
+        "Organization",
+        "WebPage",
+        "FAQPage"
+      ]
+    },
+    "ngramTop": {
+      "1": [
+        {
+          "phrase": "the",
+          "count": 37,
+          "density": 2.5,
+          "densityOccupy": 2.5
+        },
+        {
+          "phrase": "n",
+          "count": 31,
+          "density": 2.1,
+          "densityOccupy": 2.1
+        },
+        {
+          "phrase": "you",
+          "count": 29,
+          "density": 1.96,
+          "densityOccupy": 1.96
+        },
+        {
+          "phrase": "player",
+          "count": 28,
+          "density": 1.89,
+          "densityOccupy": 1.89
+        },
+        {
+          "phrase": "08",
+          "count": 27,
+          "density": 1.83,
+          "densityOccupy": 1.83
+        },
+        {
+          "phrase": "of",
+          "count": 23,
+          "density": 1.56,
+          "densityOccupy": 1.56
+        },
+        {
+          "phrase": "a",
+          "count": 22,
+          "density": 1.49,
+          "densityOccupy": 1.49
+        },
+        {
+          "phrase": "are",
+          "count": 22,
+          "density": 1.49,
+          "densityOccupy": 1.49
+        },
+        {
+          "phrase": "quiz",
+          "count": 21,
+          "density": 1.42,
+          "densityOccupy": 1.42
+        },
+        {
+          "phrase": "what",
+          "count": 20,
+          "density": 1.35,
+          "densityOccupy": 1.35
+        },
+        {
+          "phrase": "sbti",
+          "count": 17,
+          "density": 1.15,
+          "densityOccupy": 1.15
+        },
+        {
+          "phrase": "kind",
+          "count": 16,
+          "density": 1.08,
+          "densityOccupy": 1.08
+        },
+        {
+          "phrase": "者",
+          "count": 15,
+          "density": 1.01,
+          "densityOccupy": 1.01
+        },
+        {
+          "phrase": "take",
+          "count": 14,
+          "density": 0.95,
+          "densityOccupy": 0.95
+        },
+        {
+          "phrase": "04",
+          "count": 14,
+          "density": 0.95,
+          "densityOccupy": 0.95
+        }
+      ],
+      "2": [
+        {
+          "phrase": "are you",
+          "count": 17,
+          "density": 1.15,
+          "densityOccupy": 2.3
+        },
+        {
+          "phrase": "kind of",
+          "count": 16,
+          "density": 1.08,
+          "densityOccupy": 2.16
+        },
+        {
+          "phrase": "what kind",
+          "count": 14,
+          "density": 0.95,
+          "densityOccupy": 1.89
+        },
+        {
+          "phrase": "者 n",
+          "count": 14,
+          "density": 0.95,
+          "densityOccupy": 1.89
+        },
+        {
+          "phrase": "player are",
+          "count": 10,
+          "density": 0.68,
+          "densityOccupy": 1.35
+        },
+        {
+          "phrase": "take it",
+          "count": 9,
+          "density": 0.61,
+          "densityOccupy": 1.22
+        },
+        {
+          "phrase": "it now",
+          "count": 9,
+          "density": 0.61,
+          "densityOccupy": 1.22
+        },
+        {
+          "phrase": "player quiz",
+          "count": 9,
+          "density": 0.61,
+          "densityOccupy": 1.22
+        },
+        {
+          "phrase": "you take",
+          "count": 8,
+          "density": 0.54,
+          "densityOccupy": 1.08
+        },
+        {
+          "phrase": "08 player",
+          "count": 8,
+          "density": 0.54,
+          "densityOccupy": 1.08
+        },
+        {
+          "phrase": "quiz what",
+          "count": 8,
+          "density": 0.54,
+          "densityOccupy": 1.08
+        },
+        {
+          "phrase": "dominant axes",
+          "count": 8,
+          "density": 0.54,
+          "densityOccupy": 1.08
+        },
+        {
+          "phrase": "start quiz",
+          "count": 8,
+          "density": 0.54,
+          "densityOccupy": 1.08
+        },
+        {
+          "phrase": "quiz 01",
+          "count": 8,
+          "density": 0.54,
+          "densityOccupy": 1.08
+        },
+        {
+          "phrase": "you dominant",
+          "count": 7,
+          "density": 0.47,
+          "densityOccupy": 0.95
+        }
+      ],
+      "3": [
+        {
+          "phrase": "what kind of",
+          "count": 14,
+          "density": 0.95,
+          "densityOccupy": 2.84
+        },
+        {
+          "phrase": "player are you",
+          "count": 10,
+          "density": 0.68,
+          "densityOccupy": 2.03
+        },
+        {
+          "phrase": "take it now",
+          "count": 9,
+          "density": 0.61,
+          "densityOccupy": 1.83
+        },
+        {
+          "phrase": "are you take",
+          "count": 8,
+          "density": 0.54,
+          "densityOccupy": 1.62
+        },
+        {
+          "phrase": "you take it",
+          "count": 8,
+          "density": 0.54,
+          "densityOccupy": 1.62
+        },
+        {
+          "phrase": "08 player quiz",
+          "count": 8,
+          "density": 0.54,
+          "densityOccupy": 1.62
+        },
+        {
+          "phrase": "player quiz what",
+          "count": 8,
+          "density": 0.54,
+          "densityOccupy": 1.62
+        },
+        {
+          "phrase": "quiz what kind",
+          "count": 8,
+          "density": 0.54,
+          "densityOccupy": 1.62
+        },
+        {
+          "phrase": "start quiz 01",
+          "count": 8,
+          "density": 0.54,
+          "densityOccupy": 1.62
+        },
+        {
+          "phrase": "are you dominant",
+          "count": 7,
+          "density": 0.47,
+          "densityOccupy": 1.42
+        },
+        {
+          "phrase": "you dominant axes",
+          "count": 7,
+          "density": 0.47,
+          "densityOccupy": 1.42
+        },
+        {
+          "phrase": "l r tempo",
+          "count": 6,
+          "density": 0.41,
+          "densityOccupy": 1.22
+        },
+        {
+          "phrase": "r tempo slow",
+          "count": 6,
+          "density": 0.41,
+          "densityOccupy": 1.22
+        },
+        {
+          "phrase": "tempo slow burn",
+          "count": 6,
+          "density": 0.41,
+          "densityOccupy": 1.22
+        },
+        {
+          "phrase": "slow burn rush",
+          "count": 6,
+          "density": 0.41,
+          "densityOccupy": 1.22
+        }
+      ],
+      "4": [
+        {
+          "phrase": "are you take it",
+          "count": 8,
+          "density": 0.54,
+          "densityOccupy": 2.16
+        },
+        {
+          "phrase": "you take it now",
+          "count": 8,
+          "density": 0.54,
+          "densityOccupy": 2.16
+        },
+        {
+          "phrase": "player quiz what kind",
+          "count": 8,
+          "density": 0.54,
+          "densityOccupy": 2.16
+        },
+        {
+          "phrase": "quiz what kind of",
+          "count": 8,
+          "density": 0.54,
+          "densityOccupy": 2.16
+        },
+        {
+          "phrase": "08 player quiz what",
+          "count": 7,
+          "density": 0.47,
+          "densityOccupy": 1.89
+        },
+        {
+          "phrase": "are you dominant axes",
+          "count": 7,
+          "density": 0.47,
+          "densityOccupy": 1.89
+        },
+        {
+          "phrase": "l r tempo slow",
+          "count": 6,
+          "density": 0.41,
+          "densityOccupy": 1.62
+        },
+        {
+          "phrase": "r tempo slow burn",
+          "count": 6,
+          "density": 0.41,
+          "densityOccupy": 1.62
+        },
+        {
+          "phrase": "tempo slow burn rush",
+          "count": 6,
+          "density": 0.41,
+          "densityOccupy": 1.62
+        },
+        {
+          "phrase": "slow burn rush down",
+          "count": 6,
+          "density": 0.41,
+          "densityOccupy": 1.62
+        },
+        {
+          "phrase": "s t bond solo",
+          "count": 6,
+          "density": 0.41,
+          "densityOccupy": 1.62
+        },
+        {
+          "phrase": "t bond solo wolf",
+          "count": 6,
+          "density": 0.41,
+          "densityOccupy": 1.62
+        },
+        {
+          "phrase": "bond solo wolf team",
+          "count": 6,
+          "density": 0.41,
+          "densityOccupy": 1.62
+        },
+        {
+          "phrase": "solo wolf team anchor",
+          "count": 6,
+          "density": 0.41,
+          "densityOccupy": 1.62
+        },
+        {
+          "phrase": "player are you take",
+          "count": 5,
+          "density": 0.34,
+          "densityOccupy": 1.35
+        }
+      ],
+      "5": [
+        {
+          "phrase": "are you take it now",
+          "count": 8,
+          "density": 0.54,
+          "densityOccupy": 2.7
+        },
+        {
+          "phrase": "player quiz what kind of",
+          "count": 8,
+          "density": 0.54,
+          "densityOccupy": 2.7
+        },
+        {
+          "phrase": "08 player quiz what kind",
+          "count": 7,
+          "density": 0.47,
+          "densityOccupy": 2.37
+        },
+        {
+          "phrase": "l r tempo slow burn",
+          "count": 6,
+          "density": 0.41,
+          "densityOccupy": 2.03
+        },
+        {
+          "phrase": "r tempo slow burn rush",
+          "count": 6,
+          "density": 0.41,
+          "densityOccupy": 2.03
+        },
+        {
+          "phrase": "tempo slow burn rush down",
+          "count": 6,
+          "density": 0.41,
+          "densityOccupy": 2.03
+        },
+        {
+          "phrase": "s t bond solo wolf",
+          "count": 6,
+          "density": 0.41,
+          "densityOccupy": 2.03
+        },
+        {
+          "phrase": "t bond solo wolf team",
+          "count": 6,
+          "density": 0.41,
+          "densityOccupy": 2.03
+        },
+        {
+          "phrase": "bond solo wolf team anchor",
+          "count": 6,
+          "density": 0.41,
+          "densityOccupy": 2.03
+        },
+        {
+          "phrase": "player are you take it",
+          "count": 5,
+          "density": 0.34,
+          "densityOccupy": 1.69
+        },
+        {
+          "phrase": "c a nerve risk manager",
+          "count": 5,
+          "density": 0.34,
+          "densityOccupy": 1.69
+        },
+        {
+          "phrase": "a nerve risk manager all-in",
+          "count": 5,
+          "density": 0.34,
+          "densityOccupy": 1.69
+        },
+        {
+          "phrase": "u h flair efficiency mode",
+          "count": 5,
+          "density": 0.34,
+          "densityOccupy": 1.69
+        },
+        {
+          "phrase": "h flair efficiency mode show",
+          "count": 5,
+          "density": 0.34,
+          "densityOccupy": 1.69
+        },
+        {
+          "phrase": "flair efficiency mode show time",
+          "count": 5,
+          "density": 0.34,
+          "densityOccupy": 1.69
+        }
+      ]
+    },
+    "keyword": "funny personality test",
+    "primaryKeyword": "funny personality test",
+    "keywordTokens": [
+      "funny",
+      "personality",
+      "test"
+    ],
+    "keywordCount": 0,
+    "keywordDensity": 0,
+    "keywords": [
+      {
+        "keyword": "funny personality test",
+        "focusScore": 32,
+        "isBrand": false,
+        "brandCandidate": false,
+        "brandVerified": false,
+        "rTitle": 1,
+        "rH1": 0,
+        "rUrl": 0,
+        "count": 0,
+        "density": 0,
+        "bestCov": 0,
+        "bestRank": 0
+      }
+    ],
+    "fetchedAt": "2026-09-19T17:51:20.915Z",
+    "history": [
+      {
+        "id": 19693,
+        "keyword": "funny personality test",
+        "score": 45,
+        "grade": "D",
+        "created_at": 1789840262,
+        "summary": {
+          "categories": [
+            {
+              "key": "meta",
+              "label": "Meta 元信息",
+              "earned": 25,
+              "max": 25
+            },
+            {
+              "key": "content",
+              "label": "内容质量",
+              "earned": 19.5,
+              "max": 24
+            },
+            {
+              "key": "keyword",
+              "label": "关键词优化",
+              "earned": 16,
+              "max": 40
+            },
+            {
+              "key": "links",
+              "label": "链接",
+              "earned": 7,
+              "max": 7
+            },
+            {
+              "key": "media",
+              "label": "图片与媒体",
+              "earned": 6.5,
+              "max": 8
+            },
+            {
+              "key": "social",
+              "label": "社交与结构化数据",
+              "earned": 10,
+              "max": 10
+            },
+            {
+              "key": "tech",
+              "label": "技术与抓取",
+              "earned": 16,
+              "max": 17
+            }
+          ],
+          "title": "SBTI – Funny Personality Test | Free MBTI Parody, 27 Types",
+          "wordCount": 1479,
+          "httpStatus": 200,
+          "elapsedMs": 214,
+          "bytes": 532944
+        }
+      }
+    ],
+    "historyOthers": 0,
+    "auditNo": 2
+  }
+}

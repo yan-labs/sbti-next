@@ -1,0 +1,10 @@
+key: 200 text/plain; charset=utf-8 body=8ea47f8693256fdca5ff57272721fd57
+old placeholder key: 200
+robots: 200 sitemap-line: Sitemap: https://sbti.support/sitemap.xml
+sitemap: 200 application/xml locs=486 xmllint=ok
+/games: 200 <title>8 games × which player are you — SBTI Game Quizzes</title>
+--- Bing 42 short-title URLs (live) ---
+min live title len among 42: 30
+--- Bing noindex URLs ---
+https://sbti.support/zh/games/valorant/play robots=noindex, follow canonical=https://sbti.support/zh/games/valorant/play
+https://sbti.support/en/games/valorant/play robots=noindex, follow canonical=https://sbti.support/games/valorant/play

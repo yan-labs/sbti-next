@@ -1,7 +1,7 @@
 # .rankup 目录索引 — sbti.support
 
 - 项目：sbti.support（SBTI，静态导出 Next.js + Cloudflare Pages）
-- 最近更新：2026-08-19
+- 最近更新：2026-09-20
 - 当前目标：通用词从 0 曝光起量；韩国市场 Naver 收录
 - 下一入口：`PROJECT.md` → `plan.md`
 
@@ -19,7 +19,9 @@
 | [baseline.md](baseline.md) | GSC/流量基线快照（每轮优化前后各记一笔） | 2026-07-18 | 待复查（下一笔应在 8 月中） |
 | [keywords.md](keywords.md) | 词库：品牌词集群、验证过的通用词、承接位置 | 2026-07-18 | current |
 | [decisions.md](decisions.md) | 已裁决事项（做/不做/原因），防止重复调研 | 2026-08-02 | current |
-| [audit.md](audit.md) | 技术体检结果 | 2026-07-18 | current |
+| [audit.md](audit.md) | 技术体检结果（含 2026-09-20 Bing Recommendations 修复） | 2026-09-20 | current |
+| [checks.md](checks.md) | 闸门核对记录（✅/⏸ + 证据路径） | 2026-09-20 | current |
+| `evidence/bing-fix-2026-09-20/` | Bing 报告原始 URL、线上复测、IndexNow 返回码、seo-audit/webcafe/is-agentic 结果 | 2026-09-20 | current |
 | [plan.md](plan.md) | 行动计划（P0-P2，含预期影响与完成判定） | 2026-08-02 | current |
 | [experience.md](experience.md) | 本站可复用经验（带证据出处与数字的完整原文） | 2026-08-02 | current |
 | [consults/gefei-2026-08-19-jp-mbti.md](consults/gefei-2026-08-19-jp-mbti.md) | 哥飞 SEO Agent 对日语 MBTI 新站的裁定全文（5,979 字，含它调的知识库与实时 SERP） | 2026-08-19 | current |
@@ -53,6 +55,8 @@
 尚未建立：`roadmap.md`、`iterations.md`（目前只跑了一轮完整迭代，等第二轮再建）。
 
 ## 最近变化
+
+- 2026-09-20：修 Bing Webmaster Recommendations（IndexNow 接入部署流程、42 页短标题、`/games` hub 404、h1→h3 跳级），见 `audit.md` 同日节与 `checks.md`。项目脚本 `pnpm seo:audit`（构建后离线查 TDK/h1/canonical/alt/hreflang）、`pnpm indexnow`（`--all` 全量 / `--baseline` 差集 / 指定路径）。
 
 - 2026-08-02：`rankup review`。补建 `PROJECT.md`；修订 `decisions.md` 里被推翻的"compat 撤 sitemap 不 noindex"条目（实际当晚已升级为全线 noindex，代码已核实）；同步修正 `plan.md` P2 的过时观察项；`experience.md` 追加 2 条（图片压缩工具链、brief 里"已验证事实"仍需复核）。
 - 2026-08-02：从 rankup Skill 迁出本站经验到 `experience.md`（commit b22635c）。

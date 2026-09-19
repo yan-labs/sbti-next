@@ -1,0 +1,22 @@
+{
+  "url": "https://sbti.support/zh/games/league-of-legends",
+  "domain": "sbti.support",
+  "readAt": "2026-09-19T17:51:50Z",
+  "seo": {},
+  "robotsTxt": null,
+  "sitemapExcerpt": null,
+  "whois": {
+    "available": true,
+    "created": null,
+    "expires": null
+  },
+  "issues": [],
+  "aitdkPanel": {
+    "attempted": true,
+    "ok": false,
+    "errors": [
+      "AITDK panel did not open (plasmo-csui#aitdk-csui iframe width stayed 0) — is the extension installed and enabled?"
+    ],
+    "sections": {}
+  }
+}

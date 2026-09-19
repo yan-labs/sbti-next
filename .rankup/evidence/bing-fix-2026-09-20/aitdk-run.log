@@ -1,0 +1,16 @@
+[*] Opening https://sbti.support/zh/games/league-of-legends (session: aitdk-sbti-lol)
+(node:28772) [UNDICI-EHPA] Warning: EnvHttpProxyAgent is experimental, expect them to change at any time.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[*] Extracting on-page SEO data from default page context
+[+] Captured on-page SEO data
+[*] Fetching /robots.txt
+[!] robots.txt not found or fetch failed
+[*] Fetching /sitemap.xml (first 2000 chars)
+[!] sitemap.xml not found or fetch failed
+[*] Running whois sbti.support (5s timeout)
+[+] Captured whois creation/expiry dates for sbti.support
+[+] Wrote Part A report to aitdk-zh-lol.json (Part B follows if enabled)
+[*] Part B: driving the AITDK extension panel (frame-eval path)
+[*] Opening the AITDK panel (synthetic Alt+D)
+[x] Part B aborted: AITDK panel did not open (plasmo-csui#aitdk-csui iframe width stayed 0) — is the extension installed and enabled?
+aitdk-zh-lol.json

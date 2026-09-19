@@ -1,0 +1,23 @@
+(node:28279) [UNDICI-EHPA] Warning: EnvHttpProxyAgent is experimental, expect them to change at any time.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✖  All automation window slots are busy (dedicated-pool-exhausted: 1 automation window(s) already fill the automation display (capacity 1 at 900x620 minimum). Wait for a running task to finish, or close one with `opencli browser <session> window close --slot <name>`.).
+✖  Wait a moment and retry, or free one explicitly: opencli browser window close --slot <name>
+· 配额 游客（按 IP 计的访客档，未经登录态浏览器确认）：已用 0/10，剩 10
+
+⚠️⚠️⚠️  当前为游客档 10/日（登录态浏览器探测失败或 OpenCLI 不可用），请启用登录态浏览器再跑正式批量。
+    默认应经 OpenCLI 驱动你本机已登录的 Chrome（登录 100/日、VIP 500/日）；
+    确认 `opencli doctor` 是绿的、Chrome 里已登录 seo.web.cafe，再重跑本命令。
+    只有确实要临时用访客档时，才显式加 --guest 消掉这条警告。
+
+(node:28308) [UNDICI-EHPA] Warning: EnvHttpProxyAgent is experimental, expect them to change at any time.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✖  All automation window slots are busy (dedicated-pool-exhausted: 1 automation window(s) already fill the automation display (capacity 1 at 900x620 minimum). Wait for a running task to finish, or close one with `opencli browser <session> window close --slot <name>`.).
+✖  Wait a moment and retry, or free one explicitly: opencli browser window close --slot <name>
+
+⚠️⚠️⚠️  当前为游客档 10/日（驱动登录态浏览器失败：Command failed: opencli browser webcafe-nav open https://seo.web.cafe/audit/
+(node:28308) [UNDICI-EHPA] Warning: EnvHttpProxyAgent is experimental, ex），请启用登录态浏览器再跑正式批量。
+    默认应经 OpenCLI 驱动你本机已登录的 Chrome（登录 100/日、VIP 500/日）；
+    确认 `opencli doctor` 是绿的、Chrome 里已登录 seo.web.cafe，再重跑本命令。
+    只有确实要临时用访客档时，才显式加 --guest 消掉这条警告。
+
+✓ funny personality test → 得分 45 D · 失败项 5

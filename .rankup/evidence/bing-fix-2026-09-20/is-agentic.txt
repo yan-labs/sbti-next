@@ -1,0 +1,50 @@
+· 没有已完成的报告，正在通过 CLI 触发扫描…
+· 原始响应已存 /Users/kcsx/Project/kcsx/macmini/sbti-next/.rankup/evidence/bing-fix-2026-09-20/.rankup/agentic/sbti.support/raw/2026-09-19T17-50-47-378Z-cli-report.json
+
+═══ sbti.support ═══
+分数：57/100  Important blockers remain
+扫描时间：2026/9/20 01:50:39
+报告：https://is-agentic.com/scan/sbti.support
+
+┌─ Essential    2/7 通过    41.9/80 分
+├─ Recommended  5/9 通过    13.3/20 分
+└─ Bonus        8 个信号    +1.6 分
+
+待修项（9 项，按 API 自带的 tier / result 排，**参考顺序，不是修复顺序**）：
+────────────────────────────────────────────────────────────────────────
+✗ [ESSENTIAL  ] Agent crawler reachability
+  现状：Some AI crawlers are blocked - ChatGPT-User: reachable, ClaudeBot: blocked, Google-Extended: reachable, ora-agent: reachable, DeepSeekBot: reachable
+  建议：Verify that major agent User-Agents can reach the homepage. If your WAF or bot rules block them, remove or narrow the blocking rule. Add an allow rule only when your security setup denies them by defa…
+
+✗ [ESSENTIAL  ] Markdown content negotiation (acceptmarkdown.com)
+  现状：Homepage https://sbti.support does not meet the Markdown negotiation requirements: Accept: text/markdown returned text/html; charset=utf-8; Vary header missing Accept (got "accept-encoding")
+  建议：Enable Markdown negotiation on the scanned homepage. Supporting it only on /docs or a separate .md URL does not satisfy this check. Requests with Accept: text/markdown must receive a nonempty Markdown…
+
+△ [ESSENTIAL  ] Agent-friendly 404s
+  现状：The nonexistent path https://sbti.support/__ora-404-probe-rmoosjlx correctly returns HTTP 404. Partial credit: no Markdown error body was detected.
+  建议：Keep the correct HTTP 404 status. The remaining requirement is a Markdown error body when agents request Accept: text/markdown. Include at least 20 characters explaining the error and a link to your d…
+
+△ [ESSENTIAL  ] Not blocked by bot detection
+  现状：Some agents blocked: GPTBot, ClaudeBot
+  建议：Allowlist known AI agent User-Agents (ChatGPT-User, ClaudeBot, Google-Extended, DeepSeekBot) in your WAF or bot-detection rules.
+
+△ [ESSENTIAL  ] Content without JavaScript
+  现状：6892 chars with H1, but 3.9% content ratio is below the 5% target
+  建议：Serve at least 500 characters of meaningful homepage content in raw HTML. Add a clear H1, keep deeper heading levels sequential, and remove excessive non-content markup.
+
+✗ [RECOMMENDED] Brand name discoverability
+  现状："SBTI" search returned 8 results but domain did not appear - brand may be too generic or not indexed
+  建议：Make sure a clean search for your brand name returns your own domain in the top results. If it does not, your brand may be too generic, conflict with a more established term, or not yet indexed. Stren…
+
+✗ [RECOMMENDED] Agent instruction / when-to-use
+  现状：No agent instruction file with when-to-use guidance found
+  建议：Tell agents when to reach for you: add a 'when to use this' section to your llms.txt (or a dedicated agent-instructions file) that names your best-fit use cases and how an agent should call you. Be sp…
+
+△ [RECOMMENDED] Organization schema completeness
+  现状：Organization schema found but missing: contactPoint, address
+  建议：Add Organization JSON-LD that includes both contactPoint (with email/phone and contactType) and address (PostalAddress). This lets AI verify your business legitimacy and answer contact queries.
+
+△ [RECOMMENDED] Trust anchor pages
+  现状：About, Privacy pages verified - missing: Contact
+  建议：Publish real /about, /contact, and /privacy pages with at least 500 characters of content each. These are the pages AI agents check to verify your business is legitimate before recommending you.
+

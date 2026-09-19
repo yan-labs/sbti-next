@@ -17,7 +17,7 @@
 - UI：shadcn/ui + Tailwind + @base-ui/react；状态用 zustand
 - 语言：zh / en / ja / ko 四语言，`defaultLocale: 'en'`，`localePrefix: 'as-needed'`（`i18n/routing.ts`）；文案全部在 `messages/{locale}.json`
 - 路由骨架（`app/[locale]/`）：`/`、`/test`、`/type/[code]`、`/types`、`/result/[code]`、`/compat`、`/compat/[a]/[b]`、`/games`、`/games/[slug]`、`/games/[slug]/play`、`/games/[slug]/result/[archetype]`、`/games/[slug]/compat`、`/games/[slug]/compat/[a]/[b]`、`/blog`、`/blog/[slug]`、`/about`、`/faq`、`/privacy-policy`、`/terms`
-- 部署：GitHub Actions `deploy.yml`，push 到 `main` 触发 → pnpm 10 / Node 22 → `pnpm build` → 清理静态导出多余 `.txt` → `npx wrangler pages deploy out --project-name=sbti-support`（**Cloudflare Pages**，非 Workers）
+- 部署：GitHub Actions `deploy.yml`，push 到 `main` 触发 → pnpm 10 / Node 22 → `pnpm build` → 清理静态导出多余 `.txt` → `npx wrangler pages deploy out --project-name=sbti-support`（**Cloudflare Pages**，非 Workers） → 等 IndexNow key 上线 → `scripts/indexnow-push.mjs --baseline`（按部署前后 sitemap 差集推 Bing + api.indexnow.org，2026-09-20 起）
 - 构建后置：`scripts/strip-rsc-payloads.mjs` 在 `next build` 之后跑，属于构建产物的一部分，别单独跑 `next build` 就以为完事
 - 验证命令：`pnpm typecheck`（tsc --noEmit）、`pnpm test`（vitest run）、`pnpm lint`
 

@@ -20,6 +20,13 @@
 - [ ] **블로그 ko 本地化强度**：블로그는 4언어 번역 상태；한국이 검증된 시장이므로 ko 글 1편을 한국 밈 문맥으로 재작성（CLAUDE.md 블로그 가이드 준수）。
 - [ ] **2-4 周后回看基线**（baseline.md 下一笔）：通用词曝光、compat "crawled-not-indexed" 数值。
 
+## P1.5 — 2026-09-20 Bing 修复轮留下的待办
+- [ ] **AITDK 全站报告 + PageSpeed（移动/桌面）+ 哥飞 AI 二次意见补跑**：2026-09-20 自动化窗口池被其他任务占用未跑成（`checks.md` ⏸ 三行）。完成判定：三项证据落 `evidence/`，AITDK 未满分项逐条修或写明原因。
+- [ ] **首页主题聚焦**：seo.web.cafe audit 首页 45 分 D（H1「Which kind of human?」不含 funny personality test、密度榜与目标词脱节）。改首页 H1/首屏文案属于定位改版，需按 CLAUDE.md 博客语气规范四语同步。
+- [ ] **is-agentic 57/100**：补 contact 页、Organization schema 的 contactPoint、llms.txt 的 when-to-use 段。
+- [ ] **www → apex 301**：Cloudflare Bulk Redirect（需账号操作）。
+- [ ] **Bing Webmaster 复查**：下次 Bing 扫描后（通常 1–2 周）回看 Recommendations，确认 IndexNow 与标题过短两项消失；play 页 noindex 条目属于有意保留。
+
 ## P2 — 观察 / 条件触发
 - [x] ~~compat 组合页 4-6 周后仍滞留 → 升级 noindex~~ **已于 2026-07-18 晚直接执行完毕**（代码核实：两处 compat `[a]/[b]` 页面均 `robots: {index:false, follow:true}`）。剩余观察项改为：4-6 周后看 GSC "已抓取-尚未编入索引" 是否从 890 回落
 - [ ] games 页有任何游戏词曝光信号 → 再评估投入
