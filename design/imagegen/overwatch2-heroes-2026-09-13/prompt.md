@@ -1,5 +1,5 @@
 Generate eight images with your built-in image generation tool and save them to:
-/Users/kcsx/Project/kcsx/sbti-next/design/imagegen/overwatch2-heroes-2026-09-13/
+/Users/kcsx/Project/kcsx/macmini/sbti-next/design/imagegen/overwatch2-heroes-2026-09-13/
 
 These are stylized fan-art-style character badges for a humor personality-quiz website. They must NOT be photorealistic or attempt to closely replicate any specific copyrighted game's official character art style — they are original illustrations that merely take visual inspiration from each character's iconic silhouette, colors, and signature gear (weapon/mech/ability effect), reinterpreted in a distinct flat-vector illustration style described below.
 

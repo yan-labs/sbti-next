@@ -627,16 +627,16 @@ VALORANT、CS2、LoL、F1、スマブラ 全部是**他人注册商标**。本�
 | **计时精度本身**：浏览器 `performance.now()` 受显示器刷新率、`requestAnimationFrame` 节流、系统延迟影响，实测会给结果加 10–50ms | 结果页必须有明确免责说明；**不同设备的成绩不可直接比较**——这也是全局排行榜在公平性上的固有缺陷，再次支持第一期不做全局榜 |
 
 **关键路径文件**（后续开发用）：
-- `/Users/kcsx/Project/kcsx/sbti-next/lib/data/games/types.ts` — `LocalizedText` 类型契约，称号系统直接复用
-- `/Users/kcsx/Project/kcsx/sbti-next/lib/data/games/scoring.ts` + `lib/data/games/__tests__/` — 最接近的现成范式，**且是全项目唯一有测试覆盖的部分**
-- `/Users/kcsx/Project/kcsx/sbti-next/components/result-phase.tsx` — `GameV2Result` 是 props 驱动的可复用结果卡
-- `/Users/kcsx/Project/kcsx/sbti-next/components/share-buttons.tsx` — 零改动复用
-- `/Users/kcsx/Project/kcsx/sbti-next/components/save-result-image.tsx` — Canvas2D 存图范式
-- `/Users/kcsx/Project/kcsx/sbti-next/lib/history.ts` — localStorage 个人最佳范式
-- `/Users/kcsx/Project/kcsx/sbti-next/lib/metadata.ts` — `buildAlternates()` / hreflang / OG 集中地
-- `/Users/kcsx/Project/kcsx/sbti-next/app/sitemap.ts` — **手写列表，新页面必须手动加**
-- `/Users/kcsx/Project/kcsx/sbti-next/next.config.mjs` — `output: 'export'` 的约束源头
-- `/Users/kcsx/Project/kcsx/sbti-next/.github/workflows/deploy.yml` — 无测试闸门
+- `/Users/kcsx/Project/kcsx/macmini/sbti-next/lib/data/games/types.ts` — `LocalizedText` 类型契约，称号系统直接复用
+- `/Users/kcsx/Project/kcsx/macmini/sbti-next/lib/data/games/scoring.ts` + `lib/data/games/__tests__/` — 最接近的现成范式，**且是全项目唯一有测试覆盖的部分**
+- `/Users/kcsx/Project/kcsx/macmini/sbti-next/components/result-phase.tsx` — `GameV2Result` 是 props 驱动的可复用结果卡
+- `/Users/kcsx/Project/kcsx/macmini/sbti-next/components/share-buttons.tsx` — 零改动复用
+- `/Users/kcsx/Project/kcsx/macmini/sbti-next/components/save-result-image.tsx` — Canvas2D 存图范式
+- `/Users/kcsx/Project/kcsx/macmini/sbti-next/lib/history.ts` — localStorage 个人最佳范式
+- `/Users/kcsx/Project/kcsx/macmini/sbti-next/lib/metadata.ts` — `buildAlternates()` / hreflang / OG 集中地
+- `/Users/kcsx/Project/kcsx/macmini/sbti-next/app/sitemap.ts` — **手写列表，新页面必须手动加**
+- `/Users/kcsx/Project/kcsx/macmini/sbti-next/next.config.mjs` — `output: 'export'` 的约束源头
+- `/Users/kcsx/Project/kcsx/macmini/sbti-next/.github/workflows/deploy.yml` — 无测试闸门
 
 ---
 

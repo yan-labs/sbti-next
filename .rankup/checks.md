@@ -8,7 +8,7 @@
 未采用 IndexNow（高）、需要审阅的重要页面使用元机器人标记（中，2 页）、许多页面标题过短（中，42 页）、来自高质量域的入站链接不足（中，外链项，本轮按要求不处理）。
 原始 URL 清单：`evidence/bing-fix-2026-09-20/bing-short-titles.txt`。
 
-规范域名：`https://sbti.support`（apex）。`www.sbti.support` 返回 200 且 canonical 指向 apex，**没有 301**（`public/_redirects` 注释写明需在 Cloudflare Bulk Redirect 配，至今未配）。
+规范域名：`https://sbti.support`（apex）。`www.sbti.support` 返回 200 且 canonical 指向 apex，**没有 301**（`public/_redirects` 注释写明需在 Cloudflare Bulk Redirect 配，至今未配）。**2026-09-20 当天晚些时候已配置，见下方新增小节。**
 
 | 检查项 | 状态 | 证据 | 日期 |
 |---|---|---|---|
@@ -29,3 +29,19 @@
 | AITDK 全站报告 | ⏸ | `aitdk-run.log`：Part B 面板未打开（后台标签页 iframe 宽度 0），Part A 也没取到数据。同时段自动化窗口池被其他项目的 agent 占用（bing-crystal / bsm-pagespeed），没有抢占。下一轮在空闲时补跑 | 2026-09-20 |
 | PageSpeed 移动 + 桌面 | ⏸ | 需要可见的专用窗口，本轮窗口池被其他任务占用；本轮只改了 title/description/标题标签级别，不影响性能，下一轮补跑 | 2026-09-20 |
 | 哥飞 AI 二次意见 | ⏸ | 需要走已登录浏览器会话，同上被占用；下一轮补跑 | 2026-09-20 |
+
+## 2026-09-20（当天晚些时候）www → apex 301 跳转
+
+背景：上一节记录的已知缺口——`www.sbti.support` 返回 200、没有 301——本次补齐，用户已明确授权 Cloudflare 账号级规则/DNS 变更，不再需要逐项确认。
+
+配置内容：
+- DNS：`www.sbti.support` 的代理（橙云）CNAME 记录此前已存在（`content=sbti-support.pages.dev`，`proxied:true`，record id `c0703f678eddc3844b7da12bb146298b`），无需新增，只是确认满足 Redirect Rule 命中前提。
+- Redirect Rule（zone 级，phase `http_request_dynamic_redirect`）：ruleset id `a7ee88dd9e0c4fd786e7c282e6d0986d`，rule id `a14a23b7dcc542299009ae76a49c1aa6`，ref `www_to_apex_redirect`，description "www to apex redirect"。匹配 `http.host eq "www.sbti.support"`，301 跳转到 `concat("https://sbti.support", http.request.uri.path)`，`preserve_query_string: true`。全程走 Cloudflare API（`curl` + Global API Key，未开 Dashboard）。
+
+| 检查项 | 状态 | 证据 | 日期 |
+|---|---|---|---|
+| `www.sbti.support/` → 301 → `https://sbti.support/` | ✅ | `evidence/www-redirect-2026-09-20/curl-verify.txt` | 2026-09-20 |
+| `www.sbti.support/en/games`（带路径）→ 301 原样带路径 | ✅ | 同上 | 2026-09-20 |
+| `www.sbti.support/en/games?foo=bar`（带路径+查询串）→ 301 原样带过去 | ✅ | 同上 | 2026-09-20 |
+| `sbti.support/` 仍 200，未被连带影响、无跳转环 | ✅ | 同上 | 2026-09-20 |
+| 规则生效延迟 | 备注 | 创建后立即测试仍是 200，等待约 20 秒边缘传播后变 301，属正常传播延迟 | 2026-09-20 |

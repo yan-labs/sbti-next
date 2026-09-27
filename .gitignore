@@ -51,3 +51,23 @@ docs/design-proposal/
 # 起動のたびに変わる。共有すると他人の環境で誤ったポートを指す。
 .rankup/receiver.json
 .rankup/data/receiver.log
+
+# Local captures and generated outputs
+*.log
+*.headers
+*.err
+*.stderr
+*.body
+*.jsonl
+**/raw/
+*-report.json
+lighthouse*.json
+/.rankup/evidence/**/*.json
+/.rankup/research/**/*.json
+/.rankup/agentic/**/*.json
+/.rankup/evidence/**/*.txt
+/.rankup/evidence/**/*.html
+/.backlink/evidence/**/*.json
+/.backlink/evidence/**/*.txt
+/.backlink/evidence/**/*.html
+/.backlink/runs/

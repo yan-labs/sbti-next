@@ -117,7 +117,7 @@ humanbenchmark 的品牌词月搜 31.8 万——用户记住它名字了，直�
 
 ## 执行记录（调用方式、过程中出现的异常与排查）
 
-- **首选方式（按任务要求）**：`node /Users/kcsx/Project/kcsx/yan-skills/rankup/scripts/seo-webcafe.mjs chat --ask "<上述提问原文>"`。
+- **首选方式（按任务要求）**：`node /Users/kcsx/Project/kcsx/macmini/yan-skills/rankup/scripts/seo-webcafe.mjs chat --ask "<上述提问原文>"`。
   - 前置配额检查正常：`· 配额 VIP（登录态浏览器实测）：已用 76/500，剩 424`，确认账号为 VIP 登录态，OpenCLI（v1.9.1）与 Chrome 扩展连接正常。
   - 实际执行失败，报错：`驱动登录态浏览器失败，这条命令没有降级路径：opencli eval 执行失败（session=webcafe-nav）：spawnSync opencli ETIMEDOUT`。
   - **根因排查**：读脚本源码确认 `seo-webcafe.mjs` 里 `opencliEval()`/`opencliOpenTool()` 对 `execFileSync` 硬编码了 `timeout: 30000`（30 秒），且这个超时不可通过任何 CLI 参数覆盖。`chat` 命令的响应是服务端多轮推理 + 工具调用（本次实测最终耗时数分钟），必然超过这个 30 秒的硬编码上限，导致这条路径必然超时失败，与网络状况、账号状态无关，是脚本本身现有版本对 `chat` 命令的一个已知限制（其余 session 类命令如 serp/audit 一般响应更快，未必会触发同样问题）。

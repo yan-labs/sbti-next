@@ -4,13 +4,13 @@
 
 | 文件（绝对路径链接） | 字节 |
 |---|---:|
-| [ana.png](/Users/kcsx/Project/kcsx/sbti-next/design/imagegen/overwatch2-heroes-2026-09-13/ana.png) | 1,267,905 |
-| [mercy.png](/Users/kcsx/Project/kcsx/sbti-next/design/imagegen/overwatch2-heroes-2026-09-13/mercy.png) | 1,402,860 |
-| [lucio.png](/Users/kcsx/Project/kcsx/sbti-next/design/imagegen/overwatch2-heroes-2026-09-13/lucio.png) | 1,317,251 |
-| [reinhardt.png](/Users/kcsx/Project/kcsx/sbti-next/design/imagegen/overwatch2-heroes-2026-09-13/reinhardt.png) | 1,291,475 |
-| [orisa.png](/Users/kcsx/Project/kcsx/sbti-next/design/imagegen/overwatch2-heroes-2026-09-13/orisa.png) | 1,298,582 |
-| [hanzo.png](/Users/kcsx/Project/kcsx/sbti-next/design/imagegen/overwatch2-heroes-2026-09-13/hanzo.png) | 1,278,084 |
-| [dva.png](/Users/kcsx/Project/kcsx/sbti-next/design/imagegen/overwatch2-heroes-2026-09-13/dva.png) | 1,267,578 |
-| [genji.png](/Users/kcsx/Project/kcsx/sbti-next/design/imagegen/overwatch2-heroes-2026-09-13/genji.png) | 1,156,293 |
+| [ana.png](/Users/kcsx/Project/kcsx/macmini/sbti-next/design/imagegen/overwatch2-heroes-2026-09-13/ana.png) | 1,267,905 |
+| [mercy.png](/Users/kcsx/Project/kcsx/macmini/sbti-next/design/imagegen/overwatch2-heroes-2026-09-13/mercy.png) | 1,402,860 |
+| [lucio.png](/Users/kcsx/Project/kcsx/macmini/sbti-next/design/imagegen/overwatch2-heroes-2026-09-13/lucio.png) | 1,317,251 |
+| [reinhardt.png](/Users/kcsx/Project/kcsx/macmini/sbti-next/design/imagegen/overwatch2-heroes-2026-09-13/reinhardt.png) | 1,291,475 |
+| [orisa.png](/Users/kcsx/Project/kcsx/macmini/sbti-next/design/imagegen/overwatch2-heroes-2026-09-13/orisa.png) | 1,298,582 |
+| [hanzo.png](/Users/kcsx/Project/kcsx/macmini/sbti-next/design/imagegen/overwatch2-heroes-2026-09-13/hanzo.png) | 1,278,084 |
+| [dva.png](/Users/kcsx/Project/kcsx/macmini/sbti-next/design/imagegen/overwatch2-heroes-2026-09-13/dva.png) | 1,267,578 |
+| [genji.png](/Users/kcsx/Project/kcsx/macmini/sbti-next/design/imagegen/overwatch2-heroes-2026-09-13/genji.png) | 1,156,293 |
 
-**尚有偏差：**局部存在明暗色阶，未严格满足仅 3–4 纯色、所有形状统一黑描边及一致网点。完整逐文件记录见 [report.md](/Users/kcsx/Project/kcsx/sbti-next/design/imagegen/overwatch2-heroes-2026-09-13/report.md)。
+**尚有偏差：**局部存在明暗色阶，未严格满足仅 3–4 纯色、所有形状统一黑描边及一致网点。完整逐文件记录见 [report.md](/Users/kcsx/Project/kcsx/macmini/sbti-next/design/imagegen/overwatch2-heroes-2026-09-13/report.md)。

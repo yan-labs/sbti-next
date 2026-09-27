@@ -39,7 +39,9 @@
 - 游戏原型结果页（256 页）与 27 类型博客文 h1 后直接 h3，改为 h2。
 - 新增 `scripts/seo-meta-audit.mjs`（`pnpm seo:audit`），`pnpm build` 后离线检查 out/ 全部页面。
 
+已处理（2026-09-20 补）：
+- `www.sbti.support` → `https://sbti.support` 301 跳转已配置（Cloudflare Redirect Rule，路径/查询串原样保留）。详见 `checks.md` 同日节、`evidence/www-redirect-2026-09-20/curl-verify.txt`。
+
 未处理（记录在案）：
-- `www.sbti.support` 仍返回 200（canonical 指向 apex，不算重复收录风险，但应在 Cloudflare Bulk Redirect 配 301，需要账号操作）。
 - 旧占位 key 文件 `/a1b2c3d4….txt` 线上仍返回 200：Cloudflare 边缘缓存了旧资源（`age` 约 1400s，`s-maxage=604800`），新部署里已删除，缓存过期后消失；它不是当前使用的 key，不影响提交。
 - `/en/*` 前缀变体（如 `/en/games/valorant/play`）可访问且带指向无前缀 URL 的 canonical；没有加 301，因为 `_redirects` 用 `/x → /en/x 200` 的 rewrite 提供英文页，再加 `/en/* → /*` 301 有循环风险。

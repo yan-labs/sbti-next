@@ -5,13 +5,13 @@
 
 | 绝对路径 | 像素 | 字节 | 通道 | 方法 |
 |---|---|---:|---|---|
-| /Users/kcsx/Project/kcsx/sbti-next/design/imagegen/overwatch2-heroes-2026-09-13/ana.png | 1024×1024 | 1267905 | RGB，不透明 | image_gen + sips |
-| /Users/kcsx/Project/kcsx/sbti-next/design/imagegen/overwatch2-heroes-2026-09-13/mercy.png | 1024×1024 | 1402860 | RGB，不透明 | image_gen + sips |
-| /Users/kcsx/Project/kcsx/sbti-next/design/imagegen/overwatch2-heroes-2026-09-13/lucio.png | 1024×1024 | 1317251 | RGB，不透明 | image_gen + sips |
-| /Users/kcsx/Project/kcsx/sbti-next/design/imagegen/overwatch2-heroes-2026-09-13/reinhardt.png | 1024×1024 | 1291475 | RGB，不透明 | image_gen + sips |
-| /Users/kcsx/Project/kcsx/sbti-next/design/imagegen/overwatch2-heroes-2026-09-13/orisa.png | 1024×1024 | 1298582 | RGB，不透明 | image_gen + sips |
-| /Users/kcsx/Project/kcsx/sbti-next/design/imagegen/overwatch2-heroes-2026-09-13/hanzo.png | 1024×1024 | 1278084 | RGB，不透明 | image_gen + sips |
-| /Users/kcsx/Project/kcsx/sbti-next/design/imagegen/overwatch2-heroes-2026-09-13/dva.png | 1024×1024 | 1267578 | RGB，不透明 | image_gen + sips |
-| /Users/kcsx/Project/kcsx/sbti-next/design/imagegen/overwatch2-heroes-2026-09-13/genji.png | 1024×1024 | 1156293 | RGB，不透明 | image_gen + sips |
+| /Users/kcsx/Project/kcsx/macmini/sbti-next/design/imagegen/overwatch2-heroes-2026-09-13/ana.png | 1024×1024 | 1267905 | RGB，不透明 | image_gen + sips |
+| /Users/kcsx/Project/kcsx/macmini/sbti-next/design/imagegen/overwatch2-heroes-2026-09-13/mercy.png | 1024×1024 | 1402860 | RGB，不透明 | image_gen + sips |
+| /Users/kcsx/Project/kcsx/macmini/sbti-next/design/imagegen/overwatch2-heroes-2026-09-13/lucio.png | 1024×1024 | 1317251 | RGB，不透明 | image_gen + sips |
+| /Users/kcsx/Project/kcsx/macmini/sbti-next/design/imagegen/overwatch2-heroes-2026-09-13/reinhardt.png | 1024×1024 | 1291475 | RGB，不透明 | image_gen + sips |
+| /Users/kcsx/Project/kcsx/macmini/sbti-next/design/imagegen/overwatch2-heroes-2026-09-13/orisa.png | 1024×1024 | 1298582 | RGB，不透明 | image_gen + sips |
+| /Users/kcsx/Project/kcsx/macmini/sbti-next/design/imagegen/overwatch2-heroes-2026-09-13/hanzo.png | 1024×1024 | 1278084 | RGB，不透明 | image_gen + sips |
+| /Users/kcsx/Project/kcsx/macmini/sbti-next/design/imagegen/overwatch2-heroes-2026-09-13/dva.png | 1024×1024 | 1267578 | RGB，不透明 | image_gen + sips |
+| /Users/kcsx/Project/kcsx/macmini/sbti-next/design/imagegen/overwatch2-heroes-2026-09-13/genji.png | 1024×1024 | 1156293 | RGB，不透明 | image_gen + sips |
 
 最终提示词和源图对应：generation-manifest.json；原始需求：prompt.md。

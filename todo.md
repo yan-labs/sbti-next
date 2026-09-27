@@ -7,7 +7,7 @@
 
 ## 0. 项目上下文
 
-**项目根目录**：`/Users/kcsx/Project/kcsx/sbti-next/`
+**项目根目录**：`/Users/kcsx/Project/kcsx/macmini/sbti-next/`
 **技术栈**：Next.js 16 (App Router) · Tailwind CSS v4 · shadcn/ui (base-nova) · Base-UI · next-intl
 **部署**：Cloudflare Pages（静态导出 `output: 'export'`）
 **支持语种**：`zh` / `en` / `ja` / `ko`
