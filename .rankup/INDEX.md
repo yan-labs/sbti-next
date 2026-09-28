@@ -1,5 +1,10 @@
 # .rankup 目录索引 — sbti.support
 
+- 阶段：段 5 已上线，进入收录观察与内容优化（2026-09-20 记录）。
+- 线上状态：`https://sbti.support` 为规范域；www → apex 301 已核验。Bing 修复与 IndexNow 提交见 `checks.md`，抓取结果待复查。
+- 下一步：复查 Bing Recommendations；补跑 AITDK、PageSpeed 和哥飞复核；推进首页主题与 Naver 接入（账号步骤见 `plan.md`）。
+- 依据：`checks.md`、`plan.md`；这里是历史记录摘要，外部状态须重新核验。
+
 - 项目：sbti.support（SBTI，静态导出 Next.js + Cloudflare Pages）
 - 最近更新：2026-09-20
 - 当前目标：通用词从 0 曝光起量；韩国市场 Naver 收录
