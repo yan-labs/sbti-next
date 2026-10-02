@@ -41,8 +41,8 @@ const COPY: Record<
       },
       {
         num: '04',
-        title: '四种语言，真本地化',
-        desc: '中文 / English / 日本語 / 한국어 —— 不是 Google Translate，每一句都是人写的。',
+        title: '四种语言',
+        desc: '中文 / English / 日本語 / 한국어。',
       },
     ],
   },
@@ -70,8 +70,8 @@ const COPY: Record<
       },
       {
         num: '04',
-        title: 'Four languages, actually written',
-        desc: 'Chinese / English / 日本語 / 한국어 — not Google Translate. Every line was written by a human in that language.',
+        title: 'Four languages',
+        desc: 'Chinese / English / 日本語 / 한국어.',
       },
     ],
   },
@@ -99,8 +99,8 @@ const COPY: Record<
       },
       {
         num: '04',
-        title: '4言語、ちゃんと書いた',
-        desc: '中文 / English / 日本語 / 한국어 —— Google翻訳ではない。一行ずつ、その言語で書いてる。',
+        title: '4言語',
+        desc: '中文 / English / 日本語 / 한국어。',
       },
     ],
   },
@@ -128,8 +128,8 @@ const COPY: Record<
       },
       {
         num: '04',
-        title: '4개 언어, 진짜 사람이 썼다',
-        desc: '中文 / English / 日本語 / 한국어 —— 구글 번역 아니다. 한 줄 한 줄 그 언어로 직접 썼다.',
+        title: '4개 언어',
+        desc: '中文 / English / 日本語 / 한국어.',
       },
     ],
   },

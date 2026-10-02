@@ -34,7 +34,7 @@ const COPY: Record<
       },
       {
         q: '测试要花多少时间？',
-        a: '31 道题，凭直觉戳过去就行，1–3 分钟。比刷 30 秒抖音的"再来一个"还快。',
+        a: '31–32 道题，凭直觉戳过去就行，1–3 分钟。比刷 30 秒抖音的"再来一个"还快。',
       },
       {
         q: '27 种人格类型都有哪些？',
@@ -68,7 +68,7 @@ const COPY: Record<
       },
       {
         q: 'How long does the test take?',
-        a: '31 questions, just trust your gut, 1–3 minutes. Faster than scrolling past three TikToks.',
+        a: '31–32 questions, just trust your gut, 1–3 minutes. Faster than scrolling past three TikToks.',
       },
       {
         q: 'What are the 27 personality types?',
@@ -102,7 +102,7 @@ const COPY: Record<
       },
       {
         q: '何分くらいかかる？',
-        a: '31問、直感でポチポチで1〜3分。TikTokを3本見るより早い。',
+        a: '31–32問、直感でポチポチで1〜3分。TikTokを3本見るより早い。',
       },
       {
         q: '27タイプって具体的に？',
@@ -136,7 +136,7 @@ const COPY: Record<
       },
       {
         q: '시간 얼마나 걸려요?',
-        a: '31문항, 직감으로 누르면 1~3분. 틱톡 3개 보는 것보다 빠르다.',
+        a: '31–32문항, 직감으로 누르면 1~3분. 틱톡 3개 보는 것보다 빠르다.',
       },
       {
         q: '27가지 유형이 뭐예요?',

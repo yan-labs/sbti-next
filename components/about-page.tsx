@@ -29,7 +29,7 @@ export function AboutPage() {
           <header>
             <span className="editorial-kicker-line mb-6">{t('pageTitle')}</span>
             <h1 className="editorial-h1">
-              About <em>SBTI</em>
+              {t('pageTitle')}
             </h1>
           </header>
 
@@ -48,9 +48,9 @@ export function AboutPage() {
         <section className="border-t border-border pt-20 mb-20">
           <div className="grid grid-cols-1 gap-12 md:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] md:gap-20">
             <div>
-              <span className="editorial-kicker block mb-3">01 / Premise</span>
+              <span className="editorial-kicker block mb-3">01 / {t('whatIsSbti')}</span>
               <h2 className="editorial-h2">
-                What is <em>SBTI</em>?
+                {t('whatIsSbti')}
               </h2>
             </div>
             <div className="prose-custom">
@@ -63,14 +63,14 @@ export function AboutPage() {
         {/* How it works */}
         <section className="border-t border-border pt-20 mb-20">
           <div className="mb-12">
-            <span className="editorial-kicker block mb-3">02 / Method</span>
+            <span className="editorial-kicker block mb-3">02 / {t('howItWorks')}</span>
             <h2 className="editorial-h2">{t('howItWorks')}</h2>
           </div>
           <div className="grid gap-px bg-border border border-border md:grid-cols-3">
             {(['howStep1', 'howStep2', 'howStep3'] as const).map((step, i) => (
               <div key={step} className="bg-card p-7">
                 <span className="editorial-kicker block mb-4">
-                  Step {String(i + 1).padStart(2, '0')}
+                  {String(i + 1).padStart(2, '0')}
                 </span>
                 <h3 className="font-heading text-xl font-semibold tracking-tight mb-3">
                   {t(`${step}Title`)}
@@ -87,9 +87,9 @@ export function AboutPage() {
         <section className="border-t border-border pt-20 mb-20">
           <div className="grid grid-cols-1 gap-12 md:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] md:gap-20 mb-12">
             <div>
-              <span className="editorial-kicker block mb-3">03 / Dimensions</span>
+              <span className="editorial-kicker block mb-3">03 / {t('dimensionsTitle')}</span>
               <h2 className="editorial-h2">
-                <em>Five</em> axes,<br />fifteen poles.
+                {t('dimensionsTitle')}
               </h2>
             </div>
             <div>
@@ -114,7 +114,7 @@ export function AboutPage() {
 
         {/* CTA */}
         <div className="border-t border-border pt-20 flex flex-col items-start gap-6">
-          <span className="editorial-kicker">Ready when you are</span>
+          <span className="editorial-kicker">{ti('start')}</span>
           <Link href="/test" className="btn-editorial">
             {ti('start')}
           </Link>

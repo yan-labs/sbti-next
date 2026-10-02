@@ -57,8 +57,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }
 
   // Homepage
-  addLocalized('', 1.0, '2026-04-10');
-  addLocalized('/test', 0.9, '2026-04-29');
+  addLocalized('', 1.0, '2026-10-03');
+  addLocalized('/test', 0.9, '2026-10-03');
 
   // Game personality tests (hub + per-game pages)
   addLocalized('/games', 0.8, '2026-09-20');
@@ -83,9 +83,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // which is what actually ranks) and therefore stay out of the sitemap.
 
   // Static pages
-  addLocalized('/about', 0.5, '2026-04-10');
-  addLocalized('/types', 0.7, '2026-04-10');
-  addLocalized('/faq', 0.5, '2026-04-10');
+  addLocalized('/about', 0.5, '2026-10-03');
+  addLocalized('/types', 0.7, '2026-10-03');
+  addLocalized('/faq', 0.5, '2026-10-03');
   addLocalized('/privacy-policy', 0.3, '2026-04-10');
   addLocalized('/terms', 0.3, '2026-04-10');
 

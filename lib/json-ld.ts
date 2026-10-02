@@ -70,10 +70,10 @@ const QUIZ_NAME: Record<string, string> = {
 };
 
 const QUIZ_DESCRIPTION: Record<string, string> = {
-  zh: '免费在线人格测试，戏仿 MBTI，30 道题测出你的 SBTI 人格类型（共 27 种）。',
-  en: 'Free satirical personality quiz that parodies MBTI. Answer 30 questions to discover your SBTI type from 27 absurd personality archetypes.',
-  ja: 'MBTIをパロディした無料性格テスト。30問で27タイプからあなたのSBTIタイプを診断します。',
-  ko: 'MBTI를 패러디한 무료 성격 테스트. 30문항으로 27가지 유형 중 당신의 SBTI 유형을 찾아보세요.',
+  zh: '免费在线人格测试，戏仿 MBTI，31–32 道题测出你的 SBTI 人格类型（共 27 种）。',
+  en: 'Free satirical personality quiz that parodies MBTI. Answer 31–32 questions to discover your SBTI type from 27 absurd personality archetypes.',
+  ja: 'MBTIをパロディした無料性格テスト。31–32問で27タイプからあなたのSBTIタイプを診断します。',
+  ko: 'MBTI를 패러디한 무료 성격 테스트. 31–32문항으로 27가지 유형 중 당신의 SBTI 유형을 찾아보세요.',
 };
 
 export function buildQuizSchema(locale: string) {

@@ -19,7 +19,7 @@ export function IntroPhase() {
       <div className="w-full max-w-2xl text-center">
         <div className="mb-6 inline-flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
           <span className="h-px w-7 bg-muted-foreground" />
-          SBTI · 主测试 · 31 道题
+          SBTI · 主测试 · 31–32 道题
         </div>
 
         <h1 className="font-heading text-[clamp(48px,7vw,96px)] font-bold leading-[0.95] tracking-tight text-foreground">
