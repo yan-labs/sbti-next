@@ -14,7 +14,8 @@
     "subhead": "31–32問・1〜3分。MBTIよりちょっといい加減な性格診断。親には説明しにくい27の不条理タイプの中から、君がどれかを当てる。",
     "start": "テスト開始",
     "browseTypes": "先に27タイプを見る →",
-    "typesTitle": "27の性格タイプ"
+    "typesTitle": "27の性格タイプ",
+    "contentNotice": "Sharp humor and profanity ahead. For entertainment, not a psychological assessment."
   },
   "quiz": {
     "progress": "{current} / {total}",
@@ -34,7 +35,8 @@
     "restart": "もう一度テスト",
     "levelL": "低",
     "levelM": "中",
-    "levelH": "高"
+    "levelH": "高",
+    "satireNotice": "Satire for entertainment. Scores are game values, not population statistics or psychological measures."
   },
   "dimensions": {
     "S1": "自尊心",
@@ -583,7 +585,8 @@
     "shareVia": "シェア",
     "tweetText": "SBTI性格テストで{code}（{name}）が出た！あなたは何タイプ？",
     "saveImage": "画像を保存",
-    "saving": "保存中..."
+    "saving": "保存中...",
+    "satireLabel": "Satire · For entertainment only"
   },
   "about": {
     "metaTitle": "SBTIについて — 風刺行動タイプ指標とは？",
@@ -629,9 +632,9 @@
     "q6": "5つの次元モデルとは？",
     "a6": "5つのモデル：自己認知（自分の見方）、感情スタイル（つながり方）、態度と世界観（世界の見方）、行動パターン（行動の仕方）、社交スタイル（人間関係の進め方）。各モデルに3つのサブ次元があります。",
     "q7": "再テストできますか？",
-    "a7": "もちろん！何度でも再テストできます。回答はブラウザでローカル処理され、サーバーには一切保存されません。",
+    "a7": "Yes. You can retake the quiz. Scoring runs in your browser; website analytics are described in the Privacy Policy.",
     "q8": "データは保存されますか？",
-    "a8": "いいえ。SBTIは完全に静的なサイトで、すべてのテストロジックはブラウザで実行されます。回答の収集・保存・送信は一切行いません。唯一使用しているのはページビュー用のGoogle Analyticsです。",
+    "a8": "Quiz scoring runs locally. Main-test result history stays in this browser until deleted. The website also loads Google Analytics, Microsoft Clarity and Ahrefs Analytics; analytics may use cookies and record page interactions.",
     "q9": "SBTIは何語に対応していますか？",
     "a9": "SBTIは4言語に対応：中国語（中文）、英語（English）、日本語、韓国語（한국어）。",
     "q10": "結果をシェアできますか？",
@@ -708,19 +711,19 @@
   },
   "privacy": {
     "metaTitle": "プライバシーポリシー | SBTI 面白い性格診断のデータの取り扱い",
-    "metaDescription": "SBTIプライバシーポリシー。データの扱い方 — ネタバレ：ほぼ何も収集していません。",
+    "metaDescription": "How SBTI uses local quiz scoring, browser result history and third-party website analytics.",
     "pageTitle": "プライバシーポリシー",
-    "lastUpdated": "最終更新：2026年4月",
+    "lastUpdated": "Last updated: October 3, 2026",
     "introTitle": "プライバシーへの取り組み",
-    "introText": "SBTIはブラウザで完全に動作する静的サイトです。最小限のデータ収集を信条としています。",
+    "introText": "Quiz scoring runs in your browser. Website analytics run separately.",
     "section1Title": "収集する情報",
-    "section1Text": "Google Analyticsを使用してSBTIの利用状況を把握しています。これにはページビュー、おおよその地理的位置、デバイスタイプ、ブラウザ情報が含まれます。テストの回答、性格結果、個人を特定できる情報は一切収集しません。",
+    "section1Text": "This website loads Google Analytics, Microsoft Clarity and Ahrefs Analytics for usage analytics. Clarity can record page interactions. These services may process browser, device and usage data.",
     "section2Title": "テストデータ",
-    "section2Text": "すべてのテストロジックはブラウザ内でローカルに実行されます。回答と結果はサーバーに送信されません。ページを閉じるか更新すると、テストデータは消えます。",
+    "section2Text": "Quiz scoring runs locally. Main-test result history is saved in localStorage and survives refresh; it can be deleted from the history panel. Shared result links include result information in the URL.",
     "section3Title": "Cookie",
-    "section3Text": "Google Analyticsがユーザーの識別とセッション追跡のためにCookieを設定する場合があります。SBTI自体はCookieを設定しません。ブラウザの拡張機能やプライバシー設定でGoogle Analyticsをオプトアウトできます。",
+    "section3Text": "Analytics services may use cookies. Local result history uses localStorage, which is separate from cookies.",
     "section4Title": "第三者サービス",
-    "section4Text": "以下の第三者サービスを使用しています：Google Analytics（利用統計）、Google Fonts（フォント）、Cloudflare Pages（ホスティング）。",
+    "section4Text": "The website uses Google Analytics, Microsoft Clarity and Ahrefs Analytics, and is hosted on Cloudflare Pages.",
     "section5Title": "お問い合わせ",
     "section5Text": "このプライバシーポリシーについてご質問がある場合は、GitHubリポジトリからお問い合わせください。"
   },
@@ -919,5 +922,8 @@
     "title": "以前の結果",
     "viewAgain": "もう一度見る",
     "clearAll": "すべて削除"
+  },
+  "games": {
+    "questionFramework": "This quiz has {count} questions mapped to 6 axes. Its 3 dominant axes are marked in vermillion."
   }
 }

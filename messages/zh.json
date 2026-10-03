@@ -14,7 +14,8 @@
     "subhead": "31–32 道题，1-3 分钟。比 MBTI 更不靠谱的人格测试——把你归类成 27 种没办法解释给爸妈听的荒诞类型之一。",
     "start": "开始测试",
     "browseTypes": "或先看看 27 种人格 →",
-    "typesTitle": "27 种人格类型"
+    "typesTitle": "27 种人格类型",
+    "contentNotice": "Sharp humor and profanity ahead. For entertainment, not a psychological assessment."
   },
   "quiz": {
     "progress": "{current} / {total}",
@@ -34,7 +35,8 @@
     "restart": "重新测试",
     "levelL": "低",
     "levelM": "中",
-    "levelH": "高"
+    "levelH": "高",
+    "satireNotice": "Satire for entertainment. Scores are game values, not population statistics or psychological measures."
   },
   "dimensions": {
     "S1": "自尊自信",
@@ -583,7 +585,8 @@
     "shareVia": "分享",
     "tweetText": "我在 SBTI 人格测试中测出了 {code}（{name}）！你是什么类型？",
     "saveImage": "保存图片",
-    "saving": "保存中..."
+    "saving": "保存中...",
+    "satireLabel": "Satire · For entertainment only"
   },
   "about": {
     "metaTitle": "关于 SBTI — 什么是讽刺行为类型指标？",
@@ -629,9 +632,9 @@
     "q6": "5 大维度模型是什么？",
     "a6": "5 个模型是：自我认知（你如何看自己）、情感风格（你如何连接）、态度与世界观（你如何看世界）、行动模式（你如何做事）和社交风格（你如何处理关系）。每个模型有 3 个子维度。",
     "q7": "可以重新测试吗？",
-    "a7": "当然！你可以无限次重新测试。你的答案在浏览器本地处理，从不存储在任何服务器上。",
+    "a7": "Yes. You can retake the quiz. Scoring runs in your browser; website analytics are described in the Privacy Policy.",
     "q8": "我的数据会被存储吗？",
-    "a8": "不会。SBTI 是一个完全静态的网站，所有测试逻辑都在你的浏览器中运行。我们不收集、不存储、不传输你的答案。唯一使用的分析工具是 Google Analytics（仅统计页面浏览量）。",
+    "a8": "Quiz scoring runs locally. Main-test result history stays in this browser until deleted. The website also loads Google Analytics, Microsoft Clarity and Ahrefs Analytics; analytics may use cookies and record page interactions.",
     "q9": "SBTI 支持哪些语言？",
     "a9": "SBTI 支持 4 种语言：中文、英语（English）、日语（日本語）和韩语（한국어）。",
     "q10": "可以分享结果吗？",
@@ -708,19 +711,19 @@
   },
   "privacy": {
     "metaTitle": "隐私政策 | SBTI 搞笑人格测试如何收集、使用和保护你的数据",
-    "metaDescription": "SBTI 隐私政策。了解我们如何处理你的数据——剧透：我们几乎不收集任何数据。",
+    "metaDescription": "How SBTI uses local quiz scoring, browser result history and third-party website analytics.",
     "pageTitle": "隐私政策",
-    "lastUpdated": "最后更新：2026 年 4 月",
+    "lastUpdated": "Last updated: October 3, 2026",
     "introTitle": "我们的隐私理念",
-    "introText": "SBTI 是一个完全在你浏览器中运行的静态网站。我们信奉最小化数据收集——只了解维持运营绝对必要的信息。",
+    "introText": "Quiz scoring runs in your browser. Website analytics run separately.",
     "section1Title": "我们收集什么",
-    "section1Text": "我们使用 Google Analytics 来了解用户如何使用 SBTI。这包括：页面浏览量、大致地理位置、设备类型和浏览器信息。我们不收集你的测试答案、人格结果或任何个人身份信息。",
+    "section1Text": "This website loads Google Analytics, Microsoft Clarity and Ahrefs Analytics for usage analytics. Clarity can record page interactions. These services may process browser, device and usage data.",
     "section2Title": "测试数据",
-    "section2Text": "所有测试逻辑都在你的浏览器中本地运行。你的答案和结果从不发送到任何服务器。关闭或刷新页面后，测试数据就消失了。",
+    "section2Text": "Quiz scoring runs locally. Main-test result history is saved in localStorage and survives refresh; it can be deleted from the history panel. Shared result links include result information in the URL.",
     "section3Title": "Cookies",
-    "section3Text": "Google Analytics 可能会设置 cookies 来区分用户和跟踪会话。SBTI 本身不设置任何 cookies。你可以通过浏览器扩展或隐私设置选择退出 Google Analytics。",
+    "section3Text": "Analytics services may use cookies. Local result history uses localStorage, which is separate from cookies.",
     "section4Title": "第三方服务",
-    "section4Text": "我们使用以下第三方服务：Google Analytics（使用统计）、Google Fonts（字体）和 Cloudflare Pages（托管）。",
+    "section4Text": "The website uses Google Analytics, Microsoft Clarity and Ahrefs Analytics, and is hosted on Cloudflare Pages.",
     "section5Title": "联系我们",
     "section5Text": "如果你对本隐私政策有疑问，可以通过我们的 GitHub 仓库联系我们。"
   },
@@ -919,5 +922,8 @@
     "title": "历史记录",
     "viewAgain": "再看看",
     "clearAll": "清除全部"
+  },
+  "games": {
+    "questionFramework": "This quiz has {count} questions mapped to 6 axes. Its 3 dominant axes are marked in vermillion."
   }
 }

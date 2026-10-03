@@ -1,3 +1,4 @@
+import {getTranslations} from 'next-intl/server';
 import {buildFAQPageSchema} from '@/lib/json-ld';
 import {JsonLd} from '@/components/json-ld';
 
@@ -50,7 +51,7 @@ const COPY: Record<
       },
       {
         q: '测试结果会被保存或用作他用吗？',
-        a: '不会。SBTI 不需要登录、不收集邮箱、不种 cookie。所有题目和结果只存在你的浏览器里，刷新页面就消失了。',
+        a: '',
       },
     ],
   },
@@ -84,7 +85,7 @@ const COPY: Record<
       },
       {
         q: 'Do you store my results or personal data?',
-        a: 'No. No login, no email, no cookie. Questions and results live only in your browser; close the tab and they are gone.',
+        a: '',
       },
     ],
   },
@@ -118,7 +119,7 @@ const COPY: Record<
       },
       {
         q: 'データは保存される？',
-        a: 'されない。ログイン不要、メール収集なし、cookieなし。問題と結果はブラウザ内だけ。タブを閉じれば消える。',
+        a: '',
       },
     ],
   },
@@ -152,7 +153,7 @@ const COPY: Record<
       },
       {
         q: '데이터를 저장하나요?',
-        a: '아니다. 로그인 안 하고, 이메일 안 받고, 쿠키 안 심는다. 문제와 결과는 브라우저 안에만 있다. 탭 닫으면 사라진다.',
+        a: '',
       },
     ],
   },
@@ -162,12 +163,14 @@ interface FAQProps {
   locale: string;
 }
 
-export function FAQ({locale}: FAQProps) {
+export async function FAQ({locale}: FAQProps) {
   const l = (locale as Locale) in COPY ? (locale as Locale) : 'en';
   const t = COPY[l];
+  const privacy = await getTranslations({locale: l, namespace: 'faq'});
+  const faqs = t.faqs.map((qa, i) => i === t.faqs.length - 1 ? {...qa, a: privacy('a8')} : qa);
 
   const schemaData = buildFAQPageSchema(
-    t.faqs.map(({q, a}) => ({question: q, answer: a})),
+    faqs.map(({q, a}) => ({question: q, answer: a})),
   );
 
   return (
@@ -208,7 +211,7 @@ export function FAQ({locale}: FAQProps) {
         </header>
 
         <div className="faq-list border-t border-border">
-          {t.faqs.map((qa, i) => (
+          {faqs.map((qa, i) => (
             <details key={i} className="faq-row border-b border-border py-6">
               <summary
                 className="faq-summary text-foreground flex cursor-pointer list-none items-baseline justify-between gap-6"

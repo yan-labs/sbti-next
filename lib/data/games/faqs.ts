@@ -119,20 +119,13 @@ function buildAxesDescription(locale: SiteLocale): string {
 
 // ── Question-count split ──────────────────────────────────────────────────────
 
-function splitQuestions(total: number): { anchor: number; compound: number } {
-  // Canonical split per spec: 12 anchor + 18 compound = 30
-  // For any other count, fall back to rough 40/60 split
-  if (total === 30) return { anchor: 12, compound: 18 };
-  const anchor = Math.round(total * 0.4);
-  return { anchor, compound: total - anchor };
-}
-
 // ── Public API ────────────────────────────────────────────────────────────────
 
 export function buildGameHubFAQs(game: GameQuizV2, locale: SiteLocale): QA[] {
   const t = TEMPLATES[locale];
   const gameTitle = game.title[locale];
-  const { anchor, compound } = splitQuestions(game.questions.length);
+  const anchor = game.questions.filter((question) => question.kind === 'anchor').length;
+  const compound = game.questions.filter((question) => question.kind === 'compound').length;
   const listSep = locale === 'en' ? ', ' : '、';
   const typesList = game.archetypes.map((a) => a.name[locale]).join(listSep);
   const typeCount = game.archetypes.length;

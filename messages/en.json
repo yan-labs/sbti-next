@@ -14,7 +14,8 @@
     "subhead": "31–32 questions, 1-3 minutes. A less-respectable MBTI — sorts you into one of 27 absurd personality types you can't easily explain to your parents.",
     "start": "Start Test",
     "browseTypes": "Or browse all 27 types →",
-    "typesTitle": "27 Personality Types"
+    "typesTitle": "27 Personality Types",
+    "contentNotice": "Sharp humor and profanity ahead. For entertainment, not a psychological assessment."
   },
   "quiz": {
     "progress": "{current} / {total}",
@@ -34,7 +35,8 @@
     "restart": "Retake Test",
     "levelL": "Low",
     "levelM": "Mid",
-    "levelH": "High"
+    "levelH": "High",
+    "satireNotice": "Satire for entertainment. Scores are game values, not population statistics or psychological measures."
   },
   "dimensions": {
     "S1": "Self-Esteem",
@@ -583,7 +585,8 @@
     "shareVia": "Share",
     "tweetText": "I got {code} ({name}) on the SBTI personality test! What's your type?",
     "saveImage": "Save Image",
-    "saving": "Saving..."
+    "saving": "Saving...",
+    "satireLabel": "Satire · For entertainment only"
   },
   "about": {
     "metaTitle": "About SBTI — What Is the Satirical Behavior Type Indicator?",
@@ -629,9 +632,9 @@
     "q6": "What are the 5 dimension models?",
     "a6": "The 5 models are: Self-Perception (how you see yourself), Emotional Style (how you connect), Attitude & Worldview (how you see the world), Action Patterns (how you get things done), and Social Dynamics (how you navigate relationships). Each model has 3 sub-dimensions.",
     "q7": "Can I retake the test?",
-    "a7": "Absolutely! You can retake the test as many times as you want. Your answers are processed locally in your browser and are never stored on any server.",
+    "a7": "Yes. You can retake the quiz. Scoring runs in your browser; website analytics are described in the Privacy Policy.",
     "q8": "Is my data stored anywhere?",
-    "a8": "No. SBTI is a fully static website. All quiz logic runs in your browser. We don't collect, store, or transmit your answers. The only analytics we use is Google Analytics for page views.",
+    "a8": "Quiz scoring runs locally. Main-test result history stays in this browser until deleted. The website also loads Google Analytics, Microsoft Clarity and Ahrefs Analytics; analytics may use cookies and record page interactions.",
     "q9": "What languages is SBTI available in?",
     "a9": "SBTI is available in 4 languages: Chinese (中文), English, Japanese (日本語), and Korean (한국어).",
     "q10": "Can I share my results?",
@@ -708,19 +711,19 @@
   },
   "privacy": {
     "metaTitle": "Privacy Policy | SBTI Funny Personality Test",
-    "metaDescription": "SBTI privacy policy. Learn how we handle your data — spoiler: we barely collect any.",
+    "metaDescription": "How SBTI uses local quiz scoring, browser result history and third-party website analytics.",
     "pageTitle": "Privacy Policy",
-    "lastUpdated": "Last updated: April 2026",
+    "lastUpdated": "Last updated: October 3, 2026",
     "introTitle": "Our Approach to Privacy",
-    "introText": "SBTI is a static website that runs entirely in your browser. We believe in minimal data collection — we only know what we absolutely need to keep the lights on.",
+    "introText": "Quiz scoring runs in your browser. Website analytics run separately.",
     "section1Title": "What We Collect",
-    "section1Text": "We use Google Analytics (ID: G-0182BSNWVS) to understand how people use SBTI. This includes: page views, approximate geographic location, device type, and browser information. We do NOT collect your quiz answers, personality results, or any personally identifiable information.",
+    "section1Text": "This website loads Google Analytics, Microsoft Clarity and Ahrefs Analytics for usage analytics. Clarity can record page interactions. These services may process browser, device and usage data.",
     "section2Title": "Quiz Data",
-    "section2Text": "All quiz logic runs locally in your browser using JavaScript. Your answers and results are never sent to any server. When you close or refresh the page, your quiz data is gone.",
+    "section2Text": "Quiz scoring runs locally. Main-test result history is saved in localStorage and survives refresh; it can be deleted from the history panel. Shared result links include result information in the URL.",
     "section3Title": "Cookies",
-    "section3Text": "Google Analytics may set cookies to distinguish users and track sessions. SBTI itself does not set any cookies. You can opt out of Google Analytics using browser extensions or privacy settings.",
+    "section3Text": "Analytics services may use cookies. Local result history uses localStorage, which is separate from cookies.",
     "section4Title": "Third-Party Services",
-    "section4Text": "We use the following third-party services: Google Analytics for usage statistics, Google Fonts for typography, and Cloudflare Pages for hosting.",
+    "section4Text": "The website uses Google Analytics, Microsoft Clarity and Ahrefs Analytics, and is hosted on Cloudflare Pages.",
     "section5Title": "Contact",
     "section5Text": "If you have questions about this privacy policy, you can reach us through our GitHub repository."
   },
@@ -919,5 +922,8 @@
     "title": "Previous Results",
     "viewAgain": "View Again",
     "clearAll": "Clear All"
+  },
+  "games": {
+    "questionFramework": "This quiz has {count} questions mapped to 6 axes. Its 3 dominant axes are marked in vermillion."
   }
 }

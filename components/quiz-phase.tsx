@@ -5,6 +5,7 @@ import {useQuizStore} from '@/lib/store';
 
 export function QuizPhase() {
   const t = useTranslations('quiz');
+  const ti = useTranslations('intro');
   const tq = useTranslations('questions');
   const {queue, current, answer} = useQuizStore();
   const question = queue[current];
@@ -30,6 +31,7 @@ export function QuizPhase() {
   return (
     <main className="mx-auto flex min-h-[85vh] w-full max-w-[1240px] flex-col items-center justify-center px-5 py-12 md:px-8">
       <div className="w-full max-w-2xl">
+        {current === 0 && <p className="mb-6 text-sm text-muted-foreground">{ti('contentNotice')}</p>}
         {/* Progress strip: mono numeric counter + thin hair-rule bar */}
         <div className="mb-10 flex items-end justify-between">
           <div className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground">

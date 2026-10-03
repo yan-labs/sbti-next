@@ -1,6 +1,7 @@
 'use client';
 
 import {useState} from 'react';
+import {useTranslations} from 'next-intl';
 import Image from 'next/image';
 import {ArrowRight} from 'lucide-react';
 import {GameV2Result} from '@/components/result-phase';
@@ -62,6 +63,7 @@ export function GameQuizApp({
   initialPhase?: 'intro' | 'quiz';
 }) {
   const copy = UI_COPY[locale];
+  const t = useTranslations('intro');
   const [phase, setPhase] = useState<Phase>(initialPhase);
   const [current, setCurrent] = useState(0);
   const [answers, setAnswers] = useState<Answer[]>([]);
@@ -126,6 +128,7 @@ export function GameQuizApp({
   return (
     <main className="min-h-screen bg-background px-5 py-16 md:px-8">
       <section className="mx-auto w-full max-w-2xl">
+        {current === 0 && <p className="mb-6 text-sm text-muted-foreground">{t('contentNotice')}</p>}
         {/* Editorial game header — only on intro */}
         {phase === 'intro' && (
           <>

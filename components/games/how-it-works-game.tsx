@@ -6,7 +6,7 @@ const COPY: Record<SiteLocale, {kicker: string; cta: string; stats: {value: stri
     kicker: '02 · 测试规模',
     cta: '开始测试',
     stats: [
-      {value: '31', label: '道题'},
+      {value: 'questions', label: '道题'},
       {value: '6', label: '行为轴'},
       {value: '8', label: '玩家原型'},
       {value: '3', label: '分钟'},
@@ -16,7 +16,7 @@ const COPY: Record<SiteLocale, {kicker: string; cta: string; stats: {value: stri
     kicker: '02 · The numbers',
     cta: 'Take the quiz',
     stats: [
-      {value: '31', label: 'Questions'},
+      {value: 'questions', label: 'Questions'},
       {value: '6', label: 'Axes'},
       {value: '8', label: 'Archetypes'},
       {value: '3', label: 'Minutes'},
@@ -26,7 +26,7 @@ const COPY: Record<SiteLocale, {kicker: string; cta: string; stats: {value: stri
     kicker: '02 · 診断スペック',
     cta: '診断を始める',
     stats: [
-      {value: '31', label: '問'},
+      {value: 'questions', label: '問'},
       {value: '6', label: '行動軸'},
       {value: '8', label: 'タイプ'},
       {value: '3', label: '分'},
@@ -36,7 +36,7 @@ const COPY: Record<SiteLocale, {kicker: string; cta: string; stats: {value: stri
     kicker: '02 · 테스트 규모',
     cta: '테스트 시작',
     stats: [
-      {value: '31', label: '문항'},
+      {value: 'questions', label: '문항'},
       {value: '6', label: '행동 축'},
       {value: '8', label: '유형'},
       {value: '3', label: '분'},
@@ -68,7 +68,7 @@ export function HowItWorksGame({game, locale}: HowItWorksGameProps) {
                   letterSpacing: '-0.02em',
                 }}
               >
-                {value}
+                {value === 'questions' ? game.questions.length : value}
               </span>
               <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--ink-muted)]">
                 {label}

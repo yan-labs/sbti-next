@@ -195,6 +195,7 @@ function ResultSharePageInner({code}: {code: string}) {
     setSaving(true);
     try {
       const blob = await generateImage({
+        satireLabel: ts('satireLabel'),
         code,
         name: cn,
         description: intro,
@@ -243,6 +244,7 @@ function ResultSharePageInner({code}: {code: string}) {
       className="result-front mx-auto max-w-[1180px] px-4 pt-8 pb-14 md:px-8 md:pt-10"
       style={{color: 'var(--foreground)'}}
     >
+      <p className="mb-4 text-sm text-muted-foreground">{t('satireNotice')}</p>
       {/* ─────────── MASTHEAD ─────────── */}
       <header className="border-b-4 border-t border-foreground/85 pt-4 pb-3">
         <div className="mono-label flex flex-wrap items-baseline justify-between gap-2">

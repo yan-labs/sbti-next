@@ -32,6 +32,8 @@ export function IntroPhase() {
           {t('subhead')}
         </p>
 
+        <p className="mt-4 text-sm text-muted-foreground">{t('contentNotice')}</p>
+
         <div className="mt-10 flex flex-col items-center gap-4">
           <button
             type="button"

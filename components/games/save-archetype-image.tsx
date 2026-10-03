@@ -1,6 +1,7 @@
 'use client';
 
 import {useState} from 'react';
+import {useTranslations} from 'next-intl';
 import {AXES, AXIS_ORDER} from '@/lib/data/games/dimensions';
 import type {Axis, SiteLocale} from '@/lib/data/games/types';
 
@@ -57,6 +58,7 @@ function loadImage(src: string): Promise<HTMLImageElement> {
 }
 
 interface GenerateArgs {
+  satireLabel: string;
   gameTitle: string;
   archetypeName: string;
   archetypeSlug: string;
@@ -76,6 +78,7 @@ async function generateArchetypeImage({
   scores,
   artUrl,
   locale,
+  satireLabel,
 }: GenerateArgs): Promise<Blob> {
   const canvas = document.createElement('canvas');
   canvas.width = W;
@@ -251,7 +254,7 @@ async function generateArchetypeImage({
   ctx.textAlign = 'left';
   ctx.fillText('SBTI.SUPPORT', PAD, footerY);
   ctx.textAlign = 'right';
-  ctx.fillText('PLAYER · ONE-OF-ONE', W - PAD, footerY);
+  ctx.fillText(satireLabel, W - PAD, footerY);
 
   return new Promise<Blob>((resolve, reject) => {
     canvas.toBlob(
@@ -322,19 +325,20 @@ const BTN_COPY: Record<SiteLocale, {save: string; saving: string}> = {
   ko: {save: '이미지 저장', saving: '생성 중…'},
 };
 
-export interface SaveGameArchetypeImageButtonProps extends GenerateArgs {
+export interface SaveGameArchetypeImageButtonProps extends Omit<GenerateArgs, 'satireLabel'> {
   gameSlug: string;
 }
 
 export function SaveGameArchetypeImageButton(props: SaveGameArchetypeImageButtonProps) {
   const [saving, setSaving] = useState(false);
   const t = BTN_COPY[props.locale];
+  const ts = useTranslations('share');
 
   async function handleClick() {
     if (saving) return;
     setSaving(true);
     try {
-      const blob = await generateArchetypeImage(props);
+      const blob = await generateArchetypeImage({...props, satireLabel: ts('satireLabel')});
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;

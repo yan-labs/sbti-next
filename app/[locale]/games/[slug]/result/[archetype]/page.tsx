@@ -1,5 +1,5 @@
 import {notFound} from 'next/navigation';
-import {setRequestLocale} from 'next-intl/server';
+import {getTranslations, setRequestLocale} from 'next-intl/server';
 import {routing} from '@/i18n/routing';
 import Image from 'next/image';
 import {Link} from '@/i18n/navigation';
@@ -250,6 +250,7 @@ export default async function ArchetypeResultPage({
   if (!archetype) notFound();
 
   setRequestLocale(locale);
+  const tr = await getTranslations({locale, namespace: 'result'});
 
   const loc = safeLocale(locale);
   const copy = COPY[loc];
@@ -321,6 +322,7 @@ export default async function ArchetypeResultPage({
         data-game={slug}
       >
         <article className="mx-auto w-full max-w-[1100px]">
+          <p className="mb-4 text-sm text-muted-foreground">{tr('satireNotice')}</p>
           {/* Header */}
           <div className="mb-6 flex items-center justify-center gap-3 font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
             <span>{gameTitle}</span>

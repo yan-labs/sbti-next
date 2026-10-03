@@ -87,6 +87,7 @@ const GAME_RESULT_UI: Record<SiteLocale, {
 
 export function GameV2Result({game, archetype, scores, locale, onRetake}: GameV2ResultProps) {
   const copy = GAME_RESULT_UI[locale];
+  const t = useTranslations('result');
   const polarityCode = derivePolarityCode(scores);
   const gameTitle = game.title[locale];
   const archetypeName = archetype.name[locale];
@@ -111,6 +112,7 @@ export function GameV2Result({game, archetype, scores, locale, onRetake}: GameV2
 
   return (
     <div className="space-y-5">
+      <p className="text-sm text-muted-foreground">{t('satireNotice')}</p>
       {/* Hero Card */}
       <Card className="overflow-hidden border-0 shadow-sm">
         <CardContent className="p-5 sm:p-7">
@@ -377,6 +379,7 @@ function SBTIResultPhase() {
 
   return (
     <div className="mx-auto max-w-4xl space-y-6 px-4 py-8 md:py-10">
+      <p className="text-sm text-muted-foreground">{t('satireNotice')}</p>
       {/* Hero Card */}
       <Card className="overflow-hidden border-0 shadow-sm">
         <CardContent className="p-5 md:p-7">

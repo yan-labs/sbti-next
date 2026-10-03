@@ -276,7 +276,8 @@ export async function generateImage({
   dimensions,
   scores,
   polarityCode,
-}: SaveImageButtonProps): Promise<Blob> {
+  satireLabel,
+}: SaveImageButtonProps & {satireLabel: string}): Promise<Blob> {
   const W = 1080;
   const H = 1440;
 
@@ -420,7 +421,7 @@ export async function generateImage({
   ctx.textAlign = 'right';
   ctx.fillStyle = FOREGROUND_MUTED;
   ctx.font = '700 24px -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif';
-  ctx.fillText('Shareable personality chaos', W - 72, 1366);
+  ctx.fillText(satireLabel, W - 72, 1366);
   ctx.restore();
 
   return new Promise<Blob>((resolve, reject) => {
@@ -589,7 +590,7 @@ export function SaveImageButton(props: SaveImageButtonProps) {
     if (saving) return;
     setSaving(true);
     try {
-      const blob = await generateImage(props);
+      const blob = await generateImage({...props, satireLabel: t('satireLabel')});
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;

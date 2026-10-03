@@ -1,33 +1,30 @@
+import {useTranslations} from 'next-intl';
 import {AXES} from '@/lib/data/games/dimensions';
 import type {Axis, GameQuizV2, SiteLocale} from '@/lib/data/games/types';
 
-const COPY: Record<SiteLocale, {kicker: string; headingLead: string; headingItalic: string; dek: string; dominantBadge: string}> = {
+const COPY: Record<SiteLocale, {kicker: string; headingLead: string; headingItalic: string; dominantBadge: string}> = {
   zh: {
     kicker: '03 · 六维评估体系',
     headingLead: '所有测试共享的 ',
     headingItalic: '六维体系',
-    dek: '每款游戏 31 道题，最终都映射到这 6 个轴上。本款游戏的 3 个主导轴用 vermillion 标记。',
     dominantBadge: '主导轴',
   },
   en: {
     kicker: '03 · The 6-axis framework',
     headingLead: 'The shared ',
     headingItalic: '6-axis framework',
-    dek: 'Every quiz is 31 questions mapped to these 6 axes. The 3 dominant axes for this game are flagged in vermillion.',
     dominantBadge: 'Dominant',
   },
   ja: {
     kicker: '03 · 6軸モデル',
     headingLead: 'すべての診断で共通の',
     headingItalic: '6軸モデル',
-    dek: '各診断は31問、最終的にこの6軸にマッピングされる。このゲームの主導軸3つはvermillionで表示。',
     dominantBadge: '主導',
   },
   ko: {
     kicker: '03 · 6축 모델',
     headingLead: '모든 테스트가 공유하는 ',
     headingItalic: '6축 모델',
-    dek: '각 테스트는 31문항으로 같은 6축에 매핑된다. 이 게임의 주요 축 3개는 vermillion으로 표시된다.',
     dominantBadge: '주요',
   },
 };
@@ -39,6 +36,7 @@ interface SixAxisExplainerProps {
 
 export function SixAxisExplainer({game, locale}: SixAxisExplainerProps) {
   const copy = COPY[locale];
+  const t = useTranslations('games');
   const dominantSet = new Set<Axis>(game.dominantAxes);
 
   return (
@@ -51,7 +49,7 @@ export function SixAxisExplainer({game, locale}: SixAxisExplainerProps) {
             <em>{copy.headingItalic}</em>
           </h2>
           <p className="mt-3 max-w-[58ch] text-[15px] leading-[1.6] text-[var(--ink-soft)] md:col-span-2 md:col-start-1">
-            {copy.dek}
+            {t('questionFramework', {count: game.questions.length})}
           </p>
         </header>
 

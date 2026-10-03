@@ -63,14 +63,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Game personality tests (hub + per-game pages)
   addLocalized('/games', 0.8, '2026-09-20');
   for (const slug of GAME_SLUGS) {
-    addLocalized(`/games/${slug}`, 0.82, '2026-05-11');
+    addLocalized(`/games/${slug}`, 0.82, '2026-10-03');
     addLocalized(`/games/${slug}/compat`, 0.6, '2026-05-12');
   }
 
   // Game archetype result pages (8 games × 8 archetypes = 64 routes)
   for (const game of ALL_GAMES_V2) {
     for (const archetype of game.archetypes) {
-      addLocalized(`/games/${game.slug}/result/${archetype.slug}`, 0.78, '2026-05-12');
+      addLocalized(`/games/${game.slug}/result/${archetype.slug}`, 0.78, '2026-10-03');
     }
   }
 
@@ -86,7 +86,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   addLocalized('/about', 0.5, '2026-10-03');
   addLocalized('/types', 0.7, '2026-10-03');
   addLocalized('/faq', 0.5, '2026-10-03');
-  addLocalized('/privacy-policy', 0.3, '2026-04-10');
+  addLocalized('/privacy-policy', 0.3, '2026-10-03');
   addLocalized('/terms', 0.3, '2026-04-10');
 
   // Compatibility hub only. The 27×26 pair pages stay reachable through
