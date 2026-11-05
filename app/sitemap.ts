@@ -81,11 +81,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   function namespaces(path: string) {
     if (path === '') return ['faq'];
-    if (path === '/test') return ['intro', 'quiz', 'questions'];
+    if (path === '/test') return ['intro', 'quiz', 'questions', 'result', 'share', 'compat', 'dimensions', 'personalities', 'dimExplanations'];
     if (path.startsWith('/games')) return ['games', 'result', 'share'];
     if (path.startsWith('/type/')) return ['result', 'share', 'typeDetail', 'intro', 'personalities', 'dimensions', 'breadcrumb'];
     if (path === '/types') return ['typesIndex', 'personalities', 'breadcrumb'];
-    if (path.startsWith('/compat')) return ['compat', 'personalities', 'dimensions', 'result'];
+    if (path.startsWith('/compat')) return ['compat', 'personalities', 'dimensions', 'result', 'breadcrumb'];
     if (path.startsWith('/blog')) return ['blog', 'personalities', 'breadcrumb'];
     const key: Record<string, string[]> = {
       '/about': ['about', 'breadcrumb', 'intro'], '/faq': ['faq', 'breadcrumb', 'intro'],
@@ -101,14 +101,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }
 
   // Homepage
-  addLocalized('', 1.0, ['app/[locale]/page.tsx', 'components/home', 'lib/data/personalities.json', 'lib/data/games']);
-  addLocalized('/test', 0.9, ['app/[locale]/test/page.tsx', 'components/sbti-app.tsx', 'components/intro-phase.tsx', 'components/quiz-phase.tsx', 'lib/data/questions.ts']);
+  addLocalized('', 1.0, ['app/[locale]/page.tsx', 'components/home', 'lib/data/personalities.ts', 'lib/data/personalities.json', 'lib/data/games']);
+  addLocalized('/test', 0.9, ['app/[locale]/test/page.tsx', 'components/sbti-app.tsx', 'components/intro-phase.tsx', 'components/quiz-phase.tsx', 'components/result-phase.tsx', 'lib/data/questions.ts', 'lib/data/personalities.ts', 'lib/data/personalities.json', 'lib/data/dimensions.ts', 'lib/data/dimensions.json', 'lib/data/games']);
 
   // Game personality tests (hub + per-game pages)
   addLocalized('/games', 0.8, ['app/[locale]/games/page.tsx', 'components/games/game-hub-page.tsx', 'lib/data/games']);
   for (const slug of GAME_SLUGS) {
     addLocalized(`/games/${slug}`, 0.82, ['app/[locale]/games/[slug]/page.tsx', 'components/games', 'lib/data/games/faqs.ts', `lib/data/games/${slug}.ts`]);
-    addLocalized(`/games/${slug}/compat`, 0.6, ['app/[locale]/games/[slug]/compat/page.tsx', 'components/games/game-compat-page.tsx', `lib/data/games/${slug}.ts`, 'lib/data/games/compat.ts']);
+    addLocalized(`/games/${slug}/compat`, 0.6, ['app/[locale]/games/[slug]/compat/page.tsx', 'components/games/game-compat-page.tsx', `lib/data/games/${slug}.ts`, 'lib/data/games/compat.ts', 'lib/data/games/archetype-art.ts', 'lib/data/games/dimensions.ts']);
   }
 
   // Game archetype result pages (8 games × 8 archetypes = 64 routes)
@@ -158,7 +158,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // Blog articles
   for (const post of BLOG_POSTS) {
-    addLocalized(`/blog/${post.slug}`, 0.8, ['app/[locale]/blog/[slug]/page.tsx', 'components/blog-post-page.tsx', 'lib/data/blog.ts']);
+    addLocalized(`/blog/${post.slug}`, 0.8, ['app/[locale]/blog/[slug]/page.tsx', 'components/blog-post-page.tsx', 'lib/data/blog.ts', 'lib/data/personalities.ts', 'lib/data/personalities.json']);
   }
 
   return entries;
