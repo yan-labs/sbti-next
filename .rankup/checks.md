@@ -45,3 +45,11 @@
 | `www.sbti.support/en/games?foo=bar`（带路径+查询串）→ 301 原样带过去 | ✅ | 同上 | 2026-09-20 |
 | `sbti.support/` 仍 200，未被连带影响、无跳转环 | ✅ | 同上 | 2026-09-20 |
 | 规则生效延迟 | 备注 | 创建后立即测试仍是 200，等待约 20 秒边缘传播后变 301，属正常传播延迟 | 2026-09-20 |
+
+## 2026-11-05 AI 爬虫访问
+
+| 检查项 | 状态 | 证据 |
+|---|---|---|
+| 14 种 AI UA 的首页、/zh、robots.txt、llms.txt | ✅ | rankup `ai-crawler-access.mjs` 全部 200 且 robots 放行；14 个 UA 独立 curl 首页均 200 |
+| Cloudflare 设置与 robots | ✅ | AI 爬虫拦截及训练爬虫禁令均 disabled；线上 robots 的 Bytespider、CCBot 为 Allow；其余适用默认 Allow |
+| 发布与 play noindex | ✅ | 构建通过；生产代码 b39960b，Actions run 41963745825 成功；`/games/overwatch-2/play` 保留 noindex, follow |
