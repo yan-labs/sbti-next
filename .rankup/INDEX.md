@@ -1,5 +1,7 @@
 # .rankup 目录索引 — sbti.support
 
+- 2026-11-05：sitemap lastmod 已改为按页面内容源和语言文案分组的 Git 历史生成并上线；站长平台重提交后仍待确认重新抓取，见 `checks.md`。新增内容源或文案分组时须同步维护 `app/sitemap.ts` 的映射。
+
 - 2026-11-05：AI 爬虫放行修复已上线；Cloudflare AI 拦截及训练爬虫禁令关闭，14 个 UA 实测通过，详见 `checks.md`。
 - 阶段：段 5 已上线，进入收录观察与内容优化（2026-09-20 记录）。
 - 线上状态：`https://sbti.support` 为规范域；www → apex 301 已核验。Bing 修复与 IndexNow 提交见 `checks.md`，抓取结果待复查。

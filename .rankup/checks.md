@@ -53,3 +53,9 @@
 | 14 种 AI UA 的首页、/zh、robots.txt、llms.txt | ✅ | rankup `ai-crawler-access.mjs` 全部 200 且 robots 放行；14 个 UA 独立 curl 首页均 200 |
 | Cloudflare 设置与 robots | ✅ | AI 爬虫拦截及训练爬虫禁令均 disabled；线上 robots 的 Bytespider、CCBot 为 Allow；其余适用默认 Allow |
 | 发布与 play noindex | ✅ | 构建通过；生产代码 b39960b，Actions run 41963745825 成功；`/games/overwatch-2/play` 保留 noindex, follow |
+
+## 2026-11-05 sitemap lastmod
+
+- ✅ `7be36dbe93828c1ec08a68f8e9068c8c195f2bd6`：内容文件及语言文案分组最后 Git 提交日期；流水线拉取完整历史。共享文件或文案分组粒度会合并多个页面，新增内容源须维护映射。robots 修改不计入。
+- ✅ 本地构建与 167 项现有测试通过；线上 `/sitemap.xml` 486 条日期与本地逐项一致；部署 run 41964752713 成功。
+- ✅ GSC 与 Bing 于 2026-11-05 重提交；截图见 `evidence/webmaster-sitemap-2026-11-05T04-00-44/` 与 `evidence/webmaster-sitemap-2026-11-05T04-00-54/`。GSC 上次读取 2026-07-20、Bing 上次爬取 2026-05-31（正在处理），新内容是否被重新抓取待后续复查。
