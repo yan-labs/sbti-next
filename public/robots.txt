@@ -26,10 +26,10 @@ User-agent: Bingbot
 Allow: /
 
 User-agent: Bytespider
-Disallow: /
+Allow: /
 
 User-agent: CCBot
-Disallow: /
+Allow: /
 
 User-agent: PerplexityBot
 Allow: /
