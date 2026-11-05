@@ -107,7 +107,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Game personality tests (hub + per-game pages)
   addLocalized('/games', 0.8, ['app/[locale]/games/page.tsx', 'components/games/game-hub-page.tsx', 'lib/data/games']);
   for (const slug of GAME_SLUGS) {
-    addLocalized(`/games/${slug}`, 0.82, ['app/[locale]/games/[slug]/page.tsx', 'components/games', `lib/data/games/${slug}.ts`]);
+    addLocalized(`/games/${slug}`, 0.82, ['app/[locale]/games/[slug]/page.tsx', 'components/games', 'lib/data/games/faqs.ts', `lib/data/games/${slug}.ts`]);
     addLocalized(`/games/${slug}/compat`, 0.6, ['app/[locale]/games/[slug]/compat/page.tsx', 'components/games/game-compat-page.tsx', `lib/data/games/${slug}.ts`, 'lib/data/games/compat.ts']);
   }
 
